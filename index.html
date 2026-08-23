@@ -37,25 +37,24 @@
   </script>
   <style>
     body {
-      background-color: #0a1f12;
+      background-color: #06140c;
       background-image: 
-        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(34, 197, 94, 0.15), transparent),
-        linear-gradient(rgba(22, 163, 74, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(22, 163, 74, 0.03) 1px, transparent 1px);
-      background-size: 100% 100%, 40px 40px, 40px 40px;
-    }
-    .field-lines {
-      background-image: 
-        linear-gradient(90deg, transparent 49.5%, rgba(255,255,255,0.08) 49.5%, rgba(255,255,255,0.08) 50.5%, transparent 50.5%),
-        linear-gradient(transparent 49.5%, rgba(255,255,255,0.08) 49.5%, rgba(255,255,255,0.08) 50.5%, transparent 50.5%);
-      background-size: 100% 100%, 100% 100%;
+        linear-gradient(to bottom, rgba(6,20,12,0.75), rgba(6,20,12,0.92)),
+        url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
     }
     .card {
-      background: linear-gradient(145deg, rgba(255,255,255,0.97), rgba(255,255,255,0.92));
-      backdrop-filter: blur(12px);
+      background: linear-gradient(145deg, rgba(255,255,255,0.97), rgba(255,255,255,0.93));
+      backdrop-filter: blur(14px);
     }
     .glow {
-      box-shadow: 0 0 40px -10px rgba(34, 197, 94, 0.35);
+      box-shadow: 0 0 50px -12px rgba(34, 197, 94, 0.4);
+    }
+    .next-up-glow {
+      box-shadow: 0 0 60px -8px rgba(34, 197, 94, 0.55);
     }
   </style>
 </head>
@@ -63,30 +62,49 @@
 
   <!-- Hero -->
   <header class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-pitch-900 via-pitch-800 to-pitch-950"></div>
-    <div class="absolute inset-0 field-lines opacity-40"></div>
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-pitch-500/20 blur-[100px] rounded-full"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-pitch-950/70 to-pitch-950/90"></div>
     
-    <div class="relative max-w-3xl mx-auto px-5 pt-14 pb-20 sm:pt-20 sm:pb-24 text-center">
-      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/10 border border-white/20 shadow-lg mb-6 glow">
+    <div class="relative max-w-3xl mx-auto px-5 pt-14 pb-24 sm:pt-20 sm:pb-28 text-center">
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/10 border border-white/25 shadow-lg mb-6 glow">
         <span class="text-4xl">⚽</span>
       </div>
-      <h1 class="font-display text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-3">
+      <h1 class="font-display text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-3 drop-shadow-lg">
         Fogerty U5
       </h1>
-      <p class="text-pitch-200 text-lg sm:text-xl font-medium mb-2">Soccer · Fall 2026</p>
-      <p class="text-pitch-300/90 text-sm">O’Fallon Parks & Recreation</p>
-      <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-white/90 text-sm">
+      <p class="text-pitch-100 text-lg sm:text-xl font-medium mb-2 drop-shadow">Soccer · Fall 2026</p>
+      <p class="text-pitch-200/90 text-sm drop-shadow">O’Fallon Parks & Recreation</p>
+      <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/30 border border-white/20 text-white/95 text-sm backdrop-blur-sm">
         <span class="w-2 h-2 rounded-full bg-pitch-400 animate-pulse"></span>
         Coach Casey Fogerty · Chandler’s dad
       </div>
     </div>
   </header>
 
-  <main class="max-w-3xl mx-auto px-5 -mt-10 pb-20 space-y-6 relative z-10">
+  <main class="max-w-3xl mx-auto px-5 -mt-12 pb-20 space-y-6 relative z-10">
+
+    <!-- Next Up -->
+    <section class="card rounded-3xl border border-pitch-200/80 p-6 sm:p-7 next-up-glow overflow-hidden relative">
+      <div class="absolute top-0 right-0 w-32 h-32 bg-pitch-400/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+      <div class="flex items-start gap-4 relative">
+        <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-pitch-600 text-white flex flex-col items-center justify-center shadow-lg">
+          <span class="text-[10px] font-bold uppercase tracking-wide opacity-90">Next</span>
+          <span class="text-lg font-extrabold leading-none">Up</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex flex-wrap items-center gap-2 mb-1">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wide bg-pitch-100 text-pitch-800">
+              Practice
+            </span>
+          </div>
+          <p class="font-display text-xl font-bold text-pitch-950">Wednesday, September 2</p>
+          <p class="text-pitch-700 font-medium mt-0.5">5:30 – 6:00 PM · Field 8C</p>
+          <p class="text-sm text-slate-500 mt-2">First practice of the season. Games begin the following Saturday (Sept 5).</p>
+        </div>
+      </div>
+    </section>
 
     <!-- Practice Details -->
-    <section class="card rounded-3xl shadow-xl border border-white/60 p-6 sm:p-8 glow">
+    <section class="card rounded-3xl shadow-xl border border-white/60 p-6 sm:p-8">
       <div class="flex items-center gap-3 mb-6">
         <div class="w-10 h-10 rounded-xl bg-pitch-100 flex items-center justify-center text-xl">📅</div>
         <h2 class="font-display text-xl font-bold text-pitch-900">Practice Details</h2>
@@ -146,19 +164,19 @@
       </div>
     </section>
 
-    <!-- Snack Signups -->
+    <!-- Snack Signups - GAMES ONLY -->
     <section class="card rounded-3xl shadow-xl border border-white/60 p-6 sm:p-8">
       <div class="flex items-center gap-3 mb-2">
         <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-xl">🍎</div>
-        <h2 class="font-display text-xl font-bold text-pitch-900">Snack Sign-Ups</h2>
+        <h2 class="font-display text-xl font-bold text-pitch-900">Game Day Snack Sign-Ups</h2>
       </div>
-      <p class="text-sm text-slate-500 mb-5">Simple snacks after practice. Reply to the team email or text Coach to claim a week!</p>
+      <p class="text-sm text-slate-500 mb-5">Snacks are for <strong class="text-pitch-800">game days only</strong> (Saturdays). No snacks at practices. Reply to the team email or text Coach to claim a game!</p>
       
       <div class="overflow-hidden rounded-2xl border border-pitch-100">
         <table class="w-full text-sm">
           <thead>
             <tr class="bg-pitch-800 text-white">
-              <th class="text-left font-semibold px-4 py-3">Week</th>
+              <th class="text-left font-semibold px-4 py-3">Game</th>
               <th class="text-left font-semibold px-4 py-3">Date</th>
               <th class="text-left font-semibold px-4 py-3">Snack Parent</th>
             </tr>
@@ -166,7 +184,7 @@
           <tbody class="divide-y divide-pitch-100">
             <tr class="bg-pitch-50">
               <td class="px-4 py-3 font-medium text-pitch-900">1</td>
-              <td class="px-4 py-3 text-slate-600">Sept 2</td>
+              <td class="px-4 py-3 text-slate-600">Sat, Sept 5</td>
               <td class="px-4 py-3">
                 <span class="inline-flex items-center gap-1.5 font-semibold text-pitch-800">
                   <span class="w-1.5 h-1.5 rounded-full bg-pitch-500"></span>
@@ -176,42 +194,43 @@
             </tr>
             <tr class="bg-white">
               <td class="px-4 py-3 font-medium text-pitch-900">2</td>
-              <td class="px-4 py-3 text-slate-600">Sept 9</td>
+              <td class="px-4 py-3 text-slate-600">Sat, Sept 12</td>
               <td class="px-4 py-3 text-slate-400 italic">Open</td>
             </tr>
             <tr class="bg-pitch-50/50">
               <td class="px-4 py-3 font-medium text-pitch-900">3</td>
-              <td class="px-4 py-3 text-slate-600">Sept 16</td>
+              <td class="px-4 py-3 text-slate-600">Sat, Sept 19</td>
               <td class="px-4 py-3 text-slate-400 italic">Open</td>
             </tr>
             <tr class="bg-white">
               <td class="px-4 py-3 font-medium text-pitch-900">4</td>
-              <td class="px-4 py-3 text-slate-600">Sept 23</td>
-              <td class="px-4 py-3 text-slate-400 italic">Open</td>
+              <td class="px-4 py-3 text-slate-600">Sat, Sept 26</td>
+              <td class="px-4 py-3 text-slate-400 italic">Open <span class="text-xs text-amber-600">(Picture Day)</span></td>
             </tr>
             <tr class="bg-pitch-50/50">
               <td class="px-4 py-3 font-medium text-pitch-900">5</td>
-              <td class="px-4 py-3 text-slate-600">Sept 30</td>
+              <td class="px-4 py-3 text-slate-600">Sat, Oct 3</td>
               <td class="px-4 py-3 text-slate-400 italic">Open</td>
             </tr>
             <tr class="bg-white">
               <td class="px-4 py-3 font-medium text-pitch-900">6</td>
-              <td class="px-4 py-3 text-slate-600">Oct 7</td>
+              <td class="px-4 py-3 text-slate-600">Sat, Oct 10</td>
               <td class="px-4 py-3 text-slate-400 italic">Open</td>
             </tr>
             <tr class="bg-pitch-50/50">
               <td class="px-4 py-3 font-medium text-pitch-900">7</td>
-              <td class="px-4 py-3 text-slate-600">Oct 14</td>
+              <td class="px-4 py-3 text-slate-600">Sat, Oct 17</td>
               <td class="px-4 py-3 text-slate-400 italic">Open</td>
             </tr>
             <tr class="bg-white">
               <td class="px-4 py-3 font-medium text-pitch-900">8</td>
-              <td class="px-4 py-3 text-slate-600">Oct 21</td>
+              <td class="px-4 py-3 text-slate-600">Sat, Oct 24</td>
               <td class="px-4 py-3 text-slate-400 italic">Open</td>
             </tr>
           </tbody>
         </table>
       </div>
+      <p class="text-xs text-slate-400 mt-3">Exact game times & opponents will appear on QuickScores once the schedule is released (Aug 31).</p>
     </section>
 
     <!-- Sample Agenda -->
@@ -329,7 +348,7 @@
         </li>
         <li class="flex gap-3 items-start">
           <span class="mt-1 w-2 h-2 rounded-full bg-pitch-500 flex-shrink-0"></span>
-          Offer to help with an activity or claim a snack week above
+          Claim a game-day snack slot above
         </li>
         <li class="flex gap-3 items-start">
           <span class="mt-1 w-2 h-2 rounded-full bg-pitch-500 flex-shrink-0"></span>
@@ -340,9 +359,9 @@
 
   </main>
 
-  <footer class="text-center text-sm text-pitch-400/70 pb-12">
-    <p class="font-medium">Fogerty U5 · Fall 2026</p>
-    <p class="mt-1 text-pitch-500/60">O’Fallon Parks & Recreation</p>
+  <footer class="text-center text-sm text-white/50 pb-12">
+    <p class="font-medium text-white/70">Fogerty U5 · Fall 2026</p>
+    <p class="mt-1">O’Fallon Parks & Recreation</p>
   </footer>
 
 </body>
