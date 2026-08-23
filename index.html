@@ -3,201 +3,346 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fogerty U5 Soccer Team</title>
+  <title>Fogerty U5 Soccer · Fall 2026</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            pitch: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              400: '#4ade80',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+              950: '#052e16',
+            }
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    body { font-family: 'Inter', system-ui, sans-serif; }
-    .gradient-bg {
-      background: linear-gradient(135deg, #0f766e 0%, #0d9488 40%, #14b8a6 100%);
+    body {
+      background-color: #0a1f12;
+      background-image: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(34, 197, 94, 0.15), transparent),
+        linear-gradient(rgba(22, 163, 74, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 163, 74, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 40px 40px, 40px 40px;
+    }
+    .field-lines {
+      background-image: 
+        linear-gradient(90deg, transparent 49.5%, rgba(255,255,255,0.08) 49.5%, rgba(255,255,255,0.08) 50.5%, transparent 50.5%),
+        linear-gradient(transparent 49.5%, rgba(255,255,255,0.08) 49.5%, rgba(255,255,255,0.08) 50.5%, transparent 50.5%);
+      background-size: 100% 100%, 100% 100%;
+    }
+    .card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.97), rgba(255,255,255,0.92));
+      backdrop-filter: blur(12px);
+    }
+    .glow {
+      box-shadow: 0 0 40px -10px rgba(34, 197, 94, 0.35);
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased">
+<body class="text-slate-800 antialiased min-h-screen">
 
-  <!-- Header -->
-  <header class="gradient-bg text-white">
-    <div class="max-w-3xl mx-auto px-5 py-12 sm:py-16 text-center">
-      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 mb-5">
-        <span class="text-3xl">⚽</span>
+  <!-- Hero -->
+  <header class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-pitch-900 via-pitch-800 to-pitch-950"></div>
+    <div class="absolute inset-0 field-lines opacity-40"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-pitch-500/20 blur-[100px] rounded-full"></div>
+    
+    <div class="relative max-w-3xl mx-auto px-5 pt-14 pb-20 sm:pt-20 sm:pb-24 text-center">
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/10 border border-white/20 shadow-lg mb-6 glow">
+        <span class="text-4xl">⚽</span>
       </div>
-      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-3">Fogerty U5 Soccer</h1>
-      <p class="text-teal-100 text-lg max-w-md mx-auto">O’Fallon Parks & Recreation · Fall 2026</p>
-      <p class="mt-4 text-white/90 text-sm">Coach Casey Fogerty (Chandler’s dad)</p>
+      <h1 class="font-display text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-3">
+        Fogerty U5
+      </h1>
+      <p class="text-pitch-200 text-lg sm:text-xl font-medium mb-2">Soccer · Fall 2026</p>
+      <p class="text-pitch-300/90 text-sm">O’Fallon Parks & Recreation</p>
+      <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-white/90 text-sm">
+        <span class="w-2 h-2 rounded-full bg-pitch-400 animate-pulse"></span>
+        Coach Casey Fogerty · Chandler’s dad
+      </div>
     </div>
   </header>
 
-  <main class="max-w-3xl mx-auto px-5 -mt-8 pb-16 space-y-6">
+  <main class="max-w-3xl mx-auto px-5 -mt-10 pb-20 space-y-6 relative z-10">
 
-    <!-- Key Details Card -->
-    <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 sm:p-8">
-      <h2 class="text-xl font-semibold text-slate-900 mb-5 flex items-center gap-2">
-        <span class="text-teal-600">📅</span> Practice Details
-      </h2>
-      <div class="grid sm:grid-cols-2 gap-4 text-sm">
-        <div class="bg-slate-50 rounded-xl p-4">
-          <p class="text-slate-500 text-xs font-medium uppercase tracking-wide mb-1">When</p>
-          <p class="font-medium text-slate-900">Wednesdays · 5:30 – 6:00 PM</p>
-          <p class="text-slate-600 mt-0.5">Starting September 2</p>
+    <!-- Practice Details -->
+    <section class="card rounded-3xl shadow-xl border border-white/60 p-6 sm:p-8 glow">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-pitch-100 flex items-center justify-center text-xl">📅</div>
+        <h2 class="font-display text-xl font-bold text-pitch-900">Practice Details</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="rounded-2xl bg-pitch-50 border border-pitch-100 p-5">
+          <p class="text-pitch-600 text-xs font-semibold uppercase tracking-wider mb-1.5">When</p>
+          <p class="font-bold text-pitch-950 text-lg">Wednesdays</p>
+          <p class="text-pitch-800 font-medium">5:30 – 6:00 PM</p>
+          <p class="text-pitch-600 text-sm mt-1">Starting September 2</p>
         </div>
-        <div class="bg-slate-50 rounded-xl p-4">
-          <p class="text-slate-500 text-xs font-medium uppercase tracking-wide mb-1">Where</p>
-          <p class="font-medium text-slate-900">Sports Park · Field 8C</p>
-          <p class="text-slate-600 mt-0.5">3589 Hwy K, O’Fallon, MO 63368</p>
+        <div class="rounded-2xl bg-pitch-50 border border-pitch-100 p-5">
+          <p class="text-pitch-600 text-xs font-semibold uppercase tracking-wider mb-1.5">Where</p>
+          <p class="font-bold text-pitch-950 text-lg">Field 8C</p>
+          <p class="text-pitch-800 font-medium">Sports Park</p>
+          <p class="text-pitch-600 text-sm mt-1">3589 Hwy K, O’Fallon</p>
         </div>
       </div>
-      <div class="mt-5 pt-5 border-t border-slate-100">
-        <p class="text-sm text-slate-600"><span class="font-medium text-slate-800">What to bring:</span> Water bottle, ball (if you have one), shin guards, cleats or sneakers, and clothes they can move in. The league provides some balls and cones.</p>
+      <div class="mt-5 pt-5 border-t border-pitch-100">
+        <p class="text-sm text-slate-600 leading-relaxed">
+          <span class="font-semibold text-pitch-900">What to bring:</span> Water bottle, ball (if you have one), shin guards, cleats or sneakers, and clothes they can move in. League provides some balls & cones.
+        </p>
       </div>
     </section>
 
     <!-- Quick Links -->
-    <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 sm:p-8">
-      <h2 class="text-xl font-semibold text-slate-900 mb-5 flex items-center gap-2">
-        <span class="text-teal-600">🔗</span> Quick Links
-      </h2>
+    <section class="card rounded-3xl shadow-xl border border-white/60 p-6 sm:p-8">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-xl bg-pitch-100 flex items-center justify-center text-xl">🔗</div>
+        <h2 class="font-display text-xl font-bold text-pitch-900">Quick Links</h2>
+      </div>
       <div class="space-y-3">
         <a href="https://www.quickscores.com/ofallonmo" target="_blank" rel="noopener"
-           class="flex items-center justify-between p-4 rounded-xl bg-slate-50 hover:bg-teal-50 transition group">
+           class="flex items-center justify-between p-4 rounded-2xl bg-pitch-50 hover:bg-pitch-100 border border-pitch-100 transition group">
           <div>
-            <p class="font-medium text-slate-900 group-hover:text-teal-800">QuickScores</p>
-            <p class="text-sm text-slate-500">Game schedule (goes live ~Aug 31)</p>
+            <p class="font-semibold text-pitch-950 group-hover:text-pitch-800">QuickScores</p>
+            <p class="text-sm text-pitch-600">Game schedule · goes live ~Aug 31</p>
           </div>
-          <span class="text-slate-400 group-hover:text-teal-600">→</span>
+          <span class="text-pitch-400 group-hover:text-pitch-600 text-lg">→</span>
         </a>
         <a href="https://statusfy.com/6363339900" target="_blank" rel="noopener"
-           class="flex items-center justify-between p-4 rounded-xl bg-slate-50 hover:bg-teal-50 transition group">
+           class="flex items-center justify-between p-4 rounded-2xl bg-pitch-50 hover:bg-pitch-100 border border-pitch-100 transition group">
           <div>
-            <p class="font-medium text-slate-900 group-hover:text-teal-800">Field Status / Rainouts</p>
-            <p class="text-sm text-slate-500">Statusfy · updates by 4 pm weekdays</p>
+            <p class="font-semibold text-pitch-950 group-hover:text-pitch-800">Field Status / Rainouts</p>
+            <p class="text-sm text-pitch-600">Statusfy · updates by 4pm weekdays</p>
           </div>
-          <span class="text-slate-400 group-hover:text-teal-600">→</span>
+          <span class="text-pitch-400 group-hover:text-pitch-600 text-lg">→</span>
         </a>
         <a href="https://drive.google.com/file/d/1V0PlHwwObGR5qA7vs1iw8YxXoEmUx1Br/view" target="_blank" rel="noopener"
-           class="flex items-center justify-between p-4 rounded-xl bg-slate-50 hover:bg-teal-50 transition group">
+           class="flex items-center justify-between p-4 rounded-2xl bg-pitch-50 hover:bg-pitch-100 border border-pitch-100 transition group">
           <div>
-            <p class="font-medium text-slate-900 group-hover:text-teal-800">Picture Day Order Form</p>
-            <p class="text-sm text-slate-500">September 26</p>
+            <p class="font-semibold text-pitch-950 group-hover:text-pitch-800">Picture Day Order Form</p>
+            <p class="text-sm text-pitch-600">September 26</p>
           </div>
-          <span class="text-slate-400 group-hover:text-teal-600">→</span>
+          <span class="text-pitch-400 group-hover:text-pitch-600 text-lg">→</span>
         </a>
       </div>
     </section>
 
+    <!-- Snack Signups -->
+    <section class="card rounded-3xl shadow-xl border border-white/60 p-6 sm:p-8">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-xl">🍎</div>
+        <h2 class="font-display text-xl font-bold text-pitch-900">Snack Sign-Ups</h2>
+      </div>
+      <p class="text-sm text-slate-500 mb-5">Simple snacks after practice. Reply to the team email or text Coach to claim a week!</p>
+      
+      <div class="overflow-hidden rounded-2xl border border-pitch-100">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-pitch-800 text-white">
+              <th class="text-left font-semibold px-4 py-3">Week</th>
+              <th class="text-left font-semibold px-4 py-3">Date</th>
+              <th class="text-left font-semibold px-4 py-3">Snack Parent</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-pitch-100">
+            <tr class="bg-pitch-50">
+              <td class="px-4 py-3 font-medium text-pitch-900">1</td>
+              <td class="px-4 py-3 text-slate-600">Sept 2</td>
+              <td class="px-4 py-3">
+                <span class="inline-flex items-center gap-1.5 font-semibold text-pitch-800">
+                  <span class="w-1.5 h-1.5 rounded-full bg-pitch-500"></span>
+                  Alyssa Fogerty
+                </span>
+              </td>
+            </tr>
+            <tr class="bg-white">
+              <td class="px-4 py-3 font-medium text-pitch-900">2</td>
+              <td class="px-4 py-3 text-slate-600">Sept 9</td>
+              <td class="px-4 py-3 text-slate-400 italic">Open</td>
+            </tr>
+            <tr class="bg-pitch-50/50">
+              <td class="px-4 py-3 font-medium text-pitch-900">3</td>
+              <td class="px-4 py-3 text-slate-600">Sept 16</td>
+              <td class="px-4 py-3 text-slate-400 italic">Open</td>
+            </tr>
+            <tr class="bg-white">
+              <td class="px-4 py-3 font-medium text-pitch-900">4</td>
+              <td class="px-4 py-3 text-slate-600">Sept 23</td>
+              <td class="px-4 py-3 text-slate-400 italic">Open</td>
+            </tr>
+            <tr class="bg-pitch-50/50">
+              <td class="px-4 py-3 font-medium text-pitch-900">5</td>
+              <td class="px-4 py-3 text-slate-600">Sept 30</td>
+              <td class="px-4 py-3 text-slate-400 italic">Open</td>
+            </tr>
+            <tr class="bg-white">
+              <td class="px-4 py-3 font-medium text-pitch-900">6</td>
+              <td class="px-4 py-3 text-slate-600">Oct 7</td>
+              <td class="px-4 py-3 text-slate-400 italic">Open</td>
+            </tr>
+            <tr class="bg-pitch-50/50">
+              <td class="px-4 py-3 font-medium text-pitch-900">7</td>
+              <td class="px-4 py-3 text-slate-600">Oct 14</td>
+              <td class="px-4 py-3 text-slate-400 italic">Open</td>
+            </tr>
+            <tr class="bg-white">
+              <td class="px-4 py-3 font-medium text-pitch-900">8</td>
+              <td class="px-4 py-3 text-slate-600">Oct 21</td>
+              <td class="px-4 py-3 text-slate-400 italic">Open</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <!-- Sample Agenda -->
-    <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 sm:p-8">
-      <h2 class="text-xl font-semibold text-slate-900 mb-2 flex items-center gap-2">
-        <span class="text-teal-600">📋</span> Sample Practice Agenda
-      </h2>
-      <p class="text-sm text-slate-500 mb-5">~30 minutes · lots of movement · pure fun</p>
-      <ol class="space-y-3">
-        <li class="flex gap-3">
-          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-teal-100 text-teal-700 text-sm font-semibold flex items-center justify-center">1</span>
-          <div>
-            <p class="font-medium text-slate-900">Arrival free play</p>
-            <p class="text-sm text-slate-600">Kids just run and kick as they arrive (5 min)</p>
+    <section class="card rounded-3xl shadow-xl border border-white/60 p-6 sm:p-8">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-10 h-10 rounded-xl bg-pitch-100 flex items-center justify-center text-xl">📋</div>
+        <h2 class="font-display text-xl font-bold text-pitch-900">Sample Practice Agenda</h2>
+      </div>
+      <p class="text-sm text-slate-500 mb-6">~30 minutes · lots of movement · pure fun</p>
+      <ol class="space-y-4">
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-9 h-9 rounded-full bg-pitch-600 text-white text-sm font-bold flex items-center justify-center shadow-md">1</span>
+          <div class="pt-1">
+            <p class="font-semibold text-pitch-950">Arrival free play</p>
+            <p class="text-sm text-slate-600">Kids just run and kick as they arrive</p>
           </div>
         </li>
-        <li class="flex gap-3">
-          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-teal-100 text-teal-700 text-sm font-semibold flex items-center justify-center">2</span>
-          <div>
-            <p class="font-medium text-slate-900">Ball mastery games</p>
-            <p class="text-sm text-slate-600">Toe taps, red light/green light, treasure hunt (8–10 min)</p>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-9 h-9 rounded-full bg-pitch-600 text-white text-sm font-bold flex items-center justify-center shadow-md">2</span>
+          <div class="pt-1">
+            <p class="font-semibold text-pitch-950">Ball mastery games</p>
+            <p class="text-sm text-slate-600">Toe taps · red light/green light · treasure hunt</p>
           </div>
         </li>
-        <li class="flex gap-3">
-          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-teal-100 text-teal-700 text-sm font-semibold flex items-center justify-center">3</span>
-          <div>
-            <p class="font-medium text-slate-900">Movement games</p>
-            <p class="text-sm text-slate-600">Sharks & minnows, freeze tag with a ball (8 min)</p>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-9 h-9 rounded-full bg-pitch-600 text-white text-sm font-bold flex items-center justify-center shadow-md">3</span>
+          <div class="pt-1">
+            <p class="font-semibold text-pitch-950">Movement games</p>
+            <p class="text-sm text-slate-600">Sharks & minnows · freeze tag with a ball</p>
           </div>
         </li>
-        <li class="flex gap-3">
-          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-teal-100 text-teal-700 text-sm font-semibold flex items-center justify-center">4</span>
-          <div>
-            <p class="font-medium text-slate-900">Small-sided play + cheer</p>
-            <p class="text-sm text-slate-600">2v2 or 3v3, high-fives, team cheer (rest of time)</p>
+        <li class="flex gap-4">
+          <span class="flex-shrink-0 w-9 h-9 rounded-full bg-pitch-600 text-white text-sm font-bold flex items-center justify-center shadow-md">4</span>
+          <div class="pt-1">
+            <p class="font-semibold text-pitch-950">Small-sided play + cheer</p>
+            <p class="text-sm text-slate-600">2v2 or 3v3 · high-fives · team cheer</p>
           </div>
         </li>
       </ol>
     </section>
 
     <!-- Home Tips -->
-    <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 sm:p-8">
-      <h2 class="text-xl font-semibold text-slate-900 mb-2 flex items-center gap-2">
-        <span class="text-teal-600">🏡</span> Easy Home Practice Ideas
-      </h2>
+    <section class="card rounded-3xl shadow-xl border border-white/60 p-6 sm:p-8">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-10 h-10 rounded-xl bg-pitch-100 flex items-center justify-center text-xl">🏡</div>
+        <h2 class="font-display text-xl font-bold text-pitch-900">Easy Home Practice Ideas</h2>
+      </div>
       <p class="text-sm text-slate-500 mb-5">10–15 minutes of play is plenty. Keep it fun, not formal.</p>
       <ul class="space-y-3 text-sm">
-        <li class="flex gap-3">
-          <span class="text-teal-500 mt-0.5">●</span>
-          <span><strong class="text-slate-800">Dribbling:</strong> Walk the ball around the yard without letting it “escape.”</span>
+        <li class="flex gap-3 items-start">
+          <span class="mt-1.5 w-2 h-2 rounded-full bg-pitch-500 flex-shrink-0"></span>
+          <span><strong class="text-pitch-900">Dribbling:</strong> Walk the ball around the yard without letting it “escape.”</span>
         </li>
-        <li class="flex gap-3">
-          <span class="text-teal-500 mt-0.5">●</span>
-          <span><strong class="text-slate-800">Stopping:</strong> Red light / green light while dribbling.</span>
+        <li class="flex gap-3 items-start">
+          <span class="mt-1.5 w-2 h-2 rounded-full bg-pitch-500 flex-shrink-0"></span>
+          <span><strong class="text-pitch-900">Stopping:</strong> Red light / green light while dribbling.</span>
         </li>
-        <li class="flex gap-3">
-          <span class="text-teal-500 mt-0.5">●</span>
-          <span><strong class="text-slate-800">Kicking:</strong> Soft targets into a laundry basket or against a fence.</span>
+        <li class="flex gap-3 items-start">
+          <span class="mt-1.5 w-2 h-2 rounded-full bg-pitch-500 flex-shrink-0"></span>
+          <span><strong class="text-pitch-900">Kicking:</strong> Soft targets into a laundry basket or against a fence.</span>
         </li>
-        <li class="flex gap-3">
-          <span class="text-teal-500 mt-0.5">●</span>
-          <span><strong class="text-slate-800">Coordination:</strong> Hop over the ball, balance on one foot holding the ball.</span>
+        <li class="flex gap-3 items-start">
+          <span class="mt-1.5 w-2 h-2 rounded-full bg-pitch-500 flex-shrink-0"></span>
+          <span><strong class="text-pitch-900">Coordination:</strong> Hop over the ball, balance on one foot holding the ball.</span>
         </li>
       </ul>
-      <p class="mt-5 text-sm text-slate-600 bg-teal-50 rounded-xl p-4">
+      <div class="mt-5 rounded-2xl bg-pitch-50 border border-pitch-100 p-4 text-sm text-pitch-800">
         Praise effort constantly: “I love how hard you tried!” Kids this age learn best when it feels like play and every player has a ball as much as possible.
-      </p>
+      </div>
     </section>
 
     <!-- Developmental Focus -->
-    <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 sm:p-8">
-      <h2 class="text-xl font-semibold text-slate-900 mb-4 flex items-center gap-2">
-        <span class="text-teal-600">🌱</span> What We’re Really Working On
-      </h2>
+    <section class="card rounded-3xl shadow-xl border border-white/60 p-6 sm:p-8">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-xl bg-pitch-100 flex items-center justify-center text-xl">🌱</div>
+        <h2 class="font-display text-xl font-bold text-pitch-900">What We’re Really Working On</h2>
+      </div>
       <div class="grid sm:grid-cols-2 gap-4 text-sm">
-        <div class="space-y-2">
-          <p class="font-medium text-slate-900">Physical</p>
+        <div class="rounded-2xl bg-pitch-50 border border-pitch-100 p-4">
+          <p class="font-bold text-pitch-900 mb-1">Physical</p>
           <p class="text-slate-600">Running, balance, changing direction, basic kicking & dribbling</p>
         </div>
-        <div class="space-y-2">
-          <p class="font-medium text-slate-900">Social & Emotional</p>
+        <div class="rounded-2xl bg-pitch-50 border border-pitch-100 p-4">
+          <p class="font-bold text-pitch-900 mb-1">Social & Emotional</p>
           <p class="text-slate-600">Listening, taking turns, encouraging others, handling small frustrations</p>
         </div>
-        <div class="space-y-2">
-          <p class="font-medium text-slate-900">Cognitive</p>
+        <div class="rounded-2xl bg-pitch-50 border border-pitch-100 p-4">
+          <p class="font-bold text-pitch-900 mb-1">Cognitive</p>
           <p class="text-slate-600">Following simple directions, spatial awareness</p>
         </div>
-        <div class="space-y-2">
-          <p class="font-medium text-slate-900">Biggest Goal</p>
+        <div class="rounded-2xl bg-pitch-50 border border-pitch-100 p-4">
+          <p class="font-bold text-pitch-900 mb-1">Biggest Goal</p>
           <p class="text-slate-600">That every kid finishes the season wanting to play again</p>
         </div>
       </div>
-      <p class="mt-5 text-sm text-slate-600 border-t border-slate-100 pt-5">
-        There is <strong>no</strong> focus on positions, tactics, or winning. All the kids will chase the ball — that’s completely normal and good at this age. Every child develops at their own pace.
+      <p class="mt-5 text-sm text-slate-600 border-t border-pitch-100 pt-5 leading-relaxed">
+        There is <strong class="text-pitch-900">no</strong> focus on positions, tactics, or winning. All the kids will chase the ball — that’s completely normal and good at this age. Every child develops at their own pace.
       </p>
     </section>
 
     <!-- Parent Role -->
-    <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 sm:p-8">
-      <h2 class="text-xl font-semibold text-slate-900 mb-4 flex items-center gap-2">
-        <span class="text-teal-600">🙌</span> How Parents Can Help
-      </h2>
-      <ul class="space-y-2 text-sm text-slate-700">
-        <li class="flex gap-2"><span class="text-teal-500">•</span> Arrive a few minutes early so kids can settle in</li>
-        <li class="flex gap-2"><span class="text-teal-500">•</span> Practice a little at home (even 10 minutes helps a lot)</li>
-        <li class="flex gap-2"><span class="text-teal-500">•</span> Offer to help with an activity or organize a simple snack rotation if you’d like</li>
-        <li class="flex gap-2"><span class="text-teal-500">•</span> Questions or ideas? Just reply to the team email</li>
+    <section class="card rounded-3xl shadow-xl border border-white/60 p-6 sm:p-8">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-xl bg-pitch-100 flex items-center justify-center text-xl">🙌</div>
+        <h2 class="font-display text-xl font-bold text-pitch-900">How Parents Can Help</h2>
+      </div>
+      <ul class="space-y-3 text-sm text-slate-700">
+        <li class="flex gap-3 items-start">
+          <span class="mt-1 w-2 h-2 rounded-full bg-pitch-500 flex-shrink-0"></span>
+          Arrive a few minutes early so kids can settle in
+        </li>
+        <li class="flex gap-3 items-start">
+          <span class="mt-1 w-2 h-2 rounded-full bg-pitch-500 flex-shrink-0"></span>
+          Practice a little at home (even 10 minutes helps a lot)
+        </li>
+        <li class="flex gap-3 items-start">
+          <span class="mt-1 w-2 h-2 rounded-full bg-pitch-500 flex-shrink-0"></span>
+          Offer to help with an activity or claim a snack week above
+        </li>
+        <li class="flex gap-3 items-start">
+          <span class="mt-1 w-2 h-2 rounded-full bg-pitch-500 flex-shrink-0"></span>
+          Questions or ideas? Just reply to the team email
+        </li>
       </ul>
     </section>
 
   </main>
 
-  <footer class="text-center text-sm text-slate-400 pb-10">
-    <p>Fogerty U5 · Fall 2026 · O’Fallon Parks & Recreation</p>
+  <footer class="text-center text-sm text-pitch-400/70 pb-12">
+    <p class="font-medium">Fogerty U5 · Fall 2026</p>
+    <p class="mt-1 text-pitch-500/60">O’Fallon Parks & Recreation</p>
   </footer>
 
 </body>
