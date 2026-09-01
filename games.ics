@@ -1,0 +1,114 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fogerty U5 Soccer//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Fogerty U5 Games
+X-WR-TIMEZONE:America/Chicago
+BEGIN:VTIMEZONE
+TZID:America/Chicago
+X-LIC-LOCATION:America/Chicago
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0600
+TZOFFSETTO:-0500
+TZNAME:CDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0600
+TZNAME:CST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:fogerty-u5-game-20260912@fogertycommunity
+DTSTAMP:20260831T000000Z
+DTSTART;TZID=America/Chicago:20260912T090000
+DTEND;TZID=America/Chicago:20260912T100000
+SUMMARY:U5 Soccer Game – Fogerty vs Need Coach 1 (Home)
+LOCATION:Sports Park Field 8B\, 3589 Hwy K\, O'Fallon\, MO 63368
+DESCRIPTION:Home game. Field 8B.\nField status: https://statusfy.com/6363339900\nSchedule: https://www.quickscores.com/Orgs/ResultsDisplay.php?OrgDir=ofallonmo&LeagueID=1742446
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:fogerty-u5-game-20260926@fogertycommunity
+DTSTAMP:20260831T000000Z
+DTSTART;TZID=America/Chicago:20260926T090000
+DTEND;TZID=America/Chicago:20260926T100000
+SUMMARY:U5 Soccer Game – Fogerty vs Campos (Home) · Picture Day
+LOCATION:Sports Park Field 8B\, 3589 Hwy K\, O'Fallon\, MO 63368
+DESCRIPTION:Home game. Picture Day.\nField status: https://statusfy.com/6363339900
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:fogerty-u5-game-20261003@fogertycommunity
+DTSTAMP:20260831T000000Z
+DTSTART;TZID=America/Chicago:20261003T090000
+DTEND;TZID=America/Chicago:20261003T100000
+SUMMARY:U5 Soccer Game – Fogerty vs Need Coach 2 (Away)
+LOCATION:Sports Park Field 8B\, 3589 Hwy K\, O'Fallon\, MO 63368
+DESCRIPTION:Away game on Field 8B (same complex).\nField status: https://statusfy.com/6363339900
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:fogerty-u5-game-20261010@fogertycommunity
+DTSTAMP:20260831T000000Z
+DTSTART;TZID=America/Chicago:20261010T100000
+DTEND;TZID=America/Chicago:20261010T110000
+SUMMARY:U5 Soccer Game – Fogerty vs Cooksey (Away)
+LOCATION:Sports Park Field 8B\, 3589 Hwy K\, O'Fallon\, MO 63368
+DESCRIPTION:Away game on Field 8B (same complex). Kickoff 10:00 AM.\nField status: https://statusfy.com/6363339900
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:fogerty-u5-game-20261017@fogertycommunity
+DTSTAMP:20260831T000000Z
+DTSTART;TZID=America/Chicago:20261017T090000
+DTEND;TZID=America/Chicago:20261017T100000
+SUMMARY:U5 Soccer Game – Fogerty vs Need Coach 1 (Away)
+LOCATION:Sports Park Field 8B\, 3589 Hwy K\, O'Fallon\, MO 63368
+DESCRIPTION:Away game on Field 8B (same complex).\nField status: https://statusfy.com/6363339900
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:fogerty-u5-game-20261031@fogertycommunity
+DTSTAMP:20260831T000000Z
+DTSTART;TZID=America/Chicago:20261031T100000
+DTEND;TZID=America/Chicago:20261031T110000
+SUMMARY:U5 Soccer Game – Fogerty vs Campos (Away)
+LOCATION:Sports Park Field 8B\, 3589 Hwy K\, O'Fallon\, MO 63368
+DESCRIPTION:Away game on Field 8B (same complex). Kickoff 10:00 AM.\nField status: https://statusfy.com/6363339900
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:fogerty-u5-game-20261107@fogertycommunity
+DTSTAMP:20260831T000000Z
+DTSTART;TZID=America/Chicago:20261107T090000
+DTEND;TZID=America/Chicago:20261107T100000
+SUMMARY:U5 Soccer Game – Fogerty vs Need Coach 2 (Home)
+LOCATION:Sports Park Field 8B\, 3589 Hwy K\, O'Fallon\, MO 63368
+DESCRIPTION:Home game. Field 8B.\nField status: https://statusfy.com/6363339900
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:fogerty-u5-game-20261114@fogertycommunity
+DTSTAMP:20260831T000000Z
+DTSTART;TZID=America/Chicago:20261114T100000
+DTEND;TZID=America/Chicago:20261114T110000
+SUMMARY:U5 Soccer Game – Fogerty vs Need Coach 2 (Home)
+LOCATION:Sports Park Field 8B\, 3589 Hwy K\, O'Fallon\, MO 63368
+DESCRIPTION:Home game. Field 8B. Kickoff 10:00 AM.\nField status: https://statusfy.com/6363339900
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR

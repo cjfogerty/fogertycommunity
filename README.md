@@ -5,19 +5,39 @@ Welcome parents of the **Fogerty U5 Soccer Team** (O'Fallon Parks & Recreation F
 This simple shared space has everything to stay organized, engaged, and help your little one have the best first soccer experience.
 
 **Coach:** Casey Fogerty (Chandler's dad)  
-**Practices:** Wednesdays 5:30–6:30 PM starting September 2  
-**Field:** Sports Park Field 8C  
+**League:** U5 Girls · Fall 2026  
+**Practices:** Wednesdays 5:30–6:00 PM starting September 2 · Field 8C  
+**Games:** Saturdays on Field 8B (first game Sept 12, 9:00 AM)  
 **Address:** 3589 Hwy K, O'Fallon, MO 63368
 
 ---
 
 ## Quick Links
-- [QuickScores Schedules](https://www.quickscores.com/ofallonmo) (game schedule goes live ~Aug 31)
+- [QuickScores · U5 Girls schedule](https://www.quickscores.com/Orgs/ResultsDisplay.php?OrgDir=ofallonmo&LeagueID=1742446)
 - [Rainout / Field Status (Statusfy)](https://statusfy.com/6363339900)
 - [Picture Day Order Form](https://drive.google.com/file/d/1V0PlHwwObGR5qA7vs1iw8YxXoEmUx1Br/view) (Sept 26)
 - Google Calendar invites have been sent – please accept!
 
 ---
+
+## Official Game Schedule (QuickScores)
+
+All games at **Sports Park Field 8B**. Home/away is listed as QuickScores lists Fogerty first (home) or second (away). Two bye weeks: Sept 19 and Oct 24.
+
+| Date | Time | Opponent | Home/Away | Notes |
+| --- | --- | --- | --- | --- |
+| Sat, Sept 12 | 9:00 AM | Need Coach 1 | Home | Season opener |
+| Sat, Sept 19 | — | Bye | — | No game |
+| Sat, Sept 26 | 9:00 AM | Campos | Home | Picture Day |
+| Sat, Oct 3 | 9:00 AM | Need Coach 2 | Away | Same complex, Field 8B |
+| Sat, Oct 10 | 10:00 AM | Cooksey | Away | |
+| Sat, Oct 17 | 9:00 AM | Need Coach 1 | Away | |
+| Sat, Oct 24 | — | Bye | — | No game |
+| Sat, Oct 31 | 10:00 AM | Campos | Away | |
+| Sat, Nov 7 | 9:00 AM | Need Coach 2 | Home | |
+| Sat, Nov 14 | 10:00 AM | Need Coach 2 | Home | Last game |
+
+League opponents on QuickScores: Campos, Cooksey, Fogerty, Need Coach 1, Need Coach - 2.
 
 ## Sample Weekly Practice Agenda (~60 min)
 1. **Arrival Free Play** (5–10 min) – Kids just run, kick, and explore as they arrive. Parents can join in!
