@@ -42,6 +42,10 @@
   <script>
     const SALT_HEX = "f2f923d9f41bdf092b2c50e40e3b176a";
     const KEY_NAME = "fogerty_u5_passphrase_v2";
+    const HIST_ENC_URL = "https://raw.githubusercontent.com/cjfogerty/fogertycommunity/f0143162de87399474e04715089e32298caee129/team-page.enc";
+    const CLAIMS = [
+      { date: "Sat, Oct 3, 2026", name: "Amanda Connors" }
+    ];
     function b64ToBytes(b64) {
       const bin = atob(b64);
       const out = new Uint8Array(bin.length);
@@ -52,6 +56,31 @@
       const out = new Uint8Array(hex.length / 2);
       for (let i = 0; i < out.length; i++) out[i] = parseInt(hex.substr(i * 2, 2), 16);
       return out;
+    }
+    function looksLikePayload(text) {
+      const t = (text || "").trim();
+      return t.length > 200 && /^[A-Za-z0-9+/=\s]+$/.test(t);
+    }
+    async function fetchText(url) {
+      const r = await fetch(url, { cache: "no-store" });
+      if (!r.ok) throw new Error("missing " + url);
+      return r.text();
+    }
+    async function loadPayload() {
+      try {
+        const parts = await Promise.all([
+          fetchText("team-page.enc.part1"),
+          fetchText("team-page.enc.part2"),
+          fetchText("team-page.enc.part3")
+        ]);
+        const joined = parts.join("");
+        if (looksLikePayload(joined)) return joined;
+      } catch (e) {}
+      try {
+        const single = await fetchText("team-page.enc");
+        if (looksLikePayload(single)) return single;
+      } catch (e) {}
+      return fetchText(HIST_ENC_URL);
     }
     async function deriveKey(password) {
       const material = await crypto.subtle.importKey("raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveKey"]);
@@ -66,12 +95,22 @@
       const plainBuf = await crypto.subtle.decrypt({ name: "AES-GCM", iv: raw.slice(0, 12) }, key, raw.slice(12));
       return new TextDecoder().decode(plainBuf);
     }
-    async function tryPassword(password, remember) {
-      const payload = await fetch("team-page.enc", { cache: "no-store" }).then(r => {
-        if (!r.ok) throw new Error("missing payload");
-        return r.text();
+    function applyClaims(html) {
+      CLAIMS.forEach(function (claim) {
+        const pattern = new RegExp(
+          '<button type="button" class="claim-btn[^"]*"' +
+          '[^>]*\\bdata-date="' + claim.date.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + '"' +
+          '[^>]*>\\s*Claim snack\\s*</button>',
+          "i"
+        );
+        html = html.replace(pattern, '<span class="font-semibold text-pitch-800">' + claim.name + "</span>");
       });
-      const html = await unlock(password, payload);
+      return html;
+    }
+    async function tryPassword(password, remember) {
+      const payload = await loadPayload();
+      if (!looksLikePayload(payload)) throw new Error("missing payload");
+      const html = applyClaims(await unlock(password, payload));
       if (remember) sessionStorage.setItem(KEY_NAME, password);
       else sessionStorage.removeItem(KEY_NAME);
       document.open(); document.write(html); document.close();
