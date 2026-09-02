@@ -14,9 +14,27 @@ This simple shared space has everything to stay organized, engaged, and help you
 
 ## Quick Links
 - [QuickScores · U5 Girls schedule](https://www.quickscores.com/Orgs/ResultsDisplay.php?OrgDir=ofallonmo&LeagueID=1742446)
-- [Rainout / Field Status (Statusfy)](https://statusfy.com/6363339900)
 - [Picture Day Order Form](https://drive.google.com/file/d/1V0PlHwwObGR5qA7vs1iw8YxXoEmUx1Br/view) (Sept 26)
 - Google Calendar invites have been sent – please accept!
+
+<details>
+<summary><strong>Rainout / Field Status (Statusfy)</strong> — Sports Park</summary>
+
+<br>
+
+Check this before you leave home. Practices are Field **8C**, games Field **8B**, both in **Sports Park Fields 6–12**.
+
+| Area | What it covers | Live status |
+| --- | --- | --- |
+| Sports Park Fields 6–12 | Includes our fields (8B / 8C) | [Open Statusfy](https://statusfy.com/6363339900/4) |
+| Sports Park Fields 1–5 | Other Sports Park soccer fields | [Open Statusfy](https://statusfy.com/6363339900/3) |
+| All O’Fallon Parks | Full rainout board | [Open Statusfy](https://statusfy.com/6363339900) |
+
+Dial-in: **(636) 333-9900**, ext. **4** for Fields 6–12.
+
+The password-protected team page has a live dropdown of this same feed (updates from [O’Fallon Parks Statusfy](https://statusfy.com/6363339900)).
+
+</details>
 
 ---
 

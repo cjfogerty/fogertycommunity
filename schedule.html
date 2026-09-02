@@ -16,6 +16,9 @@
     .home { background: #dcfce7; border-radius: 999px; padding: 0.1rem 0.55rem; font-size: 0.75rem; font-weight: 700; }
     .away { background: #e2e8f0; border-radius: 999px; padding: 0.1rem 0.55rem; font-size: 0.75rem; font-weight: 700; }
     a { color: #15803d; }
+    .statusfy-drop { margin: 1rem 0 0; border: 1px solid #bbf7d0; border-radius: 1rem; background: #f0fdf4; }
+    .statusfy-drop > .statusfy-summary { padding: 0.85rem 1rem; font-weight: 600; color: #14532d; }
+    .statusfy-drop > .statusfy-summary #statusfy-summary { font-weight: 500; color: #166534; font-size: 0.85rem; }
   </style>
 </head>
 <body>
@@ -41,8 +44,20 @@
   </table>
   <p>
     <a href="https://www.quickscores.com/Orgs/ResultsDisplay.php?OrgDir=ofallonmo&LeagueID=1742446">QuickScores U5 Girls</a>
-    · <a href="https://statusfy.com/6363339900">Field status</a>
     · <a href="games.ics">Add games to calendar</a>
   </p>
+  <details class="statusfy-drop">
+    <summary class="statusfy-summary">
+      <div>
+        Field status / rainouts
+        <div id="statusfy-summary">tap to check Sports Park</div>
+      </div>
+      <span class="statusfy-chevron" aria-hidden="true">▾</span>
+    </summary>
+    <div class="statusfy-panel">
+      <div id="statusfy-fields"></div>
+    </div>
+  </details>
+  <script src="statusfy-fields.js"></script>
 </body>
 </html>

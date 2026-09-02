@@ -96,6 +96,28 @@
       const plainBuf = await crypto.subtle.decrypt({ name: "AES-GCM", iv: raw.slice(0, 12) }, key, raw.slice(12));
       return new TextDecoder().decode(plainBuf);
     }
+    const STATUSFY_DROPDOWN =
+      '<details class="statusfy-drop rounded-2xl bg-pitch-50 border border-pitch-100">' +
+        '<summary class="statusfy-summary p-4 hover:bg-pitch-100">' +
+          '<div>' +
+            '<p class="font-semibold text-pitch-950">Field Status / Rainouts</p>' +
+            '<p class="text-sm text-pitch-600">Statusfy · Sports Park · <span id="statusfy-summary">tap to check fields</span></p>' +
+          '</div>' +
+          '<span class="statusfy-chevron text-pitch-400" aria-hidden="true">▾</span>' +
+        '</summary>' +
+        '<div class="statusfy-panel">' +
+          '<div id="statusfy-fields"></div>' +
+        '</div>' +
+      '</details>';
+    function applyStatusfy(html) {
+      const pattern = /<a[^>]+href="https?:\/\/statusfy\.com\/6363339900\/?"[^>]*>[\s\S]*?<\/a>/i;
+      if (!pattern.test(html)) return html;
+      html = html.replace(pattern, STATUSFY_DROPDOWN);
+      if (html.indexOf("statusfy-fields.js") === -1) {
+        html = html.replace(/<\/body>/i, '<script src="statusfy-fields.js"><\/script>\n</body>');
+      }
+      return html;
+    }
     function applyClaims(html) {
       CLAIMS.forEach(function (claim) {
         const pattern = new RegExp(
@@ -106,7 +128,7 @@
         );
         html = html.replace(pattern, '<span class="font-semibold text-pitch-800">' + claim.name + "</span>");
       });
-      return html;
+      return applyStatusfy(html);
     }
     async function tryPassword(password, remember) {
       const payload = await loadPayload();
