@@ -42,10 +42,6 @@
   <script>
     const SALT_HEX = "f2f923d9f41bdf092b2c50e40e3b176a";
     const KEY_NAME = "fogerty_u5_passphrase_v2";
-    const ENC_URL = "https://raw.githubusercontent.com/cjfogerty/fogertycommunity/f0143162de87399474e04715089e32298caee129/team-page.enc";
-    const CLAIMS = [
-      { date: "Sat, Oct 3, 2026", name: "Amanda Connors" }
-    ];
     function b64ToBytes(b64) {
       const bin = atob(b64);
       const out = new Uint8Array(bin.length);
@@ -70,24 +66,12 @@
       const plainBuf = await crypto.subtle.decrypt({ name: "AES-GCM", iv: raw.slice(0, 12) }, key, raw.slice(12));
       return new TextDecoder().decode(plainBuf);
     }
-    function applyClaims(html) {
-      CLAIMS.forEach(function (claim) {
-        const pattern = new RegExp(
-          '<button type="button" class="claim-btn[^"]*"' +
-          '[^>]*\\bdata-date="' + claim.date + '"' +
-          '[^>]*>\\s*Claim snack\\s*</button>',
-          "i"
-        );
-        html = html.replace(pattern, '<span class="font-semibold text-pitch-800">' + claim.name + "</span>");
-      });
-      return html;
-    }
     async function tryPassword(password, remember) {
-      const payload = await fetch(ENC_URL, { cache: "no-store" }).then(r => {
+      const payload = await fetch("team-page.enc", { cache: "no-store" }).then(r => {
         if (!r.ok) throw new Error("missing payload");
         return r.text();
       });
-      const html = applyClaims(await unlock(password, payload));
+      const html = await unlock(password, payload);
       if (remember) sessionStorage.setItem(KEY_NAME, password);
       else sessionStorage.removeItem(KEY_NAME);
       document.open(); document.write(html); document.close();
