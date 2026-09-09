@@ -1,5 +1,12 @@
 {
-  "2026-09-12": "parent@example.com",
-  "2026-09-26": "parent@example.com",
-  "2026-10-03": "parent@example.com"
+  "claimers": {
+    "2026-09-12": "parent@example.com",
+    "2026-09-26": "parent@example.com",
+    "2026-10-03": "parent@example.com"
+  },
+  "families": [
+    "parent1@example.com",
+    "parent2@example.com",
+    "parent3@example.com"
+  ]
 }
