@@ -47,6 +47,18 @@
       { date: "Sat, Sept 26, 2026", name: "Anna Lambert (Madelyn)" },
       { date: "Sat, Oct 3, 2026", name: "Amanda Connors" }
     ];
+    async function loadLiveClaims() {
+      try {
+        const r = await fetch("snacks.json", { cache: "no-store" });
+        if (!r.ok) return CLAIMS;
+        const data = await r.json();
+        const fromRoster = (data.games || [])
+          .filter(function (g) { return g && g.claimedBy && !g.bye; })
+          .map(function (g) { return { date: g.label, name: g.claimedBy }; });
+        if (fromRoster.length) return fromRoster;
+      } catch (e) {}
+      return CLAIMS;
+    }
     function b64ToBytes(b64) {
       const bin = atob(b64);
       const out = new Uint8Array(bin.length);
@@ -118,8 +130,8 @@
       }
       return html;
     }
-    function applyClaims(html) {
-      CLAIMS.forEach(function (claim) {
+    function applyClaims(html, claims) {
+      (claims || CLAIMS).forEach(function (claim) {
         const pattern = new RegExp(
           '<button type="button" class="claim-btn[^"]*"' +
           '[^>]*\\bdata-date="' + claim.date.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + '"' +
@@ -128,12 +140,17 @@
         );
         html = html.replace(pattern, '<span class="font-semibold text-pitch-800">' + claim.name + "</span>");
       });
+      html = html.replace(
+        /Snacks are game days only\. Bye weeks \(Sept 19, Oct 24\) do not need a snack parent\./,
+        "Snacks are game days only. Bye weeks (Sept 19, Oct 24) do not need a snack parent. Claimed snack parents get a reminder email Thursday at 10:25am."
+      );
       return applyStatusfy(html);
     }
     async function tryPassword(password, remember) {
       const payload = await loadPayload();
       if (!looksLikePayload(payload)) throw new Error("missing payload");
-      const html = applyClaims(await unlock(password, payload));
+      const claims = await loadLiveClaims();
+      const html = applyClaims(await unlock(password, payload), claims);
       if (remember) sessionStorage.setItem(KEY_NAME, password);
       else sessionStorage.removeItem(KEY_NAME);
       document.open(); document.write(html); document.close();
