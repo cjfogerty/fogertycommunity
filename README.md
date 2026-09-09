@@ -55,16 +55,17 @@ All games at **Sports Park Field 8B**. Home/away is listed as QuickScores lists 
 | Sat, Nov 7 | 9:00 AM | Need Coach 2 | Home | |
 | Sat, Nov 14 | 10:00 AM | Need Coach 2 | Home | Last game |
 
-## Snack duty emails (Thursday 10:25am)
+## Snack duty emails
 
-Two emails can go out **Thursday at 10:25am America/Chicago**, two days before Saturday's game:
+Two emails go out the week of a Saturday game (America/Chicago). Both notes mention **4–5 players** to plan for.
 
-1. **Slot claimed** — reminder to the parent who claimed it.
-2. **Slot still open** — email every family on the team list asking if anyone will take it, with a link to claim that weekend: `https://cjfogerty.github.io/fogertycommunity/#snack-YYYY-MM-DD`
+1. **Wednesday 4:00pm — slot still open** — every family gets an ask-to-claim email with a link to that weekend: `https://cjfogerty.github.io/fogertycommunity/#snack-YYYY-MM-DD`
+2. **Thursday 10:25am — slot claimed** — reminder to the parent who claimed it.
+
+Bye weeks (Sept 19, Oct 24) are skipped. If the slot is already claimed on Wednesday, the ask is skipped and the Thursday reminder still goes out.
 
 - Roster (names only): [`snacks.json`](snacks.json)
 - Sender: [`.github/workflows/snack-reminder.yml`](.github/workflows/snack-reminder.yml) runs `python3 scripts/send-snack-reminder.py`
-- Bye weeks (Sept 19, Oct 24) are skipped.
 
 Parent emails are **not** stored in this public repo. Add repository secrets:
 
