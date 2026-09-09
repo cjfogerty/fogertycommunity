@@ -2,12 +2,14 @@ name: Snack reminder
 
 on:
   schedule:
+    - cron: "0 16 * * 3"
+      timezone: America/Chicago
     - cron: "25 10 * * 4"
       timezone: America/Chicago
   workflow_dispatch:
     inputs:
       force:
-        description: Send even if today is not Thursday
+        description: Send even if today is not Wednesday or Thursday
         type: boolean
         default: false
       dry_run:

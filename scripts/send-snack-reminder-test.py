@@ -49,6 +49,18 @@ def main() -> int:
         to="alyssa@example.com",
     )
     expect(
+        mod.select_plan(SNACKS, at("2026-09-09T16:00:00"), email_map=email_map),
+        "skip",
+        "2026-09-12",
+        reason="already claimed; reminder goes Thursday",
+    )
+    expect(
+        mod.select_plan(SNACKS, at("2026-09-16T16:00:00"), email_map=email_map),
+        "skip",
+        "2026-09-19",
+        reason="bye week",
+    )
+    expect(
         mod.select_plan(SNACKS, at("2026-09-17T10:25:00"), email_map=email_map),
         "skip",
         "2026-09-19",
@@ -68,16 +80,10 @@ def main() -> int:
         claimedBy="Amanda Connors",
         to="amanda@example.com",
     )
-    open_no_list = mod.select_plan(SNACKS, at("2026-10-08T10:25:00"), email_map=email_map)
-    expect(
-        open_no_list,
-        "alert-coach",
-        "2026-10-10",
-        reason="snack slot still open, no FAMILY_EMAILS list",
-    )
+
     open_ask = mod.select_plan(
         SNACKS,
-        at("2026-10-08T10:25:00"),
+        at("2026-10-07T16:00:00"),
         email_map=email_map,
         family_emails=families,
     )
@@ -86,11 +92,29 @@ def main() -> int:
     assert open_ask["recipientCount"] == 3, open_ask
     assert "cjfogerty@gmail.com" in open_ask["bcc"], open_ask
     assert open_ask["claimUrl"].endswith("#snack-2026-10-10"), open_ask
+
     expect(
-        mod.select_plan(SNACKS, at("2026-09-09T10:15:00"), email_map=email_map),
+        mod.select_plan(
+            SNACKS,
+            at("2026-10-08T10:25:00"),
+            email_map=email_map,
+            family_emails=families,
+        ),
+        "skip",
+        "2026-10-10",
+        reason="families already asked Wednesday",
+    )
+    expect(
+        mod.select_plan(SNACKS, at("2026-10-07T16:00:00"), email_map=email_map),
+        "alert-coach",
+        "2026-10-10",
+        reason="snack slot still open, no FAMILY_EMAILS list",
+    )
+    expect(
+        mod.select_plan(SNACKS, at("2026-09-08T10:15:00"), email_map=email_map),
         "skip",
         "2026-09-12",
-        reason="not Thursday",
+        reason="not a send day",
     )
     expect(
         mod.select_plan(SNACKS, at("2026-09-09T10:15:00"), force=True, email_map=email_map),
@@ -111,6 +135,8 @@ def main() -> int:
     assert "Sept 12" in subject
     assert "Need Coach 1" in text
     assert "Alyssa" in text
+    assert "4–5 players" in text
+    assert "4–5 players" in html
     assert "Snack reminder" in html
 
     oct10 = next(g for g in SNACKS["games"] if g["date"] == "2026-10-10")
@@ -118,6 +144,8 @@ def main() -> int:
     assert "still open" in subject.lower()
     assert "Cooksey" in text
     assert "would anyone be willing" in text.lower()
+    assert "4–5 players" in text
+    assert "4–5 players" in html
     assert "#snack-2026-10-10" in text
     assert "Claim this weekend" in html
     assert "cjfogerty.github.io/fogertycommunity" in html
@@ -127,7 +155,7 @@ def main() -> int:
     assert redacted["to"] == "3 recipients"
 
     print("ok")
-    print(json.dumps({"tests": 12, "status": "passed"}))
+    print(json.dumps({"tests": 14, "status": "passed"}))
     return 0
 
 

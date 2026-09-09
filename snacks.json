@@ -6,6 +6,12 @@
   "field": "Sports Park Field 8B",
   "address": "3589 Hwy K, O'Fallon, MO 63368",
   "claimUrl": "https://cjfogerty.github.io/fogertycommunity/",
+  "rosterNote": "We have 4–5 players to plan for.",
+  "askFamilies": {
+    "weekday": "Wednesday",
+    "time": "16:00",
+    "timezone": "America/Chicago"
+  },
   "reminder": {
     "weekday": "Thursday",
     "time": "10:25",

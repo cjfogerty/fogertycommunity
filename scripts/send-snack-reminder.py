@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""Send Thursday 10:25am snack-duty emails for Fogerty U5 Saturday games.
+"""Send Fogerty U5 snack-duty emails around Saturday games.
 
 Looks up this week's Saturday game in snacks.json.
 
-- If a parent claimed the slot, email that parent.
-- If the slot is still open, email every family on the list and ask them
-  to claim it, with a link to that weekend on the team page.
+- Wednesday 4:00pm: if the slot is still open, email every family and ask
+  them to claim it, with a link to that weekend on the team page.
+- Thursday 10:25am: if a parent claimed the slot, email that parent.
 
 Parent addresses come from SNACK_EMAIL_MAP (claimer) and FAMILY_EMAILS
 (full team list) so emails never sit in the public repo.
 
 Usage (from the repo root):
   python3 scripts/send-snack-reminder.py --dry-run
-  python3 scripts/send-snack-reminder.py --now 2026-10-08T10:25:00 --force --dry-run
+  python3 scripts/send-snack-reminder.py --now 2026-10-07T16:00:00 --force --dry-run
 """
 
 from __future__ import annotations
@@ -34,6 +34,9 @@ CHI = ZoneInfo("America/Chicago")
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DEFAULT_SNACKS = ROOT / "snacks.json"
 DEFAULT_CLAIM_URL = "https://cjfogerty.github.io/fogertycommunity/"
+ASK_WEEKDAY = 2  # Wednesday
+REMIND_WEEKDAY = 3  # Thursday
+DEFAULT_ROSTER_NOTE = "We have 4–5 players to plan for."
 
 
 def chicago_now(now: datetime | None = None) -> datetime:
@@ -113,6 +116,10 @@ def find_game(games: list[dict[str, Any]], saturday: str) -> dict[str, Any] | No
     return None
 
 
+def roster_note(snacks: dict[str, Any]) -> str:
+    return (snacks.get("rosterNote") or DEFAULT_ROSTER_NOTE).strip()
+
+
 def claim_url(snacks: dict[str, Any], game: dict[str, Any] | None = None) -> str:
     base = (snacks.get("claimUrl") or DEFAULT_CLAIM_URL).rstrip("/") + "/"
     if not game:
@@ -136,6 +143,7 @@ def select_plan(
     game = find_game(snacks.get("games") or [], saturday)
     coach = snacks.get("coachEmail") or "cjfogerty@gmail.com"
     families = list(family_emails or [])
+    weekday = now.weekday()
     base = {
         "now": now.isoformat(),
         "weekday": now.strftime("%A"),
@@ -144,14 +152,20 @@ def select_plan(
         "claimUrl": claim_url(snacks, game),
         "game": game,
     }
-    if not force and now.weekday() != 3:
-        return {**base, "action": "skip", "reason": "not Thursday"}
+    if not force and weekday not in (ASK_WEEKDAY, REMIND_WEEKDAY):
+        return {**base, "action": "skip", "reason": "not a send day"}
     if game is None:
         return {**base, "action": "skip", "reason": "no game this Saturday"}
     if game.get("bye"):
         return {**base, "action": "skip", "reason": "bye week"}
     claimed = (game.get("claimedBy") or "").strip()
     if not claimed:
+        if weekday == REMIND_WEEKDAY and not force:
+            return {
+                **base,
+                "action": "skip",
+                "reason": "families already asked Wednesday",
+            }
         if families:
             bcc = [coach] if coach.lower() not in {e.lower() for e in families} else []
             return {
@@ -167,6 +181,13 @@ def select_plan(
             "action": "alert-coach",
             "reason": "snack slot still open, no FAMILY_EMAILS list",
             "to": coach,
+        }
+    if weekday == ASK_WEEKDAY and not force:
+        return {
+            **base,
+            "action": "skip",
+            "reason": "already claimed; reminder goes Thursday",
+            "claimedBy": claimed,
         }
     email = resolve_email(game, email_map or {})
     if not email:
@@ -201,6 +222,7 @@ def compose_parent_email(snacks: dict[str, Any], game: dict[str, Any]) -> tuple[
     field = snacks.get("field") or "Sports Park Field 8B"
     address = snacks.get("address") or "3589 Hwy K, O'Fallon, MO 63368"
     label = game.get("label") or game.get("date")
+    players = roster_note(snacks)
     subject = f"Snack reminder: {label} · Fogerty U5 vs {opponent}"
     note_line = f"\nNote: {notes}." if notes else ""
     extra_html = f"<p style=\"margin:0 0 16px;color:#3f4a3d\">Note: {notes}.</p>" if notes else ""
@@ -213,7 +235,7 @@ def compose_parent_email(snacks: dict[str, Any], game: dict[str, Any]) -> tuple[
         f"Field: {field}\n"
         f"Address: {address}\n"
         f"{note_line}\n\n"
-        "Please bring enough snacks and drinks for the team. "
+        f"{players} Please bring enough snacks and drinks for the team. "
         "Check field status before you leave home: https://statusfy.com/6363339900/4\n\n"
         "Thank you!\n"
         "Coach Casey Fogerty (Chandler's dad)\n"
@@ -233,7 +255,7 @@ def compose_parent_email(snacks: dict[str, Any], game: dict[str, Any]) -> tuple[
       <tr><td style="padding:6px 0;color:#5b6458">Address</td><td style="padding:6px 0;font-weight:700;color:#142016">{address}</td></tr>
     </table>
     {extra_html}
-    <p style="margin:0 0 16px;line-height:1.5">Please bring enough snacks and drinks for the team. Check <a href="https://statusfy.com/6363339900/4" style="color:#15803d">field status</a> before you leave home.</p>
+    <p style="margin:0 0 16px;line-height:1.5">{players} Please bring enough snacks and drinks for the team. Check <a href="https://statusfy.com/6363339900/4" style="color:#15803d">field status</a> before you leave home.</p>
     <p style="margin:0;color:#3f4a3d">Thank you!<br>Coach Casey Fogerty (Chandler's dad)</p>
   </div>
 </body></html>"""
@@ -248,6 +270,7 @@ def compose_open_slot_email(snacks: dict[str, Any], game: dict[str, Any]) -> tup
     address = snacks.get("address") or "3589 Hwy K, O'Fallon, MO 63368"
     label = game.get("label") or game.get("date")
     url = claim_url(snacks, game)
+    players = roster_note(snacks)
     subject = f"Snack still open: {label} · can anyone claim it?"
     note_line = f"\nNote: {notes}." if notes else ""
     extra_html = f"<p style=\"margin:0 0 16px;color:#3f4a3d\">Note: {notes}.</p>" if notes else ""
@@ -260,6 +283,7 @@ def compose_open_slot_email(snacks: dict[str, Any], game: dict[str, Any]) -> tup
         f"Field: {field}\n"
         f"Address: {address}\n"
         f"{note_line}\n\n"
+        f"{players}\n\n"
         "Tap this link to claim this weekend (team passphrase required):\n"
         f"{url}\n\n"
         "After you send the claim, Coach Casey will put your name on the roster.\n\n"
@@ -281,6 +305,7 @@ def compose_open_slot_email(snacks: dict[str, Any], game: dict[str, Any]) -> tup
       <tr><td style="padding:6px 0;color:#5b6458">Address</td><td style="padding:6px 0;font-weight:700;color:#142016">{address}</td></tr>
     </table>
     {extra_html}
+    <p style="margin:0 0 16px;line-height:1.5">{players}</p>
     <p style="margin:0 0 20px">
       <a href="{url}" style="display:inline-block;background:#14532d;color:#f6f3ea;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:14px">Claim this weekend</a>
     </p>
@@ -300,7 +325,7 @@ def compose_coach_alert(snacks: dict[str, Any], plan: dict[str, Any]) -> tuple[s
     url = plan.get("claimUrl") or claim_url(snacks, game)
     text = (
         f"Coach Casey,\n\n"
-        f"Thursday snack reminder ran for Saturday {saturday}.\n"
+        f"Snack email ran for Saturday {saturday}.\n"
         f"Action: {plan.get('action')}\n"
         f"Reason: {reason}\n"
         f"Claimed by: {claimed}\n"
@@ -308,7 +333,7 @@ def compose_coach_alert(snacks: dict[str, Any], plan: dict[str, Any]) -> tuple[s
         f"Kickoff: {game.get('kickoff') or '—'}\n"
         f"Claim link: {url}\n\n"
         "If the slot is open, add FAMILY_EMAILS (JSON array of parent addresses) "
-        "so the next run asks the whole team to claim it. If a parent already "
+        "so Wednesday's 4pm send asks the whole team to claim it. If a parent already "
         "claimed, add their address to SNACK_EMAIL_MAP keyed by YYYY-MM-DD.\n"
     )
     html = f"<pre style='font-family:ui-monospace,monospace'>{text}</pre>"
@@ -392,9 +417,13 @@ def parse_now(value: str | None) -> datetime:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Fogerty U5 Thursday snack reminder")
+    parser = argparse.ArgumentParser(description="Fogerty U5 snack emails")
     parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--force", action="store_true", help="Send even if today is not Thursday")
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Send even if today is not Wednesday or Thursday",
+    )
     parser.add_argument("--now", help="ISO datetime override (America/Chicago if naive)")
     parser.add_argument("--snacks", default=str(DEFAULT_SNACKS))
     args = parser.parse_args(argv)
