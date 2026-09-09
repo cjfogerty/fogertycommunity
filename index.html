@@ -142,9 +142,40 @@
       });
       html = html.replace(
         /Snacks are game days only\. Bye weeks \(Sept 19, Oct 24\) do not need a snack parent\./,
-        "Snacks are game days only. Bye weeks (Sept 19, Oct 24) do not need a snack parent. Claimed snack parents get a reminder email Thursday at 10:25am."
+        "Snacks are game days only. Bye weeks (Sept 19, Oct 24) do not need a snack parent. Claimed snack parents get a reminder email Thursday at 10:25am. If a Saturday is still open that morning, every family gets an email with the claim link."
       );
-      return applyStatusfy(html);
+      return applySnackJump(applyStatusfy(html));
+    }
+    function applySnackJump(html) {
+      var jump =
+        '<script>(function(){' +
+        'var raw=(location.hash||"").replace(/^#/,"");' +
+        'if(!raw)return;' +
+        'var h=decodeURIComponent(raw);' +
+        'var id=h.replace(/^snack-/,"");' +
+        'function norm(s){return String(s||"").toLowerCase().replace(/,/g,"").replace(/september/g,"sept");}' +
+        'function go(){' +
+          'var nodes=document.querySelectorAll(".claim-btn,[data-date]");' +
+          'var target=null;' +
+          'for(var i=0;i<nodes.length;i++){' +
+            'var d=nodes[i].getAttribute("data-date")||"";' +
+            'if(d===h||d===id||norm(d).indexOf(norm(id))!==-1){target=nodes[i];break;}' +
+          '}' +
+          'if(!target){' +
+            'var all=document.querySelectorAll("td,th,button,span,p");' +
+            'for(var j=0;j<all.length;j++){' +
+              'var t=all[j].textContent||"";' +
+              'if(norm(t).indexOf(norm(id))!==-1||t.indexOf(h)!==-1){target=all[j];break;}' +
+            '}' +
+          '}' +
+          'if(!target)return;' +
+          'target.scrollIntoView({block:"center"});' +
+          'if(target.classList&&target.classList.contains("claim-btn")) target.click();' +
+        '}' +
+        'if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",go); else setTimeout(go,80);' +
+        '})();<\/script>';
+      if (/<\/body>/i.test(html)) return html.replace(/<\/body>/i, jump + "\n</body>");
+      return html + jump;
     }
     async function tryPassword(password, remember) {
       const payload = await loadPayload();

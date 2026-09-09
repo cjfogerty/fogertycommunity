@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
-"""Send Thursday 10:25am snack-duty reminders for Fogerty U5 Saturday games.
+"""Send Thursday 10:25am snack-duty emails for Fogerty U5 Saturday games.
 
-Looks up this week's Saturday game in snacks.json. If a parent claimed the
-slot, emails them. Parent addresses come from the SNACK_EMAIL_MAP secret
-(JSON object keyed by YYYY-MM-DD or claimed name) so emails never sit in the
-public repo.
+Looks up this week's Saturday game in snacks.json.
+
+- If a parent claimed the slot, email that parent.
+- If the slot is still open, email every family on the list and ask them
+  to claim it, with a link to that weekend on the team page.
+
+Parent addresses come from SNACK_EMAIL_MAP (claimer) and FAMILY_EMAILS
+(full team list) so emails never sit in the public repo.
 
 Usage (from the repo root):
   python3 scripts/send-snack-reminder.py --dry-run
-  python3 scripts/send-snack-reminder.py --now 2026-09-10T10:25:00 --force --dry-run
+  python3 scripts/send-snack-reminder.py --now 2026-10-08T10:25:00 --force --dry-run
 """
 
 from __future__ import annotations
@@ -29,6 +33,7 @@ from zoneinfo import ZoneInfo
 CHI = ZoneInfo("America/Chicago")
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DEFAULT_SNACKS = ROOT / "snacks.json"
+DEFAULT_CLAIM_URL = "https://cjfogerty.github.io/fogertycommunity/"
 
 
 def chicago_now(now: datetime | None = None) -> datetime:
@@ -62,6 +67,33 @@ def load_email_map(raw: str | None) -> dict[str, str]:
     return out
 
 
+def load_family_emails(raw: str | None) -> list[str]:
+    if not raw or not raw.strip():
+        return []
+    text = raw.strip()
+    values: list[Any]
+    if text.startswith("[") or text.startswith("{"):
+        data = json.loads(text)
+        if isinstance(data, dict):
+            values = data.get("emails") or data.get("families") or list(data.values())
+        elif isinstance(data, list):
+            values = data
+        else:
+            raise ValueError("FAMILY_EMAILS must be a JSON array of emails")
+    else:
+        values = [part.strip() for part in text.replace(";", ",").split(",")]
+    seen: set[str] = set()
+    out: list[str] = []
+    for value in values:
+        email = str(value or "").strip()
+        key = email.lower()
+        if not email or "@" not in email or key in seen:
+            continue
+        seen.add(key)
+        out.append(email)
+    return out
+
+
 def resolve_email(game: dict[str, Any], email_map: dict[str, str]) -> str | None:
     for key in (
         game.get("date"),
@@ -81,22 +113,35 @@ def find_game(games: list[dict[str, Any]], saturday: str) -> dict[str, Any] | No
     return None
 
 
+def claim_url(snacks: dict[str, Any], game: dict[str, Any] | None = None) -> str:
+    base = (snacks.get("claimUrl") or DEFAULT_CLAIM_URL).rstrip("/") + "/"
+    if not game:
+        return base + "#schedule"
+    date = game.get("date") or game.get("id")
+    if date:
+        return f"{base}#snack-{date}"
+    return base + "#schedule"
+
+
 def select_plan(
     snacks: dict[str, Any],
     now: datetime,
     *,
     force: bool = False,
     email_map: dict[str, str] | None = None,
+    family_emails: list[str] | None = None,
 ) -> dict[str, Any]:
     now = chicago_now(now)
     saturday = this_saturday(now)
     game = find_game(snacks.get("games") or [], saturday)
     coach = snacks.get("coachEmail") or "cjfogerty@gmail.com"
+    families = list(family_emails or [])
     base = {
         "now": now.isoformat(),
         "weekday": now.strftime("%A"),
         "saturday": saturday,
         "coachEmail": coach,
+        "claimUrl": claim_url(snacks, game),
         "game": game,
     }
     if not force and now.weekday() != 3:
@@ -107,10 +152,20 @@ def select_plan(
         return {**base, "action": "skip", "reason": "bye week"}
     claimed = (game.get("claimedBy") or "").strip()
     if not claimed:
+        if families:
+            bcc = [coach] if coach.lower() not in {e.lower() for e in families} else []
+            return {
+                **base,
+                "action": "ask-families",
+                "reason": "snack slot still open",
+                "to": families,
+                "bcc": bcc,
+                "recipientCount": len(families),
+            }
         return {
             **base,
             "action": "alert-coach",
-            "reason": "snack slot still open",
+            "reason": "snack slot still open, no FAMILY_EMAILS list",
             "to": coach,
         }
     email = resolve_email(game, email_map or {})
@@ -185,12 +240,64 @@ def compose_parent_email(snacks: dict[str, Any], game: dict[str, Any]) -> tuple[
     return subject, text, html
 
 
+def compose_open_slot_email(snacks: dict[str, Any], game: dict[str, Any]) -> tuple[str, str, str]:
+    kickoff = game.get("kickoff") or "TBD"
+    opponent = game.get("opponent") or "TBD"
+    notes = (game.get("notes") or "").strip()
+    field = snacks.get("field") or "Sports Park Field 8B"
+    address = snacks.get("address") or "3589 Hwy K, O'Fallon, MO 63368"
+    label = game.get("label") or game.get("date")
+    url = claim_url(snacks, game)
+    subject = f"Snack still open: {label} · can anyone claim it?"
+    note_line = f"\nNote: {notes}." if notes else ""
+    extra_html = f"<p style=\"margin:0 0 16px;color:#3f4a3d\">Note: {notes}.</p>" if notes else ""
+    text = (
+        "Hi Fogerty U5 families,\n\n"
+        "Saturday's snack slot is still open. Would anyone be willing to claim it?\n\n"
+        f"Game: {label}\n"
+        f"Kickoff: {kickoff}\n"
+        f"Opponent: {opponent} ({ha_label(game)})\n"
+        f"Field: {field}\n"
+        f"Address: {address}\n"
+        f"{note_line}\n\n"
+        "Tap this link to claim this weekend (team passphrase required):\n"
+        f"{url}\n\n"
+        "After you send the claim, Coach Casey will put your name on the roster.\n\n"
+        "Thank you!\n"
+        "Coach Casey Fogerty (Chandler's dad)\n"
+        "Fogerty U5 Girls · O'Fallon Parks & Rec\n"
+    )
+    html = f"""<!DOCTYPE html>
+<html><body style="margin:0;padding:24px;background:#06140c;font-family:Georgia,serif;color:#142016">
+  <div style="max-width:520px;margin:0 auto;background:#f6f3ea;border-radius:20px;padding:28px 28px 24px">
+    <p style="margin:0 0 4px;letter-spacing:.14em;text-transform:uppercase;font-size:11px;color:#3f6b49">Fogerty U5 Girls</p>
+    <h1 style="margin:0 0 16px;font-size:26px;color:#14532d">Snack still open</h1>
+    <p style="margin:0 0 16px;line-height:1.5">Saturday's snack slot has not been claimed yet. Would anyone be willing to take it?</p>
+    <table style="width:100%;border-collapse:collapse;margin:0 0 16px;font-size:15px">
+      <tr><td style="padding:6px 0;color:#5b6458">Game</td><td style="padding:6px 0;font-weight:700;color:#142016">{label}</td></tr>
+      <tr><td style="padding:6px 0;color:#5b6458">Kickoff</td><td style="padding:6px 0;font-weight:700;color:#142016">{kickoff}</td></tr>
+      <tr><td style="padding:6px 0;color:#5b6458">Opponent</td><td style="padding:6px 0;font-weight:700;color:#142016">{opponent} ({ha_label(game)})</td></tr>
+      <tr><td style="padding:6px 0;color:#5b6458">Field</td><td style="padding:6px 0;font-weight:700;color:#142016">{field}</td></tr>
+      <tr><td style="padding:6px 0;color:#5b6458">Address</td><td style="padding:6px 0;font-weight:700;color:#142016">{address}</td></tr>
+    </table>
+    {extra_html}
+    <p style="margin:0 0 20px">
+      <a href="{url}" style="display:inline-block;background:#14532d;color:#f6f3ea;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:14px">Claim this weekend</a>
+    </p>
+    <p style="margin:0 0 16px;line-height:1.5;color:#3f4a3d">The link opens the team page (passphrase required) and jumps to Saturday's snack button.</p>
+    <p style="margin:0;color:#3f4a3d">Thank you!<br>Coach Casey Fogerty (Chandler's dad)</p>
+  </div>
+</body></html>"""
+    return subject, text, html
+
+
 def compose_coach_alert(snacks: dict[str, Any], plan: dict[str, Any]) -> tuple[str, str, str]:
     game = plan.get("game") or {}
     saturday = plan.get("saturday")
     reason = plan.get("reason") or "needs attention"
     subject = f"Snack reminder: {saturday} needs you"
     claimed = plan.get("claimedBy") or game.get("claimedBy") or "(nobody)"
+    url = plan.get("claimUrl") or claim_url(snacks, game)
     text = (
         f"Coach Casey,\n\n"
         f"Thursday snack reminder ran for Saturday {saturday}.\n"
@@ -198,17 +305,50 @@ def compose_coach_alert(snacks: dict[str, Any], plan: dict[str, Any]) -> tuple[s
         f"Reason: {reason}\n"
         f"Claimed by: {claimed}\n"
         f"Opponent: {game.get('opponent') or '—'}\n"
-        f"Kickoff: {game.get('kickoff') or '—'}\n\n"
-        "If a parent claimed the slot, add their address to the SNACK_EMAIL_MAP "
-        "repo secret (JSON keyed by YYYY-MM-DD) so next week's send goes to them.\n"
+        f"Kickoff: {game.get('kickoff') or '—'}\n"
+        f"Claim link: {url}\n\n"
+        "If the slot is open, add FAMILY_EMAILS (JSON array of parent addresses) "
+        "so the next run asks the whole team to claim it. If a parent already "
+        "claimed, add their address to SNACK_EMAIL_MAP keyed by YYYY-MM-DD.\n"
     )
     html = f"<pre style='font-family:ui-monospace,monospace'>{text}</pre>"
     return subject, text, html
 
 
+def as_list(value: Any) -> list[str]:
+    if not value:
+        return []
+    if isinstance(value, str):
+        return [value] if value.strip() else []
+    return [str(item).strip() for item in value if str(item).strip()]
+
+
+def redact_plan(plan: dict[str, Any]) -> dict[str, Any]:
+    """Keep parent emails out of logs / GitHub Actions summaries."""
+    out = {key: value for key, value in plan.items() if key != "game"}
+    to_list = as_list(out.get("to"))
+    bcc_list = as_list(out.get("bcc"))
+    if to_list:
+        out["recipientCount"] = out.get("recipientCount") or len(to_list)
+        out["to"] = f"{len(to_list)} recipient{'s' if len(to_list) != 1 else ''}"
+    if bcc_list:
+        out["bccCount"] = len(bcc_list)
+        out.pop("bcc", None)
+    game = plan.get("game") or {}
+    out["game"] = {
+        "date": game.get("date"),
+        "label": game.get("label"),
+        "opponent": game.get("opponent"),
+        "kickoff": game.get("kickoff"),
+        "claimedBy": game.get("claimedBy"),
+        "bye": game.get("bye"),
+    } if game else None
+    return out
+
+
 def send_email(
     *,
-    to: str,
+    to: str | list[str],
     subject: str,
     text: str,
     html: str,
@@ -217,17 +357,24 @@ def send_email(
     password: str,
     host: str,
     port: int,
-    bcc: str | None = None,
+    bcc: str | list[str] | None = None,
 ) -> None:
+    to_list = as_list(to)
+    bcc_list = as_list(bcc)
+    if not to_list:
+        raise ValueError("send_email requires at least one To address")
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = f"Coach Casey Fogerty <{from_addr}>"
-    msg["To"] = to
-    if bcc:
-        msg["Bcc"] = bcc
+    msg["To"] = ", ".join(to_list)
+    if bcc_list:
+        msg["Bcc"] = ", ".join(bcc_list)
     msg.attach(MIMEText(text, "plain", "utf-8"))
     msg.attach(MIMEText(html, "html", "utf-8"))
-    recipients = [to] + ([bcc] if bcc else [])
+    recipients: list[str] = []
+    for addr in to_list + bcc_list:
+        if addr not in recipients:
+            recipients.append(addr)
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL(host, port, context=context) as server:
         server.login(username, password)
@@ -254,23 +401,16 @@ def main(argv: list[str] | None = None) -> int:
 
     snacks = load_snacks(pathlib.Path(args.snacks))
     email_map = load_email_map(os.environ.get("SNACK_EMAIL_MAP"))
+    family_emails = load_family_emails(os.environ.get("FAMILY_EMAILS"))
     plan = select_plan(
         snacks,
         parse_now(args.now),
         force=args.force or os.environ.get("FORCE_REMINDER") == "1",
         email_map=email_map,
+        family_emails=family_emails,
     )
 
-    print(json.dumps({k: v for k, v in plan.items() if k != "game"} | {
-        "game": {
-            "date": (plan.get("game") or {}).get("date"),
-            "label": (plan.get("game") or {}).get("label"),
-            "opponent": (plan.get("game") or {}).get("opponent"),
-            "kickoff": (plan.get("game") or {}).get("kickoff"),
-            "claimedBy": (plan.get("game") or {}).get("claimedBy"),
-            "bye": (plan.get("game") or {}).get("bye"),
-        } if plan.get("game") else None
-    }, indent=2))
+    print(json.dumps(redact_plan(plan), indent=2))
 
     action = plan["action"]
     if action == "skip":
@@ -278,14 +418,19 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     game = plan.get("game") or {}
+    bcc: list[str] = []
     if action == "remind":
         subject, text, html = compose_parent_email(snacks, game)
-        bcc = snacks.get("coachEmail")
+        coach = snacks.get("coachEmail")
+        bcc = [coach] if coach else []
+    elif action == "ask-families":
+        subject, text, html = compose_open_slot_email(snacks, game)
+        bcc = as_list(plan.get("bcc"))
     else:
         subject, text, html = compose_coach_alert(snacks, plan)
-        bcc = None
+        bcc = []
 
-    print(f"To: {plan['to']}")
+    print(f"To: {redact_plan(plan).get('to')}")
     print(f"Subject: {subject}")
     print("---")
     print(text)
@@ -317,7 +462,7 @@ def main(argv: list[str] | None = None) -> int:
         password=smtp_pass,
         host=host,
         port=port,
-        bcc=bcc if action == "remind" else None,
+        bcc=bcc,
     )
     print("Sent.")
     return 0

@@ -30,6 +30,7 @@ jobs:
       - name: Compose and send
         env:
           SNACK_EMAIL_MAP: ${{ secrets.SNACK_EMAIL_MAP }}
+          FAMILY_EMAILS: ${{ secrets.FAMILY_EMAILS }}
           SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           SMTP_FROM: ${{ secrets.SMTP_FROM }}

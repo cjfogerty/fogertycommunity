@@ -39,6 +39,7 @@ def main() -> int:
         "2026-09-26": "anna@example.com",
         "Amanda Connors": "amanda@example.com",
     }
+    families = ["alyssa@example.com", "anna@example.com", "parent3@example.com"]
 
     expect(
         mod.select_plan(SNACKS, at("2026-09-10T10:25:00"), email_map=email_map),
@@ -67,12 +68,24 @@ def main() -> int:
         claimedBy="Amanda Connors",
         to="amanda@example.com",
     )
+    open_no_list = mod.select_plan(SNACKS, at("2026-10-08T10:25:00"), email_map=email_map)
     expect(
-        mod.select_plan(SNACKS, at("2026-10-08T10:25:00"), email_map=email_map),
+        open_no_list,
         "alert-coach",
         "2026-10-10",
-        reason="snack slot still open",
+        reason="snack slot still open, no FAMILY_EMAILS list",
     )
+    open_ask = mod.select_plan(
+        SNACKS,
+        at("2026-10-08T10:25:00"),
+        email_map=email_map,
+        family_emails=families,
+    )
+    expect(open_ask, "ask-families", "2026-10-10", reason="snack slot still open")
+    assert open_ask["to"] == families, open_ask
+    assert open_ask["recipientCount"] == 3, open_ask
+    assert "cjfogerty@gmail.com" in open_ask["bcc"], open_ask
+    assert open_ask["claimUrl"].endswith("#snack-2026-10-10"), open_ask
     expect(
         mod.select_plan(SNACKS, at("2026-09-09T10:15:00"), email_map=email_map),
         "skip",
@@ -89,13 +102,32 @@ def main() -> int:
     expect(missing, "alert-coach", "2026-09-12")
     assert "no email" in missing["reason"]
 
+    parsed = mod.load_family_emails(
+        '["a@example.com", "b@example.com", "a@example.com"]'
+    )
+    assert parsed == ["a@example.com", "b@example.com"], parsed
+
     subject, text, html = mod.compose_parent_email(SNACKS, SNACKS["games"][0])
     assert "Sept 12" in subject
     assert "Need Coach 1" in text
     assert "Alyssa" in text
     assert "Snack reminder" in html
+
+    oct10 = next(g for g in SNACKS["games"] if g["date"] == "2026-10-10")
+    subject, text, html = mod.compose_open_slot_email(SNACKS, oct10)
+    assert "still open" in subject.lower()
+    assert "Cooksey" in text
+    assert "would anyone be willing" in text.lower()
+    assert "#snack-2026-10-10" in text
+    assert "Claim this weekend" in html
+    assert "cjfogerty.github.io/fogertycommunity" in html
+
+    redacted = mod.redact_plan(open_ask)
+    assert "example.com" not in json.dumps(redacted)
+    assert redacted["to"] == "3 recipients"
+
     print("ok")
-    print(json.dumps({"tests": 8, "status": "passed"}))
+    print(json.dumps({"tests": 12, "status": "passed"}))
     return 0
 
 
