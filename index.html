@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fogerty U5 Soccer · Fall 2026</title>
+  <meta name="theme-color" content="#721f2c" />
+  <meta name="description" content="Fogerty U5 Girls Fall 2026 — jerseys and socks at practice today. Snack duty, schedule, and field status." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
@@ -15,13 +17,15 @@
           fontFamily: {
             sans: ['Inter', 'system-ui', 'sans-serif'],
             display: ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
+            script: ['Great Vibes', 'cursive'],
           },
           colors: {
             pitch: {
-              50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 300: '#86efac',
-              400: '#4ade80', 500: '#22c55e', 600: '#16a34a', 700: '#15803d',
-              800: '#166534', 900: '#14532d', 950: '#052e16',
-            }
+              50: '#faf4f2', 100: '#f3e6e4', 200: '#e4c6c4', 300: '#c9898a',
+              400: '#a34752', 500: '#8a2a36', 600: '#721f2c', 700: '#5a1823',
+              800: '#44121b', 900: '#2d0c13', 950: '#1a0508',
+            },
+            cream: '#e8e2d4'
           }
         }
       }
@@ -29,35 +33,39 @@
   </script>
   <style>
     body {
-      background-color: #06140c;
+      background-color: #1a0508;
       background-image:
-        linear-gradient(to bottom, rgba(6,20,12,0.75), rgba(6,20,12,0.92)),
-        url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1920&q=80');
+        linear-gradient(to bottom, rgba(26,5,8,0.42), rgba(26,5,8,0.88)),
+        url('jersey.jpg');
       background-size: cover;
-      background-position: center top;
+      background-position: center 28%;
       background-attachment: fixed;
       background-repeat: no-repeat;
     }
     .card {
-      background: linear-gradient(145deg, rgba(255,255,255,0.97), rgba(255,255,255,0.93));
+      background: linear-gradient(145deg, rgba(250,244,242,0.98), rgba(232,226,212,0.94));
       backdrop-filter: blur(14px);
     }
-    .glow { box-shadow: 0 0 50px -12px rgba(34, 197, 94, 0.4); }
-    .next-up-glow { box-shadow: 0 0 60px -8px rgba(34, 197, 94, 0.55); }
+    .glow { box-shadow: 0 0 50px -12px rgba(232, 226, 212, 0.35); }
+    .next-up-glow { box-shadow: 0 0 50px -10px rgba(114, 31, 44, 0.45); }
   </style>
 </head>
 <body class="text-slate-800 antialiased min-h-screen">
   <header class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-pitch-950/70 to-pitch-950/90"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-pitch-950/35 via-pitch-950/55 to-pitch-950/92"></div>
     <div class="relative max-w-3xl mx-auto px-5 pt-14 pb-24 sm:pt-20 sm:pb-28 text-center">
-      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/10 border border-white/25 shadow-lg mb-6 glow">
-        <span class="text-4xl">⚽</span>
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-pitch-900/50 border border-cream/35 shadow-lg mb-6 glow text-cream">
+        <svg viewBox="0 0 64 64" class="w-11 h-11" aria-hidden="true" fill="none">
+          <ellipse cx="32" cy="51" rx="22" ry="7" stroke="currentColor" stroke-width="2.2"/>
+          <path d="M16 50c8-4 24-4 32 0" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M32 7C21 20 16 31 20 43l12-6 12 6c4-12-1-23-12-36z" fill="currentColor"/>
+        </svg>
       </div>
-      <h1 class="font-display text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-3 drop-shadow-lg">Fogerty U5</h1>
-      <p class="text-pitch-100 text-lg sm:text-xl font-medium mb-2 drop-shadow">Soccer · Fall 2026</p>
-      <p class="text-pitch-200/90 text-sm drop-shadow">O’Fallon Parks & Recreation</p>
-      <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/30 border border-white/20 text-white/95 text-sm backdrop-blur-sm">
-        <span class="w-2 h-2 rounded-full bg-pitch-400 animate-pulse"></span>
+      <h1 class="font-display text-4xl sm:text-5xl font-extrabold text-cream tracking-tight mb-3 drop-shadow-lg">Fogerty U5</h1>
+      <p class="text-cream/90 text-lg sm:text-xl font-medium mb-1 drop-shadow">Soccer · Fall 2026</p>
+      <p class="font-script text-3xl sm:text-4xl text-cream drop-shadow mt-1">O’Fallon Parks & Rec</p>
+      <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pitch-950/45 border border-cream/25 text-cream text-sm backdrop-blur-sm">
+        <span class="w-2 h-2 rounded-full bg-cream animate-pulse"></span>
         Coach Casey Fogerty · Chandler’s dad
       </div>
     </div>
@@ -66,7 +74,18 @@
     <div id="claim-banner" class="hidden card rounded-3xl border border-pitch-300 bg-pitch-50 p-4 text-sm text-pitch-900">
       Snack claim sent to Coach Casey. Your name will show on this page after he confirms it.
     </div>
-    <section class="card rounded-3xl border border-pitch-200/80 p-6 sm:p-7 next-up-glow overflow-hidden relative">
+    <section class="card rounded-3xl overflow-hidden border border-pitch-200/80 next-up-glow">
+      <div class="grid sm:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+        <img src="jersey-crest.jpg" alt="O’Fallon Parks & Rec burgundy game jersey with white tree crest" class="h-52 sm:h-full w-full object-cover object-center" />
+        <div class="p-6 sm:p-7">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wide bg-pitch-800 text-cream">Today at practice</span>
+          <h2 class="font-display text-2xl font-bold text-pitch-950 mt-3">Jerseys and socks</h2>
+          <p class="text-sm text-slate-600 leading-relaxed mt-2">Coach Casey has jerseys and socks to hand out tonight. Grab yours at practice — Wednesday, Sept 9, 5:30–6:00 PM on Field 8C.</p>
+          <p class="text-sm text-pitch-800 font-medium mt-3">Look for the burgundy O’Fallon Parks & Rec kit.</p>
+        </div>
+      </div>
+    </section>
+    <section class="card rounded-3xl border border-pitch-200/80 p-6 sm:p-7 overflow-hidden relative">
       <div class="flex items-start gap-4 relative">
         <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-pitch-600 text-white flex flex-col items-center justify-center shadow-lg">
           <span class="text-[10px] font-bold uppercase tracking-wide opacity-90">Next</span>
@@ -78,7 +97,7 @@
           </div>
           <p class="font-display text-xl font-bold text-pitch-950">Wednesday, September 9</p>
           <p class="text-pitch-700 font-medium mt-0.5">5:30 – 6:00 PM · Field 8C</p>
-          <p class="text-sm text-slate-500 mt-2">This week’s practice. First game is Saturday, Sept 12 at 9:00 AM on Field 8B vs Need Coach 1.</p>
+          <p class="text-sm text-slate-500 mt-2">This week’s practice — jerseys and socks get handed out. First game is Saturday, Sept 12 at 9:00 AM on Field 8B vs Need Coach 1.</p>
         </div>
       </div>
     </section>
@@ -86,7 +105,7 @@
       <div class="flex flex-col sm:flex-row sm:items-center gap-5">
         <div class="flex-1">
           <div class="flex items-center gap-3 mb-2">
-            <div class="w-10 h-10 rounded-xl bg-sky-100 flex items-center justify-center text-xl">📅</div>
+            <div class="w-10 h-10 rounded-xl bg-pitch-100 flex items-center justify-center text-xl">📅</div>
             <h2 class="font-display text-xl font-bold text-pitch-900">Add to Your Calendar</h2>
           </div>
           <p class="text-sm text-slate-600 leading-relaxed">One click adds Wednesday practices (5:30–6:00) and every Saturday game to your phone or computer calendar.</p>
@@ -129,7 +148,7 @@
       <div class="rounded-2xl border border-pitch-100 overflow-hidden">
         <table class="w-full text-sm">
           <thead>
-            <tr class="bg-pitch-800 text-white">
+            <tr class="bg-pitch-800 text-cream">
               <th class="text-left font-semibold px-2 sm:px-3 py-3">Date</th>
               <th class="text-left font-semibold px-2 sm:px-3 py-3">Time</th>
               <th class="text-left font-semibold px-2 sm:px-3 py-3">Snack</th>
@@ -169,14 +188,14 @@
             <tr class="bg-pitch-50/50">
               <td class="px-2 sm:px-3 py-3 font-medium text-pitch-900" data-iso="2026-10-10" data-date="Sat, Oct 10, 2026">Sat, Oct 10</td>
               <td class="px-2 sm:px-3 py-3 text-slate-600">10:00 AM</td>
-              <td class="px-2 sm:px-3 py-3"><button type="button" class="claim-btn inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 hover:bg-amber-200" data-game="Sat, Oct 10 · 10:00 AM vs Cooksey" data-date="Sat, Oct 10, 2026" data-opponent="Cooksey">Claim snack</button></td>
+              <td class="px-2 sm:px-3 py-3"><button type="button" class="claim-btn inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-pitch-800 text-cream hover:bg-pitch-700" data-game="Sat, Oct 10 · 10:00 AM vs Cooksey" data-date="Sat, Oct 10, 2026" data-opponent="Cooksey">Claim snack</button></td>
               <td class="px-3 py-3 text-slate-700 hidden sm:table-cell">Cooksey</td>
               <td class="px-3 py-3 hidden sm:table-cell"><span class="inline-flex px-2 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700">Away</span></td>
             </tr>
             <tr class="bg-white">
               <td class="px-2 sm:px-3 py-3 font-medium text-pitch-900" data-iso="2026-10-17" data-date="Sat, Oct 17, 2026">Sat, Oct 17</td>
               <td class="px-2 sm:px-3 py-3 text-slate-600">9:00 AM</td>
-              <td class="px-2 sm:px-3 py-3"><button type="button" class="claim-btn inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 hover:bg-amber-200" data-game="Sat, Oct 17 · 9:00 AM vs Need Coach 1" data-date="Sat, Oct 17, 2026" data-opponent="Need Coach 1">Claim snack</button></td>
+              <td class="px-2 sm:px-3 py-3"><button type="button" class="claim-btn inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-pitch-800 text-cream hover:bg-pitch-700" data-game="Sat, Oct 17 · 9:00 AM vs Need Coach 1" data-date="Sat, Oct 17, 2026" data-opponent="Need Coach 1">Claim snack</button></td>
               <td class="px-3 py-3 text-slate-700 hidden sm:table-cell">Need Coach 1</td>
               <td class="px-3 py-3 hidden sm:table-cell"><span class="inline-flex px-2 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700">Away</span></td>
             </tr>
@@ -190,21 +209,21 @@
             <tr class="bg-pitch-50/50">
               <td class="px-2 sm:px-3 py-3 font-medium text-pitch-900" data-iso="2026-10-31" data-date="Sat, Oct 31, 2026">Sat, Oct 31</td>
               <td class="px-2 sm:px-3 py-3 text-slate-600">10:00 AM</td>
-              <td class="px-2 sm:px-3 py-3"><button type="button" class="claim-btn inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 hover:bg-amber-200" data-game="Sat, Oct 31 · 10:00 AM vs Campos" data-date="Sat, Oct 31, 2026" data-opponent="Campos">Claim snack</button></td>
+              <td class="px-2 sm:px-3 py-3"><button type="button" class="claim-btn inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-pitch-800 text-cream hover:bg-pitch-700" data-game="Sat, Oct 31 · 10:00 AM vs Campos" data-date="Sat, Oct 31, 2026" data-opponent="Campos">Claim snack</button></td>
               <td class="px-3 py-3 text-slate-700 hidden sm:table-cell">Campos</td>
               <td class="px-3 py-3 hidden sm:table-cell"><span class="inline-flex px-2 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700">Away</span></td>
             </tr>
             <tr class="bg-white">
               <td class="px-2 sm:px-3 py-3 font-medium text-pitch-900" data-iso="2026-11-07" data-date="Sat, Nov 7, 2026">Sat, Nov 7</td>
               <td class="px-2 sm:px-3 py-3 text-slate-600">9:00 AM</td>
-              <td class="px-2 sm:px-3 py-3"><button type="button" class="claim-btn inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 hover:bg-amber-200" data-game="Sat, Nov 7 · 9:00 AM vs Need Coach 2" data-date="Sat, Nov 7, 2026" data-opponent="Need Coach 2">Claim snack</button></td>
+              <td class="px-2 sm:px-3 py-3"><button type="button" class="claim-btn inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-pitch-800 text-cream hover:bg-pitch-700" data-game="Sat, Nov 7 · 9:00 AM vs Need Coach 2" data-date="Sat, Nov 7, 2026" data-opponent="Need Coach 2">Claim snack</button></td>
               <td class="px-3 py-3 text-slate-700 hidden sm:table-cell">Need Coach 2</td>
               <td class="px-3 py-3 hidden sm:table-cell"><span class="inline-flex px-2 py-0.5 rounded-full text-xs font-bold bg-pitch-100 text-pitch-800">Home</span></td>
             </tr>
             <tr class="bg-pitch-50/50">
               <td class="px-2 sm:px-3 py-3 font-medium text-pitch-900" data-iso="2026-11-14" data-date="Sat, Nov 14, 2026">Sat, Nov 14</td>
               <td class="px-2 sm:px-3 py-3 text-slate-600">10:00 AM</td>
-              <td class="px-2 sm:px-3 py-3"><button type="button" class="claim-btn inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 hover:bg-amber-200" data-game="Sat, Nov 14 · 10:00 AM vs Need Coach 2" data-date="Sat, Nov 14, 2026" data-opponent="Need Coach 2">Claim snack</button></td>
+              <td class="px-2 sm:px-3 py-3"><button type="button" class="claim-btn inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-pitch-800 text-cream hover:bg-pitch-700" data-game="Sat, Nov 14 · 10:00 AM vs Need Coach 2" data-date="Sat, Nov 14, 2026" data-opponent="Need Coach 2">Claim snack</button></td>
               <td class="px-3 py-3 text-slate-700 hidden sm:table-cell">Need Coach 2</td>
               <td class="px-3 py-3 hidden sm:table-cell"><span class="inline-flex px-2 py-0.5 rounded-full text-xs font-bold bg-pitch-100 text-pitch-800">Home</span></td>
             </tr>
