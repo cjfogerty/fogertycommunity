@@ -149,13 +149,22 @@ def main() -> int:
     assert "#snack-2026-10-10" in text
     assert "Claim this weekend" in html
     assert "cjfogerty.github.io/fogertycommunity" in html
+    assert "passphrase" not in text.lower()
+    assert "passphrase" not in html.lower()
+
+    homepage = (ROOT / "index.html").read_text(encoding="utf-8")
+    assert "passphrase" not in homepage.lower()
+    assert "AES-GCM" not in homepage
+    assert "team-page.enc" not in homepage
+    assert "Claim snack" in homepage
+    assert "Anna Lambert" in homepage
 
     redacted = mod.redact_plan(open_ask)
     assert "example.com" not in json.dumps(redacted)
     assert redacted["to"] == "3 recipients"
 
     print("ok")
-    print(json.dumps({"tests": 14, "status": "passed"}))
+    print(json.dumps({"tests": 16, "status": "passed"}))
     return 0
 
 

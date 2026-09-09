@@ -2,6 +2,8 @@
 
 Welcome parents of the **Fogerty U5 Soccer Team** (O'Fallon Parks & Recreation Fall 2026)!
 
+The live team page is public — no passphrase: [cjfogerty.github.io/fogertycommunity](https://cjfogerty.github.io/fogertycommunity/)
+
 This simple shared space has everything to stay organized, engaged, and help your little one have the best first soccer experience.
 
 **Coach:** Casey Fogerty (Chandler's dad)  
@@ -32,7 +34,7 @@ Check this before you leave home. Practices are Field **8C**, games Field **8B**
 
 Dial-in: **(636) 333-9900**, ext. **4** for Fields 6–12.
 
-The password-protected team page has a live dropdown of this same feed (updates from [O’Fallon Parks Statusfy](https://statusfy.com/6363339900)).
+The team page has a live dropdown of this same feed (updates from [O’Fallon Parks Statusfy](https://statusfy.com/6363339900)).
 
 </details>
 

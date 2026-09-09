@@ -284,7 +284,7 @@ def compose_open_slot_email(snacks: dict[str, Any], game: dict[str, Any]) -> tup
         f"Address: {address}\n"
         f"{note_line}\n\n"
         f"{players}\n\n"
-        "Tap this link to claim this weekend (team passphrase required):\n"
+        "Tap this link to claim this weekend:\n"
         f"{url}\n\n"
         "After you send the claim, Coach Casey will put your name on the roster.\n\n"
         "Thank you!\n"
@@ -309,7 +309,7 @@ def compose_open_slot_email(snacks: dict[str, Any], game: dict[str, Any]) -> tup
     <p style="margin:0 0 20px">
       <a href="{url}" style="display:inline-block;background:#14532d;color:#f6f3ea;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:14px">Claim this weekend</a>
     </p>
-    <p style="margin:0 0 16px;line-height:1.5;color:#3f4a3d">The link opens the team page (passphrase required) and jumps to Saturday's snack button.</p>
+    <p style="margin:0 0 16px;line-height:1.5;color:#3f4a3d">The link opens the team page and jumps to Saturday's snack button.</p>
     <p style="margin:0;color:#3f4a3d">Thank you!<br>Coach Casey Fogerty (Chandler's dad)</p>
   </div>
 </body></html>"""
