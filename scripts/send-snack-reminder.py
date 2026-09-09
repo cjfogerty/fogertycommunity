@@ -225,7 +225,7 @@ def compose_parent_email(snacks: dict[str, Any], game: dict[str, Any]) -> tuple[
     players = roster_note(snacks)
     subject = f"Snack reminder: {label} · Fogerty U5 vs {opponent}"
     note_line = f"\nNote: {notes}." if notes else ""
-    extra_html = f"<p style=\"margin:0 0 16px;color:#3f4a3d\">Note: {notes}.</p>" if notes else ""
+    extra_html = f"<p style=\"margin:0 0 16px;color:#6e4a4e\">Note: {notes}.</p>" if notes else ""
     text = (
         f"Hi {first},\n\n"
         f"Friendly reminder that you have snack duty for Saturday's Fogerty U5 soccer game.\n\n"
@@ -242,21 +242,21 @@ def compose_parent_email(snacks: dict[str, Any], game: dict[str, Any]) -> tuple[
         "Fogerty U5 Girls · O'Fallon Parks & Rec\n"
     )
     html = f"""<!DOCTYPE html>
-<html><body style="margin:0;padding:24px;background:#06140c;font-family:Georgia,serif;color:#142016">
-  <div style="max-width:520px;margin:0 auto;background:#f6f3ea;border-radius:20px;padding:28px 28px 24px">
-    <p style="margin:0 0 4px;letter-spacing:.14em;text-transform:uppercase;font-size:11px;color:#3f6b49">Fogerty U5 Girls</p>
-    <h1 style="margin:0 0 16px;font-size:26px;color:#14532d">Snack reminder</h1>
+<html><body style="margin:0;padding:24px;background:#1a0508;font-family:Georgia,serif;color:#2d0c13">
+  <div style="max-width:520px;margin:0 auto;background:#faf4f2;border-radius:20px;padding:28px 28px 24px">
+    <p style="margin:0 0 4px;letter-spacing:.14em;text-transform:uppercase;font-size:11px;color:#721f2c">Fogerty U5 Girls</p>
+    <h1 style="margin:0 0 16px;font-size:26px;color:#721f2c">Snack reminder</h1>
     <p style="margin:0 0 16px;line-height:1.5">Hi {first}, you have snack duty this Saturday.</p>
     <table style="width:100%;border-collapse:collapse;margin:0 0 16px;font-size:15px">
-      <tr><td style="padding:6px 0;color:#5b6458">Game</td><td style="padding:6px 0;font-weight:700;color:#142016">{label}</td></tr>
-      <tr><td style="padding:6px 0;color:#5b6458">Kickoff</td><td style="padding:6px 0;font-weight:700;color:#142016">{kickoff}</td></tr>
-      <tr><td style="padding:6px 0;color:#5b6458">Opponent</td><td style="padding:6px 0;font-weight:700;color:#142016">{opponent} ({ha_label(game)})</td></tr>
-      <tr><td style="padding:6px 0;color:#5b6458">Field</td><td style="padding:6px 0;font-weight:700;color:#142016">{field}</td></tr>
-      <tr><td style="padding:6px 0;color:#5b6458">Address</td><td style="padding:6px 0;font-weight:700;color:#142016">{address}</td></tr>
+      <tr><td style="padding:6px 0;color:#6e4a4e">Game</td><td style="padding:6px 0;font-weight:700;color:#2d0c13">{label}</td></tr>
+      <tr><td style="padding:6px 0;color:#6e4a4e">Kickoff</td><td style="padding:6px 0;font-weight:700;color:#2d0c13">{kickoff}</td></tr>
+      <tr><td style="padding:6px 0;color:#6e4a4e">Opponent</td><td style="padding:6px 0;font-weight:700;color:#2d0c13">{opponent} ({ha_label(game)})</td></tr>
+      <tr><td style="padding:6px 0;color:#6e4a4e">Field</td><td style="padding:6px 0;font-weight:700;color:#2d0c13">{field}</td></tr>
+      <tr><td style="padding:6px 0;color:#6e4a4e">Address</td><td style="padding:6px 0;font-weight:700;color:#2d0c13">{address}</td></tr>
     </table>
     {extra_html}
-    <p style="margin:0 0 16px;line-height:1.5">{players} Please bring enough snacks and drinks for the team. Check <a href="https://statusfy.com/6363339900/4" style="color:#15803d">field status</a> before you leave home.</p>
-    <p style="margin:0;color:#3f4a3d">Thank you!<br>Coach Casey Fogerty (Chandler's dad)</p>
+    <p style="margin:0 0 16px;line-height:1.5">{players} Please bring enough snacks and drinks for the team. Check <a href="https://statusfy.com/6363339900/4" style="color:#721f2c">field status</a> before you leave home.</p>
+    <p style="margin:0;color:#6e4a4e">Thank you!<br>Coach Casey Fogerty (Chandler's dad)</p>
   </div>
 </body></html>"""
     return subject, text, html
@@ -273,7 +273,7 @@ def compose_open_slot_email(snacks: dict[str, Any], game: dict[str, Any]) -> tup
     players = roster_note(snacks)
     subject = f"Snack still open: {label} · can anyone claim it?"
     note_line = f"\nNote: {notes}." if notes else ""
-    extra_html = f"<p style=\"margin:0 0 16px;color:#3f4a3d\">Note: {notes}.</p>" if notes else ""
+    extra_html = f"<p style=\"margin:0 0 16px;color:#6e4a4e\">Note: {notes}.</p>" if notes else ""
     text = (
         "Hi Fogerty U5 families,\n\n"
         "Saturday's snack slot is still open. Would anyone be willing to claim it?\n\n"
@@ -292,25 +292,25 @@ def compose_open_slot_email(snacks: dict[str, Any], game: dict[str, Any]) -> tup
         "Fogerty U5 Girls · O'Fallon Parks & Rec\n"
     )
     html = f"""<!DOCTYPE html>
-<html><body style="margin:0;padding:24px;background:#06140c;font-family:Georgia,serif;color:#142016">
-  <div style="max-width:520px;margin:0 auto;background:#f6f3ea;border-radius:20px;padding:28px 28px 24px">
-    <p style="margin:0 0 4px;letter-spacing:.14em;text-transform:uppercase;font-size:11px;color:#3f6b49">Fogerty U5 Girls</p>
-    <h1 style="margin:0 0 16px;font-size:26px;color:#14532d">Snack still open</h1>
+<html><body style="margin:0;padding:24px;background:#1a0508;font-family:Georgia,serif;color:#2d0c13">
+  <div style="max-width:520px;margin:0 auto;background:#faf4f2;border-radius:20px;padding:28px 28px 24px">
+    <p style="margin:0 0 4px;letter-spacing:.14em;text-transform:uppercase;font-size:11px;color:#721f2c">Fogerty U5 Girls</p>
+    <h1 style="margin:0 0 16px;font-size:26px;color:#721f2c">Snack still open</h1>
     <p style="margin:0 0 16px;line-height:1.5">Saturday's snack slot has not been claimed yet. Would anyone be willing to take it?</p>
     <table style="width:100%;border-collapse:collapse;margin:0 0 16px;font-size:15px">
-      <tr><td style="padding:6px 0;color:#5b6458">Game</td><td style="padding:6px 0;font-weight:700;color:#142016">{label}</td></tr>
-      <tr><td style="padding:6px 0;color:#5b6458">Kickoff</td><td style="padding:6px 0;font-weight:700;color:#142016">{kickoff}</td></tr>
-      <tr><td style="padding:6px 0;color:#5b6458">Opponent</td><td style="padding:6px 0;font-weight:700;color:#142016">{opponent} ({ha_label(game)})</td></tr>
-      <tr><td style="padding:6px 0;color:#5b6458">Field</td><td style="padding:6px 0;font-weight:700;color:#142016">{field}</td></tr>
-      <tr><td style="padding:6px 0;color:#5b6458">Address</td><td style="padding:6px 0;font-weight:700;color:#142016">{address}</td></tr>
+      <tr><td style="padding:6px 0;color:#6e4a4e">Game</td><td style="padding:6px 0;font-weight:700;color:#2d0c13">{label}</td></tr>
+      <tr><td style="padding:6px 0;color:#6e4a4e">Kickoff</td><td style="padding:6px 0;font-weight:700;color:#2d0c13">{kickoff}</td></tr>
+      <tr><td style="padding:6px 0;color:#6e4a4e">Opponent</td><td style="padding:6px 0;font-weight:700;color:#2d0c13">{opponent} ({ha_label(game)})</td></tr>
+      <tr><td style="padding:6px 0;color:#6e4a4e">Field</td><td style="padding:6px 0;font-weight:700;color:#2d0c13">{field}</td></tr>
+      <tr><td style="padding:6px 0;color:#6e4a4e">Address</td><td style="padding:6px 0;font-weight:700;color:#2d0c13">{address}</td></tr>
     </table>
     {extra_html}
     <p style="margin:0 0 16px;line-height:1.5">{players}</p>
     <p style="margin:0 0 20px">
-      <a href="{url}" style="display:inline-block;background:#14532d;color:#f6f3ea;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:14px">Claim this weekend</a>
+      <a href="{url}" style="display:inline-block;background:#721f2c;color:#e8e2d4;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:14px">Claim this weekend</a>
     </p>
-    <p style="margin:0 0 16px;line-height:1.5;color:#3f4a3d">The link opens the team page and jumps to Saturday's snack button.</p>
-    <p style="margin:0;color:#3f4a3d">Thank you!<br>Coach Casey Fogerty (Chandler's dad)</p>
+    <p style="margin:0 0 16px;line-height:1.5;color:#6e4a4e">The link opens the team page and jumps to Saturday's snack button.</p>
+    <p style="margin:0;color:#6e4a4e">Thank you!<br>Coach Casey Fogerty (Chandler's dad)</p>
   </div>
 </body></html>"""
     return subject, text, html
