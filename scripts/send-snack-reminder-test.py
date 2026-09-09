@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+"""Checks for scripts/send-snack-reminder.py date and roster logic."""
+
+from __future__ import annotations
+
+import importlib.util
+import json
+import pathlib
+import sys
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+SPEC = importlib.util.spec_from_file_location(
+    "send_snack_reminder", ROOT / "scripts" / "send-snack-reminder.py"
+)
+mod = importlib.util.module_from_spec(SPEC)
+assert SPEC and SPEC.loader
+SPEC.loader.exec_module(mod)
+
+CHI = ZoneInfo("America/Chicago")
+SNACKS = mod.load_snacks(ROOT / "snacks.json")
+
+
+def at(iso: str) -> datetime:
+    return datetime.fromisoformat(iso).replace(tzinfo=CHI)
+
+
+def expect(plan, action, saturday, **extra):
+    assert plan["action"] == action, plan
+    assert plan["saturday"] == saturday, plan
+    for key, value in extra.items():
+        assert plan.get(key) == value, (key, plan)
+
+
+def main() -> int:
+    email_map = {
+        "2026-09-12": "alyssa@example.com",
+        "2026-09-26": "anna@example.com",
+        "Amanda Connors": "amanda@example.com",
+    }
+
+    expect(
+        mod.select_plan(SNACKS, at("2026-09-10T10:25:00"), email_map=email_map),
+        "remind",
+        "2026-09-12",
+        claimedBy="Alyssa Fogerty",
+        to="alyssa@example.com",
+    )
+    expect(
+        mod.select_plan(SNACKS, at("2026-09-17T10:25:00"), email_map=email_map),
+        "skip",
+        "2026-09-19",
+        reason="bye week",
+    )
+    expect(
+        mod.select_plan(SNACKS, at("2026-09-24T10:25:00"), email_map=email_map),
+        "remind",
+        "2026-09-26",
+        claimedBy="Anna Lambert (Madelyn)",
+        to="anna@example.com",
+    )
+    expect(
+        mod.select_plan(SNACKS, at("2026-10-01T10:25:00"), email_map=email_map),
+        "remind",
+        "2026-10-03",
+        claimedBy="Amanda Connors",
+        to="amanda@example.com",
+    )
+    expect(
+        mod.select_plan(SNACKS, at("2026-10-08T10:25:00"), email_map=email_map),
+        "alert-coach",
+        "2026-10-10",
+        reason="snack slot still open",
+    )
+    expect(
+        mod.select_plan(SNACKS, at("2026-09-09T10:15:00"), email_map=email_map),
+        "skip",
+        "2026-09-12",
+        reason="not Thursday",
+    )
+    expect(
+        mod.select_plan(SNACKS, at("2026-09-09T10:15:00"), force=True, email_map=email_map),
+        "remind",
+        "2026-09-12",
+        to="alyssa@example.com",
+    )
+    missing = mod.select_plan(SNACKS, at("2026-09-10T10:25:00"), email_map={})
+    expect(missing, "alert-coach", "2026-09-12")
+    assert "no email" in missing["reason"]
+
+    subject, text, html = mod.compose_parent_email(SNACKS, SNACKS["games"][0])
+    assert "Sept 12" in subject
+    assert "Need Coach 1" in text
+    assert "Alyssa" in text
+    assert "Snack reminder" in html
+    print("ok")
+    print(json.dumps({"tests": 8, "status": "passed"}))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

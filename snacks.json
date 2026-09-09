@@ -1,0 +1,125 @@
+{
+  "team": "Fogerty U5 Girls",
+  "season": "Fall 2026",
+  "timezone": "America/Chicago",
+  "coachEmail": "cjfogerty@gmail.com",
+  "field": "Sports Park Field 8B",
+  "address": "3589 Hwy K, O'Fallon, MO 63368",
+  "reminder": {
+    "weekday": "Thursday",
+    "time": "10:25",
+    "timezone": "America/Chicago"
+  },
+  "games": [
+    {
+      "id": "2026-09-12",
+      "date": "2026-09-12",
+      "label": "Sat, Sept 12, 2026",
+      "kickoff": "9:00 AM",
+      "opponent": "Need Coach 1",
+      "home": true,
+      "bye": false,
+      "notes": "Season opener",
+      "claimedBy": "Alyssa Fogerty"
+    },
+    {
+      "id": "2026-09-19",
+      "date": "2026-09-19",
+      "label": "Sat, Sept 19, 2026",
+      "kickoff": "",
+      "opponent": "",
+      "home": null,
+      "bye": true,
+      "notes": "Bye week",
+      "claimedBy": null
+    },
+    {
+      "id": "2026-09-26",
+      "date": "2026-09-26",
+      "label": "Sat, Sept 26, 2026",
+      "kickoff": "9:00 AM",
+      "opponent": "Campos",
+      "home": true,
+      "bye": false,
+      "notes": "Picture Day",
+      "claimedBy": "Anna Lambert (Madelyn)"
+    },
+    {
+      "id": "2026-10-03",
+      "date": "2026-10-03",
+      "label": "Sat, Oct 3, 2026",
+      "kickoff": "9:00 AM",
+      "opponent": "Need Coach 2",
+      "home": false,
+      "bye": false,
+      "notes": "Same complex, Field 8B",
+      "claimedBy": "Amanda Connors"
+    },
+    {
+      "id": "2026-10-10",
+      "date": "2026-10-10",
+      "label": "Sat, Oct 10, 2026",
+      "kickoff": "10:00 AM",
+      "opponent": "Cooksey",
+      "home": false,
+      "bye": false,
+      "notes": "",
+      "claimedBy": null
+    },
+    {
+      "id": "2026-10-17",
+      "date": "2026-10-17",
+      "label": "Sat, Oct 17, 2026",
+      "kickoff": "9:00 AM",
+      "opponent": "Need Coach 1",
+      "home": false,
+      "bye": false,
+      "notes": "",
+      "claimedBy": null
+    },
+    {
+      "id": "2026-10-24",
+      "date": "2026-10-24",
+      "label": "Sat, Oct 24, 2026",
+      "kickoff": "",
+      "opponent": "",
+      "home": null,
+      "bye": true,
+      "notes": "Bye week",
+      "claimedBy": null
+    },
+    {
+      "id": "2026-10-31",
+      "date": "2026-10-31",
+      "label": "Sat, Oct 31, 2026",
+      "kickoff": "10:00 AM",
+      "opponent": "Campos",
+      "home": false,
+      "bye": false,
+      "notes": "",
+      "claimedBy": null
+    },
+    {
+      "id": "2026-11-07",
+      "date": "2026-11-07",
+      "label": "Sat, Nov 7, 2026",
+      "kickoff": "9:00 AM",
+      "opponent": "Need Coach 2",
+      "home": true,
+      "bye": false,
+      "notes": "",
+      "claimedBy": null
+    },
+    {
+      "id": "2026-11-14",
+      "date": "2026-11-14",
+      "label": "Sat, Nov 14, 2026",
+      "kickoff": "10:00 AM",
+      "opponent": "Need Coach 2",
+      "home": true,
+      "bye": false,
+      "notes": "Last game",
+      "claimedBy": null
+    }
+  ]
+}

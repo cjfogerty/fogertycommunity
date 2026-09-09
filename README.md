@@ -55,7 +55,36 @@ All games at **Sports Park Field 8B**. Home/away is listed as QuickScores lists 
 | Sat, Nov 7 | 9:00 AM | Need Coach 2 | Home | |
 | Sat, Nov 14 | 10:00 AM | Need Coach 2 | Home | Last game |
 
-League opponents on QuickScores: Campos, Cooksey, Fogerty, Need Coach 1, Need Coach - 2.
+## Snack duty reminder (Thursday 10:25am)
+
+Claimed snack parents get an email **Thursday at 10:25am America/Chicago**, two days before Saturday's game.
+
+- Roster (names only): [`snacks.json`](snacks.json)
+- Sender: [`.github/workflows/snack-reminder.yml`](.github/workflows/snack-reminder.yml) runs `python3 scripts/send-snack-reminder.py`
+- Bye weeks (Sept 19, Oct 24) are skipped. Open slots email Coach Casey instead.
+
+Parent emails are **not** stored in this public repo. Add a repository secret `SNACK_EMAIL_MAP` as JSON keyed by game date:
+
+```json
+{
+  "2026-09-12": "parent@example.com",
+  "2026-09-26": "parent@example.com"
+}
+```
+
+See [`snacks.emails.example.json`](snacks.emails.example.json). Also set `SMTP_USERNAME` and `SMTP_PASSWORD` (Gmail app password) so the workflow can send. Manual test: Actions → Snack reminder → Run workflow → dry run on.
+
+Confirm a claim as before:
+
+```bash
+python3 scripts/claim-snack.sh "Sat, Oct 10, 2026" "Parent Name"
+git add snacks.json index.html && git commit -m "Claim Sat, Oct 10, 2026 snacks: Parent Name" && git push
+```
+
+Then add that parent's address to `SNACK_EMAIL_MAP`.
+
+---
+
 
 ## Sample Weekly Practice Agenda (~60 min)
 1. **Arrival Free Play** (5–10 min) – Kids just run, kick, and explore as they arrive. Parents can join in!

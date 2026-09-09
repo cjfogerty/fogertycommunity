@@ -1,0 +1,47 @@
+name: Snack reminder
+
+on:
+  schedule:
+    - cron: "25 10 * * 4"
+      timezone: America/Chicago
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Send even if today is not Thursday
+        type: boolean
+        default: false
+      dry_run:
+        description: Print the email without sending
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check reminder logic
+        run: python3 scripts/send-snack-reminder-test.py
+
+      - name: Compose and send
+        env:
+          SNACK_EMAIL_MAP: ${{ secrets.SNACK_EMAIL_MAP }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          FORCE_REMINDER: ${{ github.event_name == 'workflow_dispatch' && inputs.force && '1' || '' }}
+        run: |
+          extra=""
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dry_run }}" = "true" ]; then
+            extra="--dry-run"
+          fi
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.force }}" = "true" ]; then
+            extra="$extra --force"
+          fi
+          python3 scripts/send-snack-reminder.py $extra | tee "$GITHUB_STEP_SUMMARY"
