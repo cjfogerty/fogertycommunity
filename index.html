@@ -46,7 +46,6 @@
       background: linear-gradient(145deg, rgba(250,244,242,0.98), rgba(232,226,212,0.94));
       backdrop-filter: blur(14px);
     }
-    .glow { box-shadow: 0 0 50px -12px rgba(232, 226, 212, 0.35); }
     .next-up-glow { box-shadow: 0 0 50px -10px rgba(114, 31, 44, 0.45); }
   </style>
 </head>
@@ -66,7 +65,7 @@
   <main class="max-w-3xl mx-auto px-5 -mt-12 pb-20 space-y-6 relative z-10">
     <section class="card rounded-3xl overflow-hidden border border-pitch-200/80 next-up-glow">
       <div class="grid sm:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-        <img src="jersey-crest.jpg" alt="O’Fallon Parks & Rec burgundy game jersey with white tree crest" class="h-52 sm:h-full w-full object-cover object-center" />
+        <img src="jersey-crest.jpg" alt="O’Fallon Parks & Rec burgundy game jersey" class="h-52 sm:h-full w-full object-cover object-center" />
         <div class="p-6 sm:p-7">
           <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wide bg-pitch-800 text-cream">Jerseys handed out</span>
           <h2 class="font-display text-2xl font-bold text-pitch-950 mt-3">Wear your jersey Saturday</h2>
@@ -75,8 +74,8 @@
         </div>
       </div>
     </section>
-    <section class="card rounded-3xl border border-pitch-200/80 p-6 sm:p-7 overflow-hidden relative">
-      <div class="flex items-start gap-4 relative">
+    <section class="card rounded-3xl border border-pitch-200/80 p-6 sm:p-7">
+      <div class="flex items-start gap-4">
         <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-pitch-600 text-white flex flex-col items-center justify-center shadow-lg">
           <span class="text-[10px] font-bold uppercase tracking-wide opacity-90">Next</span>
           <span class="text-lg font-extrabold leading-none">Up</span>
@@ -95,55 +94,58 @@
     <section class="card rounded-3xl shadow-xl border border-white/60 p-6 sm:p-7">
       <div class="flex flex-col sm:flex-row sm:items-center gap-5">
         <div class="flex-1">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-10 h-10 rounded-xl bg-pitch-100 flex items-center justify-center text-xl">📅</div>
-            <h2 class="font-display text-xl font-bold text-pitch-900">Add to Your Calendar</h2>
-          </div>
-          <p class="text-sm text-slate-600 leading-relaxed">One click adds Wednesday practices (5:30–6:00) and every Saturday game to your phone or computer calendar.</p>
+          <h2 class="font-display text-xl font-bold text-pitch-900 mb-2">Add to Your Calendar</h2>
+          <p class="text-sm text-slate-600 leading-relaxed">One click adds Wednesday practices and every Saturday game to your calendar.</p>
         </div>
-        <div class="flex-shrink-0 flex flex-col gap-2">
-          <a href="season.ics" download="Fogerty-U5-Season.ics" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-pitch-600 hover:bg-pitch-700 text-white font-semibold text-sm shadow-lg">Add Season to Calendar</a>
-          <p class="text-xs text-slate-400 text-center sm:text-right">Practices + all Saturday games</p>
-        </div>
+        <a href="season.ics" download="Maroonicorns-Season.ics" class="inline-flex items-center justify-center px-6 py-3.5 rounded-2xl bg-pitch-600 hover:bg-pitch-700 text-white font-semibold text-sm shadow-lg">Add Season to Calendar</a>
       </div>
     </section>
     <section class="card rounded-3xl shadow-xl border border-white/60 p-6 sm:p-8">
-      <div class="flex items-center gap-3 mb-6">
-        <div class="w-10 h-10 rounded-xl bg-pitch-100 flex items-center justify-center text-xl">📅</div>
-        <h2 class="font-display text-xl font-bold text-pitch-900">Practice Details</h2>
-      </div>
+      <h2 class="font-display text-xl font-bold text-pitch-900 mb-6">Practice Details</h2>
       <div class="grid sm:grid-cols-2 gap-4">
         <div class="rounded-2xl bg-pitch-50 border border-pitch-100 p-5">
           <p class="text-pitch-600 text-xs font-semibold uppercase tracking-wider mb-1.5">When</p>
           <p class="font-bold text-pitch-950 text-lg">Wednesdays</p>
           <p class="text-pitch-800 font-medium">5:30 – 6:00 PM</p>
-          <p class="text-pitch-600 text-sm mt-1">Starting September 2</p>
         </div>
         <div class="rounded-2xl bg-pitch-50 border border-pitch-100 p-5">
           <p class="text-pitch-600 text-xs font-semibold uppercase tracking-wider mb-1.5">Where</p>
           <p class="font-bold text-pitch-950 text-lg">Field 8C</p>
-          <p class="text-pitch-800 font-medium">Sports Park</p>
-          <p class="text-pitch-600 text-sm mt-1">3589 Hwy K, O’Fallon</p>
+          <p class="text-pitch-800 font-medium">Sports Park · 3589 Hwy K, O’Fallon</p>
         </div>
       </div>
-      <div class="mt-5 pt-5 border-t border-pitch-100">
-        <p class="text-sm text-slate-600 leading-relaxed"><span class="font-semibold text-pitch-900">What to bring:</span> Water bottle, ball (if you have one), shin guards, cleats or sneakers, and clothes they can move in.</p>
-      </div>
+      <p class="text-sm text-slate-600 leading-relaxed mt-5"><span class="font-semibold text-pitch-900">What to bring:</span> Water bottle, ball (if you have one), shin guards, cleats or sneakers, and clothes they can move in.</p>
     </section>
     <section id="schedule" class="card rounded-3xl shadow-xl border border-white/60 p-6 sm:p-8">
-      <div class="flex items-center gap-3 mb-2">
-        <div class="w-10 h-10 rounded-xl bg-pitch-100 flex items-center justify-center text-xl">⚽</div>
-        <h2 class="font-display text-xl font-bold text-pitch-900">Game Schedule & Snacks</h2>
+      <h2 class="font-display text-xl font-bold text-pitch-900 mb-2">Game Schedule & Snacks</h2>
+      <p class="text-sm text-slate-500 mb-5">U5 Girls · Field 8B. Email Coach Casey to claim an open snack slot.</p>
+      <div class="rounded-2xl border border-pitch-100 overflow-hidden text-sm">
+        <table class="w-full">
+          <thead>
+            <tr class="bg-pitch-800 text-cream">
+              <th class="text-left font-semibold px-3 py-3">Date</th>
+              <th class="text-left font-semibold px-3 py-3">Time</th>
+              <th class="text-left font-semibold px-3 py-3">Snack</th>
+              <th class="text-left font-semibold px-3 py-3 hidden sm:table-cell">Opponent</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-pitch-100">
+            <tr class="bg-pitch-50"><td class="px-3 py-3 font-medium">Sat, Sept 12</td><td class="px-3 py-3">9:00 AM</td><td class="px-3 py-3 font-semibold text-pitch-800">Alyssa Fogerty</td><td class="px-3 py-3 hidden sm:table-cell">Need Coach 1 · Home</td></tr>
+            <tr><td class="px-3 py-3 font-medium">Sat, Sept 19</td><td class="px-3 py-3 text-slate-400">—</td><td class="px-3 py-3 text-slate-400">No snack</td><td class="px-3 py-3 text-slate-400 hidden sm:table-cell">Bye week</td></tr>
+            <tr class="bg-pitch-50/50"><td class="px-3 py-3 font-medium">Sat, Sept 26</td><td class="px-3 py-3">9:00 AM</td><td class="px-3 py-3 font-semibold text-pitch-800">Anna Lambert (Madelyn)</td><td class="px-3 py-3 hidden sm:table-cell">Campos · Home · Picture Day</td></tr>
+            <tr><td class="px-3 py-3 font-medium">Sat, Oct 3</td><td class="px-3 py-3">9:00 AM</td><td class="px-3 py-3 font-semibold text-pitch-800">Amanda Connors</td><td class="px-3 py-3 hidden sm:table-cell">Need Coach 2 · Away</td></tr>
+            <tr class="bg-pitch-50/50"><td class="px-3 py-3 font-medium">Sat, Oct 10</td><td class="px-3 py-3">10:00 AM</td><td class="px-3 py-3">Open</td><td class="px-3 py-3 hidden sm:table-cell">Cooksey · Away</td></tr>
+            <tr><td class="px-3 py-3 font-medium">Sat, Oct 17</td><td class="px-3 py-3">9:00 AM</td><td class="px-3 py-3">Open</td><td class="px-3 py-3 hidden sm:table-cell">Need Coach 1 · Away</td></tr>
+            <tr><td class="px-3 py-3 font-medium">Sat, Oct 24</td><td class="px-3 py-3 text-slate-400">—</td><td class="px-3 py-3 text-slate-400">No snack</td><td class="px-3 py-3 text-slate-400 hidden sm:table-cell">Bye week</td></tr>
+            <tr class="bg-pitch-50/50"><td class="px-3 py-3 font-medium">Sat, Oct 31</td><td class="px-3 py-3">10:00 AM</td><td class="px-3 py-3">Open</td><td class="px-3 py-3 hidden sm:table-cell">Campos · Away</td></tr>
+            <tr><td class="px-3 py-3 font-medium">Sat, Nov 7</td><td class="px-3 py-3">9:00 AM</td><td class="px-3 py-3">Open</td><td class="px-3 py-3 hidden sm:table-cell">Need Coach 2 · Home</td></tr>
+            <tr class="bg-pitch-50/50"><td class="px-3 py-3 font-medium">Sat, Nov 14</td><td class="px-3 py-3">10:00 AM</td><td class="px-3 py-3">Open</td><td class="px-3 py-3 hidden sm:table-cell">Need Coach 2 · Home</td></tr>
+          </tbody>
+        </table>
       </div>
-      <p class="text-sm text-slate-500 mb-5">U5 Girls · Field 8B. Tap <strong class="text-pitch-800">Claim snack</strong> on an open slot. Coach Casey gets an email, then posts your name here.</p>
-      <p class="text-sm text-pitch-800 font-medium mb-4">Full snack table and claim buttons load below after the page scripts. Open slots: Oct 10, Oct 17, Oct 31, Nov 7, Nov 14.</p>
-      <p class="text-sm text-slate-600">Sat Sept 12 9:00 AM vs Need Coach 1 — Home — snack Alyssa Fogerty<br>Sat Sept 19 — bye<br>Sat Sept 26 9:00 AM vs Campos — Home — Picture Day — snack Anna Lambert (Madelyn)<br>Sat Oct 3 9:00 AM vs Need Coach 2 — Away — snack Amanda Connors</p>
     </section>
     <section class="card rounded-3xl shadow-xl border border-white/60 p-6 sm:p-8">
-      <div class="flex items-center gap-3 mb-5">
-        <div class="w-10 h-10 rounded-xl bg-pitch-100 flex items-center justify-center text-xl">🔗</div>
-        <h2 class="font-display text-xl font-bold text-pitch-900">Quick Links</h2>
-      </div>
+      <h2 class="font-display text-xl font-bold text-pitch-900 mb-5">Quick Links</h2>
       <div class="space-y-3">
         <a href="https://www.quickscores.com/Orgs/ResultsDisplay.php?OrgDir=ofallonmo&LeagueID=1742446" target="_blank" rel="noopener" class="flex items-center justify-between p-4 rounded-2xl bg-pitch-50 hover:bg-pitch-100 border border-pitch-100">
           <div><p class="font-semibold text-pitch-950">QuickScores · U5 Girls</p><p class="text-sm text-pitch-600">Official standings & full league schedule</p></div><span class="text-pitch-400">→</span>
@@ -158,9 +160,7 @@
               <p class="text-sm text-pitch-600">Statusfy · Sports Park · <span id="statusfy-summary">tap to check fields</span></p>
             </div>
           </summary>
-          <div class="statusfy-panel">
-            <div id="statusfy-fields"></div>
-          </div>
+          <div class="statusfy-panel"><div id="statusfy-fields"></div></div>
         </details>
         <a href="https://drive.google.com/file/d/1V0PlHwwObGR5qA7vs1iw8YxXoEmUx1Br/view" target="_blank" rel="noopener" class="flex items-center justify-between p-4 rounded-2xl bg-pitch-50 hover:bg-pitch-100 border border-pitch-100">
           <div><p class="font-semibold text-pitch-950">Picture Day Order Form</p><p class="text-sm text-pitch-600">September 26</p></div><span class="text-pitch-400">→</span>
