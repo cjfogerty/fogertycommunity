@@ -63,6 +63,9 @@
     </div>
   </header>
   <main class="max-w-3xl mx-auto px-5 -mt-12 pb-20 space-y-6 relative z-10">
+    <div id="claim-banner" class="hidden card rounded-3xl border border-pitch-300 bg-pitch-50 p-4 text-sm text-pitch-900">
+      Snack claim sent to Coach Casey. Your name will show on this page after he confirms it.
+    </div>
     <section class="card rounded-3xl overflow-hidden border border-pitch-200/80 next-up-glow">
       <div class="grid sm:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
         <img src="jersey-crest.jpg" alt="O’Fallon Parks & Rec burgundy game jersey" class="h-52 sm:h-full w-full object-cover object-center" />
@@ -118,40 +121,99 @@
     </section>
     <section id="schedule" class="card rounded-3xl shadow-xl border border-white/60 p-6 sm:p-8">
       <h2 class="font-display text-xl font-bold text-pitch-900 mb-2">Game Schedule & Snacks</h2>
-      <p class="text-sm text-slate-500 mb-5">U5 Girls · Field 8B. Email Coach Casey to claim an open snack slot.</p>
-      <div class="rounded-2xl border border-pitch-100 overflow-hidden text-sm">
-        <table class="w-full">
+      <p class="text-sm text-slate-500 mb-5">U5 Girls · Field 8B. Tap <strong class="text-pitch-800">Claim snack</strong> on an open slot. Coach Casey gets an email, then posts your name here.</p>
+      <div class="rounded-2xl border border-pitch-100 overflow-hidden">
+        <table class="w-full text-sm">
           <thead>
             <tr class="bg-pitch-800 text-cream">
-              <th class="text-left font-semibold px-3 py-3">Date</th>
-              <th class="text-left font-semibold px-3 py-3">Time</th>
-              <th class="text-left font-semibold px-3 py-3">Snack</th>
+              <th class="text-left font-semibold px-2 sm:px-3 py-3">Date</th>
+              <th class="text-left font-semibold px-2 sm:px-3 py-3">Time</th>
+              <th class="text-left font-semibold px-2 sm:px-3 py-3">Snack</th>
               <th class="text-left font-semibold px-3 py-3 hidden sm:table-cell">Opponent</th>
+              <th class="text-left font-semibold px-3 py-3 hidden sm:table-cell">H/A</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-pitch-100">
-            <tr class="bg-pitch-50"><td class="px-3 py-3 font-medium">Sat, Sept 12</td><td class="px-3 py-3">9:00 AM</td><td class="px-3 py-3 font-semibold text-pitch-800">Alyssa Fogerty</td><td class="px-3 py-3 hidden sm:table-cell">Need Coach 1 · Home</td></tr>
-            <tr><td class="px-3 py-3 font-medium">Sat, Sept 19</td><td class="px-3 py-3 text-slate-400">—</td><td class="px-3 py-3 text-slate-400">No snack</td><td class="px-3 py-3 text-slate-400 hidden sm:table-cell">Bye week</td></tr>
-            <tr class="bg-pitch-50/50"><td class="px-3 py-3 font-medium">Sat, Sept 26</td><td class="px-3 py-3">9:00 AM</td><td class="px-3 py-3 font-semibold text-pitch-800">Anna Lambert (Madelyn)</td><td class="px-3 py-3 hidden sm:table-cell">Campos · Home · Picture Day</td></tr>
-            <tr><td class="px-3 py-3 font-medium">Sat, Oct 3</td><td class="px-3 py-3">9:00 AM</td><td class="px-3 py-3 font-semibold text-pitch-800">Amanda Connors</td><td class="px-3 py-3 hidden sm:table-cell">Need Coach 2 · Away</td></tr>
-            <tr class="bg-pitch-50/50"><td class="px-3 py-3 font-medium">Sat, Oct 10</td><td class="px-3 py-3">10:00 AM</td><td class="px-3 py-3">Open</td><td class="px-3 py-3 hidden sm:table-cell">Cooksey · Away</td></tr>
-            <tr><td class="px-3 py-3 font-medium">Sat, Oct 17</td><td class="px-3 py-3">9:00 AM</td><td class="px-3 py-3">Open</td><td class="px-3 py-3 hidden sm:table-cell">Need Coach 1 · Away</td></tr>
-            <tr><td class="px-3 py-3 font-medium">Sat, Oct 24</td><td class="px-3 py-3 text-slate-400">—</td><td class="px-3 py-3 text-slate-400">No snack</td><td class="px-3 py-3 text-slate-400 hidden sm:table-cell">Bye week</td></tr>
-            <tr class="bg-pitch-50/50"><td class="px-3 py-3 font-medium">Sat, Oct 31</td><td class="px-3 py-3">10:00 AM</td><td class="px-3 py-3">Open</td><td class="px-3 py-3 hidden sm:table-cell">Campos · Away</td></tr>
-            <tr><td class="px-3 py-3 font-medium">Sat, Nov 7</td><td class="px-3 py-3">9:00 AM</td><td class="px-3 py-3">Open</td><td class="px-3 py-3 hidden sm:table-cell">Need Coach 2 · Home</td></tr>
-            <tr class="bg-pitch-50/50"><td class="px-3 py-3 font-medium">Sat, Nov 14</td><td class="px-3 py-3">10:00 AM</td><td class="px-3 py-3">Open</td><td class="px-3 py-3 hidden sm:table-cell">Need Coach 2 · Home</td></tr>
+            <tr class="bg-pitch-50">
+              <td class="px-2 sm:px-3 py-3 font-medium text-pitch-900" data-iso="2026-09-12" data-date="Sat, Sept 12, 2026">Sat, Sept 12</td>
+              <td class="px-2 sm:px-3 py-3 text-slate-600">9:00 AM</td>
+              <td class="px-2 sm:px-3 py-3"><span class="font-semibold text-pitch-800" data-date="Sat, Sept 12, 2026" data-iso="2026-09-12">Alyssa Fogerty</span></td>
+              <td class="px-3 py-3 text-slate-700 hidden sm:table-cell">Need Coach 1</td>
+              <td class="px-3 py-3 hidden sm:table-cell"><span class="inline-flex px-2 py-0.5 rounded-full text-xs font-bold bg-pitch-100 text-pitch-800">Home</span></td>
+            </tr>
+            <tr class="bg-white">
+              <td class="px-2 sm:px-3 py-3 font-medium text-pitch-900" data-iso="2026-09-19" data-date="Sat, Sept 19, 2026">Sat, Sept 19</td>
+              <td class="px-2 sm:px-3 py-3 text-slate-400">—</td>
+              <td class="px-2 sm:px-3 py-3 text-slate-400">No snack</td>
+              <td class="px-3 py-3 text-slate-400 italic hidden sm:table-cell">Bye week — no game</td>
+              <td class="px-3 py-3 text-slate-400 hidden sm:table-cell">—</td>
+            </tr>
+            <tr class="bg-pitch-50/50">
+              <td class="px-2 sm:px-3 py-3 font-medium text-pitch-900" data-iso="2026-09-26" data-date="Sat, Sept 26, 2026">Sat, Sept 26</td>
+              <td class="px-2 sm:px-3 py-3 text-slate-600">9:00 AM</td>
+              <td class="px-2 sm:px-3 py-3"><span class="font-semibold text-pitch-800" data-date="Sat, Sept 26, 2026">Anna Lambert (Madelyn)</span></td>
+              <td class="px-3 py-3 text-slate-700 hidden sm:table-cell">Campos <span class="text-xs text-amber-600">(Picture Day)</span></td>
+              <td class="px-3 py-3 hidden sm:table-cell"><span class="inline-flex px-2 py-0.5 rounded-full text-xs font-bold bg-pitch-100 text-pitch-800">Home</span></td>
+            </tr>
+            <tr class="bg-white">
+              <td class="px-2 sm:px-3 py-3 font-medium text-pitch-900" data-iso="2026-10-03" data-date="Sat, Oct 3, 2026">Sat, Oct 3</td>
+              <td class="px-2 sm:px-3 py-3 text-slate-600">9:00 AM</td>
+              <td class="px-2 sm:px-3 py-3"><span class="font-semibold text-pitch-800" data-date="Sat, Oct 3, 2026">Amanda Connors</span></td>
+              <td class="px-3 py-3 text-slate-700 hidden sm:table-cell">Need Coach 2</td>
+              <td class="px-3 py-3 hidden sm:table-cell"><span class="inline-flex px-2 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700">Away</span></td>
+            </tr>
+            <tr class="bg-pitch-50/50">
+              <td class="px-2 sm:px-3 py-3 font-medium text-pitch-900" data-iso="2026-10-10" data-date="Sat, Oct 10, 2026">Sat, Oct 10</td>
+              <td class="px-2 sm:px-3 py-3 text-slate-600">10:00 AM</td>
+              <td class="px-2 sm:px-3 py-3"><button type="button" class="claim-btn inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-pitch-800 text-cream hover:bg-pitch-700" data-game="Sat, Oct 10 · 10:00 AM vs Cooksey" data-date="Sat, Oct 10, 2026" data-opponent="Cooksey">Claim snack</button></td>
+              <td class="px-3 py-3 text-slate-700 hidden sm:table-cell">Cooksey</td>
+              <td class="px-3 py-3 hidden sm:table-cell"><span class="inline-flex px-2 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700">Away</span></td>
+            </tr>
+            <tr class="bg-white">
+              <td class="px-2 sm:px-3 py-3 font-medium text-pitch-900" data-iso="2026-10-17" data-date="Sat, Oct 17, 2026">Sat, Oct 17</td>
+              <td class="px-2 sm:px-3 py-3 text-slate-600">9:00 AM</td>
+              <td class="px-2 sm:px-3 py-3"><button type="button" class="claim-btn inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-pitch-800 text-cream hover:bg-pitch-700" data-game="Sat, Oct 17 · 9:00 AM vs Need Coach 1" data-date="Sat, Oct 17, 2026" data-opponent="Need Coach 1">Claim snack</button></td>
+              <td class="px-3 py-3 text-slate-700 hidden sm:table-cell">Need Coach 1</td>
+              <td class="px-3 py-3 hidden sm:table-cell"><span class="inline-flex px-2 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700">Away</span></td>
+            </tr>
+            <tr class="bg-white">
+              <td class="px-2 sm:px-3 py-3 font-medium text-pitch-900" data-iso="2026-10-24" data-date="Sat, Oct 24, 2026">Sat, Oct 24</td>
+              <td class="px-2 sm:px-3 py-3 text-slate-400">—</td>
+              <td class="px-2 sm:px-3 py-3 text-slate-400">No snack</td>
+              <td class="px-3 py-3 text-slate-400 italic hidden sm:table-cell">Bye week — no game</td>
+              <td class="px-3 py-3 text-slate-400 hidden sm:table-cell">—</td>
+            </tr>
+            <tr class="bg-pitch-50/50">
+              <td class="px-2 sm:px-3 py-3 font-medium text-pitch-900" data-iso="2026-10-31" data-date="Sat, Oct 31, 2026">Sat, Oct 31</td>
+              <td class="px-2 sm:px-3 py-3 text-slate-600">10:00 AM</td>
+              <td class="px-2 sm:px-3 py-3"><button type="button" class="claim-btn inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-pitch-800 text-cream hover:bg-pitch-700" data-game="Sat, Oct 31 · 10:00 AM vs Campos" data-date="Sat, Oct 31, 2026" data-opponent="Campos">Claim snack</button></td>
+              <td class="px-3 py-3 text-slate-700 hidden sm:table-cell">Campos</td>
+              <td class="px-3 py-3 hidden sm:table-cell"><span class="inline-flex px-2 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700">Away</span></td>
+            </tr>
+            <tr class="bg-white">
+              <td class="px-2 sm:px-3 py-3 font-medium text-pitch-900" data-iso="2026-11-07" data-date="Sat, Nov 7, 2026">Sat, Nov 7</td>
+              <td class="px-2 sm:px-3 py-3 text-slate-600">9:00 AM</td>
+              <td class="px-2 sm:px-3 py-3"><button type="button" class="claim-btn inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-pitch-800 text-cream hover:bg-pitch-700" data-game="Sat, Nov 7 · 9:00 AM vs Need Coach 2" data-date="Sat, Nov 7, 2026" data-opponent="Need Coach 2">Claim snack</button></td>
+              <td class="px-3 py-3 text-slate-700 hidden sm:table-cell">Need Coach 2</td>
+              <td class="px-3 py-3 hidden sm:table-cell"><span class="inline-flex px-2 py-0.5 rounded-full text-xs font-bold bg-pitch-100 text-pitch-800">Home</span></td>
+            </tr>
+            <tr class="bg-pitch-50/50">
+              <td class="px-2 sm:px-3 py-3 font-medium text-pitch-900" data-iso="2026-11-14" data-date="Sat, Nov 14, 2026">Sat, Nov 14</td>
+              <td class="px-2 sm:px-3 py-3 text-slate-600">10:00 AM</td>
+              <td class="px-2 sm:px-3 py-3"><button type="button" class="claim-btn inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-pitch-800 text-cream hover:bg-pitch-700" data-game="Sat, Nov 14 · 10:00 AM vs Need Coach 2" data-date="Sat, Nov 14, 2026" data-opponent="Need Coach 2">Claim snack</button></td>
+              <td class="px-3 py-3 text-slate-700 hidden sm:table-cell">Need Coach 2</td>
+              <td class="px-3 py-3 hidden sm:table-cell"><span class="inline-flex px-2 py-0.5 rounded-full text-xs font-bold bg-pitch-100 text-pitch-800">Home</span></td>
+            </tr>
           </tbody>
         </table>
       </div>
+      <p class="text-xs text-slate-400 mt-3">Snacks are game days only. Bye weeks (Sept 19, Oct 24) do not need a snack parent. Claimed snack parents get a reminder email Thursday at 10:25am. If a Saturday is still open Wednesday at 4pm, every family gets an email with the claim link. Plan for 4–5 players.</p>
     </section>
     <section class="card rounded-3xl shadow-xl border border-white/60 p-6 sm:p-8">
       <h2 class="font-display text-xl font-bold text-pitch-900 mb-5">Quick Links</h2>
       <div class="space-y-3">
         <a href="https://www.quickscores.com/Orgs/ResultsDisplay.php?OrgDir=ofallonmo&LeagueID=1742446" target="_blank" rel="noopener" class="flex items-center justify-between p-4 rounded-2xl bg-pitch-50 hover:bg-pitch-100 border border-pitch-100">
           <div><p class="font-semibold text-pitch-950">QuickScores · U5 Girls</p><p class="text-sm text-pitch-600">Official standings & full league schedule</p></div><span class="text-pitch-400">→</span>
-        </a>
-        <a href="schedule.html" class="flex items-center justify-between p-4 rounded-2xl bg-pitch-50 hover:bg-pitch-100 border border-pitch-100">
-          <div><p class="font-semibold text-pitch-950">Full game schedule</p><p class="text-sm text-pitch-600">All Saturdays through Nov 14</p></div><span class="text-pitch-400">→</span>
         </a>
         <details class="statusfy-drop rounded-2xl bg-pitch-50 border border-pitch-100">
           <summary class="statusfy-summary p-4 hover:bg-pitch-100">
@@ -172,6 +234,105 @@
     <p class="font-medium text-white/70">The Red Buffalo Maroonicorns · Fall 2026</p>
     <p class="mt-1">O’Fallon Parks & Recreation</p>
   </footer>
+  <div id="claim-modal" class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/50" data-close-modal></div>
+    <div class="relative w-full max-w-md card rounded-3xl shadow-2xl border border-white/70 p-6 sm:p-7">
+      <button type="button" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-2xl leading-none" data-close-modal aria-label="Close">&times;</button>
+      <h3 class="font-display text-xl font-bold text-pitch-900 mb-1">Claim this snack slot</h3>
+      <p id="claim-game-label" class="text-sm text-slate-600 mb-5"></p>
+      <form id="claim-form" action="https://formsubmit.co/cjfogerty@gmail.com" method="POST" class="space-y-4">
+        <input type="hidden" name="_subject" value="Maroonicorns snack claim">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://cjfogerty.github.io/fogertycommunity/?claimed=1#schedule">
+        <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
+        <input type="hidden" id="field-game" name="Game" value="">
+        <input type="hidden" id="field-date" name="Date" value="">
+        <input type="hidden" id="field-opponent" name="Opponent" value="">
+        <input type="hidden" id="field-cli" name="Publish_command" value="">
+        <div>
+          <label for="parent-name" class="block text-xs font-semibold uppercase tracking-wide text-pitch-700 mb-1.5">Your name</label>
+          <input id="parent-name" name="Parent name" required autocomplete="name" class="w-full rounded-xl border border-pitch-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pitch-500">
+        </div>
+        <div>
+          <label for="parent-email" class="block text-xs font-semibold uppercase tracking-wide text-pitch-700 mb-1.5">Email</label>
+          <input id="parent-email" name="Email" type="email" required autocomplete="email" class="w-full rounded-xl border border-pitch-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pitch-500">
+        </div>
+        <div>
+          <label for="parent-phone" class="block text-xs font-semibold uppercase tracking-wide text-pitch-700 mb-1.5">Phone <span class="font-normal normal-case tracking-normal text-slate-400">(optional)</span></label>
+          <input id="parent-phone" name="Phone" type="tel" autocomplete="tel" class="w-full rounded-xl border border-pitch-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pitch-500">
+        </div>
+        <div>
+          <label for="parent-notes" class="block text-xs font-semibold uppercase tracking-wide text-pitch-700 mb-1.5">Notes <span class="font-normal normal-case tracking-normal text-slate-400">(optional)</span></label>
+          <textarea id="parent-notes" name="Notes" rows="2" placeholder="Allergies, what you’re bringing, etc." class="w-full rounded-xl border border-pitch-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pitch-500"></textarea>
+        </div>
+        <button type="submit" class="w-full rounded-2xl bg-pitch-600 hover:bg-pitch-700 text-white font-semibold text-sm py-3 shadow-lg">Send claim to Coach Casey</button>
+        <p class="text-xs text-slate-400 text-center">This emails Coach. The name appears on the page after he confirms it.</p>
+      </form>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var modal = document.getElementById('claim-modal');
+      var label = document.getElementById('claim-game-label');
+      var fieldGame = document.getElementById('field-game');
+      var fieldDate = document.getElementById('field-date');
+      var fieldOpponent = document.getElementById('field-opponent');
+      function openModal(btn) {
+        fieldGame.value = btn.getAttribute('data-game') || '';
+        fieldDate.value = btn.getAttribute('data-date') || '';
+        fieldOpponent.value = btn.getAttribute('data-opponent') || '';
+        label.textContent = fieldGame.value;
+        modal.classList.remove('hidden');
+        document.getElementById('parent-name').focus();
+      }
+      function closeModal() { modal.classList.add('hidden'); }
+      document.querySelectorAll('.claim-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () { openModal(btn); });
+      });
+      document.querySelectorAll('[data-close-modal]').forEach(function (el) {
+        el.addEventListener('click', closeModal);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+      });
+      if (new URLSearchParams(window.location.search).get('claimed') === '1') {
+        document.getElementById('claim-banner').classList.remove('hidden');
+      }
+      function snackJump() {
+        var raw = (location.hash || '').replace(/^#/, '');
+        if (!raw) return;
+        var h = decodeURIComponent(raw);
+        var id = h.replace(/^snack-/, '');
+        function norm(s) {
+          return String(s || '').toLowerCase().replace(/,/g, '').replace(/september/g, 'sept');
+        }
+        var nodes = document.querySelectorAll('.claim-btn, [data-date], [data-iso], #schedule tr');
+        var target = null;
+        for (var i = 0; i < nodes.length; i++) {
+          var d = nodes[i].getAttribute('data-date') || '';
+          var iso = nodes[i].getAttribute('data-iso') || '';
+          var cell = nodes[i].querySelector && nodes[i].querySelector('[data-iso], [data-date]');
+          if (cell) {
+            d = d || cell.getAttribute('data-date') || '';
+            iso = iso || cell.getAttribute('data-iso') || '';
+          }
+          if (d === h || d === id || iso === id || iso === h || (d && norm(d).indexOf(norm(id)) !== -1)) {
+            target = nodes[i].classList && nodes[i].classList.contains('claim-btn')
+              ? nodes[i]
+              : (nodes[i].querySelector && nodes[i].querySelector('.claim-btn')) || nodes[i];
+            break;
+          }
+        }
+        if (!target) return;
+        target.scrollIntoView({ block: 'center' });
+        if (target.classList && target.classList.contains('claim-btn')) target.click();
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', snackJump);
+      else setTimeout(snackJump, 80);
+    })();
+  </script>
+  <script src="claim-publish.js"></script>
   <script src="statusfy-fields.js"></script>
 </body>
 </html>
