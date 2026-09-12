@@ -11,7 +11,34 @@
 .week .field-pitch{fill:#721f2c;stroke:#2d0c13;stroke-width:2.2}
 .week .field-sub,.week .field-num{fill:#e8e2d4}
 .practice .field-pitch{fill:#f3e6e4;stroke:#a34752;stroke-width:1.6}
+.week{
+  transform-box:fill-box;
+  transform-origin:center;
+  animation:weekPulse 1.9s ease-in-out infinite;
+  filter:url(#weekGlow);
+}
+#week-pin{
+  transform-box:fill-box;
+  transform-origin:center bottom;
+  animation:pinBob 1.9s ease-in-out infinite;
+}
+@keyframes weekPulse{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-5px) scale(1.12)}
+}
+@keyframes pinBob{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-7px) scale(1.16)}
+}
+@media (prefers-reduced-motion:reduce){
+  .week,#week-pin{animation:none}
+}
 </style>
+<defs>
+  <filter id="weekGlow" x="-40%" y="-40%" width="180%" height="180%">
+    <feDropShadow dx="0" dy="2" stdDeviation="4.5" flood-color="#721f2c" flood-opacity=".75"/>
+  </filter>
+</defs>
 <rect width="920" height="560" fill="#e8eef2"/>
 <rect x="0" y="0" width="920" height="36" fill="#1d4f8a"/>
 <text x="24" y="24" fill="#fff" font-family="Outfit, Inter, sans-serif" font-size="16" font-weight="800">Sports Park</text>
