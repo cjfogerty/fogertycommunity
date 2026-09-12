@@ -51,7 +51,7 @@
 <text x="40" y="64" class="label-sm">← To the Renaud Center</text>
 <text x="780" y="148" class="label-sm">Maintenance</text>
 <rect x="200" y="348" width="86" height="46" rx="3" fill="#f4f1ea" stroke="#b7b3a6"/>
-<text x="243" y="368" text-anchor="middle" class="label-sm">Basketball &</text>
+<text x="243" y="368" text-anchor="middle" class="label-sm">Basketball &amp;</text>
 <text x="243" y="380" text-anchor="middle" class="label-sm">Pickleball</text>
 <rect x="198" y="430" width="36" height="18" rx="2" fill="#d9772a"/>
 <text x="216" y="442" text-anchor="middle" fill="#fff" font-size="6" font-weight="700" font-family="Inter, sans-serif">Small Pav.</text>
