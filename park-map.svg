@@ -1,6 +1,17 @@
-<svg class="park-map" viewBox="0 0 920 560" role="img" aria-labelledby="park-map-title park-map-desc">
+<svg class="park-map" viewBox="0 0 920 560" role="img" aria-labelledby="park-map-title park-map-desc" xmlns="http://www.w3.org/2000/svg">
 <title id="park-map-title">O’Fallon Sports Park field map</title>
-<desc id="park-map-desc">North Fields 6–12 across the top. Field 8 is the middle North field, split into 8A (west) and 8B (east). South Fields 1–5 sit below the creek. Parking lots are marked P. This week’s game field is highlighted.</desc>
+<desc id="park-map-desc">North Fields 6–12 across the top. Field 8B (east half of Field 8) is this week’s game field.</desc>
+<style>
+.field-pitch{fill:#f7f4ee;stroke:#8a8f7a;stroke-width:1.2}
+.field-lines{fill:none;stroke:#c5c9b8;stroke-width:.7}
+.field-num{font-family:Outfit,Inter,system-ui,sans-serif;font-weight:800;fill:#2f6b38;font-size:13px}
+.field-sub{font-family:Inter,system-ui,sans-serif;font-weight:700;fill:#2f6b38;font-size:8px}
+.label-sm{font-family:Inter,system-ui,sans-serif;font-weight:600;fill:#5a5248;font-size:8px}
+.label-md{font-family:Outfit,Inter,system-ui,sans-serif;font-weight:700;fill:#3d4a5c;font-size:11px}
+.week .field-pitch{fill:#721f2c;stroke:#2d0c13;stroke-width:2.2}
+.week .field-sub,.week .field-num{fill:#e8e2d4}
+.practice .field-pitch{fill:#f3e6e4;stroke:#a34752;stroke-width:1.6}
+</style>
 <rect width="920" height="560" fill="#e8eef2"/>
 <rect x="0" y="0" width="920" height="36" fill="#1d4f8a"/>
 <text x="24" y="24" fill="#fff" font-family="Outfit, Inter, sans-serif" font-size="16" font-weight="800">Sports Park</text>
@@ -27,9 +38,9 @@
 <g data-field="7B"><rect class="field-pitch" x="100" y="78" width="72" height="72" rx="3"/><line class="field-lines" x1="136" y1="78" x2="136" y2="150"/><text class="field-sub" x="136" y="118" text-anchor="middle">B</text></g>
 <text class="field-num" x="100" y="120" text-anchor="middle">7</text>
 <g data-field="8A"><rect class="field-pitch" x="196" y="78" width="78" height="86" rx="3"/><line class="field-lines" x1="235" y1="78" x2="235" y2="164"/><text class="field-sub" x="216" y="126" text-anchor="middle">A</text></g>
-<g data-field="8B"><rect class="field-pitch" x="274" y="78" width="78" height="86" rx="3"/><line class="field-lines" x1="313" y1="78" x2="313" y2="164"/><text class="field-sub" x="313" y="126" text-anchor="middle">B</text></g>
+<g class="week" data-field="8B"><rect class="field-pitch" x="274" y="78" width="78" height="86" rx="3"/><line class="field-lines" x1="313" y1="78" x2="313" y2="164"/><text class="field-sub" x="313" y="126" text-anchor="middle">B</text></g>
 <text class="field-num" x="274" y="128" text-anchor="middle">8</text>
-<g data-field="8C"><rect class="field-pitch" x="196" y="166" width="156" height="18" rx="2"/><text class="field-sub" x="274" y="179" text-anchor="middle">8C practice strip</text></g>
+<g class="practice" data-field="8C"><rect class="field-pitch" x="196" y="166" width="156" height="18" rx="2"/><text class="field-sub" x="274" y="179" text-anchor="middle">8C practice strip</text></g>
 <g data-field="9"><rect class="field-pitch" x="378" y="78" width="92" height="86" rx="3"/><line class="field-lines" x1="424" y1="78" x2="424" y2="164"/><ellipse class="field-lines" cx="424" cy="121" rx="10" ry="14"/><text class="field-num" x="424" y="126" text-anchor="middle">9</text></g>
 <g data-field="10"><rect class="field-pitch" x="492" y="70" width="78" height="70" rx="3"/><line class="field-lines" x1="531" y1="70" x2="531" y2="140"/><text class="field-num" x="531" y="110" text-anchor="middle">10</text></g>
 <rect x="574" y="108" width="46" height="16" rx="2" fill="#d9772a"/>
@@ -40,7 +51,7 @@
 <text x="40" y="64" class="label-sm">← To the Renaud Center</text>
 <text x="780" y="148" class="label-sm">Maintenance</text>
 <rect x="200" y="348" width="86" height="46" rx="3" fill="#f4f1ea" stroke="#b7b3a6"/>
-<text x="243" y="368" text-anchor="middle" class="label-sm">Basketball &amp;</text>
+<text x="243" y="368" text-anchor="middle" class="label-sm">Basketball &</text>
 <text x="243" y="380" text-anchor="middle" class="label-sm">Pickleball</text>
 <rect x="198" y="430" width="36" height="18" rx="2" fill="#d9772a"/>
 <text x="216" y="442" text-anchor="middle" fill="#fff" font-size="6" font-weight="700" font-family="Inter, sans-serif">Small Pav.</text>
@@ -61,5 +72,5 @@
 <rect x="548" y="372" width="52" height="16" rx="2" fill="#d9772a"/>
 <text x="574" y="383" text-anchor="middle" fill="#fff" font-size="6.5" font-weight="700" font-family="Inter, sans-serif">Concession</text>
 <g data-field="1"><rect class="field-pitch" x="688" y="352" width="100" height="86" rx="3"/><line class="field-lines" x1="738" y1="352" x2="738" y2="438"/><text class="field-num" x="738" y="402" text-anchor="middle">1</text></g>
-<g id="week-pin" class="week-pin"><path d="M313 64 l6 12 h-12 z" fill="#721f2c"/><circle cx="313" cy="58" r="11" fill="#721f2c" stroke="#e8e2d4" stroke-width="2"/><text x="313" y="62" text-anchor="middle" fill="#e8e2d4" font-size="8" font-weight="800" font-family="Outfit, sans-serif">8B</text></g>
+<g id="week-pin"><path d="M313 64 l6 12 h-12 z" fill="#721f2c"/><circle cx="313" cy="58" r="11" fill="#721f2c" stroke="#e8e2d4" stroke-width="2"/><text x="313" y="62" text-anchor="middle" fill="#e8e2d4" font-size="8" font-weight="800" font-family="Outfit, sans-serif">8B</text></g>
 </svg>
