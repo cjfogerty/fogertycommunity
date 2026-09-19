@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>St. Louis Metro Church Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    :root { --ink:#1c1917; --muted:#57534e; --paper:#faf7f2; --line:#e7e0d6; --accent:#7c2d12; }
+    * { box-sizing: border-box; }
+    html, body { margin:0; height:100%; font-family: Georgia, serif; color:var(--ink); background:var(--paper); }
+    body { display:grid; grid-template-rows:auto 1fr; }
+    header { display:flex; flex-wrap:wrap; gap:12px 20px; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid var(--line); background:#fff; }
+    header h1 { margin:0; font-size:18px; }
+    header p { margin:2px 0 0; font-size:12px; color:var(--muted); font-family:ui-sans-serif,system-ui,sans-serif; }
+    .controls { display:flex; flex-wrap:wrap; gap:8px; align-items:center; font-family:ui-sans-serif,system-ui,sans-serif; font-size:13px; }
+    select, button { font:inherit; border:1px solid var(--line); background:#fff; border-radius:8px; padding:6px 10px; }
+    button { cursor:pointer; }
+    button.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+    .layout { display:grid; grid-template-columns:1fr 340px; min-height:0; }
+    #map { min-height:0; }
+    aside { overflow:auto; border-left:1px solid var(--line); background:#fff; padding:14px 16px 28px; font-family:ui-sans-serif,system-ui,sans-serif; font-size:13px; }
+    aside h2 { font-size:15px; margin:0 0 6px; font-family:Georgia,serif; }
+    .statgrid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:10px 0 14px; }
+    .stat { background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:8px 10px; }
+    .stat b { display:block; font-size:16px; }
+    .stat span { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.04em; }
+    table { width:100%; border-collapse:collapse; font-size:12px; }
+    th, td { text-align:left; padding:5px 4px; border-bottom:1px solid var(--line); vertical-align:top; }
+    th { color:var(--muted); font-size:10px; text-transform:uppercase; }
+    a { color:var(--accent); }
+    .note { color:var(--muted); font-size:11px; line-height:1.45; margin-top:12px; }
+    .legend { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 12px; }
+    .swatch { display:inline-flex; align-items:center; gap:5px; font-size:11px; color:var(--muted); }
+    .swatch i { width:10px; height:10px; border-radius:50%; display:inline-block; }
+    .pin { width:34px; height:34px; border-radius:50%; border:2px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,.28); background:#7c2d12 center/18px no-repeat; display:block; }
+    @media (max-width:860px) { .layout { grid-template-columns:1fr; grid-template-rows:58vh auto; } aside { border-left:0; border-top:1px solid var(--line); } }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>St. Louis metro church map</h1>
+      <p>Click a marker or zip. Market share is a gravity estimate, not a membership roll.</p>
+    </div>
+    <div class="controls">
+      <label>Focus <select id="focus"></select></label>
+      <button type="button" id="toggleZips" class="active">Zip layer</button>
+      <button type="button" id="toggleShare" class="active">Color by share</button>
+    </div>
+  </header>
+  <div class="layout">
+    <div id="map"></div>
+    <aside>
+      <h2>How to read this</h2>
+      <p>Markers are campuses. Size tracks weekly attendance. Zip color is the selected church's modeled share of that zip's weekly churchgoers (Pew STL rate: 26% of residents).</p>
+      <div class="legend" id="legend"></div>
+      <div id="detail"></div>
+    </aside>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const COLORS = { evangelical:"#7c2d12", catholic:"#1e3a5f", mainline:"#3f6212", muslim:"#0f766e", jewish:"#6b21a8" };
+    const WEEKLY_RATE = 0.26;
+    const MAX_MILES = 16;
+    function domainOf(url) { try { return new URL(url).hostname.replace(/^www\./,""); } catch(e) { return ""; } }
+    function miles(aLat,aLng,bLat,bLng) {
+      const R=3958.8, toR=Math.PI/180;
+      const dLat=(bLat-aLat)*toR, dLng=(bLng-aLng)*toR;
+      const s=Math.sin(dLat/2)**2 + Math.cos(aLat*toR)*Math.cos(bLat*toR)*Math.sin(dLng/2)**2;
+      return 2*R*Math.asin(Math.min(1, Math.sqrt(s)));
+    }
+    function fmt(n) { if (n==null || Number.isNaN(n)) return "—"; return Math.round(n).toLocaleString(); }
+    function money(n) { if (n==null) return "—"; return n>=1000 ? "$"+Math.round(n/1000)+"k" : "$"+Math.round(n); }
+    function pct(n) { if (n==null || Number.isNaN(n)) return "—"; return (n*100).toFixed(1)+"%"; }
+    let CAMPUSES=[], ZIPS=[], map, zipLayer, markers=[], allocations={}, zipTotals={};
+    function buildModel() {
+      allocations={}; zipTotals={};
+      ZIPS.forEach(z => { allocations[z.zip]={}; z.potential=z.pop*WEEKLY_RATE; });
+      CAMPUSES.forEach(c => {
+        const weights=[]; let sum=0;
+        ZIPS.forEach(z => {
+          const d=miles(c.lat,c.lng,z.lat,z.lng);
+          if (d>MAX_MILES) return;
+          const w=z.pop/Math.pow(d+1.6,2);
+          weights.push({zip:z.zip,w}); sum+=w;
+        });
+        if (!sum) return;
+        weights.forEach(({zip,w}) => { allocations[zip][c.id]=(allocations[zip][c.id]||0)+c.weekly*(w/sum); });
+      });
+      ZIPS.forEach(z => { zipTotals[z.zip]=Object.values(allocations[z.zip]).reduce((a,b)=>a+b,0); });
+    }
+    function orgWeekly(org) { return CAMPUSES.filter(c=>c.org===org).reduce((s,c)=>s+(c.weekly||0),0); }
+    function orgs() {
+      const m={};
+      CAMPUSES.forEach(c => {
+        if (!m[c.org]) m[c.org]={org:c.org,tradition:c.tradition,weekly:0,campuses:0,website:c.website};
+        m[c.org].weekly += c.weekly||0; m[c.org].campuses += 1;
+      });
+      return Object.values(m).sort((a,b)=>b.weekly-a.weekly);
+    }
+    function shareColor(share) {
+      if (share<=0) return "#f3efe7";
+      const t=Math.min(1, share/0.22);
+      return "rgb("+Math.round(243-t*140)+","+Math.round(239-t*170)+","+Math.round(231-t*180)+")";
+    }
+    function popupHtml(c) {
+      return "<strong>"+c.org+"</strong><span>"+c.campus+" · "+c.denom+"</span><br>Weekly: <b>"+fmt(c.weekly)+"</b>"
+        +(c.members?" · Members: <b>"+fmt(c.members)+"</b>":"")
+        +(c.households?" · Households: <b>"+fmt(c.households)+"</b>":"")
+        +"<br>Est. weekly giving: <b>"+money(c.giving_weekly)+"</b><br><span style='color:#78716c'>"+c.address+"</span>"
+        +(c.website?"<br><a href='"+c.website+"' target='_blank' rel='noopener'>Website</a>":"")
+        +(c.notes?"<br><em style='color:#78716c'>"+c.notes+"</em>":"");
+    }
+    function renderMarkers() {
+      markers.forEach(m => map.removeLayer(m)); markers=[];
+      CAMPUSES.forEach(c => {
+        const size=Math.max(26, Math.min(48, 18+Math.sqrt(c.weekly||50)*0.55));
+        const color=COLORS[c.tradition]||"#444";
+        const icon=L.divIcon({ className:"", iconSize:[size,size], iconAnchor:[size/2,size/2],
+          html:"<span class='pin' style='width:"+size+"px;height:"+size+"px;background-color:"+color+";background-image:url(https://www.google.com/s2/favicons?domain="+domainOf(c.website||"")+"&sz=64)'></span>" });
+        const m=L.marker([c.lat,c.lng],{icon, riseOnHover:true}).addTo(map);
+        m.bindPopup(popupHtml(c));
+        m.on("click", () => showCampus(c));
+        markers.push(m);
+      });
+    }
+    function zipShare(zip, focusOrg) {
+      const row=allocations[zip]||{};
+      const pot=(ZIPS.find(z=>z.zip===zip)||{}).potential||1;
+      if (!focusOrg || focusOrg==="all") return (zipTotals[zip]||0)/pot;
+      const people=CAMPUSES.filter(c=>c.org===focusOrg).reduce((s,c)=>s+(row[c.id]||0),0);
+      return people/pot;
+    }
+    function renderZips() {
+      if (zipLayer) map.removeLayer(zipLayer);
+      const focus=document.getElementById("focus").value;
+      const show=document.getElementById("toggleZips").classList.contains("active");
+      const colorOn=document.getElementById("toggleShare").classList.contains("active");
+      if (!show) { zipLayer=null; return; }
+      zipLayer=L.layerGroup();
+      ZIPS.forEach(z => {
+        const share=zipShare(z.zip, focus);
+        const circle=L.circle([z.lat,z.lng], {
+          radius: Math.sqrt(z.pop)*18, color: colorOn?"#7c2d12":"#a8a29e", weight:1,
+          fillColor: colorOn?shareColor(share):"#e7e5e4", fillOpacity:0.45
+        });
+        circle.bindTooltip(z.zip+" "+z.city+"<br>"+fmt(z.pop)+" residents · "+fmt(z.potential)+" weekly churchgoers (est.)<br>"+(focus==="all"?"Tracked churches cover "+pct(share)+" of potential":focus+" share "+pct(share)));
+        circle.on("click", () => showZip(z, focus));
+        zipLayer.addLayer(circle);
+      });
+      zipLayer.addTo(map);
+    }
+    function showCampus(c) {
+      const focusSel=document.getElementById("focus");
+      if (focusSel.value!==c.org) { focusSel.value=c.org; renderZips(); }
+      const orgW=orgWeekly(c.org);
+      const nearby=ZIPS.map(z => ({
+        z, d:miles(c.lat,c.lng,z.lat,z.lng), share:zipShare(z.zip,c.org),
+        people:CAMPUSES.filter(x=>x.org===c.org).reduce((s,x)=>s+((allocations[z.zip]||{})[x.id]||0),0)
+      })).filter(r=>r.d<=MAX_MILES).sort((a,b)=>b.share-a.share).slice(0,8);
+      document.getElementById("detail").innerHTML = "<h2>"+c.org+"</h2><p>"+c.campus+" campus · "+c.denom+"</p>"
+        +"<div class='statgrid'><div class='stat'><span>Campus weekly</span><b>"+fmt(c.weekly)+"</b></div>"
+        +"<div class='stat'><span>Org weekly</span><b>"+fmt(orgW)+"</b></div>"
+        +"<div class='stat'><span>Members / HH</span><b>"+(c.members?fmt(c.members):(c.households?fmt(c.households)+" hh":"—"))+"</b></div>"
+        +"<div class='stat'><span>Weekly giving</span><b>"+money(c.giving_weekly)+"</b></div></div>"
+        +(c.website?"<p><a href='"+c.website+"' target='_blank' rel='noopener'>Website</a></p>":"")
+        +"<p class='note'>"+(c.notes||"")+" Geocode: "+c.geocode_quality+".</p>"
+        +"<h2>Modeled zip pull</h2><table><thead><tr><th>Zip</th><th>Miles</th><th>People</th><th>Share of zip</th></tr></thead><tbody>"
+        +nearby.map(r=>"<tr><td>"+r.z.zip+"<br><span style='color:#78716c'>"+r.z.city+"</span></td><td>"+r.d.toFixed(1)+"</td><td>"+fmt(r.people)+"</td><td>"+pct(r.share)+"</td></tr>").join("")
+        +"</tbody></table>";
+    }
+    function showZip(z) {
+      const row=allocations[z.zip]||{};
+      const byOrg={};
+      CAMPUSES.forEach(c => { if (row[c.id]) byOrg[c.org]=(byOrg[c.org]||0)+row[c.id]; });
+      const ranked=Object.entries(byOrg).sort((a,b)=>b[1]-a[1]);
+      const covered=zipTotals[z.zip]||0;
+      document.getElementById("detail").innerHTML = "<h2>"+z.zip+" · "+z.city+"</h2>"
+        +"<div class='statgrid'><div class='stat'><span>Population</span><b>"+fmt(z.pop)+"</b></div>"
+        +"<div class='stat'><span>Weekly potential</span><b>"+fmt(z.potential)+"</b></div>"
+        +"<div class='stat'><span>Tracked coverage</span><b>"+pct(covered/z.potential)+"</b></div>"
+        +"<div class='stat'><span>Uncaptured / other</span><b>"+pct(Math.max(0,1-covered/z.potential))+"</b></div></div>"
+        +"<p class='note'>Potential = population × 26% (Pew St. Louis weekly attendance). Coverage is only churches on this map.</p>"
+        +"<table><thead><tr><th>Church</th><th>Est. from zip</th><th>Share</th></tr></thead><tbody>"
+        +ranked.map(([org,n])=>"<tr><td>"+org+"</td><td>"+fmt(n)+"</td><td>"+pct(n/z.potential)+"</td></tr>").join("")
+        +"</tbody></table>";
+    }
+    function showOverview() {
+      const list=orgs();
+      const totalW=list.reduce((s,o)=>s+o.weekly,0);
+      document.getElementById("detail").innerHTML = "<h2>Tracked weekly bodies</h2>"
+        +"<div class='statgrid'><div class='stat'><span>Campuses plotted</span><b>"+CAMPUSES.length+"</b></div>"
+        +"<div class='stat'><span>Combined weekly</span><b>"+fmt(totalW)+"</b></div></div>"
+        +"<table><thead><tr><th>Church</th><th>Weekly</th><th>Sites</th></tr></thead><tbody>"
+        +list.map(o=>"<tr><td>"+o.org+"</td><td>"+fmt(o.weekly)+"</td><td>"+o.campuses+"</td></tr>").join("")
+        +"</tbody></table><p class='note'>Catholic weeklies are registered members × 26.5% Archdiocese Mass rate. Multi-site totals were split when a campus breakdown was not published.</p>";
+    }
+    async function boot() {
+      const [churches,zips]=await Promise.all([fetch("churches.json").then(r=>r.json()), fetch("zips.json").then(r=>r.json())]);
+      CAMPUSES=churches.campuses; ZIPS=zips.zips; buildModel();
+      const focus=document.getElementById("focus");
+      focus.innerHTML="<option value='all'>All tracked churches</option>"+orgs().map(o=>"<option value=\""+o.org+"\">"+o.org+"</option>").join("");
+      document.getElementById("legend").innerHTML=Object.entries(COLORS).map(([k,v])=>"<span class='swatch'><i style='background:"+v+"'></i>"+k+"</span>").join("");
+      map=L.map("map").setView([38.68,-90.55],10);
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",{attribution:"&copy; OpenStreetMap &copy; CARTO",maxZoom:19}).addTo(map);
+      renderMarkers(); renderZips(); showOverview();
+      focus.addEventListener("change", () => { renderZips(); const org=focus.value; if (org==="all") showOverview(); else { const c=CAMPUSES.find(x=>x.org===org); if (c) showCampus(c); } });
+      document.getElementById("toggleZips").addEventListener("click", e => { e.target.classList.toggle("active"); renderZips(); });
+      document.getElementById("toggleShare").addEventListener("click", e => { e.target.classList.toggle("active"); renderZips(); });
+    }
+    boot();
+  </script>
+</body>
+</html>
