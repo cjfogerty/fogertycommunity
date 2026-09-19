@@ -68,6 +68,11 @@ Most churches are IRS-exempt from filing Form 990 ("church" status under 170(b)(
 | Congregation B'nai Amoona | Conservative Judaism | Creve Coeur | Not publicly disclosed (~700 member households) | ~700 households | ~450 (est.) | Not publicly disclosed | bnaiamoona.com. |
 | LDS (Mormon) Stakes | Church of Jesus Christ of Latter-day Saints | St. Louis, St. Louis South, Lake St. Louis, Hazelwood | ~2,000–4,000 active metro (est. across ~15-20 wards) | ~10,000–15,000 (est. metro members) | ~5,000–7,500 (at 50% weekly) | Not publicly disclosed (tithing-based) | Wikipedia LDS Missouri; BYU study. High retention. |
 | Christian Science (multiple) | Christian Science | Creve Coeur, Brentwood, Central West End, etc. (~12 locations) | Small (typically <50 per service) | Not disclosed | <600 (est.) | Not publicly disclosed | christiansciencestl.org. |
+| First Baptist Church Arnold | Southern Baptist (SBC) | Arnold | 2,000+ (SermonAudio); claims 7,530 members | 7,530 (claimed) | ~4,500 (est. at 60% monthly) | Not publicly disclosed | fbcarnold.org; MBC annuals show high giving. One of largest SBC in Midwest per local history. |
+| St. Louis Family Church | Non-denominational (Pentecostal) | Chesterfield | 2,000+ (directory est.) | Not disclosed | ~2,000 (est.) | Not publicly disclosed | slfc.org; stlouischurches.org. Friday night services too. |
+| 2Rivers Church | Non-denominational | O'Fallon | ~1,000–1,500 (pastor est. "over a thousand"; 1,500+ through doors; kids 150-200) | Not disclosed | ~1,200 (est.) | ~$46k (on pace for $2.4M budget) | 2riverschurch.com; YouTube recaps. Budget grew from $560k to $2.1M. Venue at 96 added. |
+| The Well (UMC) | United Methodist (UMC) | Weldon Spring | 111 (2024 UMData) | 57 professing / 500 constituent | 111 (direct) | ~$3.4k (income ~$178k) | thewell636.org; UMData. Inclusive/progressive. |
+| The Well Church (Pentecostal) | Pentecostal / Full Preterist | Overland | Not publicly disclosed (small) | Not disclosed | <200 (est.) | Not publicly disclosed | thewellchurchstl.com. Led by Steve Magua. |
 
 ## Data gaps & next steps
 - Catholic parishes rarely publish weekly Mass counts; Archdiocese does annual October counts but releases aggregates, not per-parish except via FOIA/news. 2025 stats PDF now partially extracted.
@@ -95,3 +100,7 @@ Most churches are IRS-exempt from filing Form 990 ("church" status under 170(b)(
 - christiansciencestl.org
 - projects.propublica.org (Form 990 / church exemption checks)
 - public.files.capacity.com (Archdiocese 2025 parish statistics)
+- fbcarnold.org, mbcpathway.com (First Baptist Arnold)
+- slfc.org (St. Louis Family Church)
+- 2riverschurch.com (2Rivers)
+- thewell636.org, thewellchurchstl.com (The Well variants)
