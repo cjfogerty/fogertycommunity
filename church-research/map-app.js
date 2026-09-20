@@ -9,8 +9,8 @@ function miles(aLat,aLng,bLat,bLng) {
   const s=Math.sin(dLat/2)**2 + Math.cos(aLat*toR)*Math.cos(bLat*toR)*Math.sin(dLng/2)**2;
   return 2*R*Math.asin(Math.min(1, Math.sqrt(s)));
 }
-function fmt(n) { if (n==null || Number.isNaN(n)) return "—"; return Math.round(n).toLocaleString(); }
-function pct(n) { if (n==null || Number.isNaN(n)) return "—"; return (n*100).toFixed(0)+"%"; }
+function fmt(n) { if (n==null || Number.isNaN(n)) return "\u2014"; return Math.round(n).toLocaleString(); }
+function pct(n) { if (n==null || Number.isNaN(n)) return "\u2014"; return (n*100).toFixed(0)+"%"; }
 function family(c) {
   const d = (c.denom || "").toLowerCase();
   if (d.includes("greek")) return "Greek Orthodox";
@@ -199,7 +199,7 @@ function packsToGeo(packs) {
   return { type:"FeatureCollection", features };
 }
 async function boot() {
-  const packIds=[1,2,3,4,5,6];
+  const packIds=[1,2,3,4,5,6,7,8,9,10,11,12,13,14];
   const [churches,zips,extra,...packs]=await Promise.all([
     fetch("churches.json").then(r=>r.json()),
     fetch("zips.json").then(r=>r.json()),
@@ -210,7 +210,8 @@ async function boot() {
   CAMPUSES=churches.campuses.concat(extra.campuses||[]).filter(c => { if (seen[c.id]) return false; seen[c.id]=true; return true; });
   ZIPGEO=packsToGeo(packs);
   const geoBy={}; ZIPGEO.features.forEach(f => geoBy[f.properties.zip]=f.properties);
-  ZIPS=zips.zips.map(z => Object.assign({}, z, geoBy[z.zip]||{}));
+  ZIPS=ZIPGEO.features.map(f => Object.assign({}, f.properties));
+  (zips.zips||[]).forEach(z => { if (!geoBy[z.zip]) ZIPS.push(z); });
   buildModel(); populateFilterOptions(); fillFocus(false);
   map=L.map("map").setView([38.68,-90.55],10);
   L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",{attribution:"&copy; OpenStreetMap &copy; CARTO \u00b7 ZIP boundaries U.S. Census ZCTA",maxZoom:19}).addTo(map);
