@@ -1,5 +1,5 @@
 const COLORS = { evangelical:"#7c2d12", catholic:"#1e3a5f", mainline:"#3f6212", orthodox:"#b45309", muslim:"#0f766e", jewish:"#6b21a8" };
-const FAITH_LABEL = { evangelical:"Evangelical / Protestant", catholic:"Catholic", mainline:"Mainline Protestant", orthodox:"Orthodox", muslim:"Muslim", jewish:"Jewish" };
+const FAITH_LABEL = { evangelical:"Evangelical", catholic:"Catholic", mainline:"Mainline", orthodox:"Orthodox", muslim:"Muslim", jewish:"Jewish" };
 const WEEKLY_RATE = 0.26;
 const MAX_MILES = 16;
 function domainOf(url) { try { return new URL(url).hostname.replace(/^www\./,""); } catch(e) { return ""; } }
@@ -9,9 +9,9 @@ function miles(aLat,aLng,bLat,bLng) {
   const s=Math.sin(dLat/2)**2 + Math.cos(aLat*toR)*Math.cos(bLat*toR)*Math.sin(dLng/2)**2;
   return 2*R*Math.asin(Math.min(1, Math.sqrt(s)));
 }
-function fmt(n) { if (n==null || Number.isNaN(n)) return "\u2014"; return Math.round(n).toLocaleString(); }
-function money(n) { if (n==null) return "\u2014"; return n>=1000 ? "$"+Math.round(n/1000)+"k" : "$"+Math.round(n); }
-function pct(n) { if (n==null || Number.isNaN(n)) return "\u2014"; return (n*100).toFixed(1)+"%"; }
+function fmt(n) { if (n==null || Number.isNaN(n)) return "—"; return Math.round(n).toLocaleString(); }
+function money(n) { if (n==null) return "—"; return n>=1000 ? "$"+Math.round(n/1000)+"k" : "$"+Math.round(n); }
+function pct(n) { if (n==null || Number.isNaN(n)) return "—"; return (n*100).toFixed(0)+"%"; }
 function family(c) {
   const d = (c.denom || "").toLowerCase();
   if (d.includes("greek")) return "Greek Orthodox";
@@ -44,7 +44,13 @@ function sizeBucket(n) {
 function sizeLabel(b) {
   return { micro:"Micro under 100", small:"Small 100-399", mid:"Mid 400-999", large:"Large 1,000-2,499", mega:"Mega 2,500+" }[b] || b;
 }
-let CAMPUSES=[], ZIPS=[], map, zipLayer, markers=[], allocations={}, zipTotals={};
+function densityColor(d) {
+  if (d==null) return "#efe8dc";
+  const t = Math.max(0, Math.min(1, (Math.log(d) - Math.log(150)) / (Math.log(5000) - Math.log(150))));
+  return "rgb("+Math.round(243-t*115)+","+Math.round(239-t*155)+","+Math.round(230-t*180)+")";
+}
+let CAMPUSES=[], ZIPS=[], ZIPGEO=null, map, zipLayer, markers=[], allocations={}, zipTotals={};
+let pinnedZip=null, hoverZip=null;
 function visibleCampuses() {
   const faith = document.getElementById("filterFaith").value;
   const denom = document.getElementById("filterDenom").value;
@@ -70,7 +76,7 @@ function buildModel() {
     if (!sum) return;
     weights.forEach(({zip,w}) => { allocations[zip][c.id]=(allocations[zip][c.id]||0)+c.weekly*(w/sum); });
   });
-  ZIPS.forEach(z => { zipTotals[z.zip]=Object.values(allocations[z.zip]).reduce((a,b)=>a+b,0); });
+  ZIPS.forEach(z => { zipTotals[z.zip]=Object.values(allocations[z.zip]||{}).reduce((a,b)=>a+b,0); });
 }
 function orgWeekly(org) { return CAMPUSES.filter(c=>c.org===org).reduce((s,c)=>s+(c.weekly||0),0); }
 function orgs(list) {
@@ -81,63 +87,71 @@ function orgs(list) {
   });
   return Object.values(m).sort((a,b)=>b.weekly-a.weekly);
 }
-function shareColor(share) {
-  if (share<=0) return "#f3efe7";
-  const t=Math.min(1, share/0.22);
-  return "rgb("+Math.round(243-t*140)+","+Math.round(239-t*170)+","+Math.round(231-t*180)+")";
-}
 function popupHtml(c) {
-  return "<strong>"+c.org+"</strong><span>"+c.campus+" \u00b7 "+c.denom+"</span><br>Weekly: <b>"+fmt(c.weekly)+"</b> \u00b7 "+sizeLabel(sizeBucket(c.weekly))
+  return "<strong>"+c.org+"</strong><span>"+c.campus+" \u00b7 "+c.denom+"</span><br>Weekly: <b>"+fmt(c.weekly)+"</b>"
     +(c.members?" \u00b7 Members: <b>"+fmt(c.members)+"</b>":"")
-    +(c.households?" \u00b7 Households: <b>"+fmt(c.households)+"</b>":"")
-    +"<br>Est. weekly giving: <b>"+money(c.giving_weekly)+"</b><br><span style='color:#78716c'>"+c.address+"</span>"
-    +(c.website?"<br><a href='"+c.website+"' target='_blank' rel='noopener'>Website</a>":"")
-    +(c.notes?"<br><em style='color:#78716c'>"+c.notes+"</em>":"");
+    +"<br><span style='color:#78716c'>"+c.address+"</span>"
+    +(c.website?"<br><a href='"+c.website+"' target='_blank' rel='noopener'>Website</a>":"");
 }
 function renderMarkers() {
   markers.forEach(m => map.removeLayer(m)); markers=[];
   visibleCampuses().forEach(c => {
-    const size=Math.max(26, Math.min(48, 18+Math.sqrt(c.weekly||50)*0.55));
+    const size=Math.max(24, Math.min(44, 16+Math.sqrt(c.weekly||50)*0.5));
     const color=COLORS[c.tradition]||"#444";
     const icon=L.divIcon({ className:"", iconSize:[size,size], iconAnchor:[size/2,size/2],
       html:"<span class='pin' style='width:"+size+"px;height:"+size+"px;background-color:"+color+";background-image:url(https://www.google.com/s2/favicons?domain="+domainOf(c.website||"")+"&sz=64)'></span>" });
-    const m=L.marker([c.lat,c.lng],{icon, riseOnHover:true}).addTo(map);
+    const m=L.marker([c.lat,c.lng],{icon, riseOnHover:true, zIndexOffset:600}).addTo(map);
     m.bindPopup(popupHtml(c));
-    m.on("click", () => showCampus(c));
+    m.on("click", () => { pinnedZip=null; showCampus(c); });
     markers.push(m);
   });
 }
-function zipShare(zip, focusOrg, list) {
+function zipMix(zip, vis) {
   const row=allocations[zip]||{};
-  const pot=(ZIPS.find(z=>z.zip===zip)||{}).potential||1;
-  const pool = list || visibleCampuses();
-  if (!focusOrg || focusOrg==="all") {
-    const ids = new Set(pool.map(c=>c.id));
-    const sum = Object.entries(row).reduce((s,[id,n]) => ids.has(id)?s+n:s, 0);
-    return sum/pot;
-  }
-  const people=pool.filter(c=>c.org===focusOrg).reduce((s,c)=>s+(row[c.id]||0),0);
-  return people/pot;
+  const byFaith={}, byOrg={};
+  vis.forEach(c => {
+    const n=row[c.id]||0;
+    if (!n) return;
+    byFaith[c.tradition]=(byFaith[c.tradition]||0)+n;
+    byOrg[c.org]=(byOrg[c.org]||0)+n;
+  });
+  const tracked=Object.values(byFaith).reduce((a,b)=>a+b,0);
+  const top=Object.entries(byOrg).sort((a,b)=>b[1]-a[1]).slice(0,3);
+  return {byFaith, byOrg, tracked, top};
+}
+function styleZip(feat, highlighted) {
+  return {
+    color: highlighted ? "#1c1917" : "#c4b8a6",
+    weight: highlighted ? 2.4 : 0.8,
+    fillColor: densityColor(feat.properties.density),
+    fillOpacity: highlighted ? 0.72 : 0.46
+  };
 }
 function renderZips() {
   if (zipLayer) map.removeLayer(zipLayer);
-  const focus=document.getElementById("focus").value;
   const show=document.getElementById("toggleZips").classList.contains("active");
-  const colorOn=document.getElementById("toggleShare").classList.contains("active");
-  if (!show) { zipLayer=null; return; }
-  const vis = visibleCampuses();
-  zipLayer=L.layerGroup();
-  ZIPS.forEach(z => {
-    const share=zipShare(z.zip, focus, vis);
-    const circle=L.circle([z.lat,z.lng], {
-      radius: Math.sqrt(z.pop)*18, color: colorOn?"#7c2d12":"#a8a29e", weight:1,
-      fillColor: colorOn?shareColor(share):"#e7e5e4", fillOpacity:0.45
-    });
-    circle.bindTooltip(z.zip+" "+z.city+"<br>"+fmt(z.pop)+" residents \u00b7 "+fmt(z.potential)+" weekly churchgoers (est.)<br>"+(focus==="all"?"Visible churches cover "+pct(share)+" of potential":focus+" share "+pct(share)));
-    circle.on("click", () => showZip(z, vis));
-    zipLayer.addLayer(circle);
+  if (!show || !ZIPGEO) { zipLayer=null; return; }
+  zipLayer=L.geoJSON(ZIPGEO, {
+    style: feat => styleZip(feat, feat.properties.zip===(pinnedZip||hoverZip)),
+    onEachFeature: (feat, layer) => {
+      const p=feat.properties;
+      layer.on({
+        mouseover: () => { hoverZip=p.zip; if (!pinnedZip) { refreshZipStyles(); showZip(p); } },
+        mouseout: () => { hoverZip=null; if (!pinnedZip) { refreshZipStyles(); showOverview(); } },
+        click: () => { pinnedZip = (pinnedZip===p.zip) ? null : p.zip; refreshZipStyles(); if (pinnedZip) showZip(p); else showOverview(); }
+      });
+    }
+  }).addTo(map);
+  if (zipLayer.bringToBack) zipLayer.bringToBack();
+}
+function refreshZipStyles() {
+  if (!zipLayer) return;
+  const active = pinnedZip || hoverZip;
+  zipLayer.eachLayer(layer => {
+    const z=layer.feature.properties.zip;
+    layer.setStyle(styleZip(layer.feature, z===active));
+    if (z===active) layer.bringToFront();
   });
-  zipLayer.addTo(map);
 }
 function fillFocus(keepValue) {
   const focus=document.getElementById("focus");
@@ -151,57 +165,73 @@ function applyFilters() {
   renderMarkers();
   renderZips();
   const org=document.getElementById("focus").value;
-  if (org==="all") showOverview();
+  if (pinnedZip) {
+    const f=(ZIPGEO.features||[]).find(x=>x.properties.zip===pinnedZip);
+    if (f) showZip(f.properties); else showOverview();
+  } else if (org==="all") showOverview();
   else {
-    const c=visibleCampuses().find(x=>x.org===org) || CAMPUSES.find(x=>x.org===org);
+    const c=visibleCampuses().find(x=>x.org===org);
     if (c) showCampus(c); else showOverview();
   }
 }
-function showCampus(c) {
-  const vis=visibleCampuses();
-  const orgW=orgWeekly(c.org);
-  const nearby=ZIPS.map(z => ({
-    z, d:miles(c.lat,c.lng,z.lat,z.lng), share:zipShare(z.zip,c.org,vis),
-    people:CAMPUSES.filter(x=>x.org===c.org).reduce((s,x)=>s+((allocations[z.zip]||{})[x.id]||0),0)
-  })).filter(r=>r.d<=MAX_MILES).sort((a,b)=>b.share-a.share).slice(0,8);
-  document.getElementById("detail").innerHTML = "<h2>"+c.org+"</h2><p>"+c.campus+" \u00b7 "+c.denom+" \u00b7 "+sizeLabel(sizeBucket(c.weekly))+"</p>"
-    +"<div class='statgrid'><div class='stat'><span>Campus weekly</span><b>"+fmt(c.weekly)+"</b></div>"
-    +"<div class='stat'><span>Org weekly</span><b>"+fmt(orgW)+"</b></div>"
-    +"<div class='stat'><span>Members / HH</span><b>"+(c.members?fmt(c.members):(c.households?fmt(c.households)+" hh":"\u2014"))+"</b></div>"
-    +"<div class='stat'><span>Weekly giving</span><b>"+money(c.giving_weekly)+"</b></div></div>"
-    +(c.website?"<p><a href='"+c.website+"' target='_blank' rel='noopener'>Website</a></p>":"")
-    +"<p class='note'>"+(c.notes||"")+" Geocode: "+c.geocode_quality+".</p>"
-    +"<h2>Modeled zip pull</h2><table><thead><tr><th>Zip</th><th>Miles</th><th>People</th><th>Share of zip</th></tr></thead><tbody>"
-    +nearby.map(r=>"<tr><td>"+r.z.zip+"<br><span style='color:#78716c'>"+r.z.city+"</span></td><td>"+r.d.toFixed(1)+"</td><td>"+fmt(r.people)+"</td><td>"+pct(r.share)+"</td></tr>").join("")
-    +"</tbody></table>";
+function mixBar(byFaith, tracked) {
+  if (!tracked) return "<div class='mix'></div><div class='mix-key'>No tracked congregations modeled into this zip.</div>";
+  const order=["catholic","evangelical","mainline","orthodox","muslim","jewish"];
+  const segs=order.filter(k=>byFaith[k]).map(k=>"<span style='width:"+(100*byFaith[k]/tracked)+"%;background:"+COLORS[k]+"'></span>").join("");
+  const key=order.filter(k=>byFaith[k]).map(k=>"<span class='swatch'><i style='background:"+COLORS[k]+"'></i>"+(FAITH_LABEL[k]||k)+" "+pct(byFaith[k]/tracked)+"</span>").join("");
+  return "<div class='mix'>"+segs+"</div><div class='mix-key'>"+key+"</div>";
 }
-function showZip(z, vis) {
-  vis = vis || visibleCampuses();
-  const row=allocations[z.zip]||{};
-  const byOrg={};
-  vis.forEach(c => { if (row[c.id]) byOrg[c.org]=(byOrg[c.org]||0)+row[c.id]; });
-  const ranked=Object.entries(byOrg).sort((a,b)=>b[1]-a[1]);
-  const covered=ranked.reduce((s,pair)=>s+pair[1],0);
-  document.getElementById("detail").innerHTML = "<h2>"+z.zip+" \u00b7 "+z.city+"</h2>"
-    +"<div class='statgrid'><div class='stat'><span>Population</span><b>"+fmt(z.pop)+"</b></div>"
-    +"<div class='stat'><span>Weekly potential</span><b>"+fmt(z.potential)+"</b></div>"
-    +"<div class='stat'><span>Visible coverage</span><b>"+pct(covered/z.potential)+"</b></div>"
-    +"<div class='stat'><span>Uncaptured / other</span><b>"+pct(Math.max(0,1-covered/z.potential))+"</b></div></div>"
-    +"<p class='note'>Potential = population x 26% (Pew St. Louis weekly attendance). Coverage uses the current filters only.</p>"
-    +"<table><thead><tr><th>Church</th><th>Est. from zip</th><th>Share</th></tr></thead><tbody>"
-    +ranked.map(function(pair){return "<tr><td>"+pair[0]+"</td><td>"+fmt(pair[1])+"</td><td>"+pct(pair[1]/z.potential)+"</td></tr>";}).join("")
-    +"</tbody></table>";
+function legendHtml() {
+  return "<h2>How to read this</h2>"
+    +"<p class='hint'>Fills are people per square mile. Hover a zip. Click to pin it. Markers are campuses; size is weekly attendance.</p>"
+    +"<div class='ramp'></div><div class='ramp-labels'><span>Sparse</span><span>People / sq mi</span><span>Dense</span></div>"
+    +"<div class='legend' style='margin-top:10px'>"+Object.entries(COLORS).map(([k,v])=>"<span class='swatch'><i style='background:"+v+"'></i>"+(FAITH_LABEL[k]||k)+"</span>").join("")+"</div>";
 }
 function showOverview() {
   const vis=visibleCampuses();
   const list=orgs(vis);
   const totalW=list.reduce((s,o)=>s+o.weekly,0);
-  document.getElementById("detail").innerHTML = "<h2>Visible weekly bodies</h2>"
-    +"<div class='statgrid'><div class='stat'><span>Campuses shown</span><b>"+vis.length+" / "+CAMPUSES.length+"</b></div>"
+  document.getElementById("panel").innerHTML = legendHtml()
+    +"<h2>Visible weekly bodies</h2>"
+    +"<div class='statgrid two'><div class='stat'><span>Campuses</span><b>"+vis.length+" / "+CAMPUSES.length+"</b></div>"
     +"<div class='stat'><span>Combined weekly</span><b>"+fmt(totalW)+"</b></div></div>"
     +"<table><thead><tr><th>Church</th><th>Weekly</th><th>Sites</th></tr></thead><tbody>"
-    +list.map(o=>"<tr><td>"+o.org+"</td><td>"+fmt(o.weekly)+"</td><td>"+o.campuses+"</td></tr>").join("")
-    +"</tbody></table><p class='note'>Catholic weeklies are registered members x 26.5% Archdiocese Mass rate. Orthodox weeklies are estimates from ARDA 2020 + 2025 convert reporting.</p>";
+    +list.slice(0,12).map(o=>"<tr><td>"+o.org+"</td><td>"+fmt(o.weekly)+"</td><td>"+o.campuses+"</td></tr>").join("")
+    +"</tbody></table>"
+    +"<p class='note'>Pew puts St. Louis weekly worship at about 26% of residents. Religion mix on a zip is a gravity model of the congregations on this map, not a census of the zip.</p>";
+}
+function showZip(p) {
+  const vis=visibleCampuses();
+  const z = ZIPS.find(x=>x.zip===p.zip) || p;
+  const mix=zipMix(p.zip, vis);
+  const potential=(z.pop||p.pop)*WEEKLY_RATE;
+  const capture = potential ? mix.tracked/potential : 0;
+  document.getElementById("panel").innerHTML = legendHtml()
+    +"<h2>"+p.zip+" \u00b7 "+p.city+"</h2>"
+    +(pinnedZip===p.zip?"<p class='hint'>Pinned. Click the zip again to release.</p>":"<p class='hint'>Hovering. Click the zip to pin.</p>")
+    +"<div class='statgrid'><div class='stat'><span>Population</span><b>"+fmt(p.pop)+"</b></div>"
+    +"<div class='stat'><span>Land area</span><b>"+p.sq_miles+" mi\u00b2</b></div>"
+    +"<div class='stat'><span>Density</span><b>"+fmt(p.density)+"</b></div></div>"
+    +"<div class='statgrid two'><div class='stat'><span>Weekly worshipers (Pew 26%)</span><b>"+fmt(potential)+"</b></div>"
+    +"<div class='stat'><span>Tracked share of that</span><b>"+pct(capture)+"</b></div></div>"
+    +"<h2>Modeled mix among tracked bodies</h2>"
+    +mixBar(mix.byFaith, mix.tracked)
+    +"<h2>Largest pull into this zip</h2>"
+    +(mix.top.length
+      ? "<table><thead><tr><th>Location</th><th>Est. people</th></tr></thead><tbody>"
+        +mix.top.map(([org,n])=>"<tr><td>"+org+"</td><td>"+fmt(n)+"</td></tr>").join("")
+        +"</tbody></table>"
+      : "<p class='note'>No modeled pull from the campuses currently visible.</p>")
+    +"<p class='note'>26% is the metro weekly rate, applied evenly. The bar and top three are only the churches plotted here, allocated by distance and zip population.</p>";
+}
+function showCampus(c) {
+  const orgW=orgWeekly(c.org);
+  document.getElementById("panel").innerHTML = legendHtml()
+    +"<h2>"+c.org+"</h2><p class='hint'>"+c.campus+" \u00b7 "+c.denom+" \u00b7 "+sizeLabel(sizeBucket(c.weekly))+"</p>"
+    +"<div class='statgrid two'><div class='stat'><span>Campus weekly</span><b>"+fmt(c.weekly)+"</b></div>"
+    +"<div class='stat'><span>Org weekly</span><b>"+fmt(orgW)+"</b></div></div>"
+    +(c.website?"<p><a href='"+c.website+"' target='_blank' rel='noopener'>Website</a></p>":"")
+    +"<p class='note'>"+(c.notes||"")+"</p>";
 }
 function populateFilterOptions() {
   const faiths = Array.from(new Set(CAMPUSES.map(c=>c.tradition))).sort();
@@ -212,38 +242,44 @@ function populateFilterOptions() {
     denoms.map(d=>"<option value=\""+d+"\">"+d+"</option>").join("");
 }
 async function boot() {
-  const [churches,zips,extra]=await Promise.all([
+  const [churches,zips,extra,geo]=await Promise.all([
     fetch("churches.json").then(r=>r.json()),
     fetch("zips.json").then(r=>r.json()),
-    fetch("orthodox-extra.json").then(r=>r.json()).catch(function(){return {campuses:[]};})
+    fetch("orthodox-extra.json").then(r=>r.json()).catch(()=>({campuses:[]})),
+    fetch("zip-polygons.json").then(r=>r.json())
   ]);
   const seen={};
-  CAMPUSES=churches.campuses.concat(extra.campuses||[]).filter(c => {
-    if (seen[c.id]) return false; seen[c.id]=true; return true;
+  CAMPUSES=churches.campuses.concat(extra.campuses||[]).filter(c => { if (seen[c.id]) return false; seen[c.id]=true; return true; });
+  ZIPGEO=geo;
+  const geoBy={};
+  (geo.features||[]).forEach(f => { geoBy[f.properties.zip]=f.properties; });
+  ZIPS=zips.zips.map(z => {
+    const g=geoBy[z.zip]||{};
+    return Object.assign({}, z, {sq_miles:g.sq_miles, density:g.density, lat:g.lat||z.lat, lng:g.lng||z.lng});
   });
-  ZIPS=zips.zips; buildModel();
+  buildModel();
   populateFilterOptions();
   fillFocus(false);
-  document.getElementById("legend").innerHTML=Object.entries(COLORS).map(function(kv){return "<span class='swatch'><i style='background:"+kv[1]+"'></i>"+(FAITH_LABEL[kv[0]]||kv[0])+"</span>";}).join("");
   map=L.map("map").setView([38.68,-90.55],10);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",{attribution:"&copy; OpenStreetMap &copy; CARTO",maxZoom:19}).addTo(map);
-  renderMarkers(); renderZips(); showOverview();
-  ["filterFaith","filterDenom","filterSize"].forEach(function(id) {
-    document.getElementById(id).addEventListener("change", applyFilters);
-  });
-  document.getElementById("focus").addEventListener("change", function() {
-    renderZips();
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",{attribution:"&copy; OpenStreetMap &copy; CARTO \u00b7 ZIP boundaries U.S. Census ZCTA",maxZoom:19}).addTo(map);
+  renderZips();
+  renderMarkers();
+  showOverview();
+  ["filterFaith","filterDenom","filterSize"].forEach(id => document.getElementById(id).addEventListener("change", applyFilters));
+  document.getElementById("focus").addEventListener("change", () => {
+    pinnedZip=null;
     const org=document.getElementById("focus").value;
+    renderZips();
     if (org==="all") showOverview();
-    else { const c=visibleCampuses().find(function(x){return x.org===org;}); if (c) showCampus(c); }
+    else { const c=visibleCampuses().find(x=>x.org===org); if (c) showCampus(c); }
   });
-  document.getElementById("toggleZips").addEventListener("click", function(e) { e.target.classList.toggle("active"); renderZips(); });
-  document.getElementById("toggleShare").addEventListener("click", function(e) { e.target.classList.toggle("active"); renderZips(); });
-  document.getElementById("resetFilters").addEventListener("click", function() {
+  document.getElementById("toggleZips").addEventListener("click", e => { e.target.classList.toggle("active"); renderZips(); });
+  document.getElementById("resetFilters").addEventListener("click", () => {
     document.getElementById("filterFaith").value="all";
     document.getElementById("filterDenom").value="all";
     document.getElementById("filterSize").value="all";
     document.getElementById("focus").value="all";
+    pinnedZip=null; hoverZip=null;
     applyFilters();
   });
 }
