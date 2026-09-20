@@ -18,30 +18,38 @@
     select, button { font:13px ui-sans-serif,system-ui,sans-serif; border:1px solid var(--line); background:#fff; border-radius:8px; padding:6px 10px; color:var(--ink); }
     button { cursor:pointer; }
     button.active { background:var(--accent); color:#fff; border-color:var(--accent); }
-    .layout { display:grid; grid-template-columns:1fr 340px; min-height:0; }
+    .layout { display:grid; grid-template-columns:1fr 360px; min-height:0; }
     #map { min-height:0; }
     aside { overflow:auto; border-left:1px solid var(--line); background:#fff; padding:14px 16px 28px; font-family:ui-sans-serif,system-ui,sans-serif; font-size:13px; }
-    aside h2 { font-size:15px; margin:0 0 6px; font-family:Georgia,serif; }
-    .statgrid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:10px 0 14px; }
+    aside h2 { font-size:15px; margin:16px 0 6px; font-family:Georgia,serif; }
+    aside h2:first-child { margin-top:0; }
+    .statgrid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:7px; margin:10px 0 12px; }
+    .statgrid.two { grid-template-columns:1fr 1fr; }
     .stat { background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:8px 10px; }
-    .stat b { display:block; font-size:16px; }
-    .stat span { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.04em; }
+    .stat b { display:block; font-size:15px; }
+    .stat span { color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.04em; }
     table { width:100%; border-collapse:collapse; font-size:12px; }
     th, td { text-align:left; padding:5px 4px; border-bottom:1px solid var(--line); vertical-align:top; }
     th { color:var(--muted); font-size:10px; text-transform:uppercase; }
     a { color:var(--accent); }
-    .note { color:var(--muted); font-size:11px; line-height:1.45; margin-top:12px; }
-    .legend { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 12px; }
+    .note { color:var(--muted); font-size:11px; line-height:1.45; margin-top:10px; }
+    .legend { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 4px; }
     .swatch { display:inline-flex; align-items:center; gap:5px; font-size:11px; color:var(--muted); }
     .swatch i { width:10px; height:10px; border-radius:50%; display:inline-block; }
+    .ramp { height:8px; border-radius:99px; margin:6px 0 2px; background:linear-gradient(90deg,#f3efe6,#d7c4a3,#b08962,#7c4a1e); }
+    .ramp-labels { display:flex; justify-content:space-between; font-size:10px; color:var(--muted); }
+    .mix { display:flex; height:10px; border-radius:99px; overflow:hidden; background:#ece7de; margin:6px 0 8px; }
+    .mix span { display:block; height:100%; }
+    .mix-key { display:flex; flex-wrap:wrap; gap:8px 10px; font-size:11px; color:var(--muted); margin-bottom:8px; }
     .pin { width:34px; height:34px; border-radius:50%; border:2px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,.28); background:#7c2d12 center/18px no-repeat; display:block; }
-    @media (max-width:860px) { .layout { grid-template-columns:1fr; grid-template-rows:52vh auto; } aside { border-left:0; border-top:1px solid var(--line); } }
+    .hint { font-size:11px; color:var(--muted); margin:0 0 8px; }
+    @media (max-width:860px) { .layout { grid-template-columns:1fr; grid-template-rows:50vh auto; } aside { border-left:0; border-top:1px solid var(--line); } }
   </style>
 </head>
 <body>
   <header>
     <h1>St. Louis metro church map</h1>
-    <p class="lede">Click a marker or zip. Filters hide campuses; zip share uses only what is visible.</p>
+    <p class="lede">Zip fills are population density. Hover a zip for stats. Markers are campuses.</p>
     <div class="controls">
       <label>Faith
         <select id="filterFaith"><option value="all">All faiths</option></select>
@@ -63,18 +71,12 @@
         <select id="focus"></select>
       </label>
       <button type="button" id="toggleZips" class="active">Zip layer</button>
-      <button type="button" id="toggleShare" class="active">Color by share</button>
       <button type="button" id="resetFilters">Reset</button>
     </div>
   </header>
   <div class="layout">
     <div id="map"></div>
-    <aside>
-      <h2>How to read this</h2>
-      <p>Markers are campuses. Size tracks weekly attendance. Faith is the broad tradition. Denomination is the family. Size is campus weekly, not the whole multi-site org.</p>
-      <div class="legend" id="legend"></div>
-      <div id="detail"></div>
-    </aside>
+    <aside id="panel"></aside>
   </div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="map-app.js"></script>
