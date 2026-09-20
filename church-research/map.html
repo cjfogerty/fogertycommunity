@@ -60,7 +60,7 @@
   </div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    const COLORS = { evangelical:"#7c2d12", catholic:"#1e3a5f", mainline:"#3f6212", muslim:"#0f766e", jewish:"#6b21a8" };
+    const COLORS = { evangelical:"#7c2d12", catholic:"#1e3a5f", mainline:"#3f6212", orthodox:"#b45309", muslim:"#0f766e", jewish:"#6b21a8" };
     const WEEKLY_RATE = 0.26;
     const MAX_MILES = 16;
     function domainOf(url) { try { return new URL(url).hostname.replace(/^www\./,""); } catch(e) { return ""; } }
@@ -194,11 +194,15 @@
         +"<div class='stat'><span>Combined weekly</span><b>"+fmt(totalW)+"</b></div></div>"
         +"<table><thead><tr><th>Church</th><th>Weekly</th><th>Sites</th></tr></thead><tbody>"
         +list.map(o=>"<tr><td>"+o.org+"</td><td>"+fmt(o.weekly)+"</td><td>"+o.campuses+"</td></tr>").join("")
-        +"</tbody></table><p class='note'>Catholic weeklies are registered members × 26.5% Archdiocese Mass rate. Multi-site totals were split when a campus breakdown was not published.</p>";
+        +"</tbody></table><p class='note'>Catholic weeklies are registered members × 26.5% Archdiocese Mass rate. Orthodox weeklies are estimates from ARDA 2020 + 2025 convert reporting. Multi-site totals were split when a campus breakdown was not published.</p>";
     }
     async function boot() {
-      const [churches,zips]=await Promise.all([fetch("churches.json").then(r=>r.json()), fetch("zips.json").then(r=>r.json())]);
-      CAMPUSES=churches.campuses; ZIPS=zips.zips; buildModel();
+      const [churches,zips,extra]=await Promise.all([
+        fetch("churches.json").then(r=>r.json()),
+        fetch("zips.json").then(r=>r.json()),
+        fetch("orthodox-extra.json").then(r=>r.json()).catch(()=>({campuses:[]}))
+      ]);
+      CAMPUSES=churches.campuses.concat(extra.campuses||[]); ZIPS=zips.zips; buildModel();
       const focus=document.getElementById("focus");
       focus.innerHTML="<option value='all'>All tracked churches</option>"+orgs().map(o=>"<option value=\""+o.org+"\">"+o.org+"</option>").join("");
       document.getElementById("legend").innerHTML=Object.entries(COLORS).map(([k,v])=>"<span class='swatch'><i style='background:"+v+"'></i>"+k+"</span>").join("");
