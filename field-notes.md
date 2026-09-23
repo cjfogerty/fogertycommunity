@@ -20,3 +20,14 @@ Field status / rainouts: Always check Statusfy before leaving home.
 Official schedule: https://www.quickscores.com/Orgs/ResultsDisplay.php?OrgDir=ofallonmo&LeagueID=1742446
 
 If you arrive and can't find Field 8B/8C, text Coach – we'll guide you in!
+
+
+## Picture Day — Saturday, Sept 26
+
+Meet **8:15 AM** behind the concession stand between Fields 9 and 10 (45 minutes before the 9:00 AM game vs Campos on Field 8B).
+
+STLDIGITAL table: check in, order form, pay (card / Venmo / cash). Venmo requires proof of payment plus a completed form. Team name: **The Red Buffalo Maroonicorns**. Age group: **U5**.
+
+Individual photos first — do not wait for the whole team. Team photo once everyone is present, then go to Field 8B.
+
+Order form: https://drive.google.com/file/d/1V0PlHwwObGR5qA7vs1iw8YxXoEmUx1Br/view
