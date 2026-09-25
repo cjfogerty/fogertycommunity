@@ -1,6 +1,6 @@
 <svg class="park-map" viewBox="0 0 920 318" role="img" aria-labelledby="park-map-title park-map-desc" xmlns="http://www.w3.org/2000/svg">
 <title id="park-map-title">O’Fallon Sports Park field map</title>
-<desc id="park-map-desc">North Fields 6–12. The concession stand sits between Fields 9 and 10. Picture Day meet is behind that building (north side) at 8:15 AM. Game is on Field 8B at 9:00 AM.</desc>
+<desc id="park-map-desc">North Fields 6–12. A row of evergreens separates Fields 8 and 9. The concession stand sits between Fields 9 and 10. Picture Day meet is behind that building (north side) at 8:15 AM. Game is on Field 8B at 9:00 AM.</desc>
 <style>
 .field-pitch{fill:#f7f4ee;stroke:#8a8f7a;stroke-width:1.2}
 .field-lines{fill:none;stroke:#c5c9b8;stroke-width:.7}
@@ -75,6 +75,44 @@
 <g class="week" data-field="8B"><rect class="field-pitch" x="274" y="78" width="78" height="86" rx="3"/><line class="field-lines" x1="313" y1="78" x2="313" y2="164"/><text class="field-sub" x="313" y="126" text-anchor="middle">B</text></g>
 <text class="field-num" x="274" y="128" text-anchor="middle">8</text>
 <g class="practice" data-field="8C"><rect class="field-pitch" x="196" y="166" width="156" height="18" rx="2"/><text class="field-sub" x="274" y="179" text-anchor="middle">8C practice strip</text></g>
+<g id="tree-row-8-9" aria-hidden="true">
+  <title>Evergreen row between Fields 8 and 9</title>
+  <g transform="translate(363.8 86)">
+    <polygon points="0,-12 5.6,5 -5.6,5" fill="#4f7a4c"/>
+    <polygon points="0,-17 4.2,-3 -4.2,-3" fill="#5e8d58"/>
+    <rect x="-1.1" y="4.5" width="2.2" height="3.6" rx=".4" fill="#6a5138"/>
+  </g>
+  <g transform="translate(366.2 102)">
+    <polygon points="0,-12 5.6,5 -5.6,5" fill="#4f7a4c"/>
+    <polygon points="0,-17 4.2,-3 -4.2,-3" fill="#5e8d58"/>
+    <rect x="-1.1" y="4.5" width="2.2" height="3.6" rx=".4" fill="#6a5138"/>
+  </g>
+  <g transform="translate(363.8 118)">
+    <polygon points="0,-12 5.6,5 -5.6,5" fill="#4f7a4c"/>
+    <polygon points="0,-17 4.2,-3 -4.2,-3" fill="#5e8d58"/>
+    <rect x="-1.1" y="4.5" width="2.2" height="3.6" rx=".4" fill="#6a5138"/>
+  </g>
+  <g transform="translate(366.2 134)">
+    <polygon points="0,-12 5.6,5 -5.6,5" fill="#4f7a4c"/>
+    <polygon points="0,-17 4.2,-3 -4.2,-3" fill="#5e8d58"/>
+    <rect x="-1.1" y="4.5" width="2.2" height="3.6" rx=".4" fill="#6a5138"/>
+  </g>
+  <g transform="translate(363.8 150)">
+    <polygon points="0,-12 5.6,5 -5.6,5" fill="#4f7a4c"/>
+    <polygon points="0,-17 4.2,-3 -4.2,-3" fill="#5e8d58"/>
+    <rect x="-1.1" y="4.5" width="2.2" height="3.6" rx=".4" fill="#6a5138"/>
+  </g>
+  <g transform="translate(366.2 166)">
+    <polygon points="0,-12 5.6,5 -5.6,5" fill="#4f7a4c"/>
+    <polygon points="0,-17 4.2,-3 -4.2,-3" fill="#5e8d58"/>
+    <rect x="-1.1" y="4.5" width="2.2" height="3.6" rx=".4" fill="#6a5138"/>
+  </g>
+  <g transform="translate(363.8 182)">
+    <polygon points="0,-12 5.6,5 -5.6,5" fill="#4f7a4c"/>
+    <polygon points="0,-17 4.2,-3 -4.2,-3" fill="#5e8d58"/>
+    <rect x="-1.1" y="4.5" width="2.2" height="3.6" rx=".4" fill="#6a5138"/>
+  </g>
+</g>
 <g data-field="9"><rect class="field-pitch" x="378" y="78" width="92" height="86" rx="3"/><line class="field-lines" x1="424" y1="78" x2="424" y2="164"/><ellipse class="field-lines" cx="424" cy="121" rx="10" ry="14"/><text class="field-num" x="424" y="126" text-anchor="middle">9</text></g>
 <g data-field="10"><rect class="field-pitch" x="528" y="70" width="78" height="70" rx="3"/><line class="field-lines" x1="567" y1="70" x2="567" y2="140"/><text class="field-num" x="567" y="110" text-anchor="middle">10</text></g>
 <g id="north-concession">
