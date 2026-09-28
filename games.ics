@@ -39,9 +39,9 @@ UID:fogerty-u5-game-20260926@fogertycommunity
 DTSTAMP:20260831T000000Z
 DTSTART;TZID=America/Chicago:20260926T090000
 DTEND;TZID=America/Chicago:20260926T100000
-SUMMARY:U5 Soccer Game – Fogerty vs Campos (Home) · Picture Day
+SUMMARY:U5 Soccer Game – Fogerty vs Campos (Home)
 LOCATION:Sports Park concession (Fields 9-10) then Field 8B\, 3589 Hwy K\, O'Fallon\, MO 63368
-DESCRIPTION:PICTURE DAY. Meet 8:15 AM behind the concession stand between Fields 9 and 10. Game 9:00 AM on Field 8B vs Campos.\nWear jersey. Team name on form: The Red Buffalo Maroonicorns · U5.\nOrder form: https://drive.google.com/file/d/1V0PlHwwObGR5qA7vs1iw8YxXoEmUx1Br/view\nField status: https://statusfy.com/6363339900
+DESCRIPTION:Home game vs Campos on Field 8B.\nField status: https://statusfy.com/6363339900
 STATUS:CONFIRMED
 SEQUENCE:0
 END:VEVENT

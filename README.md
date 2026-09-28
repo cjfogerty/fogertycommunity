@@ -16,7 +16,6 @@ This simple shared space has everything to stay organized, engaged, and help you
 
 ## Quick Links
 - [QuickScores · U5 Girls schedule](https://www.quickscores.com/Orgs/ResultsDisplay.php?OrgDir=ofallonmo&LeagueID=1742446)
-- [Picture Day Order Form](https://drive.google.com/file/d/1V0PlHwwObGR5qA7vs1iw8YxXoEmUx1Br/view) (Sept 26)
 - Google Calendar invites have been sent – please accept!
 
 <details>
@@ -48,7 +47,7 @@ All games at **Sports Park Field 8B**. Home/away is listed as QuickScores lists 
 | --- | --- | --- | --- | --- |
 | Sat, Sept 12 | 9:00 AM | Need Coach 1 | Home | Season opener |
 | Sat, Sept 19 | — | Bye | — | No game |
-| Sat, Sept 26 | 9:00 AM | Campos | Home | Picture Day |
+| Sat, Sept 26 | 9:00 AM | Campos | Home | |
 | Sat, Oct 3 | 9:00 AM | Need Coach 2 | Away | Same complex, Field 8B |
 | Sat, Oct 10 | 10:00 AM | Cooksey | Away | |
 | Sat, Oct 17 | 9:00 AM | Need Coach 1 | Away | |
