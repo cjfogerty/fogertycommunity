@@ -46,11 +46,11 @@
       var style = '\n    .park-map{width:100%;height:auto;display:block}\n    .park-map-open{position:relative;display:block;width:100%;padding:0;border:0;background:#e8eef2;cursor:zoom-in}\n    .park-map-open:focus-visible{outline:3px solid #721f2c;outline-offset:2px}\n    .park-map-hint{position:absolute;right:10px;bottom:10px;z-index:2;border-radius:999px;background:rgba(114,31,44,.92);color:#f6efe6;font-size:11px;font-weight:700;letter-spacing:.02em;padding:6px 10px;box-shadow:0 6px 16px rgba(45,12,19,.25)}\n    .park-map-dialog{padding:0;border:0;width:100vw;max-width:100vw;height:100vh;max-height:100vh;background:#14080b}\n    .park-map-dialog::backdrop{background:rgba(20,8,11,.72)}\n    .park-map-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;background:#721f2c;color:#f6efe6}\n    .park-map-bar p{margin:0;font-size:13px;font-weight:700}\n    .park-map-bar .sub{display:block;font-size:10px;font-weight:600;opacity:.8}\n    .park-map-tools{display:flex;gap:6px}\n    .park-map-tools button{min-width:36px;height:36px;border:0;border-radius:10px;background:#f6efe6;color:#721f2c;font-size:18px;font-weight:800;cursor:pointer}\n    .park-map-tools [data-map-close]{background:#2d0c13;color:#f6efe6;font-size:13px;padding:0 10px}\n    .park-map-stage{height:calc(100vh - 56px);overflow:auto;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom;background:#0f1c24}\n    .park-map-stage img{display:block;width:160%;max-width:none;height:auto;margin:0 auto;transform-origin:center top}\n';
       html = html.replace('  </style>', style + '  </style>');
 
-      html = html.replace('Jerseys handed out', 'Team kit');
-      html = html.replace('Wear your jersey Saturday', 'Wear your jersey for games');
+      html = html.replace('Jerseys handed out', 'Wednesday');
+      html = html.replace('Wear your jersey Saturday', 'See you at practice on Wednesday!');
       html = html.replace(
         'Jerseys and socks were handed out at Wednesday practice. Wear the jersey for Saturday’s first game.',
-        'Jerseys and socks were handed out at practice. Wear the jersey for Saturday games.'
+        'Why did the soccer player bring string to practice? So they could tie the score!'
       );
 
       var isPractice = nextUp.mode === 'practice';
