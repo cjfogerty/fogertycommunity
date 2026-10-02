@@ -1,0 +1,95 @@
+{
+  "game": "MapTap",
+  "site": "https://www.maptap.gg",
+  "asOf": "2026-10-02",
+  "puzzleToday": 833,
+  "note": "Board totals are from the Oct 2, 2026 group screenshot. September/October game counts are the integer split that fits those averages. Only Casey's Oct 2 game is a logged daily score.",
+  "bands": [
+    { "name": "Human GPS", "min": 925, "max": 949, "blurb": "These scores are actually starting to get good." }
+  ],
+  "players": [
+    {
+      "id": "peter",
+      "name": "Peter Boggs",
+      "color": "#f0b429",
+      "total": 12976,
+      "games": 16,
+      "avg": 811.0,
+      "septAvg": 808.4,
+      "octAvg": 829.5,
+      "septGames": 14,
+      "octGames": 2
+    },
+    {
+      "id": "andy",
+      "name": "Andy Clemens",
+      "color": "#ff6b4a",
+      "total": 12952,
+      "games": 15,
+      "avg": 863.5,
+      "septAvg": 871.1,
+      "octAvg": 757.0,
+      "septGames": 14,
+      "octGames": 1
+    },
+    {
+      "id": "sam",
+      "name": "Sam Stuffelbaum",
+      "color": "#4aa3ff",
+      "total": 12763,
+      "games": 15,
+      "avg": 850.9,
+      "septAvg": 848.0,
+      "octAvg": 891.0,
+      "septGames": 14,
+      "octGames": 1
+    },
+    {
+      "id": "ben",
+      "name": "Ben Hababurger",
+      "color": "#3dcf8e",
+      "total": 11560,
+      "games": 16,
+      "avg": 722.5,
+      "septAvg": 714.4,
+      "octAvg": 779.0,
+      "septGames": 14,
+      "octGames": 2
+    },
+    {
+      "id": "micah",
+      "name": "Micah Northcutt",
+      "color": "#b388ff",
+      "total": 9687,
+      "games": 12,
+      "avg": 807.2,
+      "septAvg": 793.8,
+      "octAvg": 955.0,
+      "septGames": 11,
+      "octGames": 1
+    },
+    {
+      "id": "casey",
+      "name": "Casey",
+      "color": "#ff4f8b",
+      "you": true,
+      "total": 941,
+      "games": 1,
+      "avg": 941.0,
+      "septAvg": null,
+      "octAvg": 941.0,
+      "septGames": 0,
+      "octGames": 1
+    }
+  ],
+  "logs": [
+    {
+      "id": "casey-833",
+      "playerId": "casey",
+      "date": "2026-10-02",
+      "puzzle": 833,
+      "score": 941,
+      "achievements": ["Human GPS", "Overachiever", "And 3 more"]
+    }
+  ]
+}

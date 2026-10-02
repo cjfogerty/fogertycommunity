@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boyz MapTap · Fogerty</title>
+  <meta name="theme-color" content="#14080c" />
+  <meta name="description" content="Boyz MapTap — daily MapTap.gg scores, averages, and the race." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #14080c;
+      --panel: rgba(28, 14, 18, 0.78);
+      --line: rgba(246, 239, 230, 0.12);
+      --cream: #f6efe6;
+      --muted: #b9a8a4;
+      --maroon: #8a2a36;
+      --maroon-2: #c24a58;
+      --gold: #f0b429;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--cream);
+      background:
+        radial-gradient(900px 480px at 80% -10%, rgba(194, 74, 88, 0.35), transparent 55%),
+        radial-gradient(700px 420px at -10% 20%, rgba(74, 163, 255, 0.16), transparent 50%),
+        linear-gradient(180deg, #1a0a0e 0%, #0c1218 42%, #090d12 100%);
+      min-height: 100vh;
+    }
+    a { color: var(--gold); }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 20px 16px 64px; }
+    header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
+    .kicker { letter-spacing: 0.18em; text-transform: uppercase; font-size: 11px; color: var(--gold); font-weight: 700; }
+    h1 { font-family: Outfit, Inter, sans-serif; font-size: clamp(32px, 6vw, 54px); line-height: 0.95; margin: 6px 0 8px; }
+    .sub { color: var(--muted); max-width: 62ch; margin: 0; }
+    .nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav a, button.ghost {
+      text-decoration: none; color: var(--cream); border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04); border-radius: 999px; padding: 8px 12px; font-size: 13px; font-weight: 600;
+    }
+    .grid { display: grid; gap: 12px; margin-top: 18px; }
+    .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (min-width: 800px) { .kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    .card {
+      background: var(--panel); border: 1px solid var(--line); border-radius: 18px;
+      padding: 14px 14px 16px; backdrop-filter: blur(10px);
+    }
+    .card h2 { font-family: Outfit, sans-serif; font-size: 18px; margin: 0 0 4px; }
+    .hint { color: var(--muted); font-size: 12px; margin: 0 0 12px; }
+    .kpi .label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+    .kpi .value { font-family: Outfit, sans-serif; font-size: 28px; margin-top: 4px; }
+    .kpi .meta { color: var(--muted); font-size: 12px; margin-top: 2px; }
+    .you { outline: 1px solid rgba(255, 79, 139, 0.55); }
+    .tools { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 12px; }
+    .tools button, .seg button {
+      border: 1px solid var(--line); background: transparent; color: var(--cream);
+      border-radius: 999px; padding: 7px 11px; font-weight: 600; font-size: 12px; cursor: pointer;
+    }
+    .tools button.on, .seg button.on { background: var(--cream); color: #1a0508; }
+    .seg { display: flex; gap: 6px; flex-wrap: wrap; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { text-align: right; padding: 10px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+    th { color: var(--muted); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; }
+    td:first-child, th:first-child { text-align: left; }
+    tr.pick { background: rgba(255,255,255,0.04); }
+    .name { display: flex; align-items: center; gap: 8px; font-weight: 700; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+    .badge { font-size: 10px; border-radius: 999px; padding: 2px 6px; background: rgba(255,79,139,0.2); color: #ffb3cc; }
+    .scroll { overflow-x: auto; }
+    svg.chart { width: 100%; height: auto; display: block; }
+    .logs { display: grid; gap: 8px; }
+    .log {
+      display: grid; grid-template-columns: 88px 1fr auto; gap: 8px; align-items: center;
+      padding: 10px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--line);
+    }
+    .score { font-family: Outfit, sans-serif; font-size: 26px; }
+    form.logger { display: grid; gap: 8px; }
+    @media (min-width: 720px) { form.logger { grid-template-columns: 1.2fr 0.8fr 0.6fr 0.6fr auto; align-items: end; } }
+    label { display: grid; gap: 4px; font-size: 11px; color: var(--muted); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    input, select {
+      background: #0d1116; color: var(--cream); border: 1px solid var(--line); border-radius: 10px;
+      padding: 10px; font: inherit;
+    }
+    button.primary {
+      background: linear-gradient(180deg, #c24a58, #8a2a36); color: white; border: 0; border-radius: 12px;
+      padding: 11px 14px; font-weight: 800; cursor: pointer;
+    }
+    .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+    .chip { font-size: 11px; padding: 3px 7px; border-radius: 999px; background: rgba(240,180,41,0.15); color: var(--gold); }
+    .foot { margin-top: 18px; color: var(--muted); font-size: 12px; }
+    .two { display: grid; gap: 12px; }
+    @media (min-width: 860px) { .two { grid-template-columns: 1.4fr 0.8fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="kicker">Fogerty · MapTap.gg</div>
+        <h1>Boyz MapTap</h1>
+        <p class="sub">Daily geography scores for the group. Board snapshot is Oct 2, 2026. Casey’s 941 on puzzle #833 is logged. Tap a player, sort the table, flip the chart, and drop in the next score.</p>
+      </div>
+      <div class="nav">
+        <a href="../">Team page</a>
+        <a href="https://www.maptap.gg" target="_blank" rel="noopener">maptap.gg</a>
+      </div>
+    </header>
+
+    <section class="grid kpis" id="kpis"></section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2>Averages over time</h2>
+        <p class="hint" id="chart-hint">September vs October vs all-time. Tap a bar to pin that player.</p>
+        <div class="seg" id="modes">
+          <button type="button" class="on" data-mode="avg">Averages</button>
+          <button type="button" data-mode="month">Month swing</button>
+          <button type="button" data-mode="total">Season total</button>
+        </div>
+        <svg class="chart" id="chart" viewBox="0 0 720 320" role="img" aria-label="Score chart"></svg>
+      </article>
+      <article class="card you" id="casey-card">
+        <h2>Casey · today</h2>
+        <p class="hint">MapTap #833 · Oct 2, 2026</p>
+        <div class="score">941</div>
+        <div class="chips" style="margin-top:8px">
+          <span class="chip">Human GPS · 925–949</span>
+          <span class="chip">Overachiever</span>
+          <span class="chip">+3 more</span>
+        </div>
+        <p class="hint" style="margin-top:12px">First logged game. October rank is live in the table — one game, so it does not own the season-total race.</p>
+        <div id="casey-rank"></div>
+      </article>
+    </section>
+
+    <section class="card" style="margin-top:12px">
+      <h2>Leaderboard</h2>
+      <p class="hint">Sort any column. October game counts are the split that fits the board averages.</p>
+      <div class="scroll">
+        <table id="board">
+          <thead>
+            <tr>
+              <th data-k="name">Player</th>
+              <th data-k="total">All-time total</th>
+              <th data-k="games">Games</th>
+              <th data-k="avg">All-time avg</th>
+              <th data-k="septAvg">September</th>
+              <th data-k="octAvg">October</th>
+              <th data-k="swing">Oct swing</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid two" style="margin-top:12px">
+      <article class="card">
+        <h2>Daily log</h2>
+        <p class="hint">Seeded with Casey’s #833. Scores you add stay on this phone and update the board.</p>
+        <div class="logs" id="logs"></div>
+      </article>
+      <article class="card">
+        <h2>Log a score</h2>
+        <p class="hint">Same player + date replaces that day’s score.</p>
+        <form class="logger" id="log-form">
+          <label>Player
+            <select id="player"></select>
+          </label>
+          <label>Date
+            <input id="date" type="date" value="2026-10-02" required />
+          </label>
+          <label>Score
+            <input id="score" type="number" min="0" max="2000" step="1" required placeholder="941" />
+          </label>
+          <label>Puzzle #
+            <input id="puzzle" type="number" min="1" step="1" placeholder="833" />
+          </label>
+          <button class="primary" type="submit">Add score</button>
+        </form>
+        <div class="tools">
+          <button type="button" id="export">Download scores.json</button>
+          <button type="button" id="reset">Clear phone logs</button>
+        </div>
+        <p class="hint" id="save-note"></p>
+      </article>
+    </section>
+    <p class="foot">Board photo Oct 2, 2026. Peter leads the season total by 24 over Andy. Micah has the hottest October average on the original board (955). Casey’s Human GPS band is 925–949.</p>
+  </div>
+  <script>
+    const SEED = {"game":"MapTap","site":"https://www.maptap.gg","asOf":"2026-10-02","puzzleToday":833,"note":"Board totals are from the Oct 2, 2026 group screenshot. September/October game counts are the integer split that fits those averages. Only Casey's Oct 2 game is a logged daily score.","players":[{"id":"peter","name":"Peter Boggs","color":"#f0b429","total":12976,"games":16,"avg":811,"septAvg":808.4,"octAvg":829.5,"septGames":14,"octGames":2},{"id":"andy","name":"Andy Clemens","color":"#ff6b4a","total":12952,"games":15,"avg":863.5,"septAvg":871.1,"octAvg":757,"septGames":14,"octGames":1},{"id":"sam","name":"Sam Stuffelbaum","color":"#4aa3ff","total":12763,"games":15,"avg":850.9,"septAvg":848,"octAvg":891,"septGames":14,"octGames":1},{"id":"ben","name":"Ben Hababurger","color":"#3dcf8e","total":11560,"games":16,"avg":722.5,"septAvg":714.4,"octAvg":779,"septGames":14,"octGames":2},{"id":"micah","name":"Micah Northcutt","color":"#b388ff","total":9687,"games":12,"avg":807.2,"septAvg":793.8,"octAvg":955,"septGames":11,"octGames":1},{"id":"casey","name":"Casey","color":"#ff4f8b","you":true,"total":941,"games":1,"avg":941,"septAvg":null,"octAvg":941,"septGames":0,"octGames":1}],"logs":[{"id":"casey-833","playerId":"casey","date":"2026-10-02","puzzle":833,"score":941,"achievements":["Human GPS","Overachiever","And 3 more"]}]};
+    const KEY = "boyzmaptap-logs-v1";
+    let data = structuredClone(SEED);
+    let mode = "avg";
+    let sortKey = "total";
+    let sortDir = -1;
+    let pinned = "casey";
+
+    function n(v) { return v == null || Number.isNaN(v) ? "—" : Number(v).toLocaleString(undefined, { maximumFractionDigits: 1 }); }
+    function loadExtra() {
+      try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { return []; }
+    }
+    function saveExtra(rows) { localStorage.setItem(KEY, JSON.stringify(rows)); }
+    function merge() {
+      const extra = loadExtra();
+      const logs = data.logs.slice();
+      extra.forEach(function (row) {
+        const i = logs.findIndex(function (l) { return l.playerId === row.playerId && l.date === row.date; });
+        if (i >= 0) logs[i] = row; else logs.push(row);
+      });
+      data.logs = logs.sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+      data.players.forEach(function (p) {
+        const mine = data.logs.filter(function (l) { return l.playerId === p.id && l.date > data.asOf; });
+        if (!mine.length || p.id === "casey") {
+          if (p.id === "casey") {
+            const all = data.logs.filter(function (l) { return l.playerId === "casey"; });
+            p.games = all.length;
+            p.total = all.reduce(function (s, l) { return s + Number(l.score); }, 0);
+            p.avg = p.games ? p.total / p.games : null;
+            const oct = all.filter(function (l) { return l.date.slice(5, 7) === "10"; });
+            const sept = all.filter(function (l) { return l.date.slice(5, 7) === "09"; });
+            p.octGames = oct.length; p.septGames = sept.length;
+            p.octAvg = oct.length ? oct.reduce(function (s, l) { return s + Number(l.score); }, 0) / oct.length : null;
+            p.septAvg = sept.length ? sept.reduce(function (s, l) { return s + Number(l.score); }, 0) / sept.length : null;
+          }
+          return;
+        }
+        const add = mine.reduce(function (s, l) { return s + Number(l.score); }, 0);
+        p.games += mine.length;
+        p.total += add;
+        p.avg = p.total / p.games;
+        const octAdd = mine.filter(function (l) { return l.date.slice(5, 7) === "10"; });
+        if (octAdd.length) {
+          const base = (p.octAvg || 0) * (p.octGames || 0);
+          p.octGames = (p.octGames || 0) + octAdd.length;
+          p.octAvg = (base + octAdd.reduce(function (s, l) { return s + Number(l.score); }, 0)) / p.octGames;
+        }
+      });
+    }
+    function swing(p) {
+      if (p.septAvg == null || p.octAvg == null) return null;
+      return p.octAvg - p.septAvg;
+    }
+    function renderKpis() {
+      const players = data.players;
+      const total = players.reduce(function (s, p) { return s + p.total; }, 0);
+      const games = players.reduce(function (s, p) { return s + p.games; }, 0);
+      const leader = players.slice().sort(function (a, b) { return b.total - a.total; })[0];
+      const hot = players.filter(function (p) { return p.octAvg != null; }).sort(function (a, b) { return b.octAvg - a.octAvg; })[0];
+      const casey = players.find(function (p) { return p.id === "casey"; });
+      const cards = [
+        ["Group average", (total / games).toFixed(1), games + " games · " + n(total) + " points"],
+        ["Season lead", leader.name.split(" ")[0], n(leader.total) + " total"],
+        ["October heat", hot.name.split(" ")[0] + " " + n(hot.octAvg), "best October average"],
+        ["Casey", n(casey.avg), casey.games + " game" + (casey.games === 1 ? "" : "s") + " logged"]
+      ];
+      document.getElementById("kpis").innerHTML = cards.map(function (c, i) {
+        return '<article class="card kpi' + (i === 3 ? " you" : "") + '"><div class="label">' + c[0] + '</div><div class="value">' + c[1] + '</div><div class="meta">' + c[2] + '</div></article>';
+      }).join("");
+      const octRank = players.filter(function (p) { return p.octAvg != null; }).sort(function (a, b) { return b.octAvg - a.octAvg; });
+      const place = octRank.findIndex(function (p) { return p.id === "casey"; }) + 1;
+      const ahead = octRank[place - 2];
+      document.getElementById("casey-rank").innerHTML = '<p class="hint">October average rank ' + place + ' of ' + octRank.length + (ahead ? " · " + n(ahead.octAvg - casey.octAvg) + " behind " + ahead.name.split(" ")[0] : "") + ".</p>";
+    }
+    function renderTable() {
+      const rows = data.players.slice().sort(function (a, b) {
+        const av = sortKey === "name" ? a.name : sortKey === "swing" ? swing(a) : a[sortKey];
+        const bv = sortKey === "name" ? b.name : sortKey === "swing" ? swing(b) : b[sortKey];
+        if (av == null) return 1;
+        if (bv == null) return -1;
+        if (av < bv) return -1 * sortDir;
+        if (av > bv) return 1 * sortDir;
+        return 0;
+      });
+      document.querySelector("#board tbody").innerHTML = rows.map(function (p) {
+        const s = swing(p);
+        return '<tr class="' + (p.id === pinned ? "pick" : "") + '" data-id="' + p.id + '"><td><span class="name"><i class="dot" style="background:' + p.color + '"></i>' + p.name + (p.you ? ' <span class="badge">you</span>' : "") + '</span></td><td>' + n(p.total) + '</td><td>' + p.games + '</td><td>' + n(p.avg) + '</td><td>' + n(p.septAvg) + '</td><td>' + n(p.octAvg) + '</td><td>' + (s == null ? "—" : (s > 0 ? "+" : "") + s.toFixed(1)) + '</td></tr>';
+      }).join("");
+    }
+    function renderChart() {
+      const svg = document.getElementById("chart");
+      const players = data.players;
+      const w = 720, h = 320, pad = { l: 42, r: 12, t: 18, b: 54 };
+      const innerW = w - pad.l - pad.r;
+      const innerH = h - pad.t - pad.b;
+      const max = mode === "total" ? Math.max.apply(null, players.map(function (p) { return p.total; })) : 1000;
+      function y(v) { return pad.t + innerH - (v / max) * innerH; }
+      let marks = "";
+      for (let g = 0; g <= 4; g++) {
+        const v = max * g / 4;
+        const yy = y(v);
+        marks += '<line x1="' + pad.l + '" x2="' + (w - pad.r) + '" y1="' + yy + '" y2="' + yy + '" stroke="rgba(246,239,230,0.08)"/>';
+        marks += '<text x="4" y="' + (yy + 4) + '" fill="#b9a8a4" font-size="11">' + (mode === "total" ? Math.round(v / 1000) + "k" : Math.round(v)) + '</text>';
+      }
+      const slot = innerW / players.length;
+      players.forEach(function (p, i) {
+        const x = pad.l + i * slot;
+        if (mode === "avg") {
+          const bw = slot * 0.22;
+          [["septAvg", 0.18, "rgba(255,255,255,0.35)"], ["octAvg", 0.42, p.color], ["avg", 0.66, "rgba(240,180,41,0.85)"]].forEach(function (spec) {
+            const v = p[spec[0]];
+            if (v == null) return;
+            marks += '<rect data-id="' + p.id + '" x="' + (x + slot * spec[1]) + '" y="' + y(v) + '" width="' + bw + '" height="' + (y(0) - y(v)) + '" rx="4" fill="' + spec[2] + '"/>';
+          });
+        } else if (mode === "month") {
+          const s = swing(p) || 0;
+          const mid = y(0) - (y(0) - y(max)) * 0; 
+          const zero = pad.t + innerH / 2;
+          const scale = (innerH / 2) / 200;
+          const hh = s * scale;
+          marks += '<rect data-id="' + p.id + '" x="' + (x + slot * 0.28) + '" y="' + (s >= 0 ? zero - hh : zero) + '" width="' + (slot * 0.44) + '" height="' + Math.abs(hh) + '" rx="4" fill="' + p.color + '"/>';
+        } else {
+          marks += '<rect data-id="' + p.id + '" x="' + (x + slot * 0.22) + '" y="' + y(p.total) + '" width="' + (slot * 0.56) + '" height="' + (y(0) - y(p.total)) + '" rx="5" fill="' + p.color + '"/>';
+        }
+        marks += '<text data-id="' + p.id + '" x="' + (x + slot / 2) + '" y="' + (h - 28) + '" text-anchor="middle" fill="' + (p.id === pinned ? "#fff" : "#b9a8a4") + '" font-size="11">' + p.name.split(" ")[0] + '</text>';
+      });
+      if (mode === "month") {
+        marks += '<line x1="' + pad.l + '" x2="' + (w - pad.r) + '" y1="' + (pad.t + innerH / 2) + '" y2="' + (pad.t + innerH / 2) + '" stroke="rgba(246,239,230,0.25)"/>';
+      }
+      svg.innerHTML = marks;
+      document.getElementById("chart-hint").textContent = mode === "avg"
+        ? "Gray September · color October · gold all-time. Tap a bar to pin."
+        : mode === "month"
+          ? "October average minus September. Up is hotter."
+          : "Season point total. Peter and Andy are 24 apart.";
+    }
+    function renderLogs() {
+      document.getElementById("logs").innerHTML = data.logs.map(function (l) {
+        const p = data.players.find(function (x) { return x.id === l.playerId; }) || { name: l.playerId, color: "#fff" };
+        const ach = (l.achievements || []).map(function (a) { return '<span class="chip">' + a + '</span>'; }).join(" ");
+        return '<div class="log"><div><div class="score">' + l.score + '</div></div><div><strong>' + p.name + '</strong><div class="hint" style="margin:2px 0 0">' + l.date + (l.puzzle ? " · #" + l.puzzle : "") + '</div><div class="chips">' + ach + '</div></div><i class="dot" style="background:' + p.color + '"></i></div>';
+      }).join("") || '<p class="hint">No daily scores yet.</p>';
+    }
+    function renderPlayers() {
+      const sel = document.getElementById("player");
+      sel.innerHTML = data.players.map(function (p) {
+        return '<option value="' + p.id + '">' + p.name + '</option>';
+      }).join("");
+      sel.value = "casey";
+    }
+    function render() { merge(); renderKpis(); renderTable(); renderChart(); renderLogs(); }
+    document.getElementById("modes").addEventListener("click", function (e) {
+      const b = e.target.closest("button"); if (!b) return;
+      mode = b.getAttribute("data-mode");
+      document.querySelectorAll("#modes button").forEach(function (x) { x.classList.toggle("on", x === b); });
+      renderChart();
+    });
+    document.querySelector("#board thead").addEventListener("click", function (e) {
+      const th = e.target.closest("th"); if (!th) return;
+      const k = th.getAttribute("data-k");
+      if (sortKey === k) sortDir *= -1; else { sortKey = k; sortDir = k === "name" ? 1 : -1; }
+      renderTable();
+    });
+    document.getElementById("board").addEventListener("click", function (e) {
+      const tr = e.target.closest("tr"); if (!tr) return;
+      pinned = tr.getAttribute("data-id"); renderTable(); renderChart();
+    });
+    document.getElementById("chart").addEventListener("click", function (e) {
+      const id = e.target.getAttribute("data-id"); if (!id) return;
+      pinned = id; renderTable(); renderChart();
+    });
+    document.getElementById("log-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const row = {
+        id: document.getElementById("player").value + "-" + document.getElementById("date").value,
+        playerId: document.getElementById("player").value,
+        date: document.getElementById("date").value,
+        puzzle: Number(document.getElementById("puzzle").value) || null,
+        score: Number(document.getElementById("score").value)
+      };
+      if (row.score >= 925 && row.score <= 949) row.achievements = ["Human GPS"];
+      const extra = loadExtra().filter(function (l) { return !(l.playerId === row.playerId && l.date === row.date); });
+      extra.push(row);
+      saveExtra(extra);
+      document.getElementById("save-note").textContent = "Saved on this phone. Download scores.json if you want it on the site for everyone.";
+      render();
+    });
+    document.getElementById("export").addEventListener("click", function () {
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "scores.json";
+      a.click();
+    });
+    document.getElementById("reset").addEventListener("click", function () {
+      localStorage.removeItem(KEY);
+      data = structuredClone(SEED);
+      document.getElementById("save-note").textContent = "Phone logs cleared.";
+      render();
+    });
+    renderPlayers();
+    render();
+    fetch("scores.json").then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+      if (!j || !j.players) return;
+      data = j;
+      renderPlayers();
+      render();
+    }).catch(function () {});
+  </script>
+</body>
+</html>
