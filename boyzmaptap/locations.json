@@ -1,0 +1,154 @@
+{
+  "comment": "One object in days[] per puzzle, locations in play order. Append a day by adding another object with date (YYYY-MM-DD), puzzle, and five locations (city, region, country, continent, lat, lng, funFact). Round scores live on logs in scores.json (rounds[] plus the share-text final in score). The daily job .github/workflows/maptap-locations.yml fills a missing day from https://maptap.gg/data/this_day_in_history/{Month}{D}.js and will not overwrite a day that is already here. funFact is MapTap's short place line unless a hand-written fact is already stored.",
+  "puzzleEpoch": "2024-06-21",
+  "roundMultipliers": [1, 1, 2, 3, 3],
+  "multiplierNote": "MapTap weights the five round scores by 1, 1, 2, 3, 3. Store score from the share text's Final score line. Do not recompute it from rounds.",
+  "days": [
+    {
+      "date": "2026-10-01",
+      "puzzle": 832,
+      "sourceUrl": "https://maptap.gg/data/this_day_in_history/October1.js",
+      "locations": [
+        {
+          "order": 1,
+          "city": "Kagoshima",
+          "region": null,
+          "country": "Japan",
+          "continent": "Asia",
+          "lat": 31.5966,
+          "lng": 130.5571,
+          "title": "Mouth-Chewed Sake",
+          "funFact": "An active volcano, Sakurajima, sits just across the bay from the city.",
+          "sources": ["https://en.wikipedia.org/wiki/Sakurajima"]
+        },
+        {
+          "order": 2,
+          "city": "Caen",
+          "region": null,
+          "country": "France",
+          "continent": "Europe",
+          "lat": 49.1829,
+          "lng": -0.3707,
+          "title": "The Dyer's Formula",
+          "funFact": "William the Conqueror is buried here, in the abbey he founded.",
+          "sources": ["https://en.wikipedia.org/wiki/William_the_Conqueror"]
+        },
+        {
+          "order": 3,
+          "city": "Cagliari",
+          "region": "Sardinia",
+          "country": "Italy",
+          "continent": "Europe",
+          "lat": 39.2238,
+          "lng": 9.1217,
+          "title": "The Secret to 110",
+          "funFact": "Capital of Sardinia, Italy's second-largest island.",
+          "sources": ["https://en.wikipedia.org/wiki/Cagliari"]
+        },
+        {
+          "order": 4,
+          "city": "Juba",
+          "region": null,
+          "country": "South Sudan",
+          "continent": "Africa",
+          "lat": 4.8594,
+          "lng": 31.5713,
+          "title": "The Last Guinea Worm",
+          "funFact": "Capital of South Sudan, independent since 2011.",
+          "sources": ["https://en.wikipedia.org/wiki/South_Sudan"]
+        },
+        {
+          "order": 5,
+          "city": "Ciudad del Este",
+          "region": null,
+          "country": "Paraguay",
+          "continent": "South America",
+          "lat": -25.5097,
+          "lng": -54.6111,
+          "title": "Mr. October",
+          "funFact": "The city sits where Paraguay, Brazil, and Argentina meet.",
+          "sources": ["https://en.wikipedia.org/wiki/Triple_Frontier"]
+        }
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "puzzle": 833,
+      "sourceUrl": "https://maptap.gg/data/this_day_in_history/October2.js",
+      "locations": [
+        {
+          "order": 1,
+          "city": "Belfast",
+          "region": "Northern Ireland",
+          "country": "United Kingdom",
+          "continent": "Europe",
+          "lat": 54.5973,
+          "lng": -5.9301,
+          "title": "Three Sister Ships",
+          "funFact": "Capital of Northern Ireland, at the mouth of the River Lagan. Belfast built the Olympic, Titanic, and Britannic. Violet Jessop survived the sinkings of both the Titanic and the Britannic.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Violet_Jessop",
+            "https://en.wikipedia.org/wiki/Titanic"
+          ]
+        },
+        {
+          "order": 2,
+          "city": "Marrakech",
+          "region": null,
+          "country": "Morocco",
+          "continent": "Africa",
+          "lat": 31.6295,
+          "lng": -7.9811,
+          "title": "A Crowd of Donkeys",
+          "funFact": "The High Atlas mountains rise just to the south. A tour through Morocco and North Africa led Kate and Nina Hosali to found the working-animal charity SPANA on October 2, 1923.",
+          "sources": [
+            "https://www.workinganimals.org/about-us/history/",
+            "https://en.wikipedia.org/wiki/Nina_Hosali"
+          ]
+        },
+        {
+          "order": 3,
+          "city": "Gainesville",
+          "region": "Florida",
+          "country": "USA",
+          "continent": "North America",
+          "lat": 29.6516,
+          "lng": -82.3248,
+          "title": "The Awful Drink",
+          "funFact": "Home of the University of Florida, in Gainesville since 1906. In 1965 Robert Cade's lab there mixed the first version of the drink that became Gatorade.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Gatorade",
+            "https://en.wikipedia.org/wiki/University_of_Florida"
+          ]
+        },
+        {
+          "order": 4,
+          "city": "Szeged",
+          "region": null,
+          "country": "Hungary",
+          "continent": "Europe",
+          "lat": 46.253,
+          "lng": 20.1414,
+          "title": "The Teddy Bear",
+          "funFact": "Hungary's paprika capital, on the Tisza. Katalin Karikó studied at the University of Szeged and shared the 2023 Nobel Prize for mRNA discoveries. Leaving Hungary in 1985, she and her husband sewed the cash from selling their car into their daughter's teddy bear.",
+          "sources": [
+            "https://www.nobelprize.org/prizes/medicine/2023/kariko/facts/",
+            "https://www.nobelprize.org/stories/women-who-changed-science/katalin-kariko/"
+          ]
+        },
+        {
+          "order": 5,
+          "city": "Kathmandu",
+          "region": null,
+          "country": "Nepal",
+          "continent": "Asia",
+          "lat": 27.7172,
+          "lng": 85.324,
+          "title": "Goddess to Mortal",
+          "funFact": "About 1,400 meters up, in a bowl-shaped valley. Kathmandu's Kumari is a young girl worshipped as a living goddess, a tradition centuries old.",
+          "sources": ["https://en.wikipedia.org/wiki/Kumari_(goddess)"]
+        }
+      ]
+    }
+  ]
+}
