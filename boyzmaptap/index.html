@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Boyz MapTap · Fogerty</title>
   <meta name="theme-color" content="#14080c" />
-  <meta name="description" content="Boyz MapTap — daily MapTap.gg scores, averages, and the race." />
+  <meta name="description" content="Boyz MapTap — daily MapTap.gg scores, places, and region callouts." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@
     header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
     .kicker { letter-spacing: 0.18em; text-transform: uppercase; font-size: 11px; color: var(--gold); font-weight: 700; }
     h1 { font-family: Outfit, Inter, sans-serif; font-size: clamp(32px, 6vw, 54px); line-height: 0.95; margin: 6px 0 8px; }
-    .sub { color: var(--muted); max-width: 62ch; margin: 0; }
+    .sub { color: var(--muted); max-width: 68ch; margin: 0; }
     .nav { display: flex; gap: 8px; flex-wrap: wrap; }
     .nav a, button.ghost {
       text-decoration: none; color: var(--cream); border: 1px solid var(--line);
@@ -56,23 +56,42 @@
     .kpi .meta { color: var(--muted); font-size: 12px; margin-top: 2px; }
     .you { outline: 1px solid rgba(255, 79, 139, 0.55); }
     .tools { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 12px; }
-    .tools button, .seg button {
+    .tools button, .seg button, .day-chips button {
       border: 1px solid var(--line); background: transparent; color: var(--cream);
       border-radius: 999px; padding: 7px 11px; font-weight: 600; font-size: 12px; cursor: pointer;
     }
-    .tools button.on, .seg button.on { background: var(--cream); color: #1a0508; }
-    .seg { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tools button.on, .seg button.on, .day-chips button.on { background: var(--cream); color: #1a0508; }
+    .seg, .day-chips { display: flex; gap: 6px; flex-wrap: wrap; }
     table { width: 100%; border-collapse: collapse; font-size: 13px; }
     th, td { text-align: right; padding: 10px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
     th { color: var(--muted); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; }
     td:first-child, th:first-child { text-align: left; }
     tr.pick { background: rgba(255,255,255,0.04); }
     .name { display: flex; align-items: center; gap: 8px; font-weight: 700; }
-    .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex: none; }
     .badge { font-size: 10px; border-radius: 999px; padding: 2px 6px; background: rgba(255,79,139,0.2); color: #ffb3cc; }
     .scroll { overflow-x: auto; }
-    svg.chart { width: 100%; height: auto; display: block; }
-    .logs { display: grid; gap: 8px; }
+    svg.chart, svg.route-map { width: 100%; height: auto; display: block; }
+    .map-wrap { margin: 4px 0 12px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: #07141c; }
+    .route-head { display: flex; justify-content: space-between; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
+    .places { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+    .place {
+      min-width: 210px; flex: 1; background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px 12px;
+    }
+    .place .top { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+    .place .ord { font-family: Outfit, sans-serif; font-size: 20px; line-height: 1; }
+    .place .city { font-weight: 800; font-size: 16px; margin-top: 4px; }
+    .place .where, .place .story { color: var(--muted); font-size: 12px; }
+    .place .story { color: var(--gold); letter-spacing: 0.04em; text-transform: uppercase; font-size: 10px; font-weight: 700; margin-top: 6px; }
+    .place .fact { font-size: 12.5px; line-height: 1.45; margin: 8px 0 0; }
+    .place .scores, .round-pips, .chips { display: flex; gap: 4px; flex-wrap: wrap; }
+    .place .scores { margin-top: 8px; }
+    .mini, .chip { font-size: 11px; padding: 3px 7px; border-radius: 999px; background: rgba(240,180,41,0.15); color: var(--gold); }
+    .mini { background: rgba(255,255,255,0.06); color: var(--cream); }
+    .logs { display: grid; gap: 12px; }
+    .day-block { display: grid; gap: 8px; }
+    .day-label { font-size: 12px; color: var(--muted); }
     .log {
       display: grid; grid-template-columns: 88px 1fr auto; gap: 8px; align-items: center;
       padding: 10px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--line);
@@ -80,17 +99,28 @@
     .score { font-family: Outfit, sans-serif; font-size: 26px; }
     form.logger { display: grid; gap: 8px; }
     @media (min-width: 720px) { form.logger { grid-template-columns: 1.2fr 0.8fr 0.6fr 0.6fr auto; align-items: end; } }
+    .span-all { grid-column: 1 / -1; }
     label { display: grid; gap: 4px; font-size: 11px; color: var(--muted); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
-    input, select {
+    input, select, textarea {
       background: #0d1116; color: var(--cream); border: 1px solid var(--line); border-radius: 10px;
       padding: 10px; font: inherit;
     }
+    textarea.share-box { min-height: 74px; resize: vertical; text-transform: none; letter-spacing: 0; font-weight: 500; font-size: 14px; }
     button.primary {
       background: linear-gradient(180deg, #c24a58, #8a2a36); color: white; border: 0; border-radius: 12px;
       padding: 11px 14px; font-weight: 800; cursor: pointer;
     }
-    .chips { display: flex; gap: 6px; flex-wrap: wrap; }
-    .chip { font-size: 11px; padding: 3px 7px; border-radius: 999px; background: rgba(240,180,41,0.15); color: var(--gold); }
+    .callgrid { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(168px, 1fr)); }
+    .call .label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+    .call .who { font-family: Outfit, sans-serif; font-size: 22px; line-height: 1.1; margin-top: 4px; }
+    .call .meta { color: var(--muted); font-size: 12px; margin-top: 4px; }
+    .player-lines { display: grid; gap: 6px; margin-top: 10px; }
+    .player-line {
+      display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap;
+      font-size: 13px; padding: 8px 10px; border-radius: 12px;
+      background: rgba(255,255,255,0.03); border: 1px solid var(--line);
+    }
+    .player-line span:last-child { color: var(--muted); text-align: right; }
     .foot { margin-top: 18px; color: var(--muted); font-size: 12px; }
     .two { display: grid; gap: 12px; }
     @media (min-width: 860px) { .two { grid-template-columns: 1.4fr 0.8fr; } }
@@ -102,7 +132,7 @@
       <div>
         <div class="kicker">Fogerty · MapTap.gg</div>
         <h1>Boyz MapTap</h1>
-        <p class="sub">Daily geography scores for the group. Board snapshot is Oct 2, 2026. Casey’s 941 on puzzle #833 is logged. Tap a player, sort the table, flip the chart, and drop in the next score.</p>
+        <p class="sub">Daily geography scores for the group. The season table is the Oct 2, 2026 photo. Round scores from the chat are tied to each day’s places, underneath.</p>
       </div>
       <div class="nav">
         <a href="../">Team page</a>
@@ -111,6 +141,23 @@
     </header>
 
     <section class="grid kpis" id="kpis"></section>
+
+    <section class="card" id="route-card" style="margin-top:12px">
+      <div class="route-head">
+        <div>
+          <h2 id="route-title">Today’s route</h2>
+          <p class="hint" id="route-hint">Five places, in the order MapTap played them.</p>
+        </div>
+        <div class="day-chips" id="day-chips"></div>
+      </div>
+      <div id="route-body"></div>
+    </section>
+
+    <section class="card" style="margin-top:12px">
+      <h2>Region callouts</h2>
+      <p class="hint">From round scores only, so a total with no breakdown stays out of this. A continent lead can be one round; the count is on the card. Toughest and easiest wait for two scores on the same place.</p>
+      <div id="callouts"></div>
+    </section>
 
     <section class="grid two">
       <article class="card">
@@ -132,14 +179,14 @@
           <span class="chip">Overachiever</span>
           <span class="chip">+3 more</span>
         </div>
-        <p class="hint" style="margin-top:12px">First logged game. October rank is live in the table — one game, so it does not own the season-total race.</p>
+        <p class="hint" style="margin-top:12px">First logged game. The 941 is the total only — round scores aren’t in yet, so Casey stays out of the region callouts. October rank is live in the table.</p>
         <div id="casey-rank"></div>
       </article>
     </section>
 
     <section class="card" style="margin-top:12px">
       <h2>Leaderboard</h2>
-      <p class="hint">Sort any column. October game counts are the split that fits the board averages.</p>
+      <p class="hint">Sort any column. These season numbers are the Oct 2 photo. Daily share scores are not added on top of them.</p>
       <div class="scroll">
         <table id="board">
           <thead>
@@ -161,13 +208,17 @@
     <section class="grid two" style="margin-top:12px">
       <article class="card">
         <h2>Daily log</h2>
-        <p class="hint">Seeded with Casey’s #833. Scores you add stay on this phone and update the board.</p>
+        <p class="hint">#833 has Andy 987, Sam 919, Ben 866, and Casey’s 941 total. #832 has Sam 891. Finals are the share-text totals. Scores you add stay on this phone.</p>
         <div class="logs" id="logs"></div>
       </article>
       <article class="card">
         <h2>Log a score</h2>
-        <p class="hint">Same player + date replaces that day’s score.</p>
+        <p class="hint">Paste a MapTap share to grab the five round scores and the final. The final is stored as written. Same player + date replaces that day.</p>
         <form class="logger" id="log-form">
+          <label class="span-all">Paste MapTap share
+            <textarea id="share" class="share-box" placeholder="www.maptap.gg October 2&#10;76 94 77 73 57&#10;Final score: 714"></textarea>
+          </label>
+          <p class="hint span-all" id="share-preview" style="margin:0"></p>
           <label>Player
             <select id="player"></select>
           </label>
@@ -191,28 +242,355 @@
     </section>
     <p class="foot">Board photo Oct 2, 2026. Peter leads the season total by 24 over Andy. Micah has the hottest October average on the original board (955). Casey’s Human GPS band is 925–949.</p>
   </div>
+  <script src="land.js"></script>
   <script>
-    const SEED = {"game":"MapTap","site":"https://www.maptap.gg","asOf":"2026-10-02","puzzleToday":833,"note":"Board totals are from the Oct 2, 2026 group screenshot. September/October game counts are the integer split that fits those averages. Only Casey's Oct 2 game is a logged daily score.","players":[{"id":"peter","name":"Peter Boggs","color":"#f0b429","total":12976,"games":16,"avg":811,"septAvg":808.4,"octAvg":829.5,"septGames":14,"octGames":2},{"id":"andy","name":"Andy Clemens","color":"#ff6b4a","total":12952,"games":15,"avg":863.5,"septAvg":871.1,"octAvg":757,"septGames":14,"octGames":1},{"id":"sam","name":"Sam Stuffelbaum","color":"#4aa3ff","total":12763,"games":15,"avg":850.9,"septAvg":848,"octAvg":891,"septGames":14,"octGames":1},{"id":"ben","name":"Ben Hababurger","color":"#3dcf8e","total":11560,"games":16,"avg":722.5,"septAvg":714.4,"octAvg":779,"septGames":14,"octGames":2},{"id":"micah","name":"Micah Northcutt","color":"#b388ff","total":9687,"games":12,"avg":807.2,"septAvg":793.8,"octAvg":955,"septGames":11,"octGames":1},{"id":"casey","name":"Casey","color":"#ff4f8b","you":true,"total":941,"games":1,"avg":941,"septAvg":null,"octAvg":941,"septGames":0,"octGames":1}],"logs":[{"id":"casey-833","playerId":"casey","date":"2026-10-02","puzzle":833,"score":941,"achievements":["Human GPS","Overachiever","And 3 more"]}]};
+    const SEED = {
+  "game": "MapTap",
+  "site": "https://www.maptap.gg",
+  "asOf": "2026-10-02",
+  "puzzleToday": 833,
+  "note": "Season totals are the Oct 2, 2026 group photo and are not recomputed from daily logs. Daily logs store MapTap share-text finals exactly as posted, plus the five round scores in location order. Casey's #833 total is 941 and has no round breakdown. Sam's #832 final of 891 matches his October average (one game) and is not added again. Sam's #833 (919), Andy's #833 (987), and Ben's #833 (866) are logged for places and callouts only; they are not folded into the season columns.",
+  "bands": [
+    { "name": "Human GPS", "min": 925, "max": 949, "blurb": "These scores are actually starting to get good." }
+  ],
+  "players": [
+    {
+      "id": "peter",
+      "name": "Peter Boggs",
+      "color": "#f0b429",
+      "total": 12976,
+      "games": 16,
+      "avg": 811.0,
+      "septAvg": 808.4,
+      "octAvg": 829.5,
+      "septGames": 14,
+      "octGames": 2
+    },
+    {
+      "id": "andy",
+      "name": "Andy Clemens",
+      "color": "#ff6b4a",
+      "total": 12952,
+      "games": 15,
+      "avg": 863.5,
+      "septAvg": 871.1,
+      "octAvg": 757.0,
+      "septGames": 14,
+      "octGames": 1
+    },
+    {
+      "id": "sam",
+      "name": "Sam Stuffelbaum",
+      "color": "#4aa3ff",
+      "total": 12763,
+      "games": 15,
+      "avg": 850.9,
+      "septAvg": 848.0,
+      "octAvg": 891.0,
+      "septGames": 14,
+      "octGames": 1
+    },
+    {
+      "id": "ben",
+      "name": "Ben Hababurger",
+      "color": "#3dcf8e",
+      "total": 11560,
+      "games": 16,
+      "avg": 722.5,
+      "septAvg": 714.4,
+      "octAvg": 779.0,
+      "septGames": 14,
+      "octGames": 2
+    },
+    {
+      "id": "micah",
+      "name": "Micah Northcutt",
+      "color": "#b388ff",
+      "total": 9687,
+      "games": 12,
+      "avg": 807.2,
+      "septAvg": 793.8,
+      "octAvg": 955.0,
+      "septGames": 11,
+      "octGames": 1
+    },
+    {
+      "id": "casey",
+      "name": "Casey",
+      "color": "#ff4f8b",
+      "you": true,
+      "total": 941,
+      "games": 1,
+      "avg": 941.0,
+      "septAvg": null,
+      "octAvg": 941.0,
+      "septGames": 0,
+      "octGames": 1
+    }
+  ],
+  "logs": [
+    {
+      "id": "andy-833",
+      "playerId": "andy",
+      "date": "2026-10-02",
+      "puzzle": 833,
+      "score": 987,
+      "rounds": [100, 98, 99, 98, 99]
+    },
+    {
+      "id": "casey-833",
+      "playerId": "casey",
+      "date": "2026-10-02",
+      "puzzle": 833,
+      "score": 941,
+      "achievements": ["Human GPS", "Overachiever", "And 3 more"]
+    },
+    {
+      "id": "sam-833",
+      "playerId": "sam",
+      "date": "2026-10-02",
+      "puzzle": 833,
+      "score": 919,
+      "rounds": [97, 92, 95, 98, 82]
+    },
+    {
+      "id": "ben-833",
+      "playerId": "ben",
+      "date": "2026-10-02",
+      "puzzle": 833,
+      "score": 866,
+      "rounds": [92, 80, 98, 87, 79]
+    },
+    {
+      "id": "sam-832",
+      "playerId": "sam",
+      "date": "2026-10-01",
+      "puzzle": 832,
+      "score": 891,
+      "rounds": [88, 90, 88, 90, 89]
+    }
+  ]
+};
+    const PLACES_SEED = {
+  "comment": "One object in days[] per puzzle, locations in play order. Append a day by adding another object with date (YYYY-MM-DD), puzzle, and five locations (city, region, country, continent, lat, lng, funFact). Round scores live on logs in scores.json (rounds[] plus the share-text final in score). The daily job .github/workflows/maptap-locations.yml fills a missing day from https://maptap.gg/data/this_day_in_history/{Month}{D}.js and will not overwrite a day that is already here. funFact is MapTap's short place line unless a hand-written fact is already stored.",
+  "puzzleEpoch": "2024-06-21",
+  "roundMultipliers": [1, 1, 2, 3, 3],
+  "multiplierNote": "MapTap weights the five round scores by 1, 1, 2, 3, 3. Store score from the share text's Final score line. Do not recompute it from rounds.",
+  "days": [
+    {
+      "date": "2026-10-01",
+      "puzzle": 832,
+      "sourceUrl": "https://maptap.gg/data/this_day_in_history/October1.js",
+      "locations": [
+        {
+          "order": 1,
+          "city": "Kagoshima",
+          "region": null,
+          "country": "Japan",
+          "continent": "Asia",
+          "lat": 31.5966,
+          "lng": 130.5571,
+          "title": "Mouth-Chewed Sake",
+          "funFact": "An active volcano, Sakurajima, sits just across the bay from the city.",
+          "sources": ["https://en.wikipedia.org/wiki/Sakurajima"]
+        },
+        {
+          "order": 2,
+          "city": "Caen",
+          "region": null,
+          "country": "France",
+          "continent": "Europe",
+          "lat": 49.1829,
+          "lng": -0.3707,
+          "title": "The Dyer's Formula",
+          "funFact": "William the Conqueror is buried here, in the abbey he founded.",
+          "sources": ["https://en.wikipedia.org/wiki/William_the_Conqueror"]
+        },
+        {
+          "order": 3,
+          "city": "Cagliari",
+          "region": "Sardinia",
+          "country": "Italy",
+          "continent": "Europe",
+          "lat": 39.2238,
+          "lng": 9.1217,
+          "title": "The Secret to 110",
+          "funFact": "Capital of Sardinia, Italy's second-largest island.",
+          "sources": ["https://en.wikipedia.org/wiki/Cagliari"]
+        },
+        {
+          "order": 4,
+          "city": "Juba",
+          "region": null,
+          "country": "South Sudan",
+          "continent": "Africa",
+          "lat": 4.8594,
+          "lng": 31.5713,
+          "title": "The Last Guinea Worm",
+          "funFact": "Capital of South Sudan, independent since 2011.",
+          "sources": ["https://en.wikipedia.org/wiki/South_Sudan"]
+        },
+        {
+          "order": 5,
+          "city": "Ciudad del Este",
+          "region": null,
+          "country": "Paraguay",
+          "continent": "South America",
+          "lat": -25.5097,
+          "lng": -54.6111,
+          "title": "Mr. October",
+          "funFact": "The city sits where Paraguay, Brazil, and Argentina meet.",
+          "sources": ["https://en.wikipedia.org/wiki/Triple_Frontier"]
+        }
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "puzzle": 833,
+      "sourceUrl": "https://maptap.gg/data/this_day_in_history/October2.js",
+      "locations": [
+        {
+          "order": 1,
+          "city": "Belfast",
+          "region": "Northern Ireland",
+          "country": "United Kingdom",
+          "continent": "Europe",
+          "lat": 54.5973,
+          "lng": -5.9301,
+          "title": "Three Sister Ships",
+          "funFact": "Capital of Northern Ireland, at the mouth of the River Lagan. Belfast built the Olympic, Titanic, and Britannic. Violet Jessop survived the sinkings of both the Titanic and the Britannic.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Violet_Jessop",
+            "https://en.wikipedia.org/wiki/Titanic"
+          ]
+        },
+        {
+          "order": 2,
+          "city": "Marrakech",
+          "region": null,
+          "country": "Morocco",
+          "continent": "Africa",
+          "lat": 31.6295,
+          "lng": -7.9811,
+          "title": "A Crowd of Donkeys",
+          "funFact": "The High Atlas mountains rise just to the south. A tour through Morocco and North Africa led Kate and Nina Hosali to found the working-animal charity SPANA on October 2, 1923.",
+          "sources": [
+            "https://www.workinganimals.org/about-us/history/",
+            "https://en.wikipedia.org/wiki/Nina_Hosali"
+          ]
+        },
+        {
+          "order": 3,
+          "city": "Gainesville",
+          "region": "Florida",
+          "country": "USA",
+          "continent": "North America",
+          "lat": 29.6516,
+          "lng": -82.3248,
+          "title": "The Awful Drink",
+          "funFact": "Home of the University of Florida, in Gainesville since 1906. In 1965 Robert Cade's lab there mixed the first version of the drink that became Gatorade.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Gatorade",
+            "https://en.wikipedia.org/wiki/University_of_Florida"
+          ]
+        },
+        {
+          "order": 4,
+          "city": "Szeged",
+          "region": null,
+          "country": "Hungary",
+          "continent": "Europe",
+          "lat": 46.253,
+          "lng": 20.1414,
+          "title": "The Teddy Bear",
+          "funFact": "Hungary's paprika capital, on the Tisza. Katalin Karikó studied at the University of Szeged and shared the 2023 Nobel Prize for mRNA discoveries. Leaving Hungary in 1985, she and her husband sewed the cash from selling their car into their daughter's teddy bear.",
+          "sources": [
+            "https://www.nobelprize.org/prizes/medicine/2023/kariko/facts/",
+            "https://www.nobelprize.org/stories/women-who-changed-science/katalin-kariko/"
+          ]
+        },
+        {
+          "order": 5,
+          "city": "Kathmandu",
+          "region": null,
+          "country": "Nepal",
+          "continent": "Asia",
+          "lat": 27.7172,
+          "lng": 85.324,
+          "title": "Goddess to Mortal",
+          "funFact": "About 1,400 meters up, in a bowl-shaped valley. Kathmandu's Kumari is a young girl worshipped as a living goddess, a tradition centuries old.",
+          "sources": ["https://en.wikipedia.org/wiki/Kumari_(goddess)"]
+        }
+      ]
+    }
+  ]
+};
     const KEY = "boyzmaptap-logs-v1";
+    const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    const CONTINENTS = ["Africa","Antarctica","Asia","Europe","North America","Oceania","South America"];
+    const CONTINENT_COLOR = {
+      Africa: "#f0b429",
+      Antarctica: "#d5dde6",
+      Asia: "#b388ff",
+      Europe: "#7eb6ff",
+      "North America": "#3dcf8e",
+      Oceania: "#4ad4c4",
+      "South America": "#ff6b4a"
+    };
     let data = structuredClone(SEED);
+    let places = PLACES_SEED && Array.isArray(PLACES_SEED.days) ? PLACES_SEED : { days: [], roundMultipliers: [1, 1, 2, 3, 3] };
     let mode = "avg";
     let sortKey = "total";
     let sortDir = -1;
     let pinned = "casey";
+    let routeDate = null;
+    let baseSnap = null;
 
     function n(v) { return v == null || Number.isNaN(v) ? "—" : Number(v).toLocaleString(undefined, { maximumFractionDigits: 1 }); }
+    function esc(v) {
+      return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[c];
+      });
+    }
+    function firstName(id) {
+      const p = data.players.find(function (x) { return x.id === id; });
+      return p ? p.name.split(" ")[0] : id;
+    }
+    function playerById(id) {
+      return data.players.find(function (x) { return x.id === id; }) || { name: id, color: "#fff" };
+    }
+    function avg(nums) {
+      if (!nums.length) return null;
+      return nums.reduce(function (s, v) { return s + v; }, 0) / nums.length;
+    }
     function loadExtra() {
       try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { return []; }
     }
     function saveExtra(rows) { localStorage.setItem(KEY, JSON.stringify(rows)); }
+    function findDay(iso) {
+      return (places.days || []).find(function (d) { return d.date === iso; }) || null;
+    }
+    function niceDate(iso) {
+      const bits = (iso || "").split("-");
+      if (bits.length !== 3) return iso || "";
+      const month = MONTHS[Number(bits[1]) - 1] || bits[1];
+      return month + " " + Number(bits[2]) + ", " + bits[0];
+    }
     function merge() {
+      if (!baseSnap) {
+        baseSnap = { players: structuredClone(data.players), logs: structuredClone(data.logs || []) };
+      }
+      data.players = structuredClone(baseSnap.players);
       const extra = loadExtra();
-      const logs = data.logs.slice();
+      const logs = baseSnap.logs.slice();
       extra.forEach(function (row) {
         const i = logs.findIndex(function (l) { return l.playerId === row.playerId && l.date === row.date; });
         if (i >= 0) logs[i] = row; else logs.push(row);
       });
-      data.logs = logs.sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+      data.logs = logs.sort(function (a, b) {
+        if (a.date === b.date) return 0;
+        return a.date < b.date ? 1 : -1;
+      });
       data.players.forEach(function (p) {
         const mine = data.logs.filter(function (l) { return l.playerId === p.id && l.date > data.asOf; });
         if (!mine.length || p.id === "casey") {
@@ -278,7 +656,7 @@
       });
       document.querySelector("#board tbody").innerHTML = rows.map(function (p) {
         const s = swing(p);
-        return '<tr class="' + (p.id === pinned ? "pick" : "") + '" data-id="' + p.id + '"><td><span class="name"><i class="dot" style="background:' + p.color + '"></i>' + p.name + (p.you ? ' <span class="badge">you</span>' : "") + '</span></td><td>' + n(p.total) + '</td><td>' + p.games + '</td><td>' + n(p.avg) + '</td><td>' + n(p.septAvg) + '</td><td>' + n(p.octAvg) + '</td><td>' + (s == null ? "—" : (s > 0 ? "+" : "") + s.toFixed(1)) + '</td></tr>';
+        return '<tr class="' + (p.id === pinned ? "pick" : "") + '" data-id="' + p.id + '"><td><span class="name"><i class="dot" style="background:' + p.color + '"></i>' + esc(p.name) + (p.you ? ' <span class="badge">you</span>' : "") + '</span></td><td>' + n(p.total) + '</td><td>' + p.games + '</td><td>' + n(p.avg) + '</td><td>' + n(p.septAvg) + '</td><td>' + n(p.octAvg) + '</td><td>' + (s == null ? "—" : (s > 0 ? "+" : "") + s.toFixed(1)) + '</td></tr>';
       }).join("");
     }
     function renderChart() {
@@ -308,7 +686,6 @@
           });
         } else if (mode === "month") {
           const s = swing(p) || 0;
-          const mid = y(0) - (y(0) - y(max)) * 0; 
           const zero = pad.t + innerH / 2;
           const scale = (innerH / 2) / 200;
           const hh = s * scale;
@@ -316,7 +693,7 @@
         } else {
           marks += '<rect data-id="' + p.id + '" x="' + (x + slot * 0.22) + '" y="' + y(p.total) + '" width="' + (slot * 0.56) + '" height="' + (y(0) - y(p.total)) + '" rx="5" fill="' + p.color + '"/>';
         }
-        marks += '<text data-id="' + p.id + '" x="' + (x + slot / 2) + '" y="' + (h - 28) + '" text-anchor="middle" fill="' + (p.id === pinned ? "#fff" : "#b9a8a4") + '" font-size="11">' + p.name.split(" ")[0] + '</text>';
+        marks += '<text data-id="' + p.id + '" x="' + (x + slot / 2) + '" y="' + (h - 28) + '" text-anchor="middle" fill="' + (p.id === pinned ? "#fff" : "#b9a8a4") + '" font-size="11">' + esc(p.name.split(" ")[0]) + '</text>';
       });
       if (mode === "month") {
         marks += '<line x1="' + pad.l + '" x2="' + (w - pad.r) + '" y1="' + (pad.t + innerH / 2) + '" y2="' + (pad.t + innerH / 2) + '" stroke="rgba(246,239,230,0.25)"/>';
@@ -328,21 +705,362 @@
           ? "October average minus September. Up is hotter."
           : "Season point total. Peter and Andy are 24 apart.";
     }
+    function roundRows() {
+      const byDate = {};
+      const byPuzzle = {};
+      (places.days || []).forEach(function (d) {
+        byDate[d.date] = d;
+        if (d.puzzle) byPuzzle[d.puzzle] = d;
+      });
+      const rows = [];
+      (data.logs || []).forEach(function (log) {
+        if (!Array.isArray(log.rounds)) return;
+        const day = byDate[log.date] || (log.puzzle && byPuzzle[log.puzzle]);
+        if (!day || !day.locations) return;
+        const count = Math.min(log.rounds.length, day.locations.length);
+        for (let i = 0; i < count; i++) {
+          const score = Number(log.rounds[i]);
+          if (!Number.isFinite(score)) continue;
+          const loc = day.locations[i];
+          rows.push({
+            playerId: log.playerId,
+            date: day.date,
+            puzzle: day.puzzle,
+            score: score,
+            city: loc.city,
+            continent: loc.continent || "",
+            key: day.date + "#" + (loc.order || i + 1),
+            order: loc.order || i + 1
+          });
+        }
+      });
+      return rows;
+    }
+    function project(lng, lat) {
+      const pad = 14, w = 640, h = 280;
+      return [
+        pad + ((Number(lng) + 180) / 360) * (w - 2 * pad),
+        pad + ((90 - Number(lat)) / 180) * (h - 2 * pad)
+      ];
+    }
+    function activeRouteDate() {
+      const days = (places.days || []).slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+      if (!days.length) return null;
+      if (routeDate && days.some(function (d) { return d.date === routeDate; })) return routeDate;
+      return days[0].date;
+    }
+    function scoresFor(day) {
+      const out = {};
+      (data.logs || []).forEach(function (log) {
+        if (log.date !== day.date || !Array.isArray(log.rounds)) return;
+        out[log.playerId] = log.rounds;
+      });
+      return out;
+    }
+    function renderRoute() {
+      const body = document.getElementById("route-body");
+      const days = (places.days || []).slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+      const chips = document.getElementById("day-chips");
+      if (!days.length) {
+        document.getElementById("route-title").textContent = "Route";
+        document.getElementById("route-hint").textContent = "No places filed yet.";
+        chips.innerHTML = "";
+        body.innerHTML = '<p class="hint">Add a day to locations.json and it shows up here.</p>';
+        return;
+      }
+      const iso = activeRouteDate();
+      const day = days.find(function (d) { return d.date === iso; }) || days[0];
+      document.getElementById("route-title").textContent = niceDate(day.date);
+      document.getElementById("route-hint").textContent = "MapTap #" + (day.puzzle || "—") + " · five places in play order. Numbers on the pins are rounds, 0–100. Finals live in the log.";
+      chips.innerHTML = days.map(function (d) {
+        return '<button type="button" data-day="' + d.date + '"' + (d.date === day.date ? ' class="on"' : "") + ">#" + (d.puzzle || "") + " · " + d.date.slice(5) + "</button>";
+      }).join("");
+      const locs = day.locations || [];
+      const pts = locs.map(function (loc) { return project(loc.lng, loc.lat); });
+      let svg = '<svg class="route-map" viewBox="0 0 640 280" role="img" aria-label="Map of ' + esc(locs.map(function (l) { return l.city; }).join(", ")) + '">';
+      svg += '<rect width="640" height="280" fill="#07141c"/>';
+      for (let g = 1; g < 6; g++) {
+        const x = 14 + g * (612 / 6);
+        const y = 14 + g * (252 / 6);
+        svg += '<line x1="' + x.toFixed(1) + '" x2="' + x.toFixed(1) + '" y1="14" y2="266" stroke="rgba(246,239,230,0.06)"/>';
+        svg += '<line y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '" x1="14" x2="626" stroke="rgba(246,239,230,0.06)"/>';
+      }
+      if (window.BOYZ_LAND_PATH) {
+        svg += '<path d="' + window.BOYZ_LAND_PATH + '" fill="rgba(186,214,196,0.18)" stroke="rgba(246,239,230,0.18)" stroke-width="0.6"/>';
+      }
+      if (pts.length > 1) {
+        svg += '<polyline fill="none" stroke="#f0b429" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" opacity="0.9" points="' + pts.map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" ") + '"/>';
+      }
+      locs.forEach(function (loc, i) {
+        const p = pts[i];
+        const color = CONTINENT_COLOR[loc.continent] || "#f0b429";
+        const label = esc(loc.city);
+        const anchorRight = p[0] > 500;
+        const ly = p[1] + (i % 2 === 0 ? -12 : 18);
+        const lx = p[0] + (anchorRight ? -12 : 12);
+        svg += '<text x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) + '" text-anchor="' + (anchorRight ? "end" : "start") + '" fill="#f6efe6" stroke="#07141c" stroke-width="3" paint-order="stroke" font-size="11" font-family="Inter, sans-serif">' + label + '</text>';
+        svg += '<circle cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="9" fill="' + color + '" stroke="#14080c" stroke-width="1.5"><title>' + label + '</title></circle>';
+        svg += '<text x="' + p[0].toFixed(1) + '" y="' + (p[1] + 3.5).toFixed(1) + '" text-anchor="middle" fill="#14080c" font-size="10" font-weight="700" font-family="Outfit, sans-serif">' + (i + 1) + '</text>';
+      });
+      svg += "</svg>";
+      const played = scoresFor(day);
+      const cards = locs.map(function (loc, i) {
+        const where = [loc.region, loc.country].filter(Boolean).join(" · ");
+        const chips = Object.keys(played).map(function (pid) {
+          const score = played[pid][i];
+          if (score == null) return "";
+          const person = playerById(pid);
+          return '<span class="mini"><i class="dot" style="background:' + person.color + '"></i> ' + esc(firstName(pid)) + " " + score + "</span>";
+        }).join("");
+        return '<article class="place"><div class="top"><div class="ord" style="color:' + (CONTINENT_COLOR[loc.continent] || "var(--gold)") + '">' + (loc.order || i + 1) + '</div><span class="chip">' + esc(loc.continent || "—") + '</span></div>' +
+          (loc.title ? '<div class="story">' + esc(loc.title) + '</div>' : "") +
+          '<div class="city">' + esc(loc.city) + '</div><div class="where">' + esc(where) + '</div>' +
+          (loc.funFact ? '<p class="fact">' + esc(loc.funFact) + '</p>' : "") +
+          (chips ? '<div class="scores">' + chips + '</div>' : "") +
+          "</article>";
+      }).join("");
+      body.innerHTML = '<div class="map-wrap">' + svg + '</div><div class="places">' + cards + '</div>';
+    }
+    function atBestAvg(groups) {
+      if (!groups.length) return [];
+      const best = Math.max.apply(null, groups.map(function (g) { return g.avg; }));
+      return groups.filter(function (g) { return Math.abs(g.avg - best) < 0.05; })
+        .sort(function (a, b) { return b.n - a.n || a.name.localeCompare(b.name); });
+    }
+    function renderCallouts() {
+      const host = document.getElementById("callouts");
+      const rows = roundRows();
+      if (!rows.length) {
+        host.innerHTML = '<p class="hint" style="margin:0">No round scores yet. Paste a MapTap share under Log a score and the five numbers attach to that day’s places. Days with only a total still show in the log.</p>';
+        return;
+      }
+      const byContinent = {};
+      const byPlace = {};
+      const byPlayer = {};
+      rows.forEach(function (row) {
+        if (row.continent) {
+          byContinent[row.continent] = byContinent[row.continent] || [];
+          byContinent[row.continent].push(row);
+        }
+        byPlace[row.key] = byPlace[row.key] || [];
+        byPlace[row.key].push(row);
+        byPlayer[row.playerId] = byPlayer[row.playerId] || [];
+        byPlayer[row.playerId].push(row);
+      });
+      const cards = [];
+      CONTINENTS.forEach(function (continent) {
+        const list = byContinent[continent];
+        if (!list) return;
+        const byPid = {};
+        list.forEach(function (row) {
+          byPid[row.playerId] = byPid[row.playerId] || [];
+          byPid[row.playerId].push(row.score);
+        });
+        const groups = Object.keys(byPid).map(function (pid) {
+          return { name: firstName(pid), avg: avg(byPid[pid]), n: byPid[pid].length };
+        });
+        const winners = atBestAvg(groups);
+        const meta = winners.length === 1
+          ? n(winners[0].avg) + " avg · " + winners[0].n + " round" + (winners[0].n === 1 ? "" : "s")
+          : winners.map(function (g) { return g.name + " " + n(g.avg) + " (" + g.n + ")"; }).join(", ");
+        cards.push({
+          label: "Best at " + continent,
+          who: winners.map(function (g) { return g.name; }).join(" & "),
+          meta: meta
+        });
+      });
+      const placesRanked = Object.keys(byPlace).map(function (key) {
+        const list = byPlace[key];
+        return { city: list[0].city, puzzle: list[0].puzzle, avg: avg(list.map(function (r) { return r.score; })), n: list.length };
+      }).filter(function (p) { return p.n >= 2; });
+      if (placesRanked.length) {
+        const tough = placesRanked.slice().sort(function (a, b) { return a.avg - b.avg; })[0];
+        const easy = placesRanked.slice().sort(function (a, b) { return b.avg - a.avg; })[0];
+        cards.push({ label: "Toughest spot", who: tough.city, meta: n(tough.avg) + " avg · " + tough.n + " scores · #" + tough.puzzle });
+        cards.push({ label: "Easiest spot", who: easy.city, meta: n(easy.avg) + " avg · " + easy.n + " scores · #" + easy.puzzle });
+      } else {
+        cards.push({ label: "Toughest spot", who: "—", meta: "Waiting on a second score for the same place." });
+      }
+      const specs = [];
+      Object.keys(byPlayer).forEach(function (pid) {
+        const mine = byPlayer[pid];
+        const byC = {};
+        mine.forEach(function (row) {
+          if (!row.continent) return;
+          byC[row.continent] = byC[row.continent] || [];
+          byC[row.continent].push(row.score);
+        });
+        let best = null;
+        Object.keys(byC).forEach(function (continent) {
+          const on = byC[continent];
+          const off = mine.filter(function (row) { return row.continent !== continent; }).map(function (row) { return row.score; });
+          if (on.length < 2 || !off.length) return;
+          const gap = avg(on) - avg(off);
+          if (gap < 8) return;
+          if (!best || gap > best.gap) best = { continent: continent, gap: gap, avg: avg(on), n: on.length };
+        });
+        if (best) specs.push({ pid: pid, spec: best });
+      });
+      if (specs.length) {
+        specs.forEach(function (item) {
+          cards.push({
+            label: item.spec.continent + " specialist",
+            who: firstName(item.pid),
+            meta: n(item.spec.avg) + " avg · " + item.spec.n + " rounds · +" + n(item.spec.gap) + " vs the rest"
+          });
+        });
+      } else {
+        cards.push({ label: "Specialist", who: "—", meta: "Needs two rounds on one continent, one elsewhere, and an 8-point gap." });
+      }
+      const lines = Object.keys(byPlayer).map(function (pid) {
+        const mine = byPlayer[pid];
+        const byC = {};
+        mine.forEach(function (row) {
+          if (!row.continent) return;
+          byC[row.continent] = byC[row.continent] || [];
+          byC[row.continent].push(row.score);
+        });
+        const groups = Object.keys(byC).map(function (continent) {
+          return { name: continent, avg: avg(byC[continent]), n: byC[continent].length };
+        });
+        const bestGroups = atBestAvg(groups);
+        const worstAvg = Math.min.apply(null, groups.map(function (g) { return g.avg; }));
+        const worst = groups.filter(function (g) { return Math.abs(g.avg - worstAvg) < 0.05; });
+        const bestText = bestGroups.map(function (g) { return g.name; }).join(", ") + " " + n(bestGroups[0].avg);
+        let worstText = "one continent so far";
+        const worstNames = worst.map(function (g) { return g.name; }).join(", ");
+        const bestNames = bestGroups.map(function (g) { return g.name; }).join(", ");
+        if (groups.length > 1 && worstNames !== bestNames) worstText = "worst " + worstNames + " " + n(worst[0].avg);
+        const person = playerById(pid);
+        return '<div class="player-line"><span class="name"><i class="dot" style="background:' + person.color + '"></i>' + esc(firstName(pid)) + '</span><span>best ' + esc(bestText) + (worstText === "one continent so far" ? "" : " · " + esc(worstText)) + "</span></div>";
+      }).join("");
+      host.innerHTML = '<div class="callgrid">' + cards.map(function (card) {
+        return '<article class="card call" style="padding:12px"><div class="label">' + esc(card.label) + '</div><div class="who">' + esc(card.who) + '</div><div class="meta">' + esc(card.meta) + '</div></article>';
+      }).join("") + '</div><div class="player-lines">' + lines + "</div>";
+    }
     function renderLogs() {
-      document.getElementById("logs").innerHTML = data.logs.map(function (l) {
-        const p = data.players.find(function (x) { return x.id === l.playerId; }) || { name: l.playerId, color: "#fff" };
-        const ach = (l.achievements || []).map(function (a) { return '<span class="chip">' + a + '</span>'; }).join(" ");
-        return '<div class="log"><div><div class="score">' + l.score + '</div></div><div><strong>' + p.name + '</strong><div class="hint" style="margin:2px 0 0">' + l.date + (l.puzzle ? " · #" + l.puzzle : "") + '</div><div class="chips">' + ach + '</div></div><i class="dot" style="background:' + p.color + '"></i></div>';
-      }).join("") || '<p class="hint">No daily scores yet.</p>';
+      const host = document.getElementById("logs");
+      if (!data.logs.length) {
+        host.innerHTML = '<p class="hint">No daily scores yet.</p>';
+        return;
+      }
+      const dates = [];
+      data.logs.forEach(function (log) { if (dates.indexOf(log.date) < 0) dates.push(log.date); });
+      host.innerHTML = dates.map(function (iso) {
+        const day = findDay(iso);
+        const rows = data.logs.filter(function (log) { return log.date === iso; });
+        const placeLine = day && day.locations
+          ? day.locations.map(function (loc, i) { return (i + 1) + " " + loc.city; }).join(" · ")
+          : "Totals only — places for this day aren’t filed.";
+        const body = rows.map(function (log) {
+          const person = playerById(log.playerId);
+          const ach = (log.achievements || []).map(function (a) { return '<span class="chip">' + esc(a) + '</span>'; }).join("");
+          let pips = "";
+          if (Array.isArray(log.rounds) && log.rounds.length) {
+            pips = '<div class="round-pips">' + log.rounds.map(function (score, i) {
+              const city = day && day.locations && day.locations[i] ? day.locations[i].city : ("R" + (i + 1));
+              return '<span class="mini">' + score + " " + esc(city) + "</span>";
+            }).join("") + "</div>";
+          }
+          return '<div class="log"><div><div class="score">' + log.score + '</div></div><div><strong>' + esc(person.name) + '</strong><div class="hint" style="margin:2px 0 0">' + esc(log.date) + (log.puzzle ? " · #" + log.puzzle : "") + '</div>' + pips + (ach ? '<div class="chips" style="margin-top:6px">' + ach + '</div>' : "") + '</div><i class="dot" style="background:' + person.color + '"></i></div>';
+        }).join("");
+        return '<div class="day-block"><div class="day-label"><strong style="color:var(--cream)">' + esc(niceDate(iso)) + (day && day.puzzle ? " · #" + day.puzzle : "") + '</strong><div>' + esc(placeLine) + '</div></div>' + body + '</div>';
+      }).join("");
     }
     function renderPlayers() {
       const sel = document.getElementById("player");
+      const current = sel.value;
       sel.innerHTML = data.players.map(function (p) {
-        return '<option value="' + p.id + '">' + p.name + '</option>';
+        return '<option value="' + p.id + '">' + esc(p.name) + '</option>';
       }).join("");
-      sel.value = "casey";
+      sel.value = current && data.players.some(function (p) { return p.id === current; }) ? current : "casey";
     }
-    function render() { merge(); renderKpis(); renderTable(); renderChart(); renderLogs(); }
+    function render() { merge(); renderKpis(); renderRoute(); renderCallouts(); renderTable(); renderChart(); renderLogs(); }
+    function parseShareText(raw) {
+      if (!raw || !String(raw).trim()) return null;
+      const text = String(raw).replace(/\s+/g, " ").trim();
+      const dateRe = new RegExp("(" + MONTHS.join("|") + ")\\s+(\\d{1,2})(?:st|nd|rd|th)?(?:\\s*,?\\s*(\\d{4}))?", "i");
+      const dateM = text.match(dateRe);
+      const finalM = text.match(/Final score:\s*(\d+)/i);
+      let middle = text;
+      let when = null;
+      if (dateM) {
+        const monthIdx = MONTHS.findIndex(function (m) { return m.toLowerCase() === dateM[1].toLowerCase(); });
+        when = { month: monthIdx + 1, day: Number(dateM[2]), year: dateM[3] ? Number(dateM[3]) : null };
+        middle = text.slice(dateM.index + dateM[0].length);
+      }
+      let total = null;
+      if (finalM) {
+        total = Number(finalM[1]);
+        const cut = middle.search(/Final score:/i);
+        if (cut >= 0) middle = middle.slice(0, cut);
+      }
+      const rounds = [];
+      const re = /\d{1,3}/g;
+      let match;
+      while ((match = re.exec(middle))) {
+        const num = Number(match[0]);
+        if (num >= 0 && num <= 100) rounds.push(num);
+      }
+      if (!finalM || rounds.length !== 5) return { ok: false, when: when, total: total, rounds: rounds };
+      return { ok: true, when: when, total: total, rounds: rounds };
+    }
+    function resolveShareDate(parsed) {
+      if (!parsed || !parsed.when) return null;
+      const month = parsed.when.month;
+      const dayNum = parsed.when.day;
+      if (parsed.when.year) {
+        return parsed.when.year + "-" + String(month).padStart(2, "0") + "-" + String(dayNum).padStart(2, "0");
+      }
+      const matches = (places.days || []).filter(function (d) {
+        const bits = d.date.split("-");
+        return Number(bits[1]) === month && Number(bits[2]) === dayNum;
+      });
+      if (matches.length) {
+        matches.sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+        return matches[0].date;
+      }
+      const year = (document.getElementById("date").value || "2026-10-02").slice(0, 4);
+      return year + "-" + String(month).padStart(2, "0") + "-" + String(dayNum).padStart(2, "0");
+    }
+    function previousRounds(playerId, date) {
+      const extra = loadExtra();
+      for (let i = extra.length - 1; i >= 0; i--) {
+        if (extra[i].playerId === playerId && extra[i].date === date && Array.isArray(extra[i].rounds)) return extra[i].rounds.slice();
+      }
+      const seedLogs = baseSnap ? baseSnap.logs : (data.logs || []);
+      for (let i = 0; i < seedLogs.length; i++) {
+        if (seedLogs[i].playerId === playerId && seedLogs[i].date === date && Array.isArray(seedLogs[i].rounds)) return seedLogs[i].rounds.slice();
+      }
+      return null;
+    }
+    function applySharePreview() {
+      const parsed = parseShareText(document.getElementById("share").value);
+      const note = document.getElementById("share-preview");
+      if (!parsed) { note.textContent = ""; return; }
+      if (!parsed.ok) {
+        note.textContent = "Need a date, five round scores from 0 to 100, and a Final score line. The total is not calculated from the rounds.";
+        return;
+      }
+      const iso = resolveShareDate(parsed);
+      if (iso) {
+        document.getElementById("date").value = iso;
+        const day = findDay(iso);
+        if (day && day.puzzle) document.getElementById("puzzle").value = day.puzzle;
+      }
+      document.getElementById("score").value = parsed.total;
+      const day = iso ? findDay(iso) : null;
+      let msg = "Final score " + parsed.total + " will be saved as shared, not added up from the rounds.";
+      if (day && day.locations) {
+        msg += " " + day.locations.map(function (loc, i) { return loc.city + " " + parsed.rounds[i]; }).join(" · ") + ".";
+      }
+      const mult = (places.roundMultipliers || [1, 1, 2, 3, 3]);
+      const weighted = parsed.rounds.reduce(function (sum, score, i) { return sum + score * (mult[i] || 1); }, 0);
+      if (weighted !== parsed.total) {
+        msg += " The usual 1, 1, 2, 3, 3 weights would make " + weighted + ". The board keeps " + parsed.total + ".";
+      }
+      note.textContent = msg;
+    }
     document.getElementById("modes").addEventListener("click", function (e) {
       const b = e.target.closest("button"); if (!b) return;
       mode = b.getAttribute("data-mode");
@@ -356,15 +1074,26 @@
       renderTable();
     });
     document.getElementById("board").addEventListener("click", function (e) {
-      const tr = e.target.closest("tr"); if (!tr) return;
+      const tr = e.target.closest("tr"); if (!tr || !tr.getAttribute("data-id")) return;
       pinned = tr.getAttribute("data-id"); renderTable(); renderChart();
     });
     document.getElementById("chart").addEventListener("click", function (e) {
       const id = e.target.getAttribute("data-id"); if (!id) return;
       pinned = id; renderTable(); renderChart();
     });
+    document.getElementById("route-card").addEventListener("click", function (e) {
+      const b = e.target.closest("[data-day]"); if (!b) return;
+      routeDate = b.getAttribute("data-day");
+      renderRoute();
+    });
+    document.getElementById("share").addEventListener("input", applySharePreview);
+    document.getElementById("date").addEventListener("change", function () {
+      const day = findDay(this.value);
+      if (day && day.puzzle) document.getElementById("puzzle").value = day.puzzle;
+    });
     document.getElementById("log-form").addEventListener("submit", function (e) {
       e.preventDefault();
+      const parsed = parseShareText(document.getElementById("share").value);
       const row = {
         id: document.getElementById("player").value + "-" + document.getElementById("date").value,
         playerId: document.getElementById("player").value,
@@ -372,11 +1101,20 @@
         puzzle: Number(document.getElementById("puzzle").value) || null,
         score: Number(document.getElementById("score").value)
       };
+      if (!row.puzzle) {
+        const day = findDay(row.date);
+        if (day && day.puzzle) row.puzzle = day.puzzle;
+      }
+      if (parsed && parsed.ok) row.rounds = parsed.rounds.slice();
+      else {
+        const kept = previousRounds(row.playerId, row.date);
+        if (kept) row.rounds = kept;
+      }
       if (row.score >= 925 && row.score <= 949) row.achievements = ["Human GPS"];
       const extra = loadExtra().filter(function (l) { return !(l.playerId === row.playerId && l.date === row.date); });
       extra.push(row);
       saveExtra(extra);
-      document.getElementById("save-note").textContent = "Saved on this phone. Download scores.json if you want it on the site for everyone.";
+      document.getElementById("save-note").textContent = "Saved on this phone. Download scores.json if the whole group should see it.";
       render();
     });
     document.getElementById("export").addEventListener("click", function () {
@@ -389,17 +1127,24 @@
     document.getElementById("reset").addEventListener("click", function () {
       localStorage.removeItem(KEY);
       data = structuredClone(SEED);
+      baseSnap = null;
       document.getElementById("save-note").textContent = "Phone logs cleared.";
       render();
     });
     renderPlayers();
     render();
-    fetch("scores.json").then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
-      if (!j || !j.players) return;
-      data = j;
+    Promise.all([
+      fetch("scores.json").then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
+      fetch("locations.json").then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+    ]).then(function (pair) {
+      if (pair[0] && pair[0].players) {
+        data = pair[0];
+        baseSnap = null;
+      }
+      if (pair[1] && Array.isArray(pair[1].days)) places = pair[1];
       renderPlayers();
       render();
-    }).catch(function () {});
+    });
   </script>
 </body>
 </html>

@@ -1,0 +1,56 @@
+name: MapTap locations
+
+on:
+  schedule:
+    # 12:30am America/Chicago, after the local MapTap day has rolled.
+    - cron: "30 0 * * *"
+      timezone: America/Chicago
+  workflow_dispatch:
+    inputs:
+      date:
+        description: Day to fetch (YYYY-MM-DD). Default is today in America/Chicago.
+        required: false
+        type: string
+      force:
+        description: Refresh a day that is already in the dataset. A hand-written funFact is kept.
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Fetch the day's locations
+        env:
+          MAPTAP_DATE: ${{ github.event.inputs.date }}
+          MAPTAP_FORCE: ${{ github.event.inputs.force }}
+        run: |
+          args=()
+          if [ -n "$MAPTAP_DATE" ]; then
+            args+=(--date "$MAPTAP_DATE")
+          fi
+          if [ "$MAPTAP_FORCE" = "true" ]; then
+            args+=(--force)
+          fi
+          python3 scripts/fetch-maptap-locations.py "${args[@]}"
+
+      - name: Commit dataset
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add boyzmaptap/locations.json
+          if git diff --cached --quiet; then
+            echo "No location changes."
+            exit 0
+          fi
+          git commit -m "Add MapTap locations"
+          git push
