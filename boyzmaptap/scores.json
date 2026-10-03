@@ -3,7 +3,7 @@
   "site": "https://www.maptap.gg",
   "asOf": "2026-10-02",
   "puzzleToday": 833,
-  "note": "Season totals are the Oct 2, 2026 group photo and are not recomputed from daily logs. Daily logs store MapTap share-text finals exactly as posted, plus the five round scores in location order. Casey's #833 total is 941 and has no round breakdown. Sam's #832 final of 891 matches his October average (one game) and is not added again. Sam's #833 (919), Andy's #833 (987), and Ben's #833 (866) are logged for places and callouts only; they are not folded into the season columns.",
+  "note": "Season totals in this file are the Oct 2, 2026 group photo. Daily logs store MapTap share-text finals exactly as posted, plus the five round scores in location order. Casey's #833 total is 941 and has no round breakdown. Sam's #832 final of 891 matches his October average (one game) and is not added again. Sam's #833 (919), Andy's #833 (987), and Ben's #833 (866) are logged for places and callouts only; they are not folded into the season columns. Logs dated after the photo, starting with #834 on Oct 3, are added on top of those columns when the board loads.",
   "bands": [
     { "name": "Human GPS", "min": 925, "max": 949, "blurb": "These scores are actually starting to get good." }
   ],
@@ -122,6 +122,46 @@
       "puzzle": 832,
       "score": 891,
       "rounds": [88, 90, 88, 90, 89]
+    },
+    {
+      "id": "casey-834",
+      "playerId": "casey",
+      "date": "2026-10-03",
+      "puzzle": 834,
+      "score": 976,
+      "rounds": [100, 99, 99, 97, 96]
+    },
+    {
+      "id": "sam-834",
+      "playerId": "sam",
+      "date": "2026-10-03",
+      "puzzle": 834,
+      "score": 951,
+      "rounds": [88, 85, 98, 97, 97]
+    },
+    {
+      "id": "micah-834",
+      "playerId": "micah",
+      "date": "2026-10-03",
+      "puzzle": 834,
+      "score": 912,
+      "rounds": [93, 88, 91, 94, 89]
+    },
+    {
+      "id": "ben-834",
+      "playerId": "ben",
+      "date": "2026-10-03",
+      "puzzle": 834,
+      "score": 905,
+      "rounds": [94, 82, 99, 89, 88]
+    },
+    {
+      "id": "peter-834",
+      "playerId": "peter",
+      "date": "2026-10-03",
+      "puzzle": 834,
+      "score": 894,
+      "rounds": [90, 88, 97, 78, 96]
     }
   ]
 }
