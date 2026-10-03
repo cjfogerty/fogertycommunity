@@ -1,7 +1,13 @@
 {
   "comment": "One object in days[] per puzzle, locations in play order. Append a day by adding another object with date (YYYY-MM-DD), puzzle, and five locations (city, region, country, continent, lat, lng, funFact). Round scores live on logs in scores.json (rounds[] plus the share-text final in score). The daily job .github/workflows/maptap-locations.yml fills a missing day from https://maptap.gg/data/this_day_in_history/{Month}{D}.js and will not overwrite a day that is already here. funFact is MapTap's short place line unless a hand-written fact is already stored.",
   "puzzleEpoch": "2024-06-21",
-  "roundMultipliers": [1, 1, 2, 3, 3],
+  "roundMultipliers": [
+    1,
+    1,
+    2,
+    3,
+    3
+  ],
   "multiplierNote": "MapTap weights the five round scores by 1, 1, 2, 3, 3. Store score from the share text's Final score line. Do not recompute it from rounds.",
   "days": [
     {
@@ -19,7 +25,9 @@
           "lng": 130.5571,
           "title": "Mouth-Chewed Sake",
           "funFact": "An active volcano, Sakurajima, sits just across the bay from the city.",
-          "sources": ["https://en.wikipedia.org/wiki/Sakurajima"]
+          "sources": [
+            "https://en.wikipedia.org/wiki/Sakurajima"
+          ]
         },
         {
           "order": 2,
@@ -31,7 +39,9 @@
           "lng": -0.3707,
           "title": "The Dyer's Formula",
           "funFact": "William the Conqueror is buried here, in the abbey he founded.",
-          "sources": ["https://en.wikipedia.org/wiki/William_the_Conqueror"]
+          "sources": [
+            "https://en.wikipedia.org/wiki/William_the_Conqueror"
+          ]
         },
         {
           "order": 3,
@@ -43,7 +53,9 @@
           "lng": 9.1217,
           "title": "The Secret to 110",
           "funFact": "Capital of Sardinia, Italy's second-largest island.",
-          "sources": ["https://en.wikipedia.org/wiki/Cagliari"]
+          "sources": [
+            "https://en.wikipedia.org/wiki/Cagliari"
+          ]
         },
         {
           "order": 4,
@@ -55,7 +67,9 @@
           "lng": 31.5713,
           "title": "The Last Guinea Worm",
           "funFact": "Capital of South Sudan, independent since 2011.",
-          "sources": ["https://en.wikipedia.org/wiki/South_Sudan"]
+          "sources": [
+            "https://en.wikipedia.org/wiki/South_Sudan"
+          ]
         },
         {
           "order": 5,
@@ -67,7 +81,9 @@
           "lng": -54.6111,
           "title": "Mr. October",
           "funFact": "The city sits where Paraguay, Brazil, and Argentina meet.",
-          "sources": ["https://en.wikipedia.org/wiki/Triple_Frontier"]
+          "sources": [
+            "https://en.wikipedia.org/wiki/Triple_Frontier"
+          ]
         }
       ]
     },
@@ -146,7 +162,93 @@
           "lng": 85.324,
           "title": "Goddess to Mortal",
           "funFact": "About 1,400 meters up, in a bowl-shaped valley. Kathmandu's Kumari is a young girl worshipped as a living goddess, a tradition centuries old.",
-          "sources": ["https://en.wikipedia.org/wiki/Kumari_(goddess)"]
+          "sources": [
+            "https://en.wikipedia.org/wiki/Kumari_(goddess)"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "puzzle": 834,
+      "sourceUrl": "https://maptap.gg/data/this_day_in_history/October3.js",
+      "locations": [
+        {
+          "order": 1,
+          "city": "Toronto",
+          "region": "Ontario",
+          "country": "Canada",
+          "continent": "North America",
+          "lat": 43.6532,
+          "lng": -79.3832,
+          "title": "Tagging a Butterfly",
+          "funFact": "On Lake Ontario, the smallest of the five Great Lakes.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Fred_and_Norah_Urquhart",
+            "https://en.wikipedia.org/wiki/Monarch_butterfly_migration"
+          ]
+        },
+        {
+          "order": 2,
+          "city": "Victoria",
+          "region": "British Columbia",
+          "country": "Canada",
+          "continent": "North America",
+          "lat": 48.4284,
+          "lng": -123.3656,
+          "title": "Still Sailing",
+          "funFact": "British Columbia's capital, on Vancouver Island, not the mainland.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Jeanne_Socrates",
+            "https://www.svnereida.com/"
+          ]
+        },
+        {
+          "order": 3,
+          "city": "Kalamazoo",
+          "region": "Michigan",
+          "country": "USA",
+          "continent": "North America",
+          "lat": 42.2917,
+          "lng": -85.5872,
+          "title": "Read the Label",
+          "funFact": "Gibson made its guitars here from 1902 until 1984.",
+          "sources": [
+            "https://smartlabel.wkkellogg.com/Product/Index?gtin=00038000278051",
+            "https://www.who.int/news/item/04-03-2015-who-calls-on-countries-to-reduce-sugars-intake-among-adults-and-children"
+          ]
+        },
+        {
+          "order": 4,
+          "city": "Leiden",
+          "region": null,
+          "country": "Netherlands",
+          "continent": "Europe",
+          "lat": 52.1601,
+          "lng": 4.497,
+          "title": "Half a Loaf",
+          "funFact": "Rembrandt was born here in 1606.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Siege_of_Leiden",
+            "https://nl.wikipedia.org/wiki/Beleg_van_Leiden_(1573-1574)",
+            "https://en.wikipedia.org/wiki/3_October_Festival"
+          ]
+        },
+        {
+          "order": 5,
+          "city": "Morelia",
+          "region": "Michoacán",
+          "country": "Mexico",
+          "continent": "North America",
+          "lat": 19.706,
+          "lng": -101.195,
+          "title": null,
+          "funFact": "Its old centre is pink stone, a UNESCO site since 1991.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Catalina_Trail",
+            "https://en.wikipedia.org/wiki/Kenneth_C._Brugger",
+            "https://en.wikipedia.org/wiki/Monarch_butterfly_migration"
+          ]
         }
       ]
     }
