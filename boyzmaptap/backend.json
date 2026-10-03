@@ -1,0 +1,4 @@
+{
+  "url": "",
+  "comment": "Paste the Apps Script web app URL (the one ending in /exec) between the quotes after url. Leave url empty to keep scores on this phone only. Do not put the group PIN in this file."
+}
