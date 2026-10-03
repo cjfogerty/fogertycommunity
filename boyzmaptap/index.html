@@ -51,18 +51,15 @@
     }
     .card h2 { font-family: Outfit, sans-serif; font-size: 18px; margin: 0 0 4px; }
     .hint { color: var(--muted); font-size: 12px; margin: 0 0 12px; }
-    #save-note.ok { color: #b7f0cf; }
-    #save-note.bad { color: #ffb4b4; }
     .kpi .label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
     .kpi .value { font-family: Outfit, sans-serif; font-size: 28px; margin-top: 4px; }
     .kpi .meta { color: var(--muted); font-size: 12px; margin-top: 2px; }
     .you { outline: 1px solid rgba(255, 79, 139, 0.55); }
-    .tools { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 12px; }
-    .tools button, .seg button, .day-chips button {
+    .seg button, .day-chips button {
       border: 1px solid var(--line); background: transparent; color: var(--cream);
       border-radius: 999px; padding: 7px 11px; font-weight: 600; font-size: 12px; cursor: pointer;
     }
-    .tools button.on, .seg button.on, .day-chips button.on { background: var(--cream); color: #1a0508; }
+    .seg button.on, .day-chips button.on { background: var(--cream); color: #1a0508; }
     .seg, .day-chips { display: flex; gap: 6px; flex-wrap: wrap; }
     table { width: 100%; border-collapse: collapse; font-size: 13px; }
     th, td { text-align: right; padding: 10px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
@@ -99,20 +96,6 @@
       padding: 10px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--line);
     }
     .score { font-family: Outfit, sans-serif; font-size: 26px; }
-    form.logger { display: grid; gap: 8px; }
-    @media (min-width: 720px) { form.logger { grid-template-columns: 1.1fr 0.9fr 0.7fr 0.6fr auto; align-items: end; } }
-    #pin { text-transform: none; letter-spacing: 0.08em; }
-    .span-all { grid-column: 1 / -1; }
-    label { display: grid; gap: 4px; font-size: 11px; color: var(--muted); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
-    input, select, textarea {
-      background: #0d1116; color: var(--cream); border: 1px solid var(--line); border-radius: 10px;
-      padding: 10px; font: inherit;
-    }
-    textarea.share-box { min-height: 74px; resize: vertical; text-transform: none; letter-spacing: 0; font-weight: 500; font-size: 14px; }
-    button.primary {
-      background: linear-gradient(180deg, #c24a58, #8a2a36); color: white; border: 0; border-radius: 12px;
-      padding: 11px 14px; font-weight: 800; cursor: pointer;
-    }
     .callgrid { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(168px, 1fr)); }
     .call .label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
     .call .who { font-family: Outfit, sans-serif; font-size: 22px; line-height: 1.1; margin-top: 4px; }
@@ -208,44 +191,10 @@
       </div>
     </section>
 
-    <section class="grid two" style="margin-top:12px">
-      <article class="card">
-        <h2>Daily log</h2>
-        <p class="hint">#833 has Andy 987, Sam 919, Ben 866, and Casey’s 941 total. #832 has Sam 891. A score saved with the group PIN shows up here for everyone. Same player and date replaces that day.</p>
-        <div class="logs" id="logs"></div>
-      </article>
-      <article class="card">
-        <h2>Log a score</h2>
-        <p class="hint">Paste a MapTap share, pick your name, enter the group PIN, and save. The final has to match MapTap’s 1, 1, 2, 3, 3 round weights. If the shared board is down, the score stays on this phone.</p>
-        <form class="logger" id="log-form">
-          <label class="span-all">Paste MapTap share
-            <textarea id="share" class="share-box" placeholder="www.maptap.gg October 2&#10;76 94 77 73 57&#10;Final score: 714"></textarea>
-          </label>
-          <p class="hint span-all" id="share-preview" style="margin:0"></p>
-          <label class="span-all">Group PIN
-            <input id="pin" type="password" autocomplete="off" placeholder="Shared PIN" />
-          </label>
-          <p class="hint span-all" id="backend-status" style="margin:0">Checking the shared board…</p>
-          <label>Player
-            <select id="player"></select>
-          </label>
-          <label>Date
-            <input id="date" type="date" value="2026-10-02" required />
-          </label>
-          <label>Score
-            <input id="score" type="number" min="0" max="1000" step="1" required placeholder="941" />
-          </label>
-          <label>Puzzle #
-            <input id="puzzle" type="number" min="1" step="1" placeholder="833" />
-          </label>
-          <button class="primary" type="submit">Save score</button>
-        </form>
-        <div class="tools">
-          <button type="button" id="export">Download scores.json</button>
-          <button type="button" id="reset">Clear phone logs</button>
-        </div>
-        <p class="hint" id="save-note"></p>
-      </article>
+    <section class="card" style="margin-top:12px">
+      <h2>Daily log</h2>
+      <p class="hint">Filed scores for each day, with the five rounds when they were recorded.</p>
+      <div class="logs" id="logs"></div>
     </section>
     <p class="foot">Board photo Oct 2, 2026. Peter leads the season total by 24 over Andy. Micah has the hottest October average on the original board (955). Casey’s Human GPS band is 925–949.</p>
   </div>
@@ -532,8 +481,6 @@
     }
   ]
 };
-    const KEY = "boyzmaptap-logs-v1";
-    const PIN_KEY = "boyzmaptap-pin-v1";
     const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
     const CONTINENTS = ["Africa","Antarctica","Asia","Europe","North America","Oceania","South America"];
     const CONTINENT_COLOR = {
@@ -553,12 +500,6 @@
     let pinned = "casey";
     let routeDate = null;
     let baseSnap = null;
-    let backend = { url: "", loaded: false };
-    let sharedLogs = [];
-    let sharedOk = false;
-    let sharedChecked = false;
-    let sharedBusy = false;
-    let pinRejected = false;
 
     function n(v) { return v == null || Number.isNaN(v) ? "—" : Number(v).toLocaleString(undefined, { maximumFractionDigits: 1 }); }
     function esc(v) {
@@ -577,52 +518,6 @@
       if (!nums.length) return null;
       return nums.reduce(function (s, v) { return s + v; }, 0) / nums.length;
     }
-    function loadExtra() {
-      try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { return []; }
-    }
-    function saveExtra(rows) { localStorage.setItem(KEY, JSON.stringify(rows)); }
-    function roundWeights() { return places.roundMultipliers || [1, 1, 2, 3, 3]; }
-    function weightedTotal(rounds) {
-      return rounds.reduce(function (sum, score, i) { return sum + score * (roundWeights()[i] || 1); }, 0);
-    }
-    function puzzleFor(iso) {
-      const day = findDay(iso);
-      if (day && day.puzzle) return day.puzzle;
-      const bits = (iso || "").split("-");
-      if (bits.length !== 3) return null;
-      const then = Date.UTC(Number(bits[0]), Number(bits[1]) - 1, Number(bits[2]));
-      const epoch = Date.UTC(2024, 5, 21);
-      const diff = Math.round((then - epoch) / 86400000);
-      return diff > 0 ? diff : null;
-    }
-    function normalizeIncoming(row, existing) {
-      const next = {
-        id: (existing && existing.id) || row.id || (row.playerId + "-" + row.date),
-        playerId: row.playerId,
-        date: row.date,
-        puzzle: row.puzzle == null || row.puzzle === "" ? (existing && existing.puzzle) || null : Number(row.puzzle),
-        score: Number(row.score)
-      };
-      if (Array.isArray(row.rounds) && row.rounds.length) next.rounds = row.rounds.map(Number);
-      const incomingAch = Array.isArray(row.achievements) ? row.achievements : [];
-      if (existing && Number(existing.score) === next.score && Array.isArray(existing.achievements) && existing.achievements.length && !incomingAch.length) {
-        next.achievements = existing.achievements.slice();
-      } else if (incomingAch.length) {
-        next.achievements = incomingAch.slice();
-      } else if (next.score >= 925 && next.score <= 949) {
-        next.achievements = ["Human GPS"];
-      }
-      if (row.pending) next.pending = true;
-      return next;
-    }
-    function sameScore(a, b) {
-      if (!a || !b || Number(a.score) !== Number(b.score)) return false;
-      const ar = a.rounds || [];
-      const br = b.rounds || [];
-      if (ar.length !== br.length) return false;
-      for (let i = 0; i < ar.length; i++) if (Number(ar[i]) !== Number(br[i])) return false;
-      return true;
-    }
     function findDay(iso) {
       return (places.days || []).find(function (d) { return d.date === iso; }) || null;
     }
@@ -637,21 +532,7 @@
         baseSnap = { players: structuredClone(data.players), logs: structuredClone(data.logs || []) };
       }
       data.players = structuredClone(baseSnap.players);
-      const extra = loadExtra();
       const logs = baseSnap.logs.slice();
-      function applyRow(row) {
-        const i = logs.findIndex(function (l) { return l.playerId === row.playerId && l.date === row.date; });
-        const next = normalizeIncoming(row, i >= 0 ? logs[i] : null);
-        if (i >= 0) logs[i] = next; else logs.push(next);
-      }
-      if (sharedOk) sharedLogs.forEach(applyRow);
-      extra.forEach(function (row) {
-        if (sharedOk && !row.pending) {
-          const onServer = sharedLogs.some(function (s) { return s.playerId === row.playerId && s.date === row.date; });
-          if (onServer) return;
-        }
-        applyRow(row);
-      });
       data.logs = logs.sort(function (a, b) {
         if (a.date === b.date) return 0;
         return a.date < b.date ? 1 : -1;
@@ -896,7 +777,7 @@
       const host = document.getElementById("callouts");
       const rows = roundRows();
       if (!rows.length) {
-        host.innerHTML = '<p class="hint" style="margin:0">No round scores yet. Paste a MapTap share under Log a score and the five numbers attach to that day’s places. Days with only a total still show in the log.</p>';
+        host.innerHTML = '<p class="hint" style="margin:0">No round scores yet. Days with only a total still show in the log.</p>';
         return;
       }
       const byContinent = {};
@@ -1027,93 +908,12 @@
               return '<span class="mini">' + score + " " + esc(city) + "</span>";
             }).join("") + "</div>";
           }
-          const pendingNote = log.pending ? " · on this phone until the shared board accepts it" : "";
-          return '<div class="log"><div><div class="score">' + log.score + '</div></div><div><strong>' + esc(person.name) + '</strong><div class="hint" style="margin:2px 0 0">' + esc(log.date) + (log.puzzle ? " · #" + log.puzzle : "") + pendingNote + '</div>' + pips + (ach ? '<div class="chips" style="margin-top:6px">' + ach + '</div>' : "") + '</div><i class="dot" style="background:' + person.color + '"></i></div>';
+          return '<div class="log"><div><div class="score">' + log.score + '</div></div><div><strong>' + esc(person.name) + '</strong><div class="hint" style="margin:2px 0 0">' + esc(log.date) + (log.puzzle ? " · #" + log.puzzle : "") + '</div>' + pips + (ach ? '<div class="chips" style="margin-top:6px">' + ach + '</div>' : "") + '</div><i class="dot" style="background:' + person.color + '"></i></div>';
         }).join("");
         return '<div class="day-block"><div class="day-label"><strong style="color:var(--cream)">' + esc(niceDate(iso)) + (day && day.puzzle ? " · #" + day.puzzle : "") + '</strong><div>' + esc(placeLine) + '</div></div>' + body + '</div>';
       }).join("");
     }
-    function renderPlayers() {
-      const sel = document.getElementById("player");
-      const current = sel.value;
-      sel.innerHTML = data.players.map(function (p) {
-        return '<option value="' + p.id + '">' + esc(p.name) + '</option>';
-      }).join("");
-      sel.value = current && data.players.some(function (p) { return p.id === current; }) ? current : "casey";
-    }
     function render() { merge(); renderKpis(); renderRoute(); renderCallouts(); renderTable(); renderChart(); renderLogs(); }
-    function parseShareText(raw) {
-      if (!raw || !String(raw).trim()) return null;
-      const text = String(raw).replace(/\s+/g, " ").trim();
-      const dateRe = new RegExp("(" + MONTHS.join("|") + ")\\s+(\\d{1,2})(?:st|nd|rd|th)?(?:\\s*,?\\s*(\\d{4}))?", "i");
-      const dateM = text.match(dateRe);
-      const finalM = text.match(/Final score:\s*(\d+)/i);
-      let middle = text;
-      let when = null;
-      if (dateM) {
-        const monthIdx = MONTHS.findIndex(function (m) { return m.toLowerCase() === dateM[1].toLowerCase(); });
-        when = { month: monthIdx + 1, day: Number(dateM[2]), year: dateM[3] ? Number(dateM[3]) : null };
-        middle = text.slice(dateM.index + dateM[0].length);
-      }
-      let total = null;
-      if (finalM) {
-        total = Number(finalM[1]);
-        const cut = middle.search(/Final score:/i);
-        if (cut >= 0) middle = middle.slice(0, cut);
-      }
-      const rounds = [];
-      const re = /\d{1,3}/g;
-      let match;
-      while ((match = re.exec(middle))) {
-        const num = Number(match[0]);
-        if (num >= 0 && num <= 100) rounds.push(num);
-      }
-      if (!finalM || rounds.length !== 5) return { ok: false, when: when, total: total, rounds: rounds };
-      return { ok: true, when: when, total: total, rounds: rounds };
-    }
-    function resolveShareDate(parsed) {
-      if (!parsed || !parsed.when) return null;
-      const month = parsed.when.month;
-      const dayNum = parsed.when.day;
-      if (parsed.when.year) {
-        return parsed.when.year + "-" + String(month).padStart(2, "0") + "-" + String(dayNum).padStart(2, "0");
-      }
-      const matches = (places.days || []).filter(function (d) {
-        const bits = d.date.split("-");
-        return Number(bits[1]) === month && Number(bits[2]) === dayNum;
-      });
-      if (matches.length) {
-        matches.sort(function (a, b) { return a.date < b.date ? 1 : -1; });
-        return matches[0].date;
-      }
-      const year = (document.getElementById("date").value || "2026-10-02").slice(0, 4);
-      return year + "-" + String(month).padStart(2, "0") + "-" + String(dayNum).padStart(2, "0");
-    }
-    function applySharePreview() {
-      const parsed = parseShareText(document.getElementById("share").value);
-      const note = document.getElementById("share-preview");
-      if (!parsed) { note.textContent = ""; return; }
-      if (!parsed.ok) {
-        note.textContent = "Need a date, five round scores from 0 to 100, and a Final score line.";
-        return;
-      }
-      const iso = resolveShareDate(parsed);
-      if (iso) {
-        document.getElementById("date").value = iso;
-        const puzzle = puzzleFor(iso);
-        if (puzzle) document.getElementById("puzzle").value = puzzle;
-      }
-      document.getElementById("score").value = parsed.total;
-      const day = iso ? findDay(iso) : null;
-      const weighted = weightedTotal(parsed.rounds);
-      let msg = "Final score " + parsed.total + " matches the 1, 1, 2, 3, 3 weights.";
-      if (weighted !== parsed.total) {
-        msg = "Final score " + parsed.total + " does not match MapTap’s 1, 1, 2, 3, 3 weights (that would be " + weighted + "). This score will not be saved.";
-      } else if (day && day.locations) {
-        msg += " " + day.locations.map(function (loc, i) { return loc.city + " " + parsed.rounds[i]; }).join(" · ") + ".";
-      }
-      note.textContent = msg;
-    }
     document.getElementById("modes").addEventListener("click", function (e) {
       const b = e.target.closest("button"); if (!b) return;
       mode = b.getAttribute("data-mode");
@@ -1139,300 +939,17 @@
       routeDate = b.getAttribute("data-day");
       renderRoute();
     });
-    document.getElementById("share").addEventListener("input", applySharePreview);
-    document.getElementById("date").addEventListener("change", function () {
-      const puzzle = puzzleFor(this.value);
-      if (puzzle) document.getElementById("puzzle").value = puzzle;
-    });
-    document.getElementById("pin").addEventListener("input", function () { pinRejected = false; });
-    function setSaveNote(text, kind) {
-      const note = document.getElementById("save-note");
-      note.textContent = text;
-      note.className = "hint" + (kind ? " " + kind : "");
-    }
-    function setBackendStatus() {
-      const el = document.getElementById("backend-status");
-      if (!backend.loaded) {
-        el.textContent = "Checking the shared board…";
-        return;
-      }
-      if (!(backend.url || "").trim()) {
-        el.textContent = "Shared board isn’t connected yet. Saves stay on this phone until the board URL is set.";
-        return;
-      }
-      if (!sharedChecked) {
-        el.textContent = "Checking the shared board…";
-        return;
-      }
-      if (sharedOk) {
-        el.textContent = "Shared board connected. A save shows up for the group right away.";
-        return;
-      }
-      el.textContent = "Shared board unreachable. Saves stay on this phone until it answers.";
-    }
-    function scoreError(parsed, score) {
-      if (!parsed || !parsed.ok) return "Paste the MapTap share with five round scores and a Final score line. Nothing was saved.";
-      if (parsed.rounds.some(function (n) { return n !== Math.floor(n) || n < 0 || n > 100; })) {
-        return "Each round must be a whole number from 0 to 100. Nothing was saved.";
-      }
-      const weighted = weightedTotal(parsed.rounds);
-      if (Number(score) !== weighted) {
-        return "Final score " + score + " does not match MapTap’s 1, 1, 2, 3, 3 weights (that would be " + weighted + "). Nothing was saved.";
-      }
-      return "";
-    }
-    function storeLocal(row, pending) {
-      const extra = loadExtra().filter(function (l) { return !(l.playerId === row.playerId && l.date === row.date); });
-      const copy = {
-        id: row.playerId + "-" + row.date,
-        playerId: row.playerId,
-        date: row.date,
-        puzzle: row.puzzle,
-        score: row.score,
-        rounds: row.rounds.slice()
-      };
-      if (row.score >= 925 && row.score <= 949) copy.achievements = ["Human GPS"];
-      if (pending) copy.pending = true;
-      extra.push(copy);
-      saveExtra(extra);
-    }
-    function isGoogleScript(url) {
-      return /script\.google\.com/i.test(url) || /script\.googleusercontent\.com/i.test(url);
-    }
-    function fetchJson(url) {
-      const ctrl = typeof AbortController === "function" ? new AbortController() : null;
-      const timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 10000);
-      return fetch(url, { signal: ctrl ? ctrl.signal : undefined, cache: "no-store" })
-        .then(function (r) { if (!r.ok) throw new Error("http"); return r.json(); })
-        .finally(function () { clearTimeout(timer); });
-    }
-    let jsonpSeq = 0;
-    function jsonp(url) {
-      return new Promise(function (resolve, reject) {
-        const cb = "boyzmaptap_cb_" + (++jsonpSeq);
-        const script = document.createElement("script");
-        let done = false;
-        const timer = setTimeout(function () {
-          if (done) return;
-          done = true;
-          cleanup();
-          reject(new Error("timeout"));
-        }, 12000);
-        function cleanup() {
-          clearTimeout(timer);
-          try { delete window[cb]; } catch (err) { window[cb] = undefined; }
-          if (script.parentNode) script.parentNode.removeChild(script);
-        }
-        window[cb] = function (payload) {
-          if (done) return;
-          done = true;
-          cleanup();
-          resolve(payload);
-        };
-        script.onerror = function () {
-          if (done) return;
-          done = true;
-          cleanup();
-          reject(new Error("jsonp"));
-        };
-        script.src = url + (url.indexOf("?") >= 0 ? "&" : "?") + "callback=" + cb;
-        document.head.appendChild(script);
-      });
-    }
-    function backendRequest(params) {
-      const base = (backend.url || "").trim();
-      if (!base) return Promise.reject(new Error("unconfigured"));
-      const qs = new URLSearchParams();
-      Object.keys(params).forEach(function (key) {
-        if (params[key] != null && params[key] !== "") qs.set(key, String(params[key]));
-      });
-      qs.set("_", String(Date.now()));
-      const url = base + (base.indexOf("?") >= 0 ? "&" : "?") + qs.toString();
-      return isGoogleScript(base) ? jsonp(url) : fetchJson(url);
-    }
-    function cleanServerLog(raw) {
-      if (!raw || !data.players.some(function (p) { return p.id === raw.playerId; })) return null;
-      const date = String(raw.date || "");
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
-      if (!Array.isArray(raw.rounds) || raw.rounds.length !== 5) return null;
-      const rounds = raw.rounds.map(Number);
-      if (rounds.some(function (n) { return n !== Math.floor(n) || n < 0 || n > 100; })) return null;
-      const score = Number(raw.score);
-      if (score !== weightedTotal(rounds)) return null;
-      const puzzle = raw.puzzle == null || raw.puzzle === "" ? puzzleFor(date) : Number(raw.puzzle);
-      return { id: raw.playerId + "-" + date, playerId: raw.playerId, date: date, puzzle: puzzle, score: score, rounds: rounds };
-    }
-    function applyServerLogs(logs) {
-      sharedLogs = (logs || []).map(cleanServerLog).filter(Boolean);
-      sharedOk = true;
-      sharedChecked = true;
-      const extra = loadExtra();
-      const next = extra.filter(function (row) {
-        if (!row.pending) return true;
-        return !sharedLogs.some(function (saved) { return sameScore(saved, row) && saved.playerId === row.playerId && saved.date === row.date; });
-      });
-      if (next.length !== extra.length) saveExtra(next);
-      setBackendStatus();
-      render();
-    }
-    function postScore(row, pin) {
-      return backendRequest({
-        action: "save",
-        pin: pin,
-        playerId: row.playerId,
-        date: row.date,
-        puzzle: row.puzzle || "",
-        score: row.score,
-        r1: row.rounds[0],
-        r2: row.rounds[1],
-        r3: row.rounds[2],
-        r4: row.rounds[3],
-        r5: row.rounds[4]
-      });
-    }
-    function flushPending() {
-      if (!sharedOk || pinRejected) return Promise.resolve();
-      const pin = document.getElementById("pin").value.trim();
-      if (!pin) return Promise.resolve();
-      const pending = loadExtra().filter(function (row) { return row.pending && Array.isArray(row.rounds) && row.rounds.length === 5; });
-      return pending.reduce(function (chain, row) {
-        return chain.then(function () {
-          if (pinRejected) return;
-          return postScore(row, pin).then(function (res) {
-            if (res && res.ok && Array.isArray(res.logs)) {
-              applyServerLogs(res.logs);
-              return;
-            }
-            if (res && res.error === "Wrong PIN.") pinRejected = true;
-          }).catch(function () {});
-        });
-      }, Promise.resolve());
-    }
-    function refreshShared() {
-      if (!backend.loaded) return Promise.resolve();
-      if (!(backend.url || "").trim()) {
-        sharedOk = false;
-        sharedChecked = true;
-        setBackendStatus();
-        return Promise.resolve();
-      }
-      if (sharedBusy) return Promise.resolve();
-      sharedBusy = true;
-      return backendRequest({ action: "list" }).then(function (res) {
-        if (!res || res.ok !== true || !Array.isArray(res.logs)) throw new Error("bad");
-        applyServerLogs(res.logs);
-        return flushPending();
-      }).catch(function () {
-        sharedOk = false;
-        sharedChecked = true;
-        setBackendStatus();
-        render();
-      }).finally(function () { sharedBusy = false; });
-    }
-    function savedLine(row) {
-      return firstName(row.playerId) + " · " + niceDate(row.date) + " · " + row.score;
-    }
-    document.getElementById("log-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const parsed = parseShareText(document.getElementById("share").value);
-      const score = Number(document.getElementById("score").value);
-      const problem = scoreError(parsed, score);
-      if (problem) {
-        setSaveNote(problem, "bad");
-        return;
-      }
-      const iso = resolveShareDate(parsed) || document.getElementById("date").value;
-      const row = {
-        playerId: document.getElementById("player").value,
-        date: iso,
-        puzzle: puzzleFor(iso),
-        score: score,
-        rounds: parsed.rounds.slice()
-      };
-      if (!row.playerId || !data.players.some(function (p) { return p.id === row.playerId; })) {
-        setSaveNote("Pick a player from the list. Nothing was saved.", "bad");
-        return;
-      }
-      const pin = document.getElementById("pin").value.trim();
-      if (!(backend.url || "").trim()) {
-        storeLocal(row, false);
-        setSaveNote("Shared board isn’t connected yet. Saved on this phone only. " + savedLine(row) + ".", "ok");
-        render();
-        return;
-      }
-      if (!pin) {
-        setSaveNote("Enter the group PIN. Nothing was saved.", "bad");
-        return;
-      }
-      const button = e.target.querySelector("button[type=submit]");
-      button.disabled = true;
-      postScore(row, pin).then(function (res) {
-        if (res && res.ok && Array.isArray(res.logs)) {
-          pinRejected = false;
-          localStorage.setItem(PIN_KEY, pin);
-          storeLocal(row, false);
-          applyServerLogs(res.logs);
-          setSaveNote("Saved for the group. " + savedLine(row) + ".", "ok");
-          return;
-        }
-        const message = res && res.error ? res.error : "The shared board refused that score.";
-        if (message === "Wrong PIN.") {
-          pinRejected = true;
-          localStorage.removeItem(PIN_KEY);
-          setSaveNote("That PIN didn’t match. Nothing was saved.", "bad");
-          return;
-        }
-        setSaveNote(message + " Nothing was saved.", "bad");
-      }).catch(function () {
-        storeLocal(row, true);
-        localStorage.setItem(PIN_KEY, pin);
-        sharedOk = false;
-        sharedChecked = true;
-        setBackendStatus();
-        setSaveNote("Couldn’t reach the shared board. Saved on this phone. " + savedLine(row) + " will show here until the board is back.", "bad");
-        render();
-      }).finally(function () { button.disabled = false; });
-    });
-    document.getElementById("export").addEventListener("click", function () {
-      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = "scores.json";
-      a.click();
-    });
-    document.getElementById("reset").addEventListener("click", function () {
-      localStorage.removeItem(KEY);
-      data = structuredClone(SEED);
-      baseSnap = null;
-      setSaveNote("Phone logs cleared. Shared scores stay on the board.", "");
-      render();
-    });
-    const rememberedPin = localStorage.getItem(PIN_KEY);
-    if (rememberedPin) document.getElementById("pin").value = rememberedPin;
-    renderPlayers();
     render();
     Promise.all([
       fetch("scores.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
-      fetch("locations.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
-      fetch("backend.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : { url: "" }; }).catch(function () { return { url: "" }; })
+      fetch("locations.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
     ]).then(function (pair) {
       if (pair[0] && pair[0].players) {
         data = pair[0];
         baseSnap = null;
       }
       if (pair[1] && Array.isArray(pair[1].days)) places = pair[1];
-      backend = {
-        url: pair[2] && typeof pair[2].url === "string" ? pair[2].url.trim() : "",
-        loaded: true
-      };
-      renderPlayers();
       render();
-      setBackendStatus();
-      refreshShared();
-      setInterval(refreshShared, 60000);
-      document.addEventListener("visibilitychange", function () {
-        if (document.visibilityState === "visible") refreshShared();
-      });
     });
   </script>
 </body>
