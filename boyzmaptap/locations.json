@@ -251,6 +251,92 @@
           ]
         }
       ]
+    },
+    {
+      "date": "2026-10-04",
+      "puzzle": 835,
+      "sourceUrl": "https://maptap.gg/data/this_day_in_history/October4.js",
+      "locations": [
+        {
+          "order": 1,
+          "city": "Ostrava",
+          "region": null,
+          "country": "Czech Republic",
+          "continent": "Europe",
+          "lat": 49.8356,
+          "lng": 18.2925,
+          "title": "The Cold Water Cure",
+          "funFact": "Czechia's third-largest city.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Vincenz_Priessnitz",
+            "https://www.britannica.com/biography/Vinzenz-Priessnitz"
+          ]
+        },
+        {
+          "order": 2,
+          "city": "Ratnagiri",
+          "region": "Maharashtra",
+          "country": "India",
+          "continent": "Asia",
+          "lat": 16.9833,
+          "lng": 73.3,
+          "title": "The Turtle Village",
+          "funFact": "Home of the Alphonso mango.",
+          "sources": [
+            "https://iotn.org/?p=2936",
+            "https://www.thebridgechronicle.com/lifestyle/art-culture/turning-tide-16833",
+            "https://www.theweek.in/theweek/leisure/2025/05/10/how-villagers-near-a-konkan-beach-went-from-eating-olive-ridley-turtle-eggs-to-protecting-and-building-an-economy-around-them.html"
+          ]
+        },
+        {
+          "order": 3,
+          "city": "Santa Cruz de la Sierra",
+          "region": null,
+          "country": "Bolivia",
+          "continent": "South America",
+          "lat": -17.7863,
+          "lng": -63.1812,
+          "title": "No More Circus Lions",
+          "funFact": "Bolivia's largest city, bigger than La Paz.",
+          "sources": [
+            "https://newspaper.animalpeopleforum.org/2011/03/01/lion-airlift/",
+            "https://www.nbclosangeles.com/news/local/denver-bolivian-circus-lions/1902023/",
+            "https://en.wikipedia.org/wiki/Animal_Defenders_International"
+          ]
+        },
+        {
+          "order": 4,
+          "city": "Thaba Bosiu",
+          "region": null,
+          "country": "Lesotho",
+          "continent": "Africa",
+          "lat": -29.3503,
+          "lng": 27.6713,
+          "title": "The Mountain Kingdom",
+          "funFact": "Lowest point 1,400 m, the highest of any country.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Moshoeshoe_I",
+            "https://en.wikipedia.org/wiki/Thaba_Bosiu",
+            "https://www.britannica.com/biography/Moshoeshoe"
+          ]
+        },
+        {
+          "order": 5,
+          "city": "Nuku'alofa",
+          "region": "Tongatapu",
+          "country": "Tonga",
+          "continent": "Oceania",
+          "lat": -21.1333,
+          "lng": -175.2,
+          "title": "Tonga's Space Program",
+          "funFact": "Never colonized by a European power.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Tongasat",
+            "https://thespacereview.com/article/1787/1",
+            "https://www.globalsecurity.org/space/world/tonga/index.html"
+          ]
+        }
+      ]
     }
   ]
 }
