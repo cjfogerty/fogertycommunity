@@ -96,6 +96,17 @@
       padding: 10px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--line);
     }
     .score { font-family: Outfit, sans-serif; font-size: 26px; }
+    .roast {
+      margin-top: 4px; padding: 12px 12px 4px; border-radius: 14px;
+      border: 1px solid rgba(194, 74, 88, 0.5);
+      background: linear-gradient(180deg, rgba(138, 42, 54, 0.28), rgba(20, 8, 12, 0.2));
+    }
+    .roast .label { color: #ffb4b4; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; margin-bottom: 8px; }
+    .roast-item { display: grid; grid-template-columns: 72px 1fr; gap: 10px; align-items: start; padding: 10px 0; border-top: 1px solid rgba(246, 239, 230, 0.08); }
+    .roast-item:first-of-type { border-top: 0; padding-top: 2px; }
+    .roast-item .score { font-size: 22px; color: #ffb4b4; line-height: 1; }
+    .roast-item .who { display: flex; align-items: center; gap: 8px; font-weight: 700; }
+    .roast-item p { margin: 4px 0 0; font-size: 13.5px; line-height: 1.45; }
     .callgrid { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(168px, 1fr)); }
     .call .label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
     .call .who { font-family: Outfit, sans-serif; font-size: 22px; line-height: 1.1; margin-top: 4px; }
@@ -494,6 +505,7 @@
     };
     let data = structuredClone(SEED);
     let places = PLACES_SEED && Array.isArray(PLACES_SEED.days) ? PLACES_SEED : { days: [], roundMultipliers: [1, 1, 2, 3, 3] };
+    let roastDays = [];
     let mode = "avg";
     let sortKey = "total";
     let sortDir = -1;
@@ -884,6 +896,20 @@
         return '<article class="card call" style="padding:12px"><div class="label">' + esc(card.label) + '</div><div class="who">' + esc(card.who) + '</div><div class="meta">' + esc(card.meta) + '</div></article>';
       }).join("") + '</div><div class="player-lines">' + lines + "</div>";
     }
+    function roastsFor(iso) {
+      const day = roastDays.find(function (d) { return d.date === iso; });
+      if (!day || !Array.isArray(day.roasts)) return [];
+      return day.roasts.filter(function (row) { return row && row.playerId && row.text; });
+    }
+    function renderRoasts(iso) {
+      const rows = roastsFor(iso);
+      if (!rows.length) return "";
+      const body = rows.map(function (row) {
+        const person = playerById(row.playerId);
+        return '<div class="roast-item"><div class="score">' + esc(row.score) + '</div><div><div class="who"><i class="dot" style="background:' + person.color + '"></i> ' + esc(person.name) + '</div><p>' + esc(row.text) + '</p></div></div>';
+      }).join("");
+      return '<aside class="roast"><div class="label">Roast corner</div>' + body + '</aside>';
+    }
     function renderLogs() {
       const host = document.getElementById("logs");
       if (!data.logs.length) {
@@ -910,7 +936,7 @@
           }
           return '<div class="log"><div><div class="score">' + log.score + '</div></div><div><strong>' + esc(person.name) + '</strong><div class="hint" style="margin:2px 0 0">' + esc(log.date) + (log.puzzle ? " · #" + log.puzzle : "") + '</div>' + pips + (ach ? '<div class="chips" style="margin-top:6px">' + ach + '</div>' : "") + '</div><i class="dot" style="background:' + person.color + '"></i></div>';
         }).join("");
-        return '<div class="day-block"><div class="day-label"><strong style="color:var(--cream)">' + esc(niceDate(iso)) + (day && day.puzzle ? " · #" + day.puzzle : "") + '</strong><div>' + esc(placeLine) + '</div></div>' + body + '</div>';
+        return '<div class="day-block"><div class="day-label"><strong style="color:var(--cream)">' + esc(niceDate(iso)) + (day && day.puzzle ? " · #" + day.puzzle : "") + '</strong><div>' + esc(placeLine) + '</div></div>' + body + renderRoasts(iso) + '</div>';
       }).join("");
     }
     function render() { merge(); renderKpis(); renderRoute(); renderCallouts(); renderTable(); renderChart(); renderLogs(); }
@@ -942,13 +968,15 @@
     render();
     Promise.all([
       fetch("scores.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
-      fetch("locations.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+      fetch("locations.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
+      fetch("roasts.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
     ]).then(function (pair) {
       if (pair[0] && pair[0].players) {
         data = pair[0];
         baseSnap = null;
       }
       if (pair[1] && Array.isArray(pair[1].days)) places = pair[1];
+      if (pair[2] && Array.isArray(pair[2].days)) roastDays = pair[2].days;
       render();
     });
   </script>

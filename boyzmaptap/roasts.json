@@ -1,0 +1,26 @@
+{
+  "comment": "Hand-written roasts for a day's lowest scores. Add one object to days when the group writes them. A day with no entry shows nothing on the board. Do not generate roast text in the page.",
+  "days": [
+    {
+      "date": "2026-10-04",
+      "puzzle": 835,
+      "roasts": [
+        {
+          "playerId": "ben",
+          "score": 263,
+          "text": "Opened strong with a 93, then spent round 3 on the wrong continent because of 'kids', and said rounds 4 and 5 were places he 'didn't know existed.' He scored a 1 on Tonga. One. The kids are not the problem, Ben."
+        },
+        {
+          "playerId": "micah",
+          "score": 487,
+          "text": "Missed Nukuʻalofa by 18,000 km and then looked up that half the Earth's circumference is 20,000 km, as if that helped his case. That's not a miss, that's a round trip. Scored a perfect 0 on the final round."
+        },
+        {
+          "playerId": "peter",
+          "score": 625,
+          "text": "After a 53 in Lesotho and a 43 in Tonga, Peter told the group he 'felt violated.' Peter, the map didn't do anything to you. You did this to yourself."
+        }
+      ]
+    }
+  ]
+}
