@@ -170,6 +170,46 @@
       "puzzle": 834,
       "score": 912,
       "rounds": [100, 96, 100, 91, 81]
+    },
+    {
+      "id": "casey-835",
+      "playerId": "casey",
+      "date": "2026-10-04",
+      "puzzle": 835,
+      "score": 839,
+      "rounds": [80, 95, 74, 87, 85]
+    },
+    {
+      "id": "andy-835",
+      "playerId": "andy",
+      "date": "2026-10-04",
+      "puzzle": 835,
+      "score": 687,
+      "rounds": [93, 78, 78, 38, 82]
+    },
+    {
+      "id": "peter-835",
+      "playerId": "peter",
+      "date": "2026-10-04",
+      "puzzle": 835,
+      "score": 625,
+      "rounds": [91, 86, 80, 53, 43]
+    },
+    {
+      "id": "micah-835",
+      "playerId": "micah",
+      "date": "2026-10-04",
+      "puzzle": 835,
+      "score": 487,
+      "rounds": [92, 84, 97, 39, 0]
+    },
+    {
+      "id": "ben-835",
+      "playerId": "ben",
+      "date": "2026-10-04",
+      "puzzle": 835,
+      "score": 263,
+      "rounds": [93, 80, 24, 13, 1]
     }
   ]
 }
