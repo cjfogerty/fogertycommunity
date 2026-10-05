@@ -337,6 +337,91 @@
           ]
         }
       ]
+    },
+    {
+      "date": "2026-10-05",
+      "puzzle": 836,
+      "sourceUrl": "https://maptap.gg/data/this_day_in_history/October5.js",
+      "locations": [
+        {
+          "order": 1,
+          "city": "Tel Aviv",
+          "region": null,
+          "country": "Israel",
+          "continent": "Asia",
+          "lat": 32.0853,
+          "lng": 34.7818,
+          "title": "The Impossible Pattern",
+          "funFact": "Founded in 1909 on sand dunes outside Jaffa.",
+          "sources": [
+            "https://www.nobelprize.org/prizes/chemistry/2011/popular-information/",
+            "https://www.nobelprize.org/prizes/chemistry/2011/press-release/",
+            "https://en.wikipedia.org/wiki/Dan_Shechtman"
+          ]
+        },
+        {
+          "order": 2,
+          "city": "Miaoli City",
+          "region": null,
+          "country": "Taiwan",
+          "continent": "Asia",
+          "lat": 24.5602,
+          "lng": 120.8214,
+          "title": "Leopard Cat Rice",
+          "funFact": "Most of Miaoli County's people are Hakka.",
+          "sources": [
+            "https://news.pts.org.tw/article/669550",
+            "https://ap.fftc.org.tw/news/466",
+            "https://en.wikipedia.org/wiki/Formosan_clouded_leopard"
+          ]
+        },
+        {
+          "order": 3,
+          "city": "Dijon",
+          "region": null,
+          "country": "France",
+          "continent": "Europe",
+          "lat": 47.322,
+          "lng": 5.0415,
+          "title": "The London Wager",
+          "funFact": "Seat of the Dukes of Burgundy. Also, the mustard.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Chevalier_d%27%C3%89on",
+            "https://www.britannica.com/biography/Charles-chevalier-dEon-de-Beaumont"
+          ]
+        },
+        {
+          "order": 4,
+          "city": "Fort Knox",
+          "region": "Kentucky",
+          "country": "USA",
+          "continent": "North America",
+          "lat": 37.8913,
+          "lng": -85.9653,
+          "title": "Villain Consulting",
+          "funFact": "Holds over half of the US government's gold.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Goldfinger_(film)",
+            "https://en.wikipedia.org/wiki/Dr._No_(film)",
+            "https://www.chemlin.org/isotope/gold-198"
+          ]
+        },
+        {
+          "order": 5,
+          "city": "Bukavu",
+          "region": null,
+          "country": "Democratic Republic of the Congo",
+          "continent": "Africa",
+          "lat": -2.5083,
+          "lng": 28.8608,
+          "title": "Bukavu's Doctor",
+          "funFact": "Sits on the southern tip of Lake Kivu, facing Rwanda.",
+          "sources": [
+            "https://www.nobelprize.org/prizes/peace/2018/press-release/",
+            "https://en.wikipedia.org/wiki/Denis_Mukwege"
+          ]
+        }
+      ]
     }
   ]
 }
