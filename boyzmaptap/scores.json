@@ -2,10 +2,15 @@
   "game": "MapTap",
   "site": "https://www.maptap.gg",
   "asOf": "2026-10-02",
-  "puzzleToday": 833,
+  "puzzleToday": 836,
   "note": "Season totals in this file are the Oct 2, 2026 group photo. Daily logs store MapTap share-text finals exactly as posted, plus the five round scores in location order. Casey's #833 total is 941 and has no round breakdown. Sam's #832 final of 891 matches his October average (one game) and is not added again. Sam's #833 (919), Andy's #833 (987), and Ben's #833 (866) are logged for places and callouts only; they are not folded into the season columns. Logs dated after the photo, starting with #834 on Oct 3, are added on top of those columns when the board loads.",
   "bands": [
-    { "name": "Human GPS", "min": 925, "max": 949, "blurb": "These scores are actually starting to get good." }
+    {
+      "name": "Human GPS",
+      "min": 925,
+      "max": 949,
+      "blurb": "These scores are actually starting to get good."
+    }
   ],
   "players": [
     {
@@ -46,7 +51,7 @@
     },
     {
       "id": "ben",
-      "name": "Ben Hababurger",
+      "name": "Ben Haberberger",
       "color": "#3dcf8e",
       "total": 11560,
       "games": 16,
@@ -89,7 +94,13 @@
       "date": "2026-10-02",
       "puzzle": 833,
       "score": 987,
-      "rounds": [100, 98, 99, 98, 99]
+      "rounds": [
+        100,
+        98,
+        99,
+        98,
+        99
+      ]
     },
     {
       "id": "casey-833",
@@ -97,7 +108,11 @@
       "date": "2026-10-02",
       "puzzle": 833,
       "score": 941,
-      "achievements": ["Human GPS", "Overachiever", "And 3 more"]
+      "achievements": [
+        "Human GPS",
+        "Overachiever",
+        "And 3 more"
+      ]
     },
     {
       "id": "sam-833",
@@ -105,7 +120,13 @@
       "date": "2026-10-02",
       "puzzle": 833,
       "score": 919,
-      "rounds": [97, 92, 95, 98, 82]
+      "rounds": [
+        97,
+        92,
+        95,
+        98,
+        82
+      ]
     },
     {
       "id": "ben-833",
@@ -113,7 +134,13 @@
       "date": "2026-10-02",
       "puzzle": 833,
       "score": 866,
-      "rounds": [92, 80, 98, 87, 79]
+      "rounds": [
+        92,
+        80,
+        98,
+        87,
+        79
+      ]
     },
     {
       "id": "sam-832",
@@ -121,7 +148,13 @@
       "date": "2026-10-01",
       "puzzle": 832,
       "score": 891,
-      "rounds": [88, 90, 88, 90, 89]
+      "rounds": [
+        88,
+        90,
+        88,
+        90,
+        89
+      ]
     },
     {
       "id": "casey-834",
@@ -129,7 +162,13 @@
       "date": "2026-10-03",
       "puzzle": 834,
       "score": 976,
-      "rounds": [100, 99, 99, 97, 96]
+      "rounds": [
+        100,
+        99,
+        99,
+        97,
+        96
+      ]
     },
     {
       "id": "sam-834",
@@ -137,7 +176,13 @@
       "date": "2026-10-03",
       "puzzle": 834,
       "score": 951,
-      "rounds": [88, 85, 98, 97, 97]
+      "rounds": [
+        88,
+        85,
+        98,
+        97,
+        97
+      ]
     },
     {
       "id": "micah-834",
@@ -145,7 +190,13 @@
       "date": "2026-10-03",
       "puzzle": 834,
       "score": 912,
-      "rounds": [93, 88, 91, 94, 89]
+      "rounds": [
+        93,
+        88,
+        91,
+        94,
+        89
+      ]
     },
     {
       "id": "ben-834",
@@ -153,7 +204,13 @@
       "date": "2026-10-03",
       "puzzle": 834,
       "score": 905,
-      "rounds": [94, 82, 99, 89, 88]
+      "rounds": [
+        94,
+        82,
+        99,
+        89,
+        88
+      ]
     },
     {
       "id": "peter-834",
@@ -161,7 +218,13 @@
       "date": "2026-10-03",
       "puzzle": 834,
       "score": 894,
-      "rounds": [90, 88, 97, 78, 96]
+      "rounds": [
+        90,
+        88,
+        97,
+        78,
+        96
+      ]
     },
     {
       "id": "andy-834",
@@ -169,7 +232,13 @@
       "date": "2026-10-03",
       "puzzle": 834,
       "score": 912,
-      "rounds": [100, 96, 100, 91, 81]
+      "rounds": [
+        100,
+        96,
+        100,
+        91,
+        81
+      ]
     },
     {
       "id": "casey-835",
@@ -177,7 +246,13 @@
       "date": "2026-10-04",
       "puzzle": 835,
       "score": 839,
-      "rounds": [80, 95, 74, 87, 85]
+      "rounds": [
+        80,
+        95,
+        74,
+        87,
+        85
+      ]
     },
     {
       "id": "andy-835",
@@ -185,7 +260,13 @@
       "date": "2026-10-04",
       "puzzle": 835,
       "score": 687,
-      "rounds": [93, 78, 78, 38, 82]
+      "rounds": [
+        93,
+        78,
+        78,
+        38,
+        82
+      ]
     },
     {
       "id": "peter-835",
@@ -193,7 +274,13 @@
       "date": "2026-10-04",
       "puzzle": 835,
       "score": 625,
-      "rounds": [91, 86, 80, 53, 43]
+      "rounds": [
+        91,
+        86,
+        80,
+        53,
+        43
+      ]
     },
     {
       "id": "micah-835",
@@ -201,7 +288,13 @@
       "date": "2026-10-04",
       "puzzle": 835,
       "score": 487,
-      "rounds": [92, 84, 97, 39, 0]
+      "rounds": [
+        92,
+        84,
+        97,
+        39,
+        0
+      ]
     },
     {
       "id": "ben-835",
@@ -209,7 +302,13 @@
       "date": "2026-10-04",
       "puzzle": 835,
       "score": 263,
-      "rounds": [93, 80, 24, 13, 1]
+      "rounds": [
+        93,
+        80,
+        24,
+        13,
+        1
+      ]
     },
     {
       "id": "sam-835",
@@ -217,7 +316,103 @@
       "date": "2026-10-04",
       "puzzle": 835,
       "score": 687,
-      "rounds": [94, 86, 93, 52, 55]
+      "rounds": [
+        94,
+        86,
+        93,
+        52,
+        55
+      ]
+    },
+    {
+      "id": "casey-836",
+      "playerId": "casey",
+      "date": "2026-10-05",
+      "puzzle": 836,
+      "score": 973,
+      "rounds": [
+        99,
+        99,
+        98,
+        96,
+        97
+      ]
+    },
+    {
+      "id": "micah-836",
+      "playerId": "micah",
+      "date": "2026-10-05",
+      "puzzle": 836,
+      "score": 961,
+      "rounds": [
+        100,
+        99,
+        96,
+        98,
+        92
+      ]
+    },
+    {
+      "id": "andy-836",
+      "playerId": "andy",
+      "date": "2026-10-05",
+      "puzzle": 836,
+      "score": 935,
+      "rounds": [
+        100,
+        97,
+        96,
+        99,
+        83
+      ],
+      "achievements": [
+        "Human GPS"
+      ]
+    },
+    {
+      "id": "sam-836",
+      "playerId": "sam",
+      "date": "2026-10-05",
+      "puzzle": 836,
+      "score": 925,
+      "rounds": [
+        99,
+        100,
+        93,
+        98,
+        82
+      ],
+      "achievements": [
+        "Human GPS"
+      ]
+    },
+    {
+      "id": "peter-836",
+      "playerId": "peter",
+      "date": "2026-10-05",
+      "puzzle": 836,
+      "score": 863,
+      "rounds": [
+        97,
+        60,
+        95,
+        97,
+        75
+      ]
+    },
+    {
+      "id": "ben-836",
+      "playerId": "ben",
+      "date": "2026-10-05",
+      "puzzle": 836,
+      "score": 753,
+      "rounds": [
+        66,
+        71,
+        80,
+        96,
+        56
+      ]
     }
   ]
 }
