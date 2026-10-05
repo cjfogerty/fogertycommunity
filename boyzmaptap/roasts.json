@@ -2,6 +2,27 @@
   "comment": "Hand-written roasts for a day's lowest scores. Add one object to days when the group writes them. A day with no entry shows nothing on the board. Do not generate roast text in the page.",
   "days": [
     {
+      "date": "2026-10-05",
+      "puzzle": 836,
+      "roasts": [
+        {
+          "playerId": "ben",
+          "score": 753,
+          "text": "Last place on a day the winner shot 973. Ben flushed a 66 on Tel Aviv, smiled through a 71 in Miaoli, and sparkled an 80 in Dijon like the mustard was the hard part. Fort Knox was the only place he recognized, because it has gold in the name. Then Bukavu handed him a 56 and a grimace. The doctor was in the Congo. Ben was not."
+        },
+        {
+          "playerId": "peter",
+          "score": 863,
+          "text": "Peter went 97, 95, 97 around a 60 in Miaoli City and called it a day. That 60 is not a near miss. That is looking at Taiwan, thinking about Alabama, and planting the pin in the wrong ocean. He closed Bukavu at 75 with the crying-laugh emoji, which is the correct reaction to finishing fifth."
+        },
+        {
+          "playerId": "sam",
+          "score": 925,
+          "text": "Sam dropped a perfect 100 on Miaoli and still landed in the roast corner. The star on Bukavu was for an 82. An 82, with a gold star, on the last pin, is how you turn a Human GPS into fourth place. Casey beat him by 48 and never left the fire emoji. The leopard cat rice was not the problem, Sam."
+        }
+      ]
+    },
+    {
       "date": "2026-10-04",
       "puzzle": 835,
       "roasts": [
@@ -13,7 +34,7 @@
         {
           "playerId": "micah",
           "score": 487,
-          "text": "Missed Nukuʻalofa by 18,000 km and then looked up that half the Earth's circumference is 20,000 km, as if that helped his case. That's not a miss, that's a round trip. Scored a perfect 0 on the final round."
+          "text": "Missed Nuku\u02bbalofa by 18,000 km and then looked up that half the Earth's circumference is 20,000 km, as if that helped his case. That's not a miss, that's a round trip. Scored a perfect 0 on the final round."
         },
         {
           "playerId": "peter",
