@@ -57,6 +57,7 @@ from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "boyzmaptap" / "locations.json"
+SCORES_PATH = ROOT / "boyzmaptap" / "scores.json"
 EPOCH = date(2024, 6, 21)
 MONTHS = [
     "January", "February", "March", "April", "May", "June",
@@ -344,6 +345,19 @@ def write_doc(doc: dict) -> None:
     DATA_PATH.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
+
+def scores_posted(day: date) -> bool:
+    """A day stays off the public board until scores.json has a log for it."""
+    if not SCORES_PATH.exists():
+        return False
+    try:
+        doc = json.loads(SCORES_PATH.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return False
+    iso = day.isoformat()
+    return any(row.get("date") == iso for row in doc.get("logs") or [])
+
+
 def merge_day(doc: dict, fresh: dict, force: bool) -> str:
     days = doc.setdefault("days", [])
     for index, existing in enumerate(days):
@@ -417,6 +431,9 @@ def main() -> None:
     fresh = build_day(day, cities, url)
     if args.dry_run:
         print(json.dumps(fresh, indent=2, ensure_ascii=False))
+        return
+    if not args.force and not scores_posted(day):
+        print(f"Holding {day.isoformat()} (#{fresh['puzzle']}). Places publish after that day's scores are posted.")
         return
     doc = load_doc()
     status = merge_day(doc, fresh, args.force)

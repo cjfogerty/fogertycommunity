@@ -674,7 +674,7 @@
       (data.logs || []).forEach(function (log) {
         if (!Array.isArray(log.rounds)) return;
         const day = byDate[log.date] || (log.puzzle && byPuzzle[log.puzzle]);
-        if (!day || !day.locations) return;
+        if (!day || !day.locations || !scoresPosted(day.date)) return;
         const count = Math.min(log.rounds.length, day.locations.length);
         for (let i = 0; i < count; i++) {
           const score = Number(log.rounds[i]);
@@ -701,11 +701,15 @@
         pad + ((90 - Number(lat)) / 180) * (h - 2 * pad)
       ];
     }
+    function scoresPosted(iso) {
+      return (data.logs || []).some(function (log) { return log.date === iso; });
+    }
     function activeRouteDate() {
       const days = (places.days || []).slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
       if (!days.length) return null;
       if (routeDate && days.some(function (d) { return d.date === routeDate; })) return routeDate;
-      return days[0].date;
+      const posted = days.find(function (d) { return scoresPosted(d.date); });
+      return (posted || days[0]).date;
     }
     function scoresFor(day) {
       const out = {};
@@ -729,10 +733,16 @@
       const iso = activeRouteDate();
       const day = days.find(function (d) { return d.date === iso; }) || days[0];
       document.getElementById("route-title").textContent = niceDate(day.date);
-      document.getElementById("route-hint").textContent = "MapTap #" + (day.puzzle || "—") + " · five places in play order. Numbers on the pins are rounds, 0–100. Finals live in the log.";
       chips.innerHTML = days.map(function (d) {
-        return '<button type="button" data-day="' + d.date + '"' + (d.date === day.date ? ' class="on"' : "") + ">#" + (d.puzzle || "") + " · " + d.date.slice(5) + "</button>";
+        const sealed = scoresPosted(d.date) ? "" : " · sealed";
+        return '<button type="button" data-day="' + d.date + '"' + (d.date === day.date ? ' class="on"' : "") + ">#" + (d.puzzle || "") + " · " + d.date.slice(5) + sealed + "</button>";
       }).join("");
+      if (!scoresPosted(day.date)) {
+        document.getElementById("route-hint").textContent = "MapTap #" + (day.puzzle || "—") + " · places stay hidden until the scores are posted.";
+        body.innerHTML = '<p class="hint">No cities, no map, and no fun facts until this day’s scores are on the board.</p>';
+        return;
+      }
+      document.getElementById("route-hint").textContent = "MapTap #" + (day.puzzle || "—") + " · five places in play order. Numbers on the pins are rounds, 0–100. Finals live in the log.";
       const locs = day.locations || [];
       const pts = locs.map(function (loc) { return project(loc.lng, loc.lat); });
       let svg = '<svg class="route-map" viewBox="0 0 640 280" role="img" aria-label="Map of ' + esc(locs.map(function (l) { return l.city; }).join(", ")) + '">';

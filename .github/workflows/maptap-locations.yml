@@ -3,8 +3,13 @@ name: MapTap locations
 on:
   schedule:
     # 12:30am America/Chicago, after the local MapTap day has rolled.
+    # A day with no scores yet is fetched and discarded so the route is not spoiled.
     - cron: "30 0 * * *"
       timezone: America/Chicago
+  push:
+    branches: [main]
+    paths:
+      - boyzmaptap/scores.json
   workflow_dispatch:
     inputs:
       date:
