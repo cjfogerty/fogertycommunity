@@ -2,7 +2,7 @@
   "game": "MapTap",
   "site": "https://www.maptap.gg",
   "asOf": "2026-10-02",
-  "puzzleToday": 836,
+  "puzzleToday": 837,
   "note": "Season totals in this file are the Oct 2, 2026 group photo. Daily logs store MapTap share-text finals exactly as posted, plus the five round scores in location order. Casey's #833 total is 941 and has no round breakdown. Sam's #832 final of 891 matches his October average (one game) and is not added again. Sam's #833 (919), Andy's #833 (987), and Ben's #833 (866) are logged for places and callouts only; they are not folded into the season columns. Logs dated after the photo, starting with #834 on Oct 3, are added on top of those columns when the board loads.",
   "bands": [
     {
@@ -412,6 +412,93 @@
         80,
         96,
         56
+      ]
+    },
+    {
+      "id": "micah-837",
+      "playerId": "micah",
+      "date": "2026-10-06",
+      "puzzle": 837,
+      "score": 945,
+      "rounds": [
+        95,
+        95,
+        94,
+        98,
+        91
+      ],
+      "achievements": [
+        "Human GPS"
+      ]
+    },
+    {
+      "id": "sam-837",
+      "playerId": "sam",
+      "date": "2026-10-06",
+      "puzzle": 837,
+      "score": 913,
+      "rounds": [
+        92,
+        95,
+        93,
+        93,
+        87
+      ]
+    },
+    {
+      "id": "peter-837",
+      "playerId": "peter",
+      "date": "2026-10-06",
+      "puzzle": 837,
+      "score": 909,
+      "rounds": [
+        95,
+        93,
+        71,
+        99,
+        94
+      ]
+    },
+    {
+      "id": "andy-837",
+      "playerId": "andy",
+      "date": "2026-10-06",
+      "puzzle": 837,
+      "score": 904,
+      "rounds": [
+        94,
+        98,
+        86,
+        100,
+        80
+      ]
+    },
+    {
+      "id": "casey-837",
+      "playerId": "casey",
+      "date": "2026-10-06",
+      "puzzle": 837,
+      "score": 859,
+      "rounds": [
+        95,
+        91,
+        80,
+        91,
+        80
+      ]
+    },
+    {
+      "id": "ben-837",
+      "playerId": "ben",
+      "date": "2026-10-06",
+      "puzzle": 837,
+      "score": 770,
+      "rounds": [
+        94,
+        87,
+        59,
+        98,
+        59
       ]
     }
   ]

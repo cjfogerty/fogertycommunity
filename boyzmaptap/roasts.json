@@ -2,6 +2,27 @@
   "comment": "Hand-written roasts for a day's lowest scores. Add one object to days when the group writes them. A day with no entry shows nothing on the board. Do not generate roast text in the page.",
   "days": [
     {
+      "date": "2026-10-06",
+      "puzzle": 837,
+      "roasts": [
+        {
+          "playerId": "ben",
+          "score": 770,
+          "text": "Ben said he does well in the countries that matter, then shot a 98 in Mobile, Alabama and a 59 in both Maracaibo and Pucallpa. Venezuela and Peru have apparently been removed from the list of countries. Last place, again, and the neutral face on Maracaibo was doing a lot of work."
+        },
+        {
+          "playerId": "casey",
+          "score": 859,
+          "text": "Yesterday's winner clapped for himself twice. An 80 in Maracaibo and an 80 in Pucallpa, both with the applause emoji, is not a victory lap. Nuremberg was a 95. The rest of the route was Casey negotiating with the jungle. Fifth place, 114 off his own Monday."
+        },
+        {
+          "playerId": "andy",
+          "score": 904,
+          "text": "Andy put a perfect 100 on Mobile and still finished in the roast corner. The sparkle on Pucallpa was an 80. Peter beat him by 5. Sam beat him by 9. A bullseye in Alabama does not cover a bedtime story in Peru."
+        }
+      ]
+    },
+    {
       "date": "2026-10-05",
       "puzzle": 836,
       "roasts": [
