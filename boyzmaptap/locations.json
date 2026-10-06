@@ -422,6 +422,89 @@
           ]
         }
       ]
+    },
+    {
+      "date": "2026-10-06",
+      "puzzle": 837,
+      "sourceUrl": "https://maptap.gg/data/this_day_in_history/October6.js",
+      "locations": [
+        {
+          "order": 1,
+          "city": "Nuremberg",
+          "region": null,
+          "country": "Germany",
+          "continent": "Europe",
+          "lat": 49.4521,
+          "lng": 11.0767,
+          "title": "The World in 1492",
+          "funFact": "Bavaria's second-largest city, after Munich.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Martin_Behaim",
+            "https://en.wikipedia.org/wiki/Behaim_Globe"
+          ]
+        },
+        {
+          "order": 2,
+          "city": "Larvik",
+          "region": null,
+          "country": "Norway",
+          "continent": "Europe",
+          "lat": 59.0537,
+          "lng": 10.0257,
+          "title": "The Reed Boat",
+          "funFact": "Its blue-flecked larvikite is Norway's national rock.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Thor_Heyerdahl",
+            "https://en.wikipedia.org/wiki/Ra_II",
+            "https://www.nature.com/articles/s41586-020-2487-2"
+          ]
+        },
+        {
+          "order": 3,
+          "city": "Maracaibo",
+          "region": null,
+          "country": "Venezuela",
+          "continent": "South America",
+          "lat": 10.6427,
+          "lng": -71.6125,
+          "title": "Nature's Lighthouse",
+          "funFact": "Venezuela's second-largest city.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Catatumbo_lightning",
+            "https://earthobservatory.nasa.gov/images/88106/lake-maracaibo-lightning-capital-of-the-world"
+          ]
+        },
+        {
+          "order": 4,
+          "city": "Mobile",
+          "region": "Alabama",
+          "country": "USA",
+          "continent": "North America",
+          "lat": 30.6954,
+          "lng": -88.0399,
+          "title": "The Heat Pump",
+          "funFact": "Mobile's Mardi Gras dates to 1703, older than New Orleans'.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Lonnie_Johnson_(inventor)",
+            "https://en.wikipedia.org/wiki/Super_Soaker"
+          ]
+        },
+        {
+          "order": 5,
+          "city": "Pucallpa",
+          "region": null,
+          "country": "Peru",
+          "continent": "South America",
+          "lat": -8.3791,
+          "lng": -74.5539,
+          "title": "The Bedtime Story",
+          "funFact": "Peru's largest city on the Ucayali, an Amazon headwater.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Shanay-Timpishka",
+            "https://www.ted.com/talks/andres_ruzo_the_mythical_boiling_river_of_the_amazon"
+          ]
+        }
+      ]
     }
   ]
 }
