@@ -505,6 +505,92 @@
           ]
         }
       ]
+    },
+    {
+      "date": "2026-10-07",
+      "puzzle": 838,
+      "sourceUrl": "https://maptap.gg/data/this_day_in_history/October7.js",
+      "locations": [
+        {
+          "order": 1,
+          "city": "Paris",
+          "region": null,
+          "country": "France",
+          "continent": "Europe",
+          "lat": 48.8566,
+          "lng": 2.3522,
+          "title": "Escape From Paris",
+          "funFact": "In 1870, a 33 km wall circled the entire city.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/L%C3%A9on_Gambetta",
+            "https://fr.wikipedia.org/wiki/Ballon_mont%C3%A9",
+            "https://en.wikipedia.org/wiki/Siege_of_Paris_(1870%E2%80%931871)"
+          ]
+        },
+        {
+          "order": 2,
+          "city": "Hamilton",
+          "region": null,
+          "country": "New Zealand",
+          "continent": "Oceania",
+          "lat": -37.787,
+          "lng": 175.2793,
+          "title": "If Women Counted",
+          "funFact": "New Zealand's largest inland city.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Marilyn_Waring",
+            "https://en.wikipedia.org/wiki/If_Women_Counted",
+            "https://m.scoop.co.nz/stories/BU0105/S00225.htm"
+          ]
+        },
+        {
+          "order": 3,
+          "city": "Tucson",
+          "region": "Arizona",
+          "country": "USA",
+          "continent": "North America",
+          "lat": 32.2226,
+          "lng": -110.9747,
+          "title": "Shooting Stars",
+          "funFact": "Sits at about 2,400 feet, ringed by five mountain ranges.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/2008_TC3",
+            "https://cneos.jpl.nasa.gov/news/2008tc3.html"
+          ]
+        },
+        {
+          "order": 4,
+          "city": "Concepción",
+          "region": null,
+          "country": "Chile",
+          "continent": "South America",
+          "lat": -36.827,
+          "lng": -73.0503,
+          "title": "Five Lonely Plants",
+          "funFact": "Rebuilt on a new site after a 1751 earthquake and tsunami.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Antoine_Nicolas_Duchesne",
+            "https://en.wikipedia.org/wiki/Am%C3%A9d%C3%A9e-Fran%C3%A7ois_Fr%C3%A9zier",
+            "https://en.wikipedia.org/wiki/Garden_strawberry"
+          ]
+        },
+        {
+          "order": 5,
+          "city": "Semey",
+          "region": null,
+          "country": "Kazakhstan",
+          "continent": "Asia",
+          "lat": 50.4111,
+          "lng": 80.2275,
+          "title": "Something in the Milk",
+          "funFact": "On the Irtysh River, a few hours' drive from Russia.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Baby_Tooth_Survey",
+            "https://en.wikipedia.org/wiki/Partial_Nuclear_Test_Ban_Treaty",
+            "https://en.wikipedia.org/wiki/Semipalatinsk_Test_Site"
+          ]
+        }
+      ]
     }
   ]
 }

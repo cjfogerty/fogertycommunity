@@ -2,7 +2,7 @@
   "game": "MapTap",
   "site": "https://www.maptap.gg",
   "asOf": "2026-10-02",
-  "puzzleToday": 837,
+  "puzzleToday": 838,
   "note": "Season totals in this file are the Oct 2, 2026 group photo. Daily logs store MapTap share-text finals exactly as posted, plus the five round scores in location order. Casey's #833 total is 941 and has no round breakdown. Sam's #832 final of 891 matches his October average (one game) and is not added again. Sam's #833 (919), Andy's #833 (987), and Ben's #833 (866) are logged for places and callouts only; they are not folded into the season columns. Logs dated after the photo, starting with #834 on Oct 3, are added on top of those columns when the board loads.",
   "bands": [
     {
@@ -499,6 +499,90 @@
         59,
         98,
         59
+      ]
+    },
+    {
+      "id": "casey-838",
+      "playerId": "casey",
+      "date": "2026-10-07",
+      "puzzle": 838,
+      "score": 916,
+      "rounds": [
+        98,
+        95,
+        96,
+        90,
+        87
+      ]
+    },
+    {
+      "id": "andy-838",
+      "playerId": "andy",
+      "date": "2026-10-07",
+      "puzzle": 838,
+      "score": 913,
+      "rounds": [
+        100,
+        96,
+        96,
+        89,
+        86
+      ]
+    },
+    {
+      "id": "micah-838",
+      "playerId": "micah",
+      "date": "2026-10-07",
+      "puzzle": 838,
+      "score": 838,
+      "rounds": [
+        99,
+        86,
+        91,
+        87,
+        70
+      ]
+    },
+    {
+      "id": "sam-838",
+      "playerId": "sam",
+      "date": "2026-10-07",
+      "puzzle": 838,
+      "score": 835,
+      "rounds": [
+        93,
+        98,
+        88,
+        90,
+        66
+      ]
+    },
+    {
+      "id": "peter-838",
+      "playerId": "peter",
+      "date": "2026-10-07",
+      "puzzle": 838,
+      "score": 830,
+      "rounds": [
+        100,
+        85,
+        90,
+        87,
+        68
+      ]
+    },
+    {
+      "id": "ben-838",
+      "playerId": "ben",
+      "date": "2026-10-07",
+      "puzzle": 838,
+      "score": 763,
+      "rounds": [
+        98,
+        42,
+        85,
+        83,
+        68
       ]
     }
   ]

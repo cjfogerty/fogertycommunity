@@ -2,6 +2,27 @@
   "comment": "Hand-written roasts for a day's lowest scores. Add one object to days when the group writes them. A day with no entry shows nothing on the board. Do not generate roast text in the page.",
   "days": [
     {
+      "date": "2026-10-07",
+      "puzzle": 838,
+      "roasts": [
+        {
+          "playerId": "ben",
+          "score": 763,
+          "text": "Ben said he rocked it. The rock was a 42 in Hamilton, New Zealand, with the sad face on. Paris was a 98. The other four pins were a tour of places he has decided do not count. Semey closed him at 68. Last place, and the quote is doing more damage than the score."
+        },
+        {
+          "playerId": "peter",
+          "score": 830,
+          "text": "Peter bullseyed Paris and then smiled through a 68 in Semey, Kazakhstan. That smile is not confidence. That is a man from small-group Alabama finding the milk suspicious and pinning the steppe anyway. Fifth place, eight behind Sam, and the 100 does not travel."
+        },
+        {
+          "playerId": "sam",
+          "score": 835,
+          "text": "Sam seconded the meh and then put a confused 66 on Semey to prove it. Hamilton was a 98. Kazakhstan was the whole personality. He finished three points behind Micah, who also said meh and at least got to 70 on the last pin. Seconding a meh is not a strategy."
+        }
+      ]
+    },
+    {
       "date": "2026-10-06",
       "puzzle": 837,
       "roasts": [
