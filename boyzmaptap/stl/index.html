@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>STL MapTap</title>
+  <meta name="theme-color" content="#14080c" />
+  <meta name="description" content="STL MapTap — a daily five-round St. Louis metro geography game." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%23f0b429'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <style>
+    :root {
+      --ink: #14080c;
+      --cream: #f6efe6;
+      --muted: #b9a8a4;
+      --gold: #f0b429;
+      --line: rgba(246, 239, 230, 0.14);
+      --good: #3ecf8e;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #0c1210; color: var(--cream); }
+    body { font-family: Inter, system-ui, sans-serif; font-size: 16px; }
+    #map { position: absolute; inset: 0; background: #d5d0c4; touch-action: none; }
+    .leaflet-container { font-family: Inter, system-ui, sans-serif; background: #d5d0c4; }
+    .leaflet-top { top: calc(58px + env(safe-area-inset-top)); }
+    header {
+      position: absolute; z-index: 500; top: 0; left: 0; right: 0;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      padding: calc(8px + env(safe-area-inset-top)) 12px 18px;
+      background: linear-gradient(180deg, rgba(12, 8, 10, 0.92), rgba(12, 8, 10, 0));
+      pointer-events: none;
+    }
+    header a, header .brand { pointer-events: auto; }
+    header a {
+      color: var(--cream); text-decoration: none; font-size: 13px; font-weight: 700;
+      border: 1px solid var(--line); background: rgba(20, 8, 12, 0.72);
+      border-radius: 999px; padding: 8px 12px; min-height: 40px;
+      display: inline-flex; align-items: center;
+    }
+    .brand { text-align: right; }
+    .brand strong { font-family: Outfit, Inter, sans-serif; font-size: 18px; display: block; line-height: 1; }
+    .brand span { color: var(--gold); font-size: 12px; font-weight: 700; }
+    #sheet {
+      position: absolute; z-index: 600;
+      left: 10px; right: 10px;
+      bottom: calc(10px + env(safe-area-inset-bottom));
+      max-height: min(62vh, 560px);
+      overflow: auto;
+      background: rgba(20, 8, 12, 0.94);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 16px 16px 14px;
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.35);
+      -webkit-overflow-scrolling: touch;
+    }
+    .kicker { letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-size: 11px; font-weight: 700; margin: 0; }
+    h2 { font-family: Outfit, Inter, sans-serif; font-size: 30px; line-height: 1.02; margin: 4px 0 6px; }
+    p { margin: 0; }
+    .muted { color: var(--muted); }
+    .row { display: flex; gap: 8px; margin-top: 12px; }
+    button, .btn {
+      font: inherit; color: #1a0508; background: var(--gold); border: 0; border-radius: 14px;
+      min-height: 48px; padding: 12px 14px; font-weight: 800; width: 100%; cursor: pointer;
+      touch-action: manipulation;
+    }
+    button.secondary, .btn.secondary { background: transparent; color: var(--cream); border: 1px solid var(--line); }
+    button:disabled { opacity: 0.45; }
+    .hint { color: var(--muted); font-size: 14px; margin-top: 6px; }
+    .scoreline { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-top: 8px; }
+    .big { font-family: Outfit, Inter, sans-serif; font-size: 56px; line-height: 0.9; }
+    .big small { font-size: 22px; color: var(--muted); font-weight: 600; }
+    .fact { margin-top: 10px; font-size: 15px; line-height: 1.4; }
+    .legend { display: flex; gap: 14px; margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .swatch { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 6px; vertical-align: -1px; border: 2px solid #fff; }
+    .rounds { display: grid; gap: 6px; margin: 10px 0; }
+    .rounds div { display: flex; gap: 8px; align-items: baseline; font-size: 15px; }
+    .rounds div .muted { margin-left: auto; }
+    .rounds b { font-weight: 700; }
+    pre.share {
+      margin: 10px 0 0; white-space: pre-wrap; word-break: break-word;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--line); border-radius: 12px;
+      padding: 10px 12px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px; line-height: 1.45; color: var(--cream);
+    }
+    details { margin-top: 12px; color: var(--muted); font-size: 13px; }
+    details summary { cursor: pointer; color: var(--gold); font-weight: 700; }
+    details p, details li { margin-top: 6px; }
+    .copied { color: var(--good); font-weight: 700; font-size: 13px; min-height: 18px; margin: 6px 0 0; }
+    .tag { display: inline-block; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <div id="map" role="application" aria-label="Unlabeled map of the St. Louis metro"></div>
+  <header>
+    <a href="../">Boyz MapTap</a>
+    <div class="brand">
+      <strong>STL MapTap</strong>
+      <span id="when">Loading…</span>
+    </div>
+  </header>
+  <section id="sheet" aria-live="polite">
+    <p class="kicker">STL MapTap</p>
+    <h2>Loading the metro…</h2>
+  </section>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="game.js"></script>
+  <script>
+    (function () {
+      var S = window.STLMap;
+      var STORAGE = "stl-maptap-daily-v1";
+      var METRO = [[38.34, -90.99], [38.93, -90.01]];
+      var landmarks = [];
+      var byId = {};
+      var map, overlay;
+      var mode = "daily";
+      var puzzle = [];
+      var results = [];
+      var roundIndex = 0;
+      var phase = "boot";
+      var guess = null;
+      var today = S.chicagoISO(new Date());
+
+      var when = document.getElementById("when");
+      var sheet = document.getElementById("sheet");
+      when.textContent = S.prettyDate(today);
+
+      function directoryUrl() {
+        var path = location.pathname;
+        if (path.endsWith(".html")) path = path.slice(0, path.lastIndexOf("/") + 1);
+        else if (!path.endsWith("/")) path += "/";
+        return location.origin + path;
+      }
+
+      function readSave() {
+        try {
+          var raw = localStorage.getItem(STORAGE);
+          if (!raw) return null;
+          var data = JSON.parse(raw);
+          if (!data || data.date !== today || !Array.isArray(data.rounds)) return null;
+          return data;
+        } catch (err) {
+          return null;
+        }
+      }
+
+      function writeSave() {
+        try {
+          localStorage.setItem(STORAGE, JSON.stringify({
+            date: today,
+            ids: puzzle.map(function (p) { return p.id; }),
+            rounds: results
+          }));
+        } catch (err) { /* private mode can refuse storage */ }
+      }
+
+      function formatMiles(miles) {
+        if (miles < 10) return miles.toFixed(2) + " mi";
+        return miles.toFixed(1) + " mi";
+      }
+
+      function curveHtml() {
+        var rows = S.curveExamples().map(function (row) {
+          return "<li>" + row.miles + " mi → " + row.score + "</li>";
+        }).join("");
+        return "<details><summary>How scoring works</summary>"
+          + "<p>Distance is the straight-line miles between your tap and the landmark. "
+          + "100 points at " + S.PERFECT_MI + " miles or closer. 0 points at " + S.ZERO_MI
+          + " miles or farther. In between, the score is 100 × (1 − t)^" + S.CURVE
+          + ", where t is how far you are from " + S.PERFECT_MI + " miles toward " + S.ZERO_MI
+          + " miles, rounded to the nearest point.</p><ul>" + rows + "</ul>"
+          + "<p>Rounds count ×1, ×1, ×2, ×3, ×3. A perfect game is 1,000.</p></details>";
+      }
+
+      function clearOverlay() {
+        if (overlay) overlay.clearLayers();
+        guess = null;
+      }
+
+      function pin(latlng, fill) {
+        return L.circleMarker(latlng, {
+          radius: 9, color: "#ffffff", weight: 3, fillColor: fill, fillOpacity: 1
+        }).addTo(overlay);
+      }
+
+      function setupMap() {
+        map = L.map("map", {
+          maxBounds: METRO,
+          maxBoundsViscosity: 1,
+          zoomControl: true,
+          minZoom: 8,
+          maxZoom: 18
+        });
+        // Esri imagery has rivers, parks, and highways and no place names.
+        // The public CARTO nolabel tiles were answering with a watermark
+        // placeholder instead of a map, so they can't be the basemap.
+        L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+          maxZoom: 19,
+          attribution: "Tiles &copy; Esri"
+        }).addTo(map);
+        overlay = L.layerGroup().addTo(map);
+        map.fitBounds(METRO, { paddingTopLeft: [12, 72], paddingBottomRight: [12, 180], animate: false });
+        map.setMinZoom(Math.max(8, map.getZoom() - 1));
+        map.on("click", function (event) {
+          if (phase !== "guess") return;
+          guess = event.latlng;
+          overlay.clearLayers();
+          pin(guess, "#f0b429");
+          var lock = document.getElementById("lock");
+          if (lock) {
+            lock.disabled = false;
+            lock.textContent = "Lock in this guess";
+          }
+        });
+        setTimeout(function () { map.invalidateSize(); }, 50);
+      }
+
+      function showIntro() {
+        phase = "intro";
+        clearOverlay();
+        sheet.innerHTML = ""
+          + "<p class='kicker'>Same puzzle for everyone</p>"
+          + "<h2>Five St. Louis spots.</h2>"
+          + "<p class='hint'>No place names on the map. Pinch to zoom, tap your guess, then lock it in. Rounds count ×1, ×1, ×2, ×3, ×3.</p>"
+          + "<div class='row'><button id='play' type='button'>Play today</button></div>"
+          + "<div class='row'><button id='practice' class='secondary' type='button'>Practice round</button></div>"
+          + curveHtml();
+        document.getElementById("play").onclick = startDaily;
+        document.getElementById("practice").onclick = startPractice;
+      }
+
+      function startDaily() {
+        var saved = readSave();
+        if (saved && saved.rounds.length >= 5) {
+          restore(saved);
+          showEnd(true);
+          return;
+        }
+        if (saved && saved.rounds.length > 0 && Array.isArray(saved.ids)) {
+          restore(saved);
+          roundIndex = results.length;
+          startRound();
+          return;
+        }
+        mode = "daily";
+        puzzle = S.pickDaily(landmarks, today);
+        results = [];
+        roundIndex = 0;
+        startRound();
+      }
+
+      function startPractice() {
+        mode = "practice";
+        puzzle = S.pickPractice(landmarks);
+        results = [];
+        roundIndex = 0;
+        startRound();
+      }
+
+      function restore(saved) {
+        mode = "daily";
+        puzzle = saved.ids.map(function (id) { return byId[id]; }).filter(Boolean);
+        results = saved.rounds.slice();
+        if (puzzle.length < 5) puzzle = S.pickDaily(landmarks, today);
+      }
+
+      function startRound() {
+        phase = "guess";
+        clearOverlay();
+        map.fitBounds(METRO, { paddingTopLeft: [12, 72], paddingBottomRight: [12, 210] });
+        var place = puzzle[roundIndex];
+        var weight = S.WEIGHTS[roundIndex];
+        var label = mode === "practice" ? "Practice" : "Today";
+        sheet.innerHTML = ""
+          + "<p class='kicker'>" + label + " · Round " + (roundIndex + 1) + " of 5 · ×" + weight + "</p>"
+          + "<h2 id='target'>" + escapeHtml(place.name) + "</h2>"
+          + "<p class='hint'>Pinch to zoom. Tap the map to drop a pin. Tap again to move it.</p>"
+          + "<div class='row'><button id='lock' type='button' disabled>Tap the map first</button></div>";
+        document.getElementById("lock").onclick = lockIn;
+      }
+
+      function lockIn() {
+        if (phase !== "guess" || !guess) return;
+        var place = puzzle[roundIndex];
+        var miles = S.milesBetween(guess.lat, guess.lng, place.lat, place.lng);
+        var score = S.scoreForMiles(miles);
+        results.push({
+          id: place.id,
+          score: score,
+          miles: miles,
+          guessLat: guess.lat,
+          guessLng: guess.lng
+        });
+        if (mode === "daily") writeSave();
+        phase = "reveal";
+        overlay.clearLayers();
+        pin(guess, "#f0b429");
+        pin([place.lat, place.lng], "#3ecf8e");
+        L.polyline([[guess.lat, guess.lng], [place.lat, place.lng]], {
+          color: "#f6efe6", weight: 3, opacity: 0.95
+        }).addTo(overlay);
+        var bounds = L.latLngBounds([guess, [place.lat, place.lng]]);
+        map.fitBounds(bounds.pad(0.35), {
+          paddingTopLeft: [28, 78],
+          paddingBottomRight: [28, 300],
+          maxZoom: 16
+        });
+        var weight = S.WEIGHTS[roundIndex];
+        var added = score * weight;
+        var running = S.finalScore(results.map(function (r) { return r.score; }));
+        var last = roundIndex === 4;
+        sheet.innerHTML = ""
+          + "<p class='kicker'>Round " + (roundIndex + 1) + " · " + score + S.emojiFor(score) + "</p>"
+          + "<h2>" + escapeHtml(place.name) + "</h2>"
+          + "<p class='muted'>" + escapeHtml(place.area) + " · " + escapeHtml(place.difficulty) + "</p>"
+          + "<div class='scoreline'><div class='big' id='round-score'>" + score + "</div>"
+          + "<div class='muted' id='round-distance' data-miles='" + miles + "' data-score='" + score + "'>" + formatMiles(miles) + "<br>×" + weight + " adds " + added + "</div></div>"
+          + "<p class='legend'><span><i class='swatch' style='background:#f0b429'></i>Your guess</span>"
+          + "<span><i class='swatch' style='background:#3ecf8e'></i>The spot</span></p>"
+          + "<p class='fact' id='round-fact'>" + escapeHtml(place.fact) + "</p>"
+          + "<p class='hint'>Running total " + running + "</p>"
+          + "<div class='row'><button id='next' type='button'>" + (last ? "See results" : "Next round") + "</button></div>";
+        document.getElementById("next").onclick = function () {
+          if (roundIndex >= 4) showEnd(false);
+          else {
+            roundIndex += 1;
+            startRound();
+          }
+        };
+      }
+
+      function showEnd(already) {
+        phase = "end";
+        clearOverlay();
+        var pts = [];
+        results.forEach(function (row) {
+          var place = byId[row.id];
+          if (!place || row.guessLat == null) return;
+          pin([row.guessLat, row.guessLng], "#f0b429");
+          pin([place.lat, place.lng], "#3ecf8e");
+          L.polyline([[row.guessLat, row.guessLng], [place.lat, place.lng]], {
+            color: "#f6efe6", weight: 2, opacity: 0.85
+          }).addTo(overlay);
+          pts.push([row.guessLat, row.guessLng], [place.lat, place.lng]);
+        });
+        if (pts.length) {
+          map.fitBounds(pts, {
+            paddingTopLeft: [20, 72],
+            paddingBottomRight: [20, Math.min(window.innerHeight * 0.5, 380)],
+            maxZoom: 13
+          });
+        }
+        var scores = results.map(function (r) { return r.score; });
+        var finalScore = S.finalScore(scores);
+        var text = S.shareText({
+          practice: mode === "practice",
+          date: today,
+          scores: scores,
+          finalScore: finalScore,
+          url: directoryUrl()
+        });
+        var lines = results.map(function (row, i) {
+          var place = byId[row.id];
+          var name = place ? place.name : row.id;
+          return "<div><b>" + row.score + S.emojiFor(row.score) + "</b> <span>" + escapeHtml(name)
+            + "</span><span class='muted'>×" + S.WEIGHTS[i] + "</span></div>";
+        }).join("");
+        var extra = "";
+        if (mode === "daily") {
+          extra = "<div class='row'><button id='practice' class='secondary' type='button'>Practice round</button></div>";
+        } else if (!dailyDone()) {
+          extra = "<div class='row'><button id='play' type='button'>Play today</button></div>";
+        }
+        sheet.innerHTML = ""
+          + "<p class='kicker'>" + (already ? "Already played today" : (mode === "practice" ? "Practice" : "Today")) + "</p>"
+          + "<div class='scoreline'><div class='big' id='final-score'>" + finalScore + "<small> / 1000</small></div></div>"
+          + "<div class='rounds'>" + lines + "</div>"
+          + "<pre class='share' id='share-text'>" + escapeHtml(text) + "</pre>"
+          + "<p class='copied' id='copied'></p>"
+          + "<div class='row'><button id='share' type='button'>Copy share text</button></div>"
+          + extra
+          + curveHtml();
+        document.getElementById("share").onclick = function () {
+          copyText(text).then(function (ok) {
+            document.getElementById("copied").textContent = ok ? "Copied." : "Select the text above to copy it.";
+          });
+        };
+        var practice = document.getElementById("practice");
+        if (practice) practice.onclick = startPractice;
+        var play = document.getElementById("play");
+        if (play) play.onclick = startDaily;
+      }
+
+      function dailyDone() {
+        var saved = readSave();
+        return !!(saved && saved.rounds.length >= 5);
+      }
+
+      function copyText(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          return navigator.clipboard.writeText(text).then(function () { return true; }).catch(function () {
+            return fallbackCopy(text);
+          });
+        }
+        return Promise.resolve(fallbackCopy(text));
+      }
+
+      function fallbackCopy(text) {
+        var area = document.createElement("textarea");
+        area.value = text;
+        area.setAttribute("readonly", "");
+        area.style.position = "fixed";
+        area.style.left = "-9999px";
+        document.body.appendChild(area);
+        area.select();
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+        area.remove();
+        return ok;
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function fail(message) {
+        sheet.innerHTML = "<p class='kicker'>STL MapTap</p><h2>Something's wrong</h2><p class='hint'>" + escapeHtml(message) + "</p>";
+      }
+
+      if (!window.L || !window.STLMap) {
+        fail("The map library didn't load. Check the connection and reload.");
+        return;
+      }
+
+      setupMap();
+      fetch(new URL("landmarks.json", directoryUrl()))
+        .then(function (res) {
+          if (!res.ok) throw new Error("landmarks");
+          return res.json();
+        })
+        .then(function (data) {
+          landmarks = data;
+          data.forEach(function (place) { byId[place.id] = place; });
+          var saved = readSave();
+          if (saved && saved.rounds.length >= 5 && Array.isArray(saved.ids)) {
+            restore(saved);
+            showEnd(true);
+          } else if (saved && saved.rounds.length > 0 && Array.isArray(saved.ids)) {
+            restore(saved);
+            roundIndex = results.length;
+            if (roundIndex >= 5) showEnd(true);
+            else startRound();
+          } else {
+            showIntro();
+          }
+        })
+        .catch(function () {
+          fail("Couldn't load the landmark list.");
+        });
+    })();
+  </script>
+</body>
+</html>

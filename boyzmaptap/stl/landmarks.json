@@ -1,0 +1,668 @@
+[
+  {
+    "id": "abbey",
+    "name": "Saint Louis Abbey",
+    "lat": 38.64364,
+    "lng": -90.47905,
+    "area": "Creve Coeur",
+    "difficulty": "hard",
+    "fact": "A Benedictine monastery in Creve Coeur, known for its round church."
+  },
+  {
+    "id": "ameristar",
+    "name": "Ameristar Casino",
+    "lat": 38.766607,
+    "lng": -90.4838,
+    "area": "St. Charles",
+    "difficulty": "medium",
+    "fact": "A casino on the Missouri River in St. Charles, at 1 Ameristar Boulevard."
+  },
+  {
+    "id": "amphitheatre",
+    "name": "Hollywood Casino Amphitheatre",
+    "lat": 38.74481,
+    "lng": -90.470094,
+    "area": "Maryland Heights",
+    "difficulty": "medium",
+    "fact": "The big outdoor concert shed at Riverport in Maryland Heights."
+  },
+  {
+    "id": "anheuser",
+    "name": "Anheuser-Busch Brewery",
+    "lat": 38.599108,
+    "lng": -90.214561,
+    "area": "Soulard, St. Louis",
+    "difficulty": "medium",
+    "fact": "The St. Louis brewery tour, at the Budweiser Brewery Experience beside Pestalozzi Street."
+  },
+  {
+    "id": "arch",
+    "name": "Gateway Arch",
+    "lat": 38.624602,
+    "lng": -90.184975,
+    "area": "Downtown, St. Louis",
+    "difficulty": "easy",
+    "fact": "A 630-foot stainless-steel arch on the riverfront, the tallest arch in the world."
+  },
+  {
+    "id": "artmuseum",
+    "name": "Saint Louis Art Museum",
+    "lat": 38.639468,
+    "lng": -90.294403,
+    "area": "Forest Park, St. Louis",
+    "difficulty": "easy",
+    "fact": "The art museum at the top of Art Hill in Forest Park."
+  },
+  {
+    "id": "babler",
+    "name": "Babler State Park",
+    "lat": 38.621971,
+    "lng": -90.696357,
+    "area": "Wildwood",
+    "difficulty": "hard",
+    "fact": "A wooded state park in Wildwood, named for Dr. Edmund A. Babler."
+  },
+  {
+    "id": "barracks",
+    "name": "Jefferson Barracks",
+    "lat": 38.513324,
+    "lng": -90.278803,
+    "area": "Lemay",
+    "difficulty": "medium",
+    "fact": "The old riverfront military post, now a county park and historic site in Lemay."
+  },
+  {
+    "id": "bellefontaine",
+    "name": "Bellefontaine Cemetery",
+    "lat": 38.691361,
+    "lng": -90.230083,
+    "area": "North St. Louis",
+    "difficulty": "medium",
+    "fact": "Opened in 1849 on the north side. William Clark is buried here."
+  },
+  {
+    "id": "birds",
+    "name": "World Bird Sanctuary",
+    "lat": 38.536455,
+    "lng": -90.535156,
+    "area": "Valley Park",
+    "difficulty": "hard",
+    "fact": "A Valley Park center for birds of prey, with eagles and owls on the grounds."
+  },
+  {
+    "id": "busch",
+    "name": "Busch Stadium",
+    "lat": 38.622554,
+    "lng": -90.193921,
+    "area": "Downtown, St. Louis",
+    "difficulty": "easy",
+    "fact": "The Cardinals' downtown ballpark on Clark Avenue, opened in 2006."
+  },
+  {
+    "id": "butterfly",
+    "name": "Butterfly House",
+    "lat": 38.664744,
+    "lng": -90.542835,
+    "area": "Chesterfield",
+    "difficulty": "medium",
+    "fact": "The Sophia M. Sachs Butterfly House at Faust Park in Chesterfield."
+  },
+  {
+    "id": "cahokia",
+    "name": "Cahokia Mounds",
+    "lat": 38.660349,
+    "lng": -90.062388,
+    "area": "Collinsville, Illinois",
+    "difficulty": "medium",
+    "fact": "The great Mississippian city across the river. The pin is the top of Monks Mound."
+  },
+  {
+    "id": "calvary",
+    "name": "Calvary Cemetery",
+    "lat": 38.703295,
+    "lng": -90.238066,
+    "area": "North St. Louis",
+    "difficulty": "hard",
+    "fact": "A Catholic cemetery founded in 1854, resting place of Dred Scott and General Sherman."
+  },
+  {
+    "id": "carondelet",
+    "name": "Carondelet Park",
+    "lat": 38.562891,
+    "lng": -90.26577,
+    "area": "Carondelet, St. Louis",
+    "difficulty": "medium",
+    "fact": "A large south-city park in the Carondelet neighborhood."
+  },
+  {
+    "id": "castlewood",
+    "name": "Castlewood State Park",
+    "lat": 38.546834,
+    "lng": -90.553169,
+    "area": "Ballwin",
+    "difficulty": "medium",
+    "fact": "River bluffs and trails above the Meramec, in Ballwin."
+  },
+  {
+    "id": "cathedral",
+    "name": "Cathedral Basilica",
+    "lat": 38.642533,
+    "lng": -90.254638,
+    "area": "Central West End, St. Louis",
+    "difficulty": "easy",
+    "fact": "The cathedral on Lindell, completed in 1914, with mosaics covering the interior."
+  },
+  {
+    "id": "chain",
+    "name": "Chain of Rocks Bridge",
+    "lat": 38.761583,
+    "lng": -90.177706,
+    "area": "North Riverfront",
+    "difficulty": "hard",
+    "fact": "The 1929 Mississippi River bridge with a 22-degree bend, now a walking and bike path."
+  },
+  {
+    "id": "chase",
+    "name": "Chase Park Plaza",
+    "lat": 38.644201,
+    "lng": -90.263674,
+    "area": "Central West End, St. Louis",
+    "difficulty": "medium",
+    "fact": "The grand hotel on Lindell in the Central West End, across from Forest Park."
+  },
+  {
+    "id": "citymuseum",
+    "name": "City Museum",
+    "lat": 38.633608,
+    "lng": -90.200446,
+    "area": "Downtown West, St. Louis",
+    "difficulty": "easy",
+    "fact": "A museum of climbs and tunnels built from scrap, in the old International Shoe building."
+  },
+  {
+    "id": "cliffcave",
+    "name": "Cliff Cave Park",
+    "lat": 38.442463,
+    "lng": -90.291591,
+    "area": "Oakville",
+    "difficulty": "hard",
+    "fact": "A county park in Oakville where a cave opens in the bluff above the Mississippi."
+  },
+  {
+    "id": "columbiabottom",
+    "name": "Columbia Bottom Conservation Area",
+    "lat": 38.808072,
+    "lng": -90.151999,
+    "area": "St. Louis County",
+    "difficulty": "hard",
+    "fact": "The conservation area where the Missouri River meets the Mississippi."
+  },
+  {
+    "id": "compton",
+    "name": "Compton Hill Water Tower",
+    "lat": 38.614982,
+    "lng": -90.238966,
+    "area": "Compton Heights, St. Louis",
+    "difficulty": "hard",
+    "fact": "The stone water tower above Compton Heights, on one of the highest points in the city."
+  },
+  {
+    "id": "crevecoeur",
+    "name": "Creve Coeur Lake",
+    "lat": 38.71527,
+    "lng": -90.483075,
+    "area": "Maryland Heights",
+    "difficulty": "medium",
+    "fact": "The sailboat lake and county park in Maryland Heights."
+  },
+  {
+    "id": "crown",
+    "name": "Crown Candy Kitchen",
+    "lat": 38.651351,
+    "lng": -90.197912,
+    "area": "Old North, St. Louis",
+    "difficulty": "medium",
+    "fact": "Old North's soda fountain, the oldest still running in the metro."
+  },
+  {
+    "id": "energizer",
+    "name": "Energizer Park",
+    "lat": 38.630607,
+    "lng": -90.210551,
+    "area": "Downtown West, St. Louis",
+    "difficulty": "medium",
+    "fact": "CITY SC's soccer stadium next to Union Station, opened in 2022 as CityPark."
+  },
+  {
+    "id": "enterprise",
+    "name": "Enterprise Center",
+    "lat": 38.626801,
+    "lng": -90.20262,
+    "area": "Downtown West, St. Louis",
+    "difficulty": "easy",
+    "fact": "The downtown arena on Clark Avenue, home of the Blues."
+  },
+  {
+    "id": "fairground",
+    "name": "Fairground Park",
+    "lat": 38.665623,
+    "lng": -90.221538,
+    "area": "North St. Louis",
+    "difficulty": "hard",
+    "fact": "The north-city park on the site of the 19th-century St. Louis fairgrounds."
+  },
+  {
+    "id": "fairpavilion",
+    "name": "World's Fair Pavilion",
+    "lat": 38.636481,
+    "lng": -90.285539,
+    "area": "Forest Park, St. Louis",
+    "difficulty": "medium",
+    "fact": "The open-air pavilion on Government Drive in the middle of Forest Park."
+  },
+  {
+    "id": "familyarena",
+    "name": "Family Arena",
+    "lat": 38.747782,
+    "lng": -90.509347,
+    "area": "St. Charles",
+    "difficulty": "medium",
+    "fact": "St. Charles's concert and sports arena on Arena Parkway."
+  },
+  {
+    "id": "fortbelle",
+    "name": "Fort Belle Fontaine",
+    "lat": 38.826536,
+    "lng": -90.218883,
+    "area": "St. Louis County",
+    "difficulty": "hard",
+    "fact": "The first U.S. military fort west of the Mississippi, now a county park on the Missouri River."
+  },
+  {
+    "id": "geyser",
+    "name": "Gateway Geyser",
+    "lat": 38.622778,
+    "lng": -90.170556,
+    "area": "East St. Louis",
+    "difficulty": "hard",
+    "fact": "A fountain in Malcolm W. Martin Memorial Park, aimed back at the Gateway Arch."
+  },
+  {
+    "id": "grants",
+    "name": "Grant's Farm",
+    "lat": 38.549721,
+    "lng": -90.35697,
+    "area": "Grantwood Village",
+    "difficulty": "medium",
+    "fact": "Ulysses S. Grant's old farm in Grantwood Village, later a Busch family animal park."
+  },
+  {
+    "id": "history",
+    "name": "Missouri History Museum",
+    "lat": 38.645159,
+    "lng": -90.285805,
+    "area": "Forest Park, St. Louis",
+    "difficulty": "medium",
+    "fact": "The Missouri History Museum on the north side of Forest Park."
+  },
+  {
+    "id": "horseshoe",
+    "name": "Horseshoe Lake State Park",
+    "lat": 38.689885,
+    "lng": -90.086699,
+    "area": "Pontoon Beach, Illinois",
+    "difficulty": "hard",
+    "fact": "An oxbow-lake state park in the Metro East, near Pontoon Beach."
+  },
+  {
+    "id": "indian",
+    "name": "Indian Camp Creek Park",
+    "lat": 38.884056,
+    "lng": -90.941612,
+    "area": "Foristell",
+    "difficulty": "hard",
+    "fact": "St. Charles County's largest park, 603 acres on Dietrich Road in Foristell."
+  },
+  {
+    "id": "jewelbox",
+    "name": "Jewel Box",
+    "lat": 38.635318,
+    "lng": -90.280275,
+    "area": "Forest Park, St. Louis",
+    "difficulty": "medium",
+    "fact": "The Art Deco glass greenhouse in Forest Park, finished in 1936."
+  },
+  {
+    "id": "joplin",
+    "name": "Scott Joplin House",
+    "lat": 38.637057,
+    "lng": -90.214951,
+    "area": "Midtown, St. Louis",
+    "difficulty": "hard",
+    "fact": "The Delmar Boulevard house where Scott Joplin lived from 1901 to 1903."
+  },
+  {
+    "id": "kiener",
+    "name": "Kiener Plaza",
+    "lat": 38.626086,
+    "lng": -90.191009,
+    "area": "Downtown, St. Louis",
+    "difficulty": "medium",
+    "fact": "The downtown park between Busch Stadium and the Old Courthouse."
+  },
+  {
+    "id": "lafayette",
+    "name": "Lafayette Park",
+    "lat": 38.616017,
+    "lng": -90.216065,
+    "area": "Lafayette Square, St. Louis",
+    "difficulty": "medium",
+    "fact": "The iron-fenced park in the middle of Lafayette Square."
+  },
+  {
+    "id": "lambert",
+    "name": "Lambert Airport",
+    "lat": 38.741168,
+    "lng": -90.364612,
+    "area": "St. Louis County",
+    "difficulty": "easy",
+    "fact": "Terminal 1 at St. Louis Lambert International Airport."
+  },
+  {
+    "id": "laumeier",
+    "name": "Laumeier Sculpture Park",
+    "lat": 38.548107,
+    "lng": -90.415021,
+    "area": "Sunset Hills",
+    "difficulty": "medium",
+    "fact": "Sunset Hills' outdoor museum, with more than 70 large sculptures on 105 acres."
+  },
+  {
+    "id": "lewis",
+    "name": "Lewis and Clark State Historic Site",
+    "lat": 38.80229,
+    "lng": -90.102136,
+    "area": "Hartford, Illinois",
+    "difficulty": "hard",
+    "fact": "The Hartford site of Camp River Dubois, the Corps of Discovery's winter camp in 1803."
+  },
+  {
+    "id": "loneelk",
+    "name": "Lone Elk Park",
+    "lat": 38.530874,
+    "lng": -90.539527,
+    "area": "Valley Park",
+    "difficulty": "medium",
+    "fact": "A fenced preserve in Valley Park where a herd of elk roams the hills."
+  },
+  {
+    "id": "loop",
+    "name": "Delmar Loop",
+    "lat": 38.655713,
+    "lng": -90.304998,
+    "area": "University City",
+    "difficulty": "easy",
+    "fact": "Delmar's strip of clubs and shops. The pin is Blueberry Hill."
+  },
+  {
+    "id": "magic",
+    "name": "The Magic House",
+    "lat": 38.573755,
+    "lng": -90.405879,
+    "area": "Kirkwood",
+    "difficulty": "medium",
+    "fact": "Kirkwood's children's museum at 516 South Kirkwood Road."
+  },
+  {
+    "id": "mainstreet",
+    "name": "Historic Main Street",
+    "lat": 38.78004,
+    "lng": -90.48179,
+    "area": "St. Charles",
+    "difficulty": "medium",
+    "fact": "The brick blocks of South Main in St. Charles. The pin is the First Missouri State Capitol."
+  },
+  {
+    "id": "mastodon",
+    "name": "Mastodon State Historic Site",
+    "lat": 38.378895,
+    "lng": -90.38486,
+    "area": "Imperial",
+    "difficulty": "hard",
+    "fact": "A historic site in Imperial where mastodon bones were dug from the Kimmswick clay."
+  },
+  {
+    "id": "mobot",
+    "name": "Missouri Botanical Garden",
+    "lat": 38.612897,
+    "lng": -90.259703,
+    "area": "Shaw, St. Louis",
+    "difficulty": "easy",
+    "fact": "The Missouri Botanical Garden in the Shaw neighborhood, home of the Climatron."
+  },
+  {
+    "id": "muny",
+    "name": "The Muny",
+    "lat": 38.640163,
+    "lng": -90.280125,
+    "area": "Forest Park, St. Louis",
+    "difficulty": "medium",
+    "fact": "Forest Park's outdoor musical theater, with free seats in the last rows all summer."
+  },
+  {
+    "id": "ofallon",
+    "name": "O'Fallon Park",
+    "lat": 38.680233,
+    "lng": -90.218794,
+    "area": "North St. Louis",
+    "difficulty": "hard",
+    "fact": "A north-city park with a lake, named for the landowner John O'Fallon."
+  },
+  {
+    "id": "powder",
+    "name": "Powder Valley Nature Center",
+    "lat": 38.554814,
+    "lng": -90.425882,
+    "area": "Sunset Hills",
+    "difficulty": "hard",
+    "fact": "A Missouri Department of Conservation nature center in the woods of Sunset Hills."
+  },
+  {
+    "id": "purina",
+    "name": "Purina Farms",
+    "lat": 38.493714,
+    "lng": -90.83621,
+    "area": "Gray Summit",
+    "difficulty": "hard",
+    "fact": "Nestlé Purina's visitor farm on Checkerboard Drive in Gray Summit."
+  },
+  {
+    "id": "queeny",
+    "name": "Queeny Park",
+    "lat": 38.614228,
+    "lng": -90.491289,
+    "area": "Manchester",
+    "difficulty": "hard",
+    "fact": "A large St. Louis County park off Weidman Road, named for Edgar Monsanto Queeny."
+  },
+  {
+    "id": "rivers",
+    "name": "National Great Rivers Museum",
+    "lat": 38.870993,
+    "lng": -90.151338,
+    "area": "Alton, Illinois",
+    "difficulty": "hard",
+    "fact": "The river museum beside Melvin Price Locks and Dam in Alton."
+  },
+  {
+    "id": "route66",
+    "name": "Route 66 State Park",
+    "lat": 38.508146,
+    "lng": -90.602848,
+    "area": "Eureka",
+    "difficulty": "hard",
+    "fact": "A state park on the old Times Beach site, along the Meramec east of Eureka."
+  },
+  {
+    "id": "science",
+    "name": "Saint Louis Science Center",
+    "lat": 38.628733,
+    "lng": -90.270391,
+    "area": "Forest Park, St. Louis",
+    "difficulty": "easy",
+    "fact": "The hands-on science museum on Oakland Avenue, at Forest Park's southeast corner."
+  },
+  {
+    "id": "schlafly",
+    "name": "Schlafly Bottleworks",
+    "lat": 38.613011,
+    "lng": -90.314852,
+    "area": "Maplewood",
+    "difficulty": "medium",
+    "fact": "The Schlafly brewery and beer hall in a Maplewood bottle works."
+  },
+  {
+    "id": "shawpark",
+    "name": "Shaw Park",
+    "lat": 38.648244,
+    "lng": -90.345218,
+    "area": "Clayton",
+    "difficulty": "medium",
+    "fact": "Clayton's central park, just west of downtown Clayton."
+  },
+  {
+    "id": "sixflags",
+    "name": "Six Flags St. Louis",
+    "lat": 38.515039,
+    "lng": -90.675516,
+    "area": "Eureka",
+    "difficulty": "medium",
+    "fact": "The Eureka amusement park on Six Flags Road, opened in 1971 as Six Flags Over Mid-America."
+  },
+  {
+    "id": "slu",
+    "name": "Saint Louis University",
+    "lat": 38.635359,
+    "lng": -90.231845,
+    "area": "Midtown, St. Louis",
+    "difficulty": "medium",
+    "fact": "Saint Louis University's midtown campus on Grand Boulevard."
+  },
+  {
+    "id": "soulard",
+    "name": "Soulard Market",
+    "lat": 38.610748,
+    "lng": -90.201047,
+    "area": "Soulard, St. Louis",
+    "difficulty": "medium",
+    "fact": "Soulard's public market, the oldest farmers market in the city."
+  },
+  {
+    "id": "suson",
+    "name": "Suson Park",
+    "lat": 38.472061,
+    "lng": -90.391197,
+    "area": "St. Louis County",
+    "difficulty": "hard",
+    "fact": "A south-county park with a small animal farm you can walk through."
+  },
+  {
+    "id": "teddrewes",
+    "name": "Ted Drewes on Chippewa",
+    "lat": 38.589417,
+    "lng": -90.307626,
+    "area": "St. Louis Hills",
+    "difficulty": "easy",
+    "fact": "The Chippewa Street frozen-custard stand on old Route 66. A concrete is thick enough to turn upside down."
+  },
+  {
+    "id": "thehill",
+    "name": "The Hill",
+    "lat": 38.615433,
+    "lng": -90.272408,
+    "area": "The Hill, St. Louis",
+    "difficulty": "medium",
+    "fact": "St. Louis's Italian neighborhood. The pin sits on St. Ambrose Church."
+  },
+  {
+    "id": "tilles",
+    "name": "Tilles Park",
+    "lat": 38.621241,
+    "lng": -90.365433,
+    "area": "Ladue",
+    "difficulty": "medium",
+    "fact": "Ladue's main park, with trails, a playground, and an outdoor stage."
+  },
+  {
+    "id": "towergrove",
+    "name": "Tower Grove Park",
+    "lat": 38.606341,
+    "lng": -90.255294,
+    "area": "Tower Grove, St. Louis",
+    "difficulty": "medium",
+    "fact": "The Victorian park just south of the Botanical Garden, given to the city by Henry Shaw."
+  },
+  {
+    "id": "transport",
+    "name": "Museum of Transportation",
+    "lat": 38.572551,
+    "lng": -90.463301,
+    "area": "Kirkwood",
+    "difficulty": "medium",
+    "fact": "A rail museum on Barrett Station Road in Kirkwood, full of locomotives."
+  },
+  {
+    "id": "umsl",
+    "name": "UMSL",
+    "lat": 38.708537,
+    "lng": -90.308832,
+    "area": "Normandy",
+    "difficulty": "medium",
+    "fact": "The University of Missouri–St. Louis campus on Natural Bridge Road."
+  },
+  {
+    "id": "union",
+    "name": "Union Station",
+    "lat": 38.628122,
+    "lng": -90.208026,
+    "area": "Downtown West, St. Louis",
+    "difficulty": "easy",
+    "fact": "The historic train station on Market Street, now a hotel and entertainment hall."
+  },
+  {
+    "id": "washu",
+    "name": "Washington University",
+    "lat": 38.648033,
+    "lng": -90.305104,
+    "area": "St. Louis",
+    "difficulty": "easy",
+    "fact": "Washington University's Danforth campus. The pin is Brookings Hall."
+  },
+  {
+    "id": "willmore",
+    "name": "Willmore Park",
+    "lat": 38.569829,
+    "lng": -90.301122,
+    "area": "St. Louis",
+    "difficulty": "medium",
+    "fact": "A hilly park in southwest St. Louis, along the River Des Peres."
+  },
+  {
+    "id": "wolf",
+    "name": "Endangered Wolf Center",
+    "lat": 38.526728,
+    "lng": -90.562575,
+    "area": "Eureka",
+    "difficulty": "hard",
+    "fact": "A breeding center near Eureka for endangered red wolves and Mexican wolves."
+  },
+  {
+    "id": "zoo",
+    "name": "Saint Louis Zoo",
+    "lat": 38.635173,
+    "lng": -90.290909,
+    "area": "Forest Park, St. Louis",
+    "difficulty": "easy",
+    "fact": "The Saint Louis Zoo in Forest Park, where general admission is free."
+  }
+]

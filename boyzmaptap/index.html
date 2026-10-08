@@ -118,6 +118,18 @@
       background: rgba(255,255,255,0.03); border: 1px solid var(--line);
     }
     .player-line span:last-child { color: var(--muted); text-align: right; }
+    .stl-play {
+      display: flex; justify-content: space-between; align-items: center; gap: 14px;
+      text-decoration: none; color: inherit; margin-top: 14px;
+      background: linear-gradient(135deg, rgba(138, 42, 54, 0.62), rgba(240, 180, 41, 0.16));
+      border: 1px solid rgba(240, 180, 41, 0.5);
+    }
+    .stl-play h2 { font-family: Outfit, sans-serif; font-size: 22px; margin: 2px 0 0; }
+    .stl-play p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+    .stl-play .go {
+      background: var(--gold); color: #1a0508; font-weight: 800; border-radius: 999px;
+      padding: 10px 16px; flex: none;
+    }
     .foot { margin-top: 18px; color: var(--muted); font-size: 12px; }
     .two { display: grid; gap: 12px; }
     @media (min-width: 860px) { .two { grid-template-columns: 1.4fr 0.8fr; } }
@@ -132,9 +144,19 @@
         <p class="sub">Daily geography scores for the group. The season table is the Oct 2, 2026 photo. Round scores from the chat are tied to each day’s places, underneath.</p>
       </div>
       <div class="nav">
+        <a href="stl/">STL MapTap</a>
         <a href="https://www.maptap.gg" target="_blank" rel="noopener">maptap.gg</a>
       </div>
     </header>
+
+    <a class="card stl-play" href="stl/">
+      <div>
+        <div class="kicker">Hyperlocal</div>
+        <h2>Play STL MapTap</h2>
+        <p>Five St. Louis spots a day. No labels. Same puzzle for the whole group.</p>
+      </div>
+      <span class="go">Play</span>
+    </a>
 
     <section class="grid kpis" id="kpis"></section>
 
