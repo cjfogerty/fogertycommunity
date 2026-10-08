@@ -1,12 +1,12 @@
 {
-  "mode": "practice",
-  "badge": "Practice",
-  "badge2": "Field 8C",
-  "title": "Wednesday, October 7",
-  "when": "5:30–6:00 PM · Field 8C",
-  "note": "Sports Park · 3589 Hwy K, O’Fallon. Next game is Saturday, Oct 10, 2026, 10:00 AM Field 8B vs Cooksey (Away). Snack: Blake jeffery.",
-  "mapHighlight": "8C",
-  "mapLabel": "Practice · Field 8C",
-  "mapSub": "Wed 5:30–6:00 PM · pinch or use + / −",
-  "updated": "2026-10-03"
+  "mode": "game",
+  "badge": "Game",
+  "badge2": "Away",
+  "title": "Saturday, October 10",
+  "when": "10:00 AM · Field 8B · vs Cooksey",
+  "note": "Away game at Sports Park Field 8B, 3589 Hwy K, O’Fallon. Snack: Blake jeffery. Next practice is Wednesday, October 14, 5:30–6:00 PM on Field 8C.",
+  "mapHighlight": "8B",
+  "mapLabel": "Saturday game · Field 8B",
+  "mapSub": "10:00 AM vs Cooksey · pinch or use + / −",
+  "updated": "2026-10-08"
 }
