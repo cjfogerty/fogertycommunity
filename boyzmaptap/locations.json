@@ -591,6 +591,93 @@
           ]
         }
       ]
+    },
+    {
+      "date": "2026-10-08",
+      "puzzle": 839,
+      "sourceUrl": "https://maptap.gg/data/this_day_in_history/October8.js",
+      "locations": [
+        {
+          "order": 1,
+          "city": "Sydney",
+          "region": "New South Wales",
+          "country": "Australia",
+          "continent": "Oceania",
+          "lat": -33.8688,
+          "lng": 151.2093,
+          "title": "The Tap-Dancing Knife-Thrower",
+          "funFact": "Founded as a British penal colony in 1788.",
+          "sources": [
+            "https://www.abc.net.au/austory/a-fortunate-life---part-1/11505028",
+            "https://en.wikipedia.org/wiki/Paul_Hogan",
+            "https://laughterlog.com/2009/03/19/paul-hogan"
+          ]
+        },
+        {
+          "order": 2,
+          "city": "Trondheim",
+          "region": null,
+          "country": "Norway",
+          "continent": "Europe",
+          "lat": 63.4305,
+          "lng": 10.3951,
+          "title": "Her Father's Objection",
+          "funFact": "Founded by a Viking king in 997.",
+          "sources": [
+            "https://snl.no/Kristine_Bonnevie",
+            "https://www.muv.uio.no/uios-historie/mennesker/forskeren/realister/bonnevie-haraldsenrueness-080208.html",
+            "https://en.wikipedia.org/wiki/Kristine_Bonnevie"
+          ]
+        },
+        {
+          "order": 3,
+          "city": "Newcastle",
+          "region": "New South Wales",
+          "country": "Australia",
+          "continent": "Oceania",
+          "lat": -32.9283,
+          "lng": 151.7817,
+          "title": "The Backyard Boat",
+          "funFact": "The world's largest coal export port.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Ken_Warby",
+            "https://en.wikipedia.org/wiki/Spirit_of_Australia",
+            "https://www.smh.com.au/lifestyle/the-warby-need-for-speed-20150110-12lnzh.html"
+          ]
+        },
+        {
+          "order": 4,
+          "city": "Makassar",
+          "region": "Sulawesi",
+          "country": "Indonesia",
+          "continent": "Asia",
+          "lat": -5.1486,
+          "lng": 119.4319,
+          "title": "The Coconut Octopus",
+          "funFact": "Called Ujung Pandang from 1971 to 1999.",
+          "sources": [
+            "https://www.sciencedaily.com/releases/2009/12/091214121953.htm",
+            "https://www.livescience.com/9762-clever-octopus-builds-mobile-home.html",
+            "https://en.wikipedia.org/wiki/Amphioctopus_marginatus"
+          ]
+        },
+        {
+          "order": 5,
+          "city": "Klamath Falls",
+          "region": "Oregon",
+          "country": "USA",
+          "continent": "North America",
+          "lat": 42.2249,
+          "lng": -121.7817,
+          "title": "Undamming the Klamath",
+          "funFact": "On Upper Klamath Lake, the largest lake in Oregon.",
+          "sources": [
+            "https://www.dfw.state.or.us/news/2024/10_Oct/101724.asp",
+            "https://www.opb.org/article/2024/11/03/klamath-river-salmon-tracking/",
+            "https://en.wikipedia.org/wiki/Klamath_River"
+          ]
+        }
+      ]
     }
   ]
 }

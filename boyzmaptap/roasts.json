@@ -2,6 +2,27 @@
   "comment": "Hand-written roasts for a day's lowest scores. Add one object to days when the group writes them. A day with no entry shows nothing on the board. Do not generate roast text in the page.",
   "days": [
     {
+      "date": "2026-10-08",
+      "puzzle": 839,
+      "roasts": [
+        {
+          "playerId": "casey",
+          "score": 844,
+          "text": "Casey said he got smoked on Sydney, and the share agrees. A 63 on a penal colony, with the worried face, is not a near miss. Sydney was founded in 1788. It has an opera house. He then laughed a 73 through Makassar and called the day 844. Last of the posted scores. The smoke was self-inflicted."
+        },
+        {
+          "playerId": "andy",
+          "score": 857,
+          "text": "Andy wrote Trbl, which is the right number of letters for a 69 in Makassar. He bullseyed Sydney and then got confused on Sulawesi. Newcastle, the other Australia, was a 92. The backyard boat was fine. The coconut octopus was not. Fourth place, and the typo is the most accurate thing he posted."
+        },
+        {
+          "playerId": "micah",
+          "score": 892,
+          "text": "Micah laughed a 73 onto Makassar and otherwise played a clean game. The laugh is the tell. You do not put a laughing face on a 73 unless you know the pin is in the wrong sea. He closed Klamath Falls at 98, which does not refund Sulawesi. Third from the bottom on a day Peter shot 923."
+        }
+      ]
+    },
+    {
       "date": "2026-10-07",
       "puzzle": 838,
       "roasts": [

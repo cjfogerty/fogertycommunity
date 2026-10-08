@@ -2,7 +2,7 @@
   "game": "MapTap",
   "site": "https://www.maptap.gg",
   "asOf": "2026-10-02",
-  "puzzleToday": 838,
+  "puzzleToday": 839,
   "note": "Season totals in this file are the Oct 2, 2026 group photo. Daily logs store MapTap share-text finals exactly as posted, plus the five round scores in location order. Casey's #833 total is 941 and has no round breakdown. Sam's #832 final of 891 matches his October average (one game) and is not added again. Sam's #833 (919), Andy's #833 (987), and Ben's #833 (866) are logged for places and callouts only; they are not folded into the season columns. Logs dated after the photo, starting with #834 on Oct 3, are added on top of those columns when the board loads.",
   "bands": [
     {
@@ -583,6 +583,76 @@
         85,
         83,
         68
+      ]
+    },
+    {
+      "id": "peter-839",
+      "playerId": "peter",
+      "date": "2026-10-08",
+      "puzzle": 839,
+      "score": 923,
+      "rounds": [
+        93,
+        90,
+        94,
+        87,
+        97
+      ]
+    },
+    {
+      "id": "sam-839",
+      "playerId": "sam",
+      "date": "2026-10-08",
+      "puzzle": 839,
+      "score": 916,
+      "rounds": [
+        100,
+        88,
+        100,
+        80,
+        96
+      ]
+    },
+    {
+      "id": "micah-839",
+      "playerId": "micah",
+      "date": "2026-10-08",
+      "puzzle": 839,
+      "score": 892,
+      "rounds": [
+        99,
+        96,
+        92,
+        73,
+        98
+      ]
+    },
+    {
+      "id": "andy-839",
+      "playerId": "andy",
+      "date": "2026-10-08",
+      "puzzle": 839,
+      "score": 857,
+      "rounds": [
+        100,
+        87,
+        92,
+        69,
+        93
+      ]
+    },
+    {
+      "id": "casey-839",
+      "playerId": "casey",
+      "date": "2026-10-08",
+      "puzzle": 839,
+      "score": 844,
+      "rounds": [
+        63,
+        91,
+        96,
+        73,
+        93
       ]
     }
   ]
