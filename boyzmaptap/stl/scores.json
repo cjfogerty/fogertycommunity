@@ -1,0 +1,98 @@
+{
+  "game": "STL MapTap",
+  "site": "https://cjfogerty.github.io/fogertycommunity/boyzmaptap/stl/",
+  "asOf": "2026-10-09",
+  "puzzleToday": 840,
+  "note": "Same 1-1-2-3-3 weights as MapTap, max 1000. Places stay off this board so the day's five spots are not spoiled. Andy and Ben have not posted Oct 9.",
+  "players": [
+    {
+      "id": "peter",
+      "name": "Peter Boggs",
+      "color": "#f0b429"
+    },
+    {
+      "id": "andy",
+      "name": "Andy Clemens",
+      "color": "#ff6b4a"
+    },
+    {
+      "id": "sam",
+      "name": "Sam Stuffelbaum",
+      "color": "#4aa3ff"
+    },
+    {
+      "id": "ben",
+      "name": "Ben Haberberger",
+      "color": "#3dcf8e"
+    },
+    {
+      "id": "micah",
+      "name": "Micah Northcutt",
+      "color": "#b388ff"
+    },
+    {
+      "id": "casey",
+      "name": "Casey",
+      "color": "#ff4f8b",
+      "you": true
+    }
+  ],
+  "logs": [
+    {
+      "id": "micah-840",
+      "playerId": "micah",
+      "date": "2026-10-09",
+      "puzzle": 840,
+      "score": 958,
+      "rounds": [
+        100,
+        100,
+        100,
+        100,
+        86
+      ]
+    },
+    {
+      "id": "peter-840",
+      "playerId": "peter",
+      "date": "2026-10-09",
+      "puzzle": 840,
+      "score": 887,
+      "rounds": [
+        41,
+        82,
+        100,
+        100,
+        88
+      ]
+    },
+    {
+      "id": "sam-840",
+      "playerId": "sam",
+      "date": "2026-10-09",
+      "puzzle": 840,
+      "score": 843,
+      "rounds": [
+        48,
+        100,
+        100,
+        95,
+        70
+      ]
+    },
+    {
+      "id": "casey-840",
+      "playerId": "casey",
+      "date": "2026-10-09",
+      "puzzle": 840,
+      "score": 739,
+      "rounds": [
+        52,
+        100,
+        100,
+        62,
+        67
+      ]
+    }
+  ]
+}

@@ -2,6 +2,27 @@
   "comment": "Hand-written roasts for a day's lowest scores. Add one object to days when the group writes them. A day with no entry shows nothing on the board. Do not generate roast text in the page.",
   "days": [
     {
+      "date": "2026-10-09",
+      "puzzle": 840,
+      "roasts": [
+        {
+          "playerId": "casey",
+          "score": 474,
+          "text": "Casey put a vomit emoji on a 4 in Dori and stopped. Zurich was a 94. Albuquerque was a 90. Windhoek took 35, and Burkina Faso took the day. Last of six, 130 behind Sam, who also got lost in the Sahel and still doubled him. A 4 is not a pin. It is a resignation."
+        },
+        {
+          "playerId": "sam",
+          "score": 604,
+          "text": "Sam opened Zurich on fire, a 98, then fell asleep on the baobab. A 34 in Windhoek and a 40 in Dori, sleepy face and see-no-evil monkey, is how a clean start becomes fifth. He told the group not to tell his parents. That was about the Bible score. The map had already called them."
+        },
+        {
+          "playerId": "micah",
+          "score": 608,
+          "text": "Micah said he did not feel so bad, which is the right sentence at 608 if you have only seen Ben's 658. Windhoek was a 39 with the monkey. Dori was a 52 with the fearful face. Four points ahead of Sam, 303 behind Andy, and the relief was early. The baobab post office is a real building. The monkey did not hide it."
+        }
+      ]
+    },
+    {
       "date": "2026-10-08",
       "puzzle": 839,
       "roasts": [

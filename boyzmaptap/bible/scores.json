@@ -1,0 +1,57 @@
+{
+  "game": "BibleTap",
+  "site": "https://cjfogerty.github.io/fogertycommunity/boyzmaptap/bible/",
+  "asOf": "2026-10-09",
+  "puzzleToday": 840,
+  "note": "Same 1-1-2-3-3 weights, max 1000. Verses stay off this board. Only Sam has posted Oct 9. He asked the group not to tell his parents.",
+  "players": [
+    {
+      "id": "peter",
+      "name": "Peter Boggs",
+      "color": "#f0b429"
+    },
+    {
+      "id": "andy",
+      "name": "Andy Clemens",
+      "color": "#ff6b4a"
+    },
+    {
+      "id": "sam",
+      "name": "Sam Stuffelbaum",
+      "color": "#4aa3ff"
+    },
+    {
+      "id": "ben",
+      "name": "Ben Haberberger",
+      "color": "#3dcf8e"
+    },
+    {
+      "id": "micah",
+      "name": "Micah Northcutt",
+      "color": "#b388ff"
+    },
+    {
+      "id": "casey",
+      "name": "Casey",
+      "color": "#ff4f8b",
+      "you": true
+    }
+  ],
+  "logs": [
+    {
+      "id": "sam-840",
+      "playerId": "sam",
+      "date": "2026-10-09",
+      "puzzle": 840,
+      "score": 337,
+      "rounds": [
+        6,
+        79,
+        63,
+        21,
+        21
+      ],
+      "note": "Don't tell my parents"
+    }
+  ]
+}

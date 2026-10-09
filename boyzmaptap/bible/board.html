@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bible scores · Boyz MapTap</title>
+  <meta name="theme-color" content="#14080c" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#14080c; --panel:rgba(28,14,18,.78); --line:rgba(246,239,230,.12); --cream:#f6efe6; --muted:#b9a8a4; --gold:#f0b429; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Inter,system-ui,sans-serif; color:var(--cream); background:radial-gradient(900px 480px at 80% -10%, rgba(194,74,88,.35), transparent 55%), linear-gradient(180deg,#1a0a0e 0%,#0c1218 42%,#090d12 100%); min-height:100vh; }
+    a { color:var(--gold); }
+    .wrap { max-width:980px; margin:0 auto; padding:20px 16px 64px; }
+    header { display:flex; justify-content:space-between; gap:16px; align-items:flex-end; flex-wrap:wrap; }
+    .kicker { letter-spacing:.18em; text-transform:uppercase; font-size:11px; color:var(--gold); font-weight:700; }
+    h1 { font-family:Outfit,Inter,sans-serif; font-size:clamp(32px,6vw,52px); line-height:.95; margin:6px 0 8px; }
+    .sub, .hint { color:var(--muted); }
+    .nav { display:flex; gap:8px; flex-wrap:wrap; }
+    .nav a { text-decoration:none; color:var(--cream); border:1px solid var(--line); background:rgba(255,255,255,.04); border-radius:999px; padding:8px 12px; font-size:13px; font-weight:600; }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:14px 14px 16px; margin-top:12px; }
+    .card h2 { font-family:Outfit,sans-serif; font-size:18px; margin:0 0 4px; }
+    .kpis { display:grid; gap:12px; grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:18px; }
+    @media (min-width:800px) { .kpis { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+    .kpi .label { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.08em; font-weight:700; }
+    .kpi .value { font-family:Outfit,sans-serif; font-size:28px; margin-top:4px; }
+    .kpi .meta { color:var(--muted); font-size:12px; margin-top:2px; }
+    table { width:100%; border-collapse:collapse; font-size:13px; }
+    th, td { text-align:right; padding:10px 8px; border-bottom:1px solid var(--line); white-space:nowrap; }
+    th { color:var(--muted); font-size:11px; letter-spacing:.04em; text-transform:uppercase; }
+    td:first-child, th:first-child { text-align:left; }
+    .name { display:flex; align-items:center; gap:8px; font-weight:700; }
+    .dot { width:9px; height:9px; border-radius:50%; display:inline-block; }
+    .badge { font-size:10px; border-radius:999px; padding:2px 6px; background:rgba(255,79,139,.2); color:#ffb3cc; }
+    .scroll { overflow-x:auto; }
+    .log { display:grid; grid-template-columns:88px 1fr auto; gap:8px; align-items:center; padding:10px; border-radius:12px; background:rgba(255,255,255,.03); border:1px solid var(--line); margin-top:8px; }
+    .score { font-family:Outfit,sans-serif; font-size:26px; }
+    .mini { font-size:11px; padding:3px 7px; border-radius:999px; background:rgba(255,255,255,.06); }
+    .rounds { display:flex; gap:4px; flex-wrap:wrap; }
+    .miss { color:var(--muted); }
+    .foot { margin-top:18px; color:var(--muted); font-size:12px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="kicker">Fogerty · The canon</div>
+        <h1>Bible scores</h1>
+        <p class="sub">Daily BibleTap scores for the group. The five verses stay on the game.</p>
+      </div>
+      <div class="nav">
+        <a href="../">World board</a>
+        <a href="./">Play</a>
+        <a href="../stl/board.html">STL scores</a>
+        <a href="../bible/board.html">Bible scores</a>
+      </div>
+    </header>
+    <section class="kpis" id="kpis"></section>
+    <section class="card">
+      <h2>Today</h2>
+      <p class="hint" id="today-hint">Share-text finals. Rounds are in play order. Weights are 1, 1, 2, 3, 3.</p>
+      <div class="scroll"><table id="today"><thead><tr><th>Player</th><th>Final</th><th>R1</th><th>R2</th><th>R3 ×2</th><th>R4 ×3</th><th>R5 ×3</th></tr></thead><tbody></tbody></table></div>
+    </section>
+    <section class="card">
+      <h2>Logged season</h2>
+      <p class="hint">Built only from scores posted here. A missing day is a missing day, not a zero.</p>
+      <div class="scroll"><table id="season"><thead><tr><th>Player</th><th>Total</th><th>Games</th><th>Avg</th><th>Best</th><th>Last</th></tr></thead><tbody></tbody></table></div>
+    </section>
+    <section class="card">
+      <h2>Daily log</h2>
+      <div id="logs"></div>
+    </section>
+    <p class="foot" id="foot"></p>
+  </div>
+  <script>
+    var PLAYERS = [{"id": "peter", "name": "Peter Boggs", "color": "#f0b429"}, {"id": "andy", "name": "Andy Clemens", "color": "#ff6b4a"}, {"id": "sam", "name": "Sam Stuffelbaum", "color": "#4aa3ff"}, {"id": "ben", "name": "Ben Haberberger", "color": "#3dcf8e"}, {"id": "micah", "name": "Micah Northcutt", "color": "#b388ff"}, {"id": "casey", "name": "Casey", "color": "#ff4f8b", "you": true}];
+    fetch("scores.json", { cache: "no-store" }).then(function (r) { return r.json(); }).then(render).catch(function () {
+      document.getElementById("today-hint").textContent = "Could not load scores.json.";
+    });
+    function byId(id) { return PLAYERS.filter(function (p) { return p.id === id; })[0] || { name: id, color: "#ccc" }; }
+    function render(data) {
+      var logs = data.logs || [];
+      var today = logs.filter(function (l) { return l.date === data.asOf; }).slice().sort(function (a,b) { return b.score - a.score; });
+      var posted = {};
+      today.forEach(function (l) { posted[l.playerId] = l; });
+      document.getElementById("today-hint").textContent = (data.note || "") + " Puzzle " + data.puzzleToday + ".";
+      document.getElementById("kpis").innerHTML = [
+        kpi("Posted", today.length + " / " + PLAYERS.length, data.asOf),
+        kpi("Leader", today[0] ? byId(today[0].playerId).name : "—", today[0] ? String(today[0].score) : "no scores"),
+        kpi("Average", today.length ? String(Math.round(today.reduce(function (s,l){return s+l.score;},0)/today.length)) : "—", "posted finals only"),
+        kpi("Floor", today.length ? String(today[today.length-1].score) : "—", today.length ? byId(today[today.length-1].playerId).name : "")
+      ].join("");
+      var rows = PLAYERS.map(function (p) { return posted[p.id] || { playerId: p.id, score: null, rounds: [] }; });
+      rows.sort(function (a,b) { return (b.score||0) - (a.score||0); });
+      document.querySelector("#today tbody").innerHTML = rows.map(function (l) {
+        var p = byId(l.playerId);
+        var rounds = (l.rounds || []).map(function (n) { return "<td>" + n + "</td>"; }).join("");
+        if (!l.rounds || !l.rounds.length) rounds = "<td class='miss' colspan='5'>not posted</td>";
+        return "<tr><td><span class='name'><i class='dot' style='background:" + p.color + "'></i>" + p.name + (p.you ? " <span class='badge'>you</span>" : "") + "</span></td><td>" + (l.score == null ? "—" : l.score) + "</td>" + rounds + "</tr>";
+      }).join("");
+      var agg = {};
+      logs.forEach(function (l) {
+        var a = agg[l.playerId] || { total:0, games:0, best:0, last:null, lastDate:"" };
+        a.total += l.score; a.games += 1; a.best = Math.max(a.best, l.score);
+        if (!a.lastDate || l.date >= a.lastDate) { a.last = l.score; a.lastDate = l.date; }
+        agg[l.playerId] = a;
+      });
+      var season = PLAYERS.map(function (p) { return { p:p, a: agg[p.id] }; }).sort(function (x,y) {
+        return ((y.a && y.a.total) || 0) - ((x.a && x.a.total) || 0);
+      });
+      document.querySelector("#season tbody").innerHTML = season.map(function (row) {
+        var a = row.a, p = row.p;
+        return "<tr><td><span class='name'><i class='dot' style='background:" + p.color + "'></i>" + p.name + "</span></td><td>" + (a ? a.total : "—") + "</td><td>" + (a ? a.games : 0) + "</td><td>" + (a ? (a.total/a.games).toFixed(1) : "—") + "</td><td>" + (a ? a.best : "—") + "</td><td>" + (a ? a.last : "—") + "</td></tr>";
+      }).join("");
+      var days = [];
+      logs.forEach(function (l) { if (days.indexOf(l.date) < 0) days.push(l.date); });
+      days.sort().reverse();
+      document.getElementById("logs").innerHTML = days.map(function (d) {
+        var items = logs.filter(function (l) { return l.date === d; }).sort(function (a,b) { return b.score - a.score; });
+        return "<div class='hint' style='margin-top:10px'>" + d + "</div>" + items.map(function (l) {
+          var p = byId(l.playerId);
+          var rounds = (l.rounds||[]).map(function (n) { return "<span class='mini'>" + n + "</span>"; }).join(" ");
+          return "<div class='log'><div class='score'>" + l.score + "</div><div><div class='name'><i class='dot' style='background:" + p.color + "'></i>" + p.name + "</div><div class='rounds' style='margin-top:6px'>" + rounds + (l.note ? " <span class='mini'>" + l.note + "</span>" : "") + "</div></div><div class='hint'>#" + l.puzzle + "</div></div>";
+        }).join("");
+      }).join("");
+      document.getElementById("foot").textContent = data.game + " board. Places and verses stay on the game, not here.";
+    }
+    function kpi(label, value, meta) {
+      return "<article class='card kpi'><div class='label'>" + label + "</div><div class='value'>" + value + "</div><div class='meta'>" + meta + "</div></article>";
+    }
+  </script>
+</body>
+</html>

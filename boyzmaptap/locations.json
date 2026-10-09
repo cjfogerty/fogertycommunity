@@ -146,7 +146,7 @@
           "lat": 46.253,
           "lng": 20.1414,
           "title": "The Teddy Bear",
-          "funFact": "Hungary's paprika capital, on the Tisza. Katalin Karikó studied at the University of Szeged and shared the 2023 Nobel Prize for mRNA discoveries. Leaving Hungary in 1985, she and her husband sewed the cash from selling their car into their daughter's teddy bear.",
+          "funFact": "Hungary's paprika capital, on the Tisza. Katalin Karik\u00f3 studied at the University of Szeged and shared the 2023 Nobel Prize for mRNA discoveries. Leaving Hungary in 1985, she and her husband sewed the cash from selling their car into their daughter's teddy bear.",
           "sources": [
             "https://www.nobelprize.org/prizes/medicine/2023/kariko/facts/",
             "https://www.nobelprize.org/stories/women-who-changed-science/katalin-kariko/"
@@ -237,7 +237,7 @@
         {
           "order": 5,
           "city": "Morelia",
-          "region": "Michoacán",
+          "region": "Michoac\u00e1n",
           "country": "Mexico",
           "continent": "North America",
           "lat": 19.706,
@@ -560,7 +560,7 @@
         },
         {
           "order": 4,
-          "city": "Concepción",
+          "city": "Concepci\u00f3n",
           "region": null,
           "country": "Chile",
           "continent": "South America",
@@ -675,6 +675,88 @@
             "https://www.dfw.state.or.us/news/2024/10_Oct/101724.asp",
             "https://www.opb.org/article/2024/11/03/klamath-river-salmon-tracking/",
             "https://en.wikipedia.org/wiki/Klamath_River"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "puzzle": 840,
+      "sourceUrl": "https://maptap.gg/data/this_day_in_history/October9.js",
+      "locations": [
+        {
+          "order": 1,
+          "city": "Zurich",
+          "region": null,
+          "country": "Switzerland",
+          "continent": "Europe",
+          "lat": 47.3769,
+          "lng": 8.5417,
+          "title": "The Officer's Knife",
+          "funFact": "Karl Elsener, born in 1860, patented the officer's knife here that became the Swiss Army knife.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Karl_Elsener_(inventor)",
+            "https://en.wikipedia.org/wiki/Swiss_Army_knife"
+          ]
+        },
+        {
+          "order": 2,
+          "city": "Bloemfontein",
+          "region": null,
+          "country": "South Africa",
+          "continent": "Africa",
+          "lat": -29.1167,
+          "lng": 26.2167,
+          "title": "The Bicycle Reporter",
+          "funFact": "Judicial capital of South Africa. Sol Plaatje bicycled the country to document the 1913 Natives Land Act.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Sol_Plaatje",
+            "https://en.wikipedia.org/wiki/Natives_Land_Act,_1913"
+          ]
+        },
+        {
+          "order": 3,
+          "city": "Albuquerque",
+          "region": "New Mexico",
+          "country": "USA",
+          "continent": "North America",
+          "lat": 35.0844,
+          "lng": -106.6504,
+          "title": "Footprints in the Mud",
+          "funFact": "White Sands, to the south, holds 10,000-year-old footprints of someone carrying a child past a ground sloth.",
+          "sources": [
+            "https://www.nps.gov/whsa/learn/nature/fossilized-footprints.htm",
+            "https://doi.org/10.1016/j.quascirev.2020.106610"
+          ]
+        },
+        {
+          "order": 4,
+          "city": "Windhoek",
+          "region": null,
+          "country": "Namibia",
+          "continent": "Africa",
+          "lat": -22.5609,
+          "lng": 17.0658,
+          "title": "The Tree Post Office",
+          "funFact": "Capital of Namibia. North of here, an 800-year-old baobab in Outapi was a working post office.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Ombalantu_baobab_tree",
+            "https://en.wikipedia.org/wiki/Windhoek"
+          ]
+        },
+        {
+          "order": 5,
+          "city": "Dori",
+          "region": null,
+          "country": "Burkina Faso",
+          "continent": "Africa",
+          "lat": 14.0354,
+          "lng": -0.0345,
+          "title": "Back to School",
+          "funFact": "Sahel town in northeastern Burkina Faso. Maimouna Ba, born here, won the 2024 African Nansen Refugee Award.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Dori,_Burkina_Faso",
+            "https://www.unhcr.org/africa/node/27210"
           ]
         }
       ]
