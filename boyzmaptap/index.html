@@ -130,6 +130,18 @@
       background: var(--gold); color: #1a0508; font-weight: 800; border-radius: 999px;
       padding: 10px 16px; flex: none;
     }
+    .bible-play {
+      display: flex; justify-content: space-between; align-items: center; gap: 14px;
+      text-decoration: none; color: inherit; margin-top: 12px;
+      background: linear-gradient(135deg, rgba(62, 42, 18, 0.88), rgba(228, 194, 122, 0.16));
+      border: 1px solid rgba(228, 194, 122, 0.55);
+    }
+    .bible-play h2 { font-family: Outfit, sans-serif; font-size: 22px; margin: 2px 0 0; }
+    .bible-play p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+    .bible-play .go {
+      background: #e4c27a; color: #1a0d08; font-weight: 800; border-radius: 999px;
+      padding: 10px 16px; flex: none;
+    }
     .foot { margin-top: 18px; color: var(--muted); font-size: 12px; }
     .two { display: grid; gap: 12px; }
     @media (min-width: 860px) { .two { grid-template-columns: 1.4fr 0.8fr; } }
@@ -145,6 +157,7 @@
       </div>
       <div class="nav">
         <a href="stl/">STL MapTap</a>
+        <a href="bible/">BibleTap</a>
         <a href="https://www.maptap.gg" target="_blank" rel="noopener">maptap.gg</a>
       </div>
     </header>
@@ -154,6 +167,15 @@
         <div class="kicker">Hyperlocal</div>
         <h2>Play STL MapTap</h2>
         <p>Five St. Louis spots a day. No labels. Same puzzle for the whole group.</p>
+      </div>
+      <span class="go">Play</span>
+    </a>
+
+    <a class="card bible-play" href="bible/">
+      <div>
+        <div class="kicker">The canon</div>
+        <h2>Play BibleTap</h2>
+        <p>Five verses a day. No citation. Name the book, the chapter, and the verse.</p>
       </div>
       <span class="go">Play</span>
     </a>

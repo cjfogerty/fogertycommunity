@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>BibleTap</title>
+  <meta name="theme-color" content="#10080c" />
+  <meta name="description" content="BibleTap — a daily five-round Bible verse game. Find the book, chapter, and verse." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%2310080c'/%3E%3Cpath d='M4 3h5.2c1.4 1 2.2 1.6 2.2 3.2S10.2 8.6 8.6 8H4V3zm0 5h4.6c1.5 0 2.6.6 2.6 2.2S10.2 13 8.4 13H4V8z' fill='%23e4c27a'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #10080c;
+      --cream: #f6efe6;
+      --muted: #b9a89a;
+      --gold: #e4c27a;
+      --gold-2: #f0b429;
+      --line: rgba(228, 194, 122, 0.28);
+      --good: #7dcea0;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      font-family: Outfit, "Palatino Linotype", Palatino, serif;
+      color: var(--cream);
+      background:
+        radial-gradient(420px 280px at 50% -10%, rgba(228, 194, 122, 0.22), transparent 60%),
+        radial-gradient(520px 380px at 110% 80%, rgba(120, 32, 28, 0.35), transparent 55%),
+        radial-gradient(480px 320px at -20% 90%, rgba(48, 32, 72, 0.45), transparent 50%),
+        #10080c;
+      min-height: 100dvh;
+      height: 100dvh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .grain, #fx { position: fixed; inset: 0; pointer-events: none; }
+    .grain {
+      z-index: 8;
+      opacity: 0.28;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    }
+    #fx { z-index: 7; }
+    header, main, footer { position: relative; z-index: 1; }
+    header {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      padding: calc(8px + env(safe-area-inset-top)) 12px 6px;
+    }
+    .links { display: flex; gap: 6px; }
+    header a {
+      color: var(--cream); text-decoration: none; font-size: 12px; font-weight: 700;
+      border: 1px solid var(--line); background: rgba(16, 8, 12, 0.55);
+      border-radius: 999px; padding: 7px 10px; min-height: 36px;
+      display: inline-flex; align-items: center;
+    }
+    .brand { text-align: right; display: flex; align-items: center; gap: 8px; }
+    .brand strong {
+      font-family: Cinzel, Palatino, serif; font-size: 18px; letter-spacing: 0.08em;
+      display: block; line-height: 1;
+    }
+    .brand span { color: var(--gold); font-size: 12px; font-weight: 700; display: block; }
+    .flame {
+      width: 10px; height: 16px; border-radius: 50% 50% 45% 45%;
+      background: radial-gradient(circle at 50% 70%, #fff4d2, #f0b429 40%, #c45a20 72%, transparent 74%);
+      box-shadow: 0 0 12px rgba(240, 180, 41, 0.85);
+      transform-origin: 50% 100%;
+      animation: flicker 1.6s ease-in-out infinite;
+    }
+    @keyframes flicker {
+      0%, 100% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
+      40% { transform: scale(1.08, 0.92) rotate(2deg); opacity: 1; }
+      70% { transform: scale(0.94, 1.06) rotate(-1deg); opacity: 0.82; }
+    }
+    main {
+      flex: 1; min-height: 0; display: flex; flex-direction: column;
+      padding: 0 10px;
+    }
+    .verse {
+      flex: none;
+      max-height: 30vh;
+      overflow: auto;
+      margin: 4px 0 8px;
+      padding: 14px 14px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(228, 194, 122, 0.45);
+      background:
+        linear-gradient(165deg, rgba(92, 68, 36, 0.55), rgba(28, 18, 12, 0.92) 42%, rgba(16, 10, 8, 0.94));
+      box-shadow: inset 0 0 40px rgba(228, 194, 122, 0.08), 0 10px 30px rgba(0, 0, 0, 0.28);
+      -webkit-overflow-scrolling: touch;
+    }
+    .kicker {
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
+      font-size: 11px; font-weight: 700; margin: 0 0 6px;
+      font-family: Outfit, sans-serif;
+    }
+    #verse-text {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 500; font-size: 21px; line-height: 1.32; margin: 0;
+      color: #f8f0e4;
+    }
+    #verse-text.typing::after {
+      content: "";
+      display: inline-block; width: 7px; height: 0.95em; margin-left: 3px;
+      background: var(--gold); vertical-align: -2px;
+      animation: blink 0.9s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    .lead {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 22px; line-height: 1.25; margin: 0;
+    }
+    .hint { color: var(--muted); font-size: 13px; margin: 6px 0 0; font-family: Outfit, sans-serif; }
+    #stage { flex: 1; min-height: 0; overflow: auto; -webkit-overflow-scrolling: touch; padding-bottom: 8px; }
+    .crumb {
+      position: sticky; top: 0; z-index: 2;
+      display: flex; align-items: center; gap: 8px;
+      padding: 4px 0 8px;
+      background: linear-gradient(180deg, #10080c 70%, rgba(16, 8, 12, 0));
+    }
+    .crumb p { margin: 0; font-family: Cinzel, Palatino, serif; font-size: 14px; letter-spacing: 0.04em; }
+    button.back, button.ghost {
+      font: inherit; color: var(--cream); background: transparent;
+      border: 1px solid var(--line); border-radius: 999px;
+      min-height: 36px; padding: 6px 12px; font-weight: 700; cursor: pointer;
+    }
+    .shelf {
+      margin: 0 0 12px; padding: 8px 8px 12px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(120, 78, 36, 0.28), rgba(28, 16, 10, 0.18));
+      box-shadow: 0 9px 0 #1a0e0a, 0 14px 18px rgba(0, 0, 0, 0.35);
+    }
+    .shelf h3 {
+      margin: 0 0 8px; font-family: Cinzel, Palatino, serif;
+      font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700;
+      color: var(--c);
+    }
+    .spines { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+    button.book, button.tile {
+      font: inherit; cursor: pointer; touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    button.book {
+      min-height: 52px; padding: 6px 4px 6px 8px; text-align: center;
+      color: var(--cream);
+      border-radius: 3px 9px 9px 3px;
+      border: 1px solid rgba(228, 194, 122, 0.32);
+      background:
+        linear-gradient(90deg, var(--c) 0 5px, transparent 5px),
+        linear-gradient(180deg, rgba(255, 244, 220, 0.1), rgba(0, 0, 0, 0.35));
+      background-color: #1c120e;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.45);
+      font-family: Cinzel, Palatino, serif;
+      font-size: 11px; letter-spacing: 0.01em; line-height: 1.15;
+    }
+    button.book.on {
+      border-color: #f6e2b0;
+      box-shadow: 0 0 16px var(--c), inset 0 0 12px rgba(255, 220, 160, 0.18);
+      transform: translateY(-2px);
+    }
+    #stage.idle .book { animation: ember 5.5s ease-in-out infinite; }
+    #stage.idle .shelf:nth-child(2n) .book { animation-delay: -2.2s; }
+    @keyframes ember {
+      50% { box-shadow: 0 0 12px var(--c), inset 0 0 10px rgba(0, 0, 0, 0.35); }
+    }
+    .nums { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+    button.tile {
+      min-height: 48px; border-radius: 10px;
+      border: 1px solid rgba(228, 194, 122, 0.3);
+      background: rgba(255, 236, 200, 0.05);
+      color: var(--cream);
+      font-family: Cinzel, Palatino, serif; font-size: 15px;
+    }
+    button.tile.on {
+      background: var(--gold); color: #1a0d08; border-color: #f6e2b0;
+      box-shadow: 0 0 14px rgba(228, 194, 122, 0.55);
+    }
+    .panel { padding: 4px 4px 12px; }
+    .big {
+      font-family: Cinzel, Palatino, serif;
+      font-size: 64px; line-height: 0.9; margin: 0;
+      text-shadow: 0 0 24px rgba(228, 194, 122, 0.35);
+    }
+    .big small { font-size: 18px; color: var(--muted); letter-spacing: 0.08em; }
+    .ref { margin: 8px 0 0; font-size: 16px; }
+    .ref b { font-weight: 700; }
+    .note {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-style: italic; font-size: 18px; line-height: 1.35; margin: 10px 0 0;
+    }
+    .strip-wrap { margin: 14px 2px 4px; }
+    .strip {
+      position: relative; display: flex; gap: 1px; height: 16px; align-items: center;
+    }
+    .strip .seg { flex: 1; height: 12px; border-radius: 1px; background: var(--c); opacity: 0.9; }
+    .pin {
+      position: absolute; top: -5px; width: 3px; height: 26px;
+      transform: translateX(-50%); border-radius: 2px;
+    }
+    .pin.you { background: #f0b429; box-shadow: 0 0 10px #f0b429; }
+    .pin.ans { background: #fffaf2; box-shadow: 0 0 10px #fff; }
+    .legend { display: flex; gap: 14px; color: var(--muted); font-size: 12px; margin-top: 10px; font-family: Outfit, sans-serif; }
+    .legend i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 5px; vertical-align: 0; }
+    .rounds { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 8px; }
+    .rounds li { display: grid; grid-template-columns: 52px 1fr; gap: 8px; align-items: start; font-size: 14px; }
+    .rounds .sc { font-family: Cinzel, Palatino, serif; font-size: 18px; }
+    .rounds .muted { color: var(--muted); display: block; font-size: 13px; }
+    pre.share {
+      margin: 12px 0 0; white-space: pre-wrap; word-break: break-word;
+      background: rgba(255, 244, 220, 0.04); border: 1px solid var(--line); border-radius: 12px;
+      padding: 10px 12px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px; line-height: 1.45; color: var(--cream);
+    }
+    details { margin-top: 12px; color: var(--muted); font-size: 13px; font-family: Outfit, sans-serif; }
+    details summary { cursor: pointer; color: var(--gold); font-weight: 700; }
+    details p { margin: 8px 0 0; line-height: 1.45; }
+    footer {
+      flex: none; z-index: 2;
+      padding: 8px 12px calc(10px + env(safe-area-inset-bottom));
+      background: linear-gradient(180deg, rgba(16, 8, 12, 0), #10080c 28%);
+    }
+    .pips { display: flex; gap: 5px; margin-bottom: 6px; }
+    .pips span {
+      flex: 1; text-align: center; font-size: 11px; color: var(--muted);
+      border-bottom: 3px solid rgba(228, 194, 122, 0.22); padding-bottom: 4px;
+      font-family: Outfit, sans-serif;
+    }
+    .pips span.on { color: var(--gold-2); border-color: var(--gold-2); }
+    .pips span.done { color: var(--cream); border-color: var(--good); }
+    #pick-label { margin: 0 0 8px; min-height: 18px; font-size: 14px; color: var(--gold); font-family: Cinzel, Palatino, serif; }
+    .row { display: flex; gap: 8px; }
+    button.act {
+      font: inherit; color: #1a0d08; background: linear-gradient(180deg, #f3d48a, #d7a441);
+      border: 0; border-radius: 14px; min-height: 48px; padding: 12px 14px;
+      font-weight: 700; width: 100%; cursor: pointer; touch-action: manipulation;
+      box-shadow: 0 8px 20px rgba(212, 160, 50, 0.18);
+    }
+    button.act.secondary { background: transparent; color: var(--cream); border: 1px solid var(--line); box-shadow: none; }
+    button.act:disabled { opacity: 0.4; }
+    .copied { color: var(--good); font-weight: 700; font-size: 13px; min-height: 18px; margin: 6px 0 0; font-family: Outfit, sans-serif; }
+    button:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) {
+      .flame, #verse-text.typing::after, #stage.idle .book { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <header>
+    <nav class="links">
+      <a href="../">Boyz</a>
+      <a href="../stl/">STL</a>
+    </nav>
+    <div class="brand">
+      <div>
+        <strong>BibleTap</strong>
+        <span id="when">Lighting the lamps…</span>
+      </div>
+      <div class="flame" aria-hidden="true"></div>
+    </div>
+  </header>
+  <main>
+    <article class="verse" id="verse-card" aria-live="polite">
+      <p class="kicker" id="kicker">BibleTap</p>
+      <p id="verse-text" class="lead">The canon is on the shelf. A verse is about to be read, with no citation.</p>
+    </article>
+    <div id="stage" class="idle"></div>
+  </main>
+  <footer>
+    <div class="pips" id="pips" hidden></div>
+    <p id="pick-label"></p>
+    <div class="row" id="actions"></div>
+    <p class="copied" id="copied"></p>
+  </footer>
+  <script src="game.js"></script>
+  <script>
+    (function () {
+      var B = window.BibleTap;
+      var STORAGE = "bibletap-daily-v1";
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var canon = null;
+      var verses = [];
+      var byId = {};
+      var sectionById = {};
+      var today = B.chicagoISO(new Date());
+      var mode = "daily";
+      var puzzle = [];
+      var results = [];
+      var roundIndex = 0;
+      var phase = "boot";
+      var view = "books";
+      var guess = { book: "", chapter: 0, verse: 0 };
+      var typer = 0;
+      var motes = [];
+
+      var when = document.getElementById("when");
+      var kicker = document.getElementById("kicker");
+      var verseText = document.getElementById("verse-text");
+      var stage = document.getElementById("stage");
+      var pips = document.getElementById("pips");
+      var pickLabel = document.getElementById("pick-label");
+      var actions = document.getElementById("actions");
+      var copied = document.getElementById("copied");
+      when.textContent = B.prettyDate(today);
+
+      function directoryUrl() {
+        var path = location.pathname;
+        if (path.endsWith(".html")) path = path.slice(0, path.lastIndexOf("/") + 1);
+        else if (!path.endsWith("/")) path += "/";
+        return location.origin + path;
+      }
+
+      function loadJson(name) {
+        return fetch(new URL(name, directoryUrl())).then(function (res) {
+          if (!res.ok) throw new Error(name + " failed to load");
+          return res.json();
+        });
+      }
+
+      function readSave() {
+        try {
+          var raw = localStorage.getItem(STORAGE);
+          if (!raw) return null;
+          var data = JSON.parse(raw);
+          if (!data || data.date !== today || !Array.isArray(data.rounds) || !Array.isArray(data.ids)) return null;
+          return data;
+        } catch (err) {
+          return null;
+        }
+      }
+
+      function writeSave() {
+        if (mode !== "daily") return;
+        try {
+          localStorage.setItem(STORAGE, JSON.stringify({
+            date: today,
+            ids: puzzle.map(function (v) { return v.id; }),
+            rounds: results
+          }));
+        } catch (err) { /* private mode can refuse storage */ }
+      }
+
+      function versesByIds(ids) {
+        var out = [];
+        for (var i = 0; i < ids.length; i++) {
+          if (!byId[ids[i]]) return null;
+          out.push(byId[ids[i]]);
+        }
+        return out;
+      }
+
+      function currentVerse() {
+        return puzzle[roundIndex] || null;
+      }
+
+      function clearNode(node) {
+        while (node.firstChild) node.removeChild(node.firstChild);
+      }
+
+      function button(cls, text) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = cls;
+        b.textContent = text;
+        return b;
+      }
+
+      function typeInto(text) {
+        if (typer) clearInterval(typer);
+        verseText.classList.remove("lead");
+        if (reduce || !text) {
+          verseText.classList.remove("typing");
+          verseText.textContent = text || "";
+          return;
+        }
+        var i = 0;
+        var hop = text.length > 260 ? 3 : text.length > 140 ? 2 : 1;
+        var step = Math.max(12, Math.min(26, Math.round(2200 / Math.ceil(text.length / hop))));
+        verseText.textContent = "";
+        verseText.classList.add("typing");
+        typer = setInterval(function () {
+          i = Math.min(text.length, i + hop);
+          verseText.textContent = text.slice(0, i);
+          if (i >= text.length) {
+            clearInterval(typer);
+            verseText.classList.remove("typing");
+          }
+        }, step);
+      }
+
+      function setVersePlain(text, lead) {
+        if (typer) clearInterval(typer);
+        verseText.classList.remove("typing");
+        verseText.classList.toggle("lead", !!lead);
+        verseText.textContent = text;
+      }
+
+      function selectionLabel() {
+        if (!guess.book) return "";
+        var book = B.bookById(canon, guess.book);
+        var name = book ? book.name : guess.book;
+        if (!guess.chapter) return name;
+        if (!guess.verse) return name + " " + guess.chapter;
+        return name + " " + guess.chapter + ":" + guess.verse;
+      }
+
+      function renderPips() {
+        clearNode(pips);
+        if (phase === "intro" || phase === "boot") {
+          pips.hidden = true;
+          return;
+        }
+        pips.hidden = false;
+        for (var i = 0; i < 5; i++) {
+          var s = document.createElement("span");
+          if (results[i]) {
+            s.textContent = String(results[i].score);
+            s.className = "done";
+          } else if (i === roundIndex && phase !== "end") {
+            s.textContent = "\u00d7" + B.WEIGHTS[i];
+            s.className = "on";
+          } else {
+            s.textContent = "\u00d7" + B.WEIGHTS[i];
+          }
+          pips.appendChild(s);
+        }
+      }
+
+      function renderActions() {
+        clearNode(actions);
+        copied.textContent = "";
+        function add(id, label, cls) {
+          var b = button("act" + (cls ? " " + cls : ""), label);
+          b.id = id;
+          actions.appendChild(b);
+          return b;
+        }
+        if (phase === "intro") {
+          add("play", "Play today's five");
+          add("practice", "Practice", "secondary");
+        } else if (phase === "play") {
+          var lock = add("lock", guess.verse ? "Lock in" : "Pick book, chapter, verse");
+          lock.disabled = !guess.verse;
+        } else if (phase === "reveal") {
+          add("next", roundIndex >= 4 ? "See the score" : "Next verse");
+        } else if (phase === "end") {
+          add("share", "Copy share");
+          if (mode === "practice") {
+            var done = readSave();
+            if (done && done.rounds.length >= 5) add("today", "Today's score", "secondary");
+            else add("play", "Play today", "secondary");
+          } else {
+            add("practice", "Practice", "secondary");
+          }
+        }
+      }
+
+      function renderBooks() {
+        clearNode(stage);
+        stage.classList.toggle("idle", phase !== "play");
+        var crumb = document.createElement("div");
+        crumb.className = "crumb";
+        var label = document.createElement("p");
+        label.textContent = "Sixty-six books";
+        crumb.appendChild(label);
+        stage.appendChild(crumb);
+        var last = "";
+        var shelf = null;
+        var spines = null;
+        for (var i = 0; i < canon.books.length; i++) {
+          var book = canon.books[i];
+          if (book.section !== last) {
+            var sec = sectionById[book.section];
+            shelf = document.createElement("section");
+            shelf.className = "shelf";
+            var h = document.createElement("h3");
+            h.textContent = sec ? sec.name : book.section;
+            h.style.setProperty("--c", sec ? sec.color : "#e4c27a");
+            shelf.appendChild(h);
+            spines = document.createElement("div");
+            spines.className = "spines";
+            shelf.appendChild(spines);
+            stage.appendChild(shelf);
+            last = book.section;
+          }
+          var b = button("book" + (guess.book === book.id ? " on" : ""), book.short);
+          b.dataset.book = book.id;
+          b.setAttribute("aria-label", book.name);
+          b.style.setProperty("--c", (sectionById[book.section] || {}).color || "#e4c27a");
+          spines.appendChild(b);
+        }
+      }
+
+      function renderNumbers(kind) {
+        clearNode(stage);
+        stage.classList.remove("idle");
+        var book = B.bookById(canon, guess.book);
+        var crumb = document.createElement("div");
+        crumb.className = "crumb";
+        var back = button("back", kind === "verses" ? "Chapters" : "Books");
+        back.id = "back";
+        var label = document.createElement("p");
+        label.textContent = kind === "verses" ? (book.name + " " + guess.chapter) : book.name;
+        crumb.appendChild(back);
+        crumb.appendChild(label);
+        stage.appendChild(crumb);
+        var grid = document.createElement("div");
+        grid.className = "nums";
+        var count = kind === "verses" ? book.chapters[guess.chapter - 1] : book.chapters.length;
+        for (var n = 1; n <= count; n++) {
+          var selected = kind === "verses" ? guess.verse === n : guess.chapter === n;
+          var tile = button("tile" + (selected ? " on" : ""), String(n));
+          if (kind === "verses") tile.dataset.verse = String(n);
+          else tile.dataset.chapter = String(n);
+          grid.appendChild(tile);
+        }
+        stage.appendChild(grid);
+      }
+
+      function renderStage() {
+        if (!canon) return;
+        if (phase === "reveal") renderReveal();
+        else if (phase === "end") renderEnd();
+        else if (view === "chapters" && guess.book) renderNumbers("chapters");
+        else if (view === "verses" && guess.book && guess.chapter) renderNumbers("verses");
+        else renderBooks();
+      }
+
+      function renderReveal() {
+        clearNode(stage);
+        stage.classList.remove("idle");
+        var row = results[roundIndex];
+        var verse = puzzle[roundIndex];
+        var panel = document.createElement("div");
+        panel.className = "panel";
+        var score = document.createElement("p");
+        score.className = "big";
+        score.id = "score";
+        score.textContent = String(row.score);
+        var answer = document.createElement("p");
+        answer.className = "ref";
+        answer.id = "answer";
+        answer.textContent = "The verse: " + B.formatRef(canon, verse.book, verse.chapter, verse.verse, verse.verseEnd);
+        var yours = document.createElement("p");
+        yours.className = "ref";
+        yours.id = "guess-line";
+        yours.textContent = "Your guess: " + B.formatRef(canon, row.book, row.chapter, row.verse);
+        var dist = document.createElement("p");
+        dist.className = "hint";
+        dist.id = "distance";
+        dist.textContent = B.distanceNote(canon, verse, row);
+        panel.appendChild(score);
+        panel.appendChild(answer);
+        panel.appendChild(yours);
+        panel.appendChild(dist);
+        panel.appendChild(buildStrip(verse.book, row.book));
+        var ctx = document.createElement("p");
+        ctx.className = "note";
+        ctx.id = "context";
+        ctx.textContent = verse.context;
+        panel.appendChild(ctx);
+        stage.appendChild(panel);
+        if (row.score >= 80) burst(row.score >= 95 ? 56 : 28);
+      }
+
+      function buildStrip(answerId, guessId) {
+        var wrap = document.createElement("div");
+        wrap.className = "strip-wrap";
+        var strip = document.createElement("div");
+        strip.className = "strip";
+        strip.id = "canon-strip";
+        var n = canon.books.length;
+        var ai = B.bookIndex(canon, answerId);
+        var gi = B.bookIndex(canon, guessId);
+        for (var i = 0; i < n; i++) {
+          var seg = document.createElement("i");
+          seg.className = "seg";
+          var sec = sectionById[canon.books[i].section];
+          seg.style.setProperty("--c", sec ? sec.color : "#e4c27a");
+          strip.appendChild(seg);
+        }
+        function pin(cls, index, shift) {
+          var mark = document.createElement("i");
+          mark.className = "pin " + cls;
+          var left = ((index + 0.5) / n) * 100;
+          mark.style.left = "calc(" + left + "% + " + shift + "px)";
+          strip.appendChild(mark);
+        }
+        pin("you", gi, ai === gi ? -5 : 0);
+        pin("ans", ai, ai === gi ? 5 : 0);
+        wrap.appendChild(strip);
+        var legend = document.createElement("div");
+        legend.className = "legend";
+        legend.innerHTML = "<span><i style=\"background:#f0b429\"></i>your guess</span><span><i style=\"background:#fffaf2\"></i>the verse</span>";
+        wrap.appendChild(legend);
+        var label = "Canon strip. Guess at book " + (gi + 1) + ", verse at book " + (ai + 1) + " of " + n + ".";
+        strip.setAttribute("role", "img");
+        strip.setAttribute("aria-label", label);
+        return wrap;
+      }
+
+      function renderEnd() {
+        clearNode(stage);
+        stage.classList.remove("idle");
+        var scores = results.map(function (r) { return r.score; });
+        var finalScore = B.finalScore(scores);
+        var share = B.shareText({
+          practice: mode === "practice",
+          date: today,
+          scores: scores,
+          finalScore: finalScore,
+          url: directoryUrl()
+        });
+        var panel = document.createElement("div");
+        panel.className = "panel";
+        var title = document.createElement("p");
+        title.className = "kicker";
+        title.textContent = mode === "practice" ? "Practice" : B.prettyDate(today);
+        var big = document.createElement("p");
+        big.className = "big";
+        big.id = "final";
+        big.innerHTML = String(finalScore) + "<small> / 1000</small>";
+        var list = document.createElement("ol");
+        list.className = "rounds";
+        list.id = "rounds";
+        for (var i = 0; i < results.length; i++) {
+          var row = results[i];
+          var verse = byId[row.id] || puzzle[i];
+          var li = document.createElement("li");
+          var sc = document.createElement("div");
+          sc.className = "sc";
+          sc.textContent = row.score + B.emojiFor(row.score);
+          var meta = document.createElement("div");
+          var ans = verse ? B.formatRef(canon, verse.book, verse.chapter, verse.verse, verse.verseEnd) : row.id;
+          meta.textContent = ans;
+          var sub = document.createElement("span");
+          sub.className = "muted";
+          sub.textContent = "You: " + B.formatRef(canon, row.book, row.chapter, row.verse) + "  \u00d7" + B.WEIGHTS[i];
+          meta.appendChild(sub);
+          li.appendChild(sc);
+          li.appendChild(meta);
+          list.appendChild(li);
+        }
+        var pre = document.createElement("pre");
+        pre.className = "share";
+        pre.id = "share-text";
+        pre.textContent = share;
+        var details = document.createElement("details");
+        var summary = document.createElement("summary");
+        summary.textContent = "How scoring works";
+        var formula = document.createElement("p");
+        formula.id = "formula";
+        formula.textContent = B.FORMULA;
+        details.appendChild(summary);
+        details.appendChild(formula);
+        panel.appendChild(title);
+        panel.appendChild(big);
+        panel.appendChild(list);
+        panel.appendChild(pre);
+        panel.appendChild(details);
+        stage.appendChild(panel);
+        if (finalScore >= 700) burst(36);
+        setVersePlain(mode === "practice" ? "Practice set. The daily five are still waiting, untouched." : "That's the daily five. Same verses for everyone on this Chicago date.", true);
+        kicker.textContent = "Final score";
+      }
+
+      function showIntro() {
+        phase = "intro";
+        view = "books";
+        guess = { book: "", chapter: 0, verse: 0 };
+        kicker.textContent = "Daily five";
+        setVersePlain("An obscure verse. No citation. Find the book, the chapter, and the verse.", true);
+        pickLabel.textContent = "Weights \u00d71  \u00d71  \u00d72  \u00d73  \u00d73";
+        renderPips();
+        renderActions();
+        renderStage();
+      }
+
+      function beginRound() {
+        phase = "play";
+        view = "books";
+        guess = { book: "", chapter: 0, verse: 0 };
+        var verse = currentVerse();
+        kicker.textContent = "Round " + (roundIndex + 1) + " of 5  \u00b7  \u00d7" + B.WEIGHTS[roundIndex];
+        typeInto(verse.text);
+        pickLabel.textContent = "Tap a book";
+        renderPips();
+        renderActions();
+        renderStage();
+        stage.scrollTop = 0;
+      }
+
+      function showReveal() {
+        phase = "reveal";
+        var verse = currentVerse();
+        kicker.textContent = "Round " + (roundIndex + 1) + "  \u00b7  \u00d7" + B.WEIGHTS[roundIndex];
+        if (typer) clearInterval(typer);
+        verseText.classList.remove("typing");
+        if (verse) verseText.textContent = verse.text;
+        pickLabel.textContent = "";
+        renderPips();
+        renderActions();
+        renderStage();
+        stage.scrollTop = 0;
+      }
+
+      function showEnd() {
+        phase = "end";
+        view = "books";
+        pickLabel.textContent = "";
+        renderPips();
+        renderActions();
+        renderStage();
+        stage.scrollTop = 0;
+      }
+
+      function lockGuess() {
+        if (phase !== "play" || !guess.verse) return;
+        var verse = currentVerse();
+        var score = B.scoreGuess(canon, verse, guess);
+        results.push({
+          id: verse.id,
+          score: score,
+          book: guess.book,
+          chapter: guess.chapter,
+          verse: guess.verse
+        });
+        writeSave();
+        showReveal();
+      }
+
+      function startDaily() {
+        mode = "daily";
+        var save = readSave();
+        if (save && save.rounds.length >= 5) {
+          var done = versesByIds(save.ids);
+          puzzle = done || [];
+          results = save.rounds;
+          roundIndex = results.length;
+          showEnd();
+          return;
+        }
+        if (save && save.rounds.length) {
+          var mid = versesByIds(save.ids);
+          if (mid) {
+            puzzle = mid;
+            results = save.rounds.slice();
+            roundIndex = results.length;
+            beginRound();
+            return;
+          }
+        }
+        puzzle = B.pickDaily(verses, today);
+        results = [];
+        roundIndex = 0;
+        beginRound();
+      }
+
+      function showSavedDaily() {
+        var save = readSave();
+        if (!save || !versesByIds(save.ids)) {
+          showIntro();
+          return;
+        }
+        mode = "daily";
+        puzzle = versesByIds(save.ids);
+        results = save.rounds;
+        roundIndex = results.length;
+        if (results.length >= 5) showEnd();
+        else beginRound();
+      }
+
+      function startPractice() {
+        mode = "practice";
+        puzzle = B.pickPractice(verses);
+        results = [];
+        roundIndex = 0;
+        beginRound();
+      }
+
+      function advance() {
+        if (roundIndex >= puzzle.length - 1) {
+          showEnd();
+          return;
+        }
+        roundIndex += 1;
+        beginRound();
+      }
+
+      function copyShare() {
+        var pre = document.getElementById("share-text");
+        if (!pre) return;
+        var text = pre.textContent;
+        function ok() { copied.textContent = "Copied"; }
+        function fallback() {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "fixed";
+          ta.style.left = "-999px";
+          document.body.appendChild(ta);
+          ta.select();
+          try {
+            document.execCommand("copy");
+            ok();
+          } catch (err) {
+            copied.textContent = "Select the score and copy it";
+          }
+          ta.remove();
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(ok).catch(fallback);
+        } else {
+          fallback();
+        }
+      }
+
+      stage.addEventListener("click", function (ev) {
+        var t = ev.target.closest("button");
+        if (!t) return;
+        if (t.id === "back") {
+          if (view === "verses") view = "chapters";
+          else view = "books";
+          renderStage();
+          stage.scrollTop = 0;
+          return;
+        }
+        if (phase !== "play") return;
+        if (t.dataset.book) {
+          if (guess.book !== t.dataset.book) {
+            guess.book = t.dataset.book;
+            guess.chapter = 0;
+            guess.verse = 0;
+          }
+          view = "chapters";
+          pickLabel.textContent = selectionLabel();
+          renderStage();
+          renderActions();
+          stage.scrollTop = 0;
+          return;
+        }
+        if (t.dataset.chapter) {
+          var chapter = Number(t.dataset.chapter);
+          if (guess.chapter !== chapter) {
+            guess.chapter = chapter;
+            guess.verse = 0;
+          }
+          view = "verses";
+          pickLabel.textContent = selectionLabel();
+          renderStage();
+          renderActions();
+          stage.scrollTop = 0;
+          return;
+        }
+        if (t.dataset.verse) {
+          guess.verse = Number(t.dataset.verse);
+          pickLabel.textContent = selectionLabel();
+          renderNumbers("verses");
+          renderActions();
+        }
+      });
+
+      actions.addEventListener("click", function (ev) {
+        var t = ev.target.closest("button");
+        if (!t || t.disabled) return;
+        if (t.id === "play") startDaily();
+        else if (t.id === "practice") startPractice();
+        else if (t.id === "lock") lockGuess();
+        else if (t.id === "next") advance();
+        else if (t.id === "share") copyShare();
+        else if (t.id === "today") showSavedDaily();
+      });
+
+      function boot(dataCanon, dataVerses) {
+        if (!dataCanon || !dataCanon.books || dataCanon.books.length !== 66) {
+          throw new Error("The book table is incomplete");
+        }
+        if (!dataVerses || dataVerses.length < 120) {
+          throw new Error("The verse pool is short");
+        }
+        canon = dataCanon;
+        verses = dataVerses;
+        for (var i = 0; i < verses.length; i++) byId[verses[i].id] = verses[i];
+        for (var s = 0; s < canon.sections.length; s++) sectionById[canon.sections[s].id] = canon.sections[s];
+        var save = readSave();
+        if (save && save.rounds.length >= 5 && versesByIds(save.ids)) {
+          mode = "daily";
+          puzzle = versesByIds(save.ids);
+          results = save.rounds;
+          showEnd();
+          return;
+        }
+        if (save && save.rounds.length && versesByIds(save.ids)) {
+          mode = "daily";
+          puzzle = versesByIds(save.ids);
+          results = save.rounds.slice();
+          roundIndex = results.length;
+          beginRound();
+          return;
+        }
+        showIntro();
+      }
+
+      function fail(err) {
+        kicker.textContent = "BibleTap";
+        setVersePlain("The shelf didn't open. " + (err && err.message ? err.message : "Try again."), true);
+      }
+
+      Promise.all([loadJson("canon.json"), loadJson("verses.json")]).then(function (pair) {
+        boot(pair[0], pair[1]);
+      }).catch(fail);
+
+      var canvas = document.getElementById("fx");
+      var ctx = canvas.getContext("2d");
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener("resize", resize);
+
+      function burst(n) {
+        if (reduce) return;
+        var w = canvas.width;
+        var h = canvas.height;
+        for (var i = 0; i < n; i++) {
+          var ang = Math.random() * Math.PI * 2;
+          var sp = 0.6 + Math.random() * 2.4;
+          motes.push({
+            x: w * 0.5 + (Math.random() - 0.5) * 40,
+            y: h * 0.42,
+            vx: Math.cos(ang) * sp,
+            vy: Math.sin(ang) * sp - 0.8,
+            life: 50 + Math.random() * 40,
+            age: 0,
+            r: 1.2 + Math.random() * 2.2,
+            gold: Math.random() > 0.25
+          });
+        }
+      }
+
+      function tick() {
+        if (!reduce) {
+          if (Math.random() < 0.35) {
+            motes.push({
+              x: Math.random() * canvas.width,
+              y: canvas.height + 4,
+              vx: (Math.random() - 0.5) * 0.25,
+              vy: -0.35 - Math.random() * 0.45,
+              life: 180,
+              age: 0,
+              r: 0.8 + Math.random() * 1.4,
+              gold: true
+            });
+          }
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          for (var i = motes.length - 1; i >= 0; i--) {
+            var m = motes[i];
+            m.age += 1;
+            m.x += m.vx;
+            m.y += m.vy;
+            m.vy -= 0.005;
+            if (m.age >= m.life) {
+              motes.splice(i, 1);
+              continue;
+            }
+            var a = 1 - m.age / m.life;
+            ctx.beginPath();
+            ctx.fillStyle = m.gold ? "rgba(228,194,122," + (a * 0.85) + ")" : "rgba(255,250,242," + (a * 0.8) + ")";
+            ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+        requestAnimationFrame(tick);
+      }
+      if (!reduce) requestAnimationFrame(tick);
+    })();
+  </script>
+</body>
+</html>

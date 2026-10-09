@@ -33,7 +33,8 @@
       background: linear-gradient(180deg, rgba(12, 8, 10, 0.92), rgba(12, 8, 10, 0));
       pointer-events: none;
     }
-    header a, header .brand { pointer-events: auto; }
+    header a, header .brand, header .links { pointer-events: auto; }
+    .links { display: flex; gap: 6px; flex-wrap: wrap; }
     header a {
       color: var(--cream); text-decoration: none; font-size: 13px; font-weight: 700;
       border: 1px solid var(--line); background: rgba(20, 8, 12, 0.72);
@@ -95,7 +96,10 @@
 <body>
   <div id="map" role="application" aria-label="Unlabeled map of the St. Louis metro"></div>
   <header>
-    <a href="../">Boyz MapTap</a>
+    <nav class="links">
+      <a href="../">Boyz MapTap</a>
+      <a href="../bible/">BibleTap</a>
+    </nav>
     <div class="brand">
       <strong>STL MapTap</strong>
       <span id="when">Loading…</span>
