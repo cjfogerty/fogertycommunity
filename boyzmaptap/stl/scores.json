@@ -1,9 +1,9 @@
 {
   "game": "STL MapTap",
   "site": "https://cjfogerty.github.io/fogertycommunity/boyzmaptap/stl/",
-  "asOf": "2026-10-09",
-  "puzzleToday": 840,
-  "note": "Same 1-1-2-3-3 weights as MapTap, max 1000. Places stay off this board so the day's five spots are not spoiled. Andy and Ben have not posted Oct 9.",
+  "asOf": "2026-10-10",
+  "puzzleToday": 841,
+  "note": "Same 1-1-2-3-3 weights as MapTap, max 1000. Places stay off this board so the day's five spots are not spoiled. Andy, Sam, and Peter have not posted Oct 10.",
   "players": [
     {
       "id": "peter",
@@ -92,6 +92,49 @@
         100,
         62,
         67
+      ]
+    },
+    {
+      "id": "ben-841",
+      "playerId": "ben",
+      "date": "2026-10-10",
+      "puzzle": 841,
+      "score": 992,
+      "rounds": [
+        100,
+        97,
+        99,
+        100,
+        99
+      ]
+    },
+    {
+      "id": "casey-841",
+      "playerId": "casey",
+      "date": "2026-10-10",
+      "puzzle": 841,
+      "score": 731,
+      "rounds": [
+        50,
+        71,
+        20,
+        92,
+        98
+      ],
+      "note": "Less so on the home front"
+    },
+    {
+      "id": "micah-841",
+      "playerId": "micah",
+      "date": "2026-10-10",
+      "puzzle": 841,
+      "score": 505,
+      "rounds": [
+        87,
+        54,
+        32,
+        2,
+        98
       ]
     }
   ]

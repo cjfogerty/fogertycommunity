@@ -146,7 +146,7 @@
           "lat": 46.253,
           "lng": 20.1414,
           "title": "The Teddy Bear",
-          "funFact": "Hungary's paprika capital, on the Tisza. Katalin Karik\u00f3 studied at the University of Szeged and shared the 2023 Nobel Prize for mRNA discoveries. Leaving Hungary in 1985, she and her husband sewed the cash from selling their car into their daughter's teddy bear.",
+          "funFact": "Hungary's paprika capital, on the Tisza. Katalin Karikó studied at the University of Szeged and shared the 2023 Nobel Prize for mRNA discoveries. Leaving Hungary in 1985, she and her husband sewed the cash from selling their car into their daughter's teddy bear.",
           "sources": [
             "https://www.nobelprize.org/prizes/medicine/2023/kariko/facts/",
             "https://www.nobelprize.org/stories/women-who-changed-science/katalin-kariko/"
@@ -237,7 +237,7 @@
         {
           "order": 5,
           "city": "Morelia",
-          "region": "Michoac\u00e1n",
+          "region": "Michoacán",
           "country": "Mexico",
           "continent": "North America",
           "lat": 19.706,
@@ -560,7 +560,7 @@
         },
         {
           "order": 4,
-          "city": "Concepci\u00f3n",
+          "city": "Concepción",
           "region": null,
           "country": "Chile",
           "continent": "South America",
@@ -757,6 +757,93 @@
           "sources": [
             "https://en.wikipedia.org/wiki/Dori,_Burkina_Faso",
             "https://www.unhcr.org/africa/node/27210"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-10-10",
+      "puzzle": 841,
+      "sourceUrl": "https://maptap.gg/data/this_day_in_history/October10.js",
+      "locations": [
+        {
+          "order": 1,
+          "city": "Geel",
+          "region": null,
+          "country": "Belgium",
+          "continent": "Europe",
+          "lat": 51.162,
+          "lng": 4.99,
+          "title": "The Boarders",
+          "funFact": "In Antwerp province, in Belgium's Kempen region.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Geel",
+            "https://www.geelfostercare.be/the-essence-of-geel-foster-family-care/",
+            "https://www.npr.org/sections/health-shots/2016/07/01/484083305/for-centuries-a-small-town-has-embraced-strangers-with-mental-illness"
+          ]
+        },
+        {
+          "order": 2,
+          "city": "La Paz",
+          "region": null,
+          "country": "Bolivia",
+          "continent": "South America",
+          "lat": -16.4897,
+          "lng": -68.1193,
+          "title": "Four Women Stop Eating",
+          "funFact": "The world's highest seat of government, at about 3,640 m.",
+          "sources": [
+            "http://www.scielo.org.bo/scielo.php?script=sci_arttext&pid=S0040-29152003000100002",
+            "https://bolpress.com/2025/01/18/la-huelga-de-hambre-que-derroto-a-la-dictadura/",
+            "https://es.wikipedia.org/wiki/Hugo_Banzer"
+          ]
+        },
+        {
+          "order": 3,
+          "city": "Accra",
+          "region": null,
+          "country": "Ghana",
+          "continent": "Africa",
+          "lat": 5.6037,
+          "lng": -0.187,
+          "title": "Orange Juice to Go",
+          "funFact": "The prime meridian meets Ghana's coast at Tema, next door.",
+          "sources": [
+            "https://history.state.gov/historicaldocuments/frus1955-57v18/d130",
+            "https://en.wikipedia.org/wiki/Komla_Agbeli_Gbedemah",
+            "https://en.wikipedia.org/wiki/Akosombo_Dam"
+          ]
+        },
+        {
+          "order": 4,
+          "city": "Ryotsu",
+          "region": "Sado Island",
+          "country": "Japan",
+          "continent": "Asia",
+          "lat": 38.079,
+          "lng": 138.439,
+          "title": "The Farmer's Bird",
+          "funFact": "Sado's gold mine became a UNESCO World Heritage Site in 2024.",
+          "sources": [
+            "https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%B3_(%E3%83%88%E3%82%AD)",
+            "https://www.nippon.com/en/features/c03909/",
+            "https://www.chinadaily.com.cn/a/202311/05/WS6547567aa31090682a5ec79c.html"
+          ]
+        },
+        {
+          "order": 5,
+          "city": "Jos",
+          "region": null,
+          "country": "Nigeria",
+          "continent": "Africa",
+          "lat": 9.8965,
+          "lng": 8.8583,
+          "title": "The Lost Episodes",
+          "funFact": "On a plateau about 1,200 m up, cooler than most of Nigeria.",
+          "sources": [
+            "https://en.wikipedia.org/wiki/Doctor_Who_missing_episodes",
+            "https://www.sbs.com.au/news/long-lost-doctor-who-episodes-found-in-nigeria",
+            "https://www.bbc.co.uk/programmes/p01jlyyk"
           ]
         }
       ]

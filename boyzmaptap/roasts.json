@@ -2,6 +2,27 @@
   "comment": "Hand-written roasts for a day's lowest scores. Add one object to days when the group writes them. A day with no entry shows nothing on the board. Do not generate roast text in the page.",
   "days": [
     {
+      "date": "2026-10-10",
+      "puzzle": 841,
+      "roasts": [
+        {
+          "playerId": "ben",
+          "score": 738,
+          "text": "Ben put a 47 on Accra, the capital of Ghana, on the round that counts double. Geel was a 97. La Paz was a 73. Then the coast happened. He closed Jos at 72 and finished at 738, last of the five who posted, ten behind Peter and 212 behind Casey, who told the chat, \"Oh we're back baby.\" Ben was back for Belgium. Accra was not on that flight."
+        },
+        {
+          "playerId": "peter",
+          "score": 748,
+          "text": "Peter dropped to a 56 on the same Accra pin and still cleared Ben by ten. Geel was a 93. La Paz was an 84. Then small-group Alabama met Ghana and the score fell off the table. Ryotsu got an 85. Jos got a 68. A 748 is not a comeback. It is a 56 with better neighbors."
+        },
+        {
+          "playerId": "andy",
+          "score": 766,
+          "text": "Andy opened Geel at 94 and closed Jos at 65. La Paz was an 81, Accra a 75, Sado an 82, and then the last weighted round walked downhill. 766 puts him third in the roast corner, 76 behind Sam and 184 behind the man who said we were back. The 94 did not survive the plane."
+        }
+      ]
+    },
+    {
       "date": "2026-10-09",
       "puzzle": 840,
       "roasts": [
