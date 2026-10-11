@@ -142,6 +142,18 @@
       background: #e4c27a; color: #1a0d08; font-weight: 800; border-radius: 999px;
       padding: 10px 16px; flex: none;
     }
+    .hist-play {
+      display: flex; justify-content: space-between; align-items: center; gap: 14px;
+      text-decoration: none; color: inherit; margin-top: 12px;
+      background: linear-gradient(135deg, rgba(18, 36, 64, 0.88), rgba(240, 180, 41, 0.16));
+      border: 1px solid rgba(240, 180, 41, 0.45);
+    }
+    .hist-play h2 { font-family: Outfit, sans-serif; font-size: 22px; margin: 2px 0 0; }
+    .hist-play p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+    .hist-play .go {
+      background: var(--gold); color: #1a0508; font-weight: 800; border-radius: 999px;
+      padding: 10px 16px; flex: none;
+    }
     .foot { margin-top: 18px; color: var(--muted); font-size: 12px; }
     .two { display: grid; gap: 12px; }
     @media (min-width: 860px) { .two { grid-template-columns: 1.4fr 0.8fr; } }
@@ -160,6 +172,7 @@
         <a href="stl/board.html">STL scores</a>
         <a href="bible/">BibleTap</a>
         <a href="bible/board.html">Bible scores</a>
+        <a href="hist/">HistTap</a>
         <a href="https://www.maptap.gg" target="_blank" rel="noopener">maptap.gg</a>
       </div>
     </header>
@@ -178,6 +191,15 @@
         <div class="kicker">The canon</div>
         <h2>Play BibleTap</h2>
         <p>Five verses a day. No citation. Name the book, the chapter, and the verse.</p>
+      </div>
+      <span class="go">Play</span>
+    </a>
+
+    <a class="card hist-play" href="hist/">
+      <div>
+        <div class="kicker">The republic</div>
+        <h2>Play HistTap</h2>
+        <p>Five American history spots a day. No labels. Same puzzle for the whole group.</p>
       </div>
       <span class="go">Play</span>
     </a>
