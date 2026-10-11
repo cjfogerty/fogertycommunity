@@ -150,3 +150,147 @@
 let DATA = null;
 let map, markersLayer, polyLayer;
 const state = {county:"", minAcres:2, maxAcres:10, minPrice:null, maxPrice:null, status:"", chips:new Set(["home","timber"])};
+
+function fmtPrice(p){ if(p==null) return "—"; if(p>=1e6) return "$"+(p/1e6).toFixed(2)+"M"; return "$"+p.toLocaleString(); }
+function esc(s){ return String(s??"").replace(/&/g,"&").replace(/</g,"<").replace(/>/g,">").replace(/"/g,"""); }
+
+async function load(){
+  const res = await fetch("listings.json");
+  DATA = await res.json();
+  document.getElementById("metaLine").textContent =
+    `Last updated: ${DATA.meta.generated.replace("T"," ").slice(0,16)} UTC · ${DATA.meta.count} listings · source: ${DATA.meta.source}`;
+  const counties = [...new Set(DATA.listings.map(l=>l.county))].sort();
+  const sel = document.getElementById("fCounty");
+  counties.forEach(c=>{ const o=document.createElement("option"); o.value=c; o.textContent=c+" County"+(c==="Scott"?" (IA)":" (IL)"); sel.appendChild(o); });
+  initMap();
+  render();
+}
+
+function initMap(){
+  map = L.map("map",{zoomControl:true}).setView([40.85,-90.25], 9);
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",{
+    attribution:'&copy; OpenStreetMap &copy; CARTO', maxZoom:19
+  }).addTo(map);
+  markersLayer = L.layerGroup().addTo(map);
+  polyLayer = L.layerGroup().addTo(map);
+}
+
+function filtered(){
+  return DATA.listings.filter(l=>{
+    if(state.county && l.county!==state.county) return false;
+    if(l.acres==null){ if(state.minAcres||state.maxAcres) return false; }
+    else { if(state.minAcres!=null && l.acres<state.minAcres) return false; if(state.maxAcres!=null && l.acres>state.maxAcres) return false; }
+    if(state.minPrice!=null && l.price<state.minPrice) return false;
+    if(state.maxPrice!=null && l.price>state.maxPrice) return false;
+    if(state.status && l.status!==state.status) return false;
+    for(const c of state.chips){ if(!l[c]) return false; }
+    return true;
+  });
+}
+
+function render(){
+  const list = filtered();
+  const homes = list.filter(l=>l.home).length;
+  const acres = list.filter(l=>l.acres!=null).reduce((a,l)=>a+l.acres,0);
+  document.getElementById("stats").innerHTML =
+    `<span><b>${list.length}</b> listings</span><span><b>${homes}</b> with homes</span><span><b>${acres.toFixed(1)}</b> total acres</span><span>avg <b>${list.length? (list.filter(l=>l.price).reduce((a,l)=>a+l.price,0)/Math.max(list.filter(l=>l.price).length,1)/1000).toFixed(0):0}k</b></span>`;
+  const cl = document.getElementById("cardList");
+  cl.innerHTML = list.map(l=>`
+    <div class="card" onclick="openModal('${l.id}')">
+      <div class="top"><span class="price">${fmtPrice(l.price)}</span><span class="acres">${l.acres??"?"} ac</span></div>
+      <div class="title">${esc(l.city)}, ${esc(l.county)} County${l.state==="IA"?" (IA)":""}</div>
+      <div class="sub">${l.home? (l.beds+" bd / "+l.baths+" ba / "+l.sqft.toLocaleString()+" sqft"):"Land only"} · ${esc(l.status)}</div>
+      <div class="tags">
+        ${l.home?'<span class="tag home">HOME</span>':''}
+        ${l.timber?'<span class="tag">timber</span>':''}
+        ${l.hills?'<span class="tag">hills</span>':''}
+        ${l.views?'<span class="tag">views</span>':''}
+        ${l.creek?'<span class="tag">creek</span>':''}
+        ${l.pond?'<span class="tag">pond</span>':''}
+        ${l.food_plots?'<span class="tag">food plots</span>':''}
+        ${l.status!=="Active"?'<span class="tag '+(l.status==="Pending sale"?"pending":"contract")+'">'+esc(l.status)+'</span>':''}
+      </div>
+    </div>`).join("") || `<div style="padding:30px;color:var(--muted);text-align:center">No listings match these filters.</div>`;
+  const tb = document.getElementById("tableBody");
+  tb.innerHTML = list.map(l=>`<tr style="border-bottom:1px solid var(--line);cursor:pointer" onclick="openModal('${l.id}')">
+    <td style="padding:7px 8px;color:var(--accent2);font-weight:600">${fmtPrice(l.price)}</td>
+    <td style="padding:7px 8px">${l.acres??"—"}</td>
+    <td style="padding:7px 8px">${esc(l.county)}</td>
+    <td style="padding:7px 8px">${esc(l.city)}</td>
+    <td style="padding:7px 8px">${l.home?"✓":""}</td>
+    <td style="padding:7px 8px;color:var(--muted)">${esc(l.status)}</td>
+    <td style="padding:7px 8px">${l.timber?"✓":""}</td>
+    <td style="padding:7px 8px">${l.hills?"✓":""}</td>
+    <td style="padding:7px 8px">${l.views?"✓":""}</td>
+  </tr>`).join("");
+  markersLayer.clearLayers(); polyLayer.clearLayers();
+  const bounds = [];
+  list.forEach(l=>{
+    const m = L.circleMarker([l.lat,l.lng], {radius: l.home?7:5, color: l.home?"#2ecc71":"#3d9cf0", fillColor: l.home?"#2ecc71":"#3d9cf0", fillOpacity:.85, weight:1.5});
+    m.on("click", ()=>openModal(l.id));
+    m.bindPopup(`<div class="popup"><h3>${esc(l.city)} · ${fmtPrice(l.price)}</h3><div class="p">${l.acres??"?"} acres · ${l.home?"home":"land only"}<br>${esc(l.status)}<br><a href="javascript:openModal('${l.id}')">view details</a></div></div>`);
+    m.addTo(markersLayer);
+    bounds.push([l.lat,l.lng]);
+  });
+  if(bounds.length) map.fitBounds(bounds, {padding:[40,40], maxZoom:12});
+}
+
+document.getElementById("btnApply").addEventListener("click", ()=>{
+  state.county = document.getElementById("fCounty").value;
+  state.minAcres = document.getElementById("fMinAcres").value===''?null:+document.getElementById("fMinAcres").value;
+  state.maxAcres = document.getElementById("fMaxAcres").value===''?null:+document.getElementById("fMaxAcres").value;
+  state.minPrice = document.getElementById("fMinPrice").value===''?null:+document.getElementById("fMinPrice").value;
+  state.maxPrice = document.getElementById("fMaxPrice").value===''?null:+document.getElementById("fMaxPrice").value;
+  state.status = document.getElementById("fStatus").value;
+  render();
+});
+document.getElementById("btnReset").addEventListener("click", ()=>{
+  state.county=""; state.minAcres=2; state.maxAcres=10; state.minPrice=null; state.maxPrice=null; state.status="";
+  document.getElementById("fCounty").value=""; document.getElementById("fMinAcres").value=2; document.getElementById("fMaxAcres").value=10;
+  document.getElementById("fMinPrice").value=""; document.getElementById("fMaxPrice").value=""; document.getElementById("fStatus").value="";
+  render();
+});
+document.querySelectorAll(".chip").forEach(ch=>{
+  ch.addEventListener("click", ()=>{
+    const k = ch.dataset.chip;
+    if(state.chips.has(k)) state.chips.delete(k); else state.chips.add(k);
+    ch.classList.toggle("on");
+    render();
+  });
+});
+document.querySelectorAll(".tab").forEach(t=>{
+  t.addEventListener("click", ()=>{
+    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("on"));
+    t.classList.add("on");
+    const tab = t.dataset.tab;
+    document.getElementById("cardList").style.display = tab==="cards"?"":"none";
+    document.getElementById("tableList").style.display = tab==="table"?"":"none";
+  });
+});
+function openModal(id){
+  const l = DATA.listings.find(x=>x.id===id); if(!l) return;
+  document.getElementById("modalHero").src = l.photos[0];
+  document.getElementById("modalTitle").textContent = `${l.city}, ${l.county} County${l.state==="IA"?" (IA)":""} — ${fmtPrice(l.price)}`;
+  document.getElementById("modalRow").innerHTML = `
+    <div><b>Acres</b><br>${l.acres??"—"}</div>
+    <div><b>Home</b><br>${l.home? (l.beds+" bd / "+l.baths+" ba<br>"+l.sqft.toLocaleString()+" sqft"):"Land only"}</div>
+    <div><b>Status</b><br>${esc(l.status)}</div>
+    <div><b>Elevation</b><br>${l.elevation_ft? l.elevation_ft+" ft":"—"}</div>
+    <div><b>Agent</b><br>${esc(l.agent||"—")}${l.agent_phone?"<br>"+esc(l.agent_phone):""}</div>
+    <div><b>MLS</b><br>${esc(l.mls||"—")}</div>`;
+  document.getElementById("modalDesc").textContent = l.desc;
+  document.getElementById("modalPhotos").innerHTML = l.photos.map(p=>`<img src="${p}" alt="property photo">`).join("");
+  const link = document.getElementById("modalLink");
+  link.href = l.url; link.textContent = "Open listing ↗";
+  document.getElementById("modalBg").classList.add("open");
+}
+document.getElementById("modalClose").addEventListener("click", ()=>document.getElementById("modalBg").classList.remove("open"));
+document.getElementById("modalBg").addEventListener("click", e=>{ if(e.target.id==="modalBg") document.getElementById("modalBg").classList.remove("open"); });
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") document.getElementById("modalBg").classList.remove("open"); });
+
+load().catch(err=>{
+  document.getElementById("metaLine").textContent = "Failed to load listings.json: "+err.message;
+});
+</script>
+</body>
+</html>
