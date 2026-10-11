@@ -1,20 +1,22 @@
 /* HistTap scoring and daily selection.
-   Scoring curve (miles, haversine), continental scale:
+   Scoring curve (miles, haversine):
      100 if distance <= 0.5
-       0 if distance >= 450
-       otherwise round(100 * (1 - t) ** 2.1)
-       where t = (distance - 0.5) / (450 - 0.5)
-   A tenth of a mile is still 100. Around 50 miles is the high 70s.
-   Around 200 miles is the high 20s. The far side of a few states is 0.
-   Round weights are 1, 1, 2, 3, 3. Final score maxes at 1000.
+       0 if distance >= 3000
+       otherwise round(100 * (1 - t) ** 8)
+       where t = (distance - 0.5) / (3000 - 0.5)
+   About 500 miles is still the low twenties (543 miles is 20).
+   The rounded score reaches 0 around 1,460 miles, so a zero is a
+   cross-country miss. Round weights are 1, 1, 2, 3, 3. Max score 1000.
+   Scores already saved for a finished day are left as they were.
    The daily five are a pure function of the America/Chicago date.
-   One or two pop-culture pins are mixed into the five. Nothing labels
-   them ahead of the reveal. Pins dealt on the previous 6 days are skipped.
-   The skip list is chained from 2024-01-01 so every player gets the same day. */
+   Each day includes at most one pop-culture pin, and many days have none.
+   Nothing labels that pin ahead of the reveal. The pre-guess clue is the
+   year plus a line that does not name the city. Pins dealt on the previous
+   6 days are skipped. The skip list is chained from 2024-01-01. */
 (function (root) {
   var PERFECT_MI = 0.5;
-  var ZERO_MI = 450;
-  var CURVE = 2.1;
+  var ZERO_MI = 3000;
+  var CURVE = 8;
   var WEIGHTS = [1, 1, 2, 3, 3];
   var LOOKBACK_DAYS = 6;
   var EPOCH = "2024-01-01";
@@ -118,7 +120,7 @@
       if (places[i].egg) eggs.push(places[i]);
       else history.push(places[i]);
     }
-    if (history.length < 4) history = places.filter(function (p) { return !p.egg; });
+    if (history.length < 5) history = places.filter(function (p) { return !p.egg; });
     if (!eggs.length) eggs = places.filter(function (p) { return p.egg; });
     return { eggs: eggs, history: history };
   }
@@ -136,13 +138,15 @@
   function pickPure(places, isoDate, avoid) {
     var rng = mulberry32(hashString("histtap-v1|" + isoDate));
     var parts = splitPool(places, avoid);
-    var eggCount = rng() < 0.45 ? 2 : 1;
+    var eggCount = rng() < 0.5 ? 1 : 0;
     if (parts.eggs.length < eggCount) eggCount = parts.eggs.length;
-    var eggs = shuffle(parts.eggs, rng).slice(0, eggCount);
+    var eggs = eggCount ? shuffle(parts.eggs, rng).slice(0, eggCount) : [];
     var history = shuffle(parts.history, rng);
     var used = {};
     eggs.forEach(function (p) { used[p.id] = true; });
-    var pattern = eggCount === 2 ? ["easy", "medium", "hard"] : ["easy", "easy", "medium", "hard"];
+    var pattern = eggCount === 0
+      ? ["easy", "easy", "medium", "medium", "hard"]
+      : ["easy", "easy", "medium", "hard"];
     var chosen = eggs.slice();
     for (var i = 0; i < pattern.length; i++) {
       var pin = takeDifficulty(history, used, pattern[i]);
@@ -190,7 +194,7 @@
   }
 
   function curveExamples() {
-    var miles = [0, 0.5, 1, 10, 25, 50, 100, 200, 300, 400, 450, 800];
+    var miles = [0, 0.5, 10, 50, 100, 200, 500, 543, 800, 1000, 1200, 1500, 2000];
     var rows = [];
     for (var i = 0; i < miles.length; i++) {
       rows.push({ miles: miles[i], score: scoreForMiles(miles[i]) });

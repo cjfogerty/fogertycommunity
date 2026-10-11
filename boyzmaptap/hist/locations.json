@@ -10,7 +10,8 @@
     "year": "1775",
     "difficulty": "easy",
     "event": "British troops and colonial militia fired on each other here on April 19, 1775, the first fighting of the American Revolution.",
-    "source": "wikipedia:Lexington Battle Green"
+    "source": "wikipedia:Lexington Battle Green",
+    "clue": "British troops and colonial militia fired on each other. It was the first fighting of the Revolution."
   },
   {
     "id": "concord",
@@ -23,7 +24,8 @@
     "year": "1775",
     "difficulty": "easy",
     "event": "Colonial militia fought British regulars at the North Bridge on April 19, 1775, after the shots at Lexington.",
-    "source": "nominatim:Old North Bridge, Concord, Massachusetts"
+    "source": "nominatim:Old North Bridge, Concord, Massachusetts",
+    "clue": "Later that same morning, militia and British regulars fought again at a bridge outside a village."
   },
   {
     "id": "independence",
@@ -36,7 +38,8 @@
     "year": "1776",
     "difficulty": "easy",
     "event": "The Declaration of Independence was adopted here on July 4, 1776, and the Constitution was drafted here in 1787.",
-    "source": "wikipedia:Independence Hall"
+    "source": "wikipedia:Independence Hall",
+    "clue": "A congress adopted a declaration, and eleven years later a constitution was drafted in the same building."
   },
   {
     "id": "crossing",
@@ -49,7 +52,8 @@
     "year": "1776",
     "difficulty": "medium",
     "event": "Washington's army launched the crossing of the Delaware from the Pennsylvania shore on the night of December 25, 1776.",
-    "source": "wikipedia:Washington Crossing Historic Park"
+    "source": "wikipedia:Washington Crossing Historic Park",
+    "clue": "An army crossed a river on Christmas night to strike a garrison on the far bank."
   },
   {
     "id": "trenton",
@@ -62,7 +66,8 @@
     "year": "1776",
     "difficulty": "medium",
     "event": "Washington's army attacked the Hessian garrison here on December 26, 1776. The monument marks the battle.",
-    "source": "wikipedia:Trenton Battle Monument"
+    "source": "wikipedia:Trenton Battle Monument",
+    "clue": "The morning after that Christmas crossing, the same army surprised a garrison of hired soldiers."
   },
   {
     "id": "valley-forge",
@@ -75,7 +80,8 @@
     "year": "1777",
     "difficulty": "easy",
     "event": "Washington's Continental Army camped here through the winter of 1777 to 1778.",
-    "source": "wikipedia:Valley Forge"
+    "source": "wikipedia:Valley Forge",
+    "clue": "An army camped through a winter and drilled while it was short of food and shoes."
   },
   {
     "id": "yorktown",
@@ -88,7 +94,8 @@
     "year": "1781",
     "difficulty": "easy",
     "event": "Cornwallis surrendered to Washington and Rochambeau here on October 19, 1781, ending major fighting in the Revolutionary War.",
-    "source": "nominatim:Yorktown Battlefield Visitor Center, Yorktown, Virginia"
+    "source": "nominatim:Yorktown Battlefield Visitor Center, Yorktown, Virginia",
+    "clue": "A besieged army surrendered, and the major fighting of the Revolution ended."
   },
   {
     "id": "bunker",
@@ -101,7 +108,8 @@
     "year": "1775",
     "difficulty": "medium",
     "event": "The monument stands on Breed's Hill, where most of the fighting happened on June 17, 1775.",
-    "source": "wikipedia:Bunker Hill Monument"
+    "source": "wikipedia:Bunker Hill Monument",
+    "clue": "Most of a June battle was fought on a hill. A monument stands on that hill now."
   },
   {
     "id": "ticonderoga",
@@ -114,7 +122,8 @@
     "year": "1775",
     "difficulty": "medium",
     "event": "Ethan Allen and Benedict Arnold took the fort from the British on May 10, 1775.",
-    "source": "wikipedia:Fort Ticonderoga"
+    "source": "wikipedia:Fort Ticonderoga",
+    "clue": "A fort on a lake was taken from the British in a surprise dawn attack."
   },
   {
     "id": "saratoga",
@@ -127,7 +136,8 @@
     "year": "1777",
     "difficulty": "medium",
     "event": "Burgoyne surrendered his army here on October 17, 1777, after the fighting that brought France into the war.",
-    "source": "wikipedia:Saratoga National Historical Park"
+    "source": "wikipedia:Saratoga National Historical Park",
+    "clue": "An invading army surrendered, and the victory brought France into the war."
   },
   {
     "id": "massacre",
@@ -140,7 +150,8 @@
     "year": "1770",
     "difficulty": "medium",
     "event": "British soldiers fired on a crowd here on March 5, 1770, killing five colonists.",
-    "source": "wikipedia:Boston Massacre"
+    "source": "wikipedia:Boston Massacre",
+    "clue": "Soldiers fired on a crowd in a colonial town and killed five people."
   },
   {
     "id": "tea",
@@ -153,7 +164,8 @@
     "year": "1773",
     "difficulty": "medium",
     "event": "Colonists met here on December 16, 1773, before dumping the tea in the harbor.",
-    "source": "wikipedia:Old South Meeting House"
+    "source": "wikipedia:Old South Meeting House",
+    "clue": "Colonists met in a meeting house, then dumped a cargo of tea into the harbor."
   },
   {
     "id": "necessity",
@@ -166,7 +178,8 @@
     "year": "1754",
     "difficulty": "hard",
     "event": "George Washington surrendered this fort to the French on July 3, 1754, early in the French and Indian War.",
-    "source": "wikipedia:Fort Necessity National Battlefield"
+    "source": "wikipedia:Fort Necessity National Battlefield",
+    "clue": "A young colonial officer surrendered a rough fort to the French, early in a world war."
   },
   {
     "id": "plymouth",
@@ -179,7 +192,8 @@
     "year": "1620",
     "difficulty": "easy",
     "event": "Tradition says the Mayflower passengers stepped ashore on this rock in 1620. That story is tradition, not a contemporary record.",
-    "source": "wikipedia:Plymouth Rock"
+    "source": "wikipedia:Plymouth Rock",
+    "clue": "Tradition says passengers from a famous ship first stepped ashore on a rock. No record from the time says so."
   },
   {
     "id": "jamestown",
@@ -192,7 +206,8 @@
     "year": "1607",
     "difficulty": "easy",
     "event": "The first permanent English settlement in North America was established here in May 1607.",
-    "source": "wikipedia:Historic Jamestown"
+    "source": "wikipedia:Historic Jamestown",
+    "clue": "The first permanent English settlement in North America was planted on a river."
   },
   {
     "id": "augustine",
@@ -205,7 +220,8 @@
     "year": "1672",
     "difficulty": "easy",
     "event": "St. Augustine was founded in 1565. This stone fort was begun in 1672 to defend it.",
-    "source": "wikipedia:Castillo de San Marcos"
+    "source": "wikipedia:Castillo de San Marcos",
+    "clue": "A stone fort was begun to defend the oldest continuously occupied European city in the country."
   },
   {
     "id": "roanoke",
@@ -218,7 +234,8 @@
     "year": "1587",
     "difficulty": "hard",
     "event": "The English colony planted on Roanoke Island in 1587 was found abandoned in 1590. The site is marked here.",
-    "source": "wikipedia:Fort Raleigh National Historic Site"
+    "source": "wikipedia:Fort Raleigh National Historic Site",
+    "clue": "An English colony planted on an island was found abandoned three years later."
   },
   {
     "id": "mchenry",
@@ -231,7 +248,8 @@
     "year": "1814",
     "difficulty": "easy",
     "event": "The fort held through the British bombardment of September 13 to 14, 1814, the night Francis Scott Key wrote the poem that became the national anthem.",
-    "source": "wikipedia:Fort McHenry"
+    "source": "wikipedia:Fort McHenry",
+    "clue": "A fort held through a night bombardment. A lawyer watching from a ship wrote a poem that became the national anthem."
   },
   {
     "id": "harpers",
@@ -244,7 +262,8 @@
     "year": "1859",
     "difficulty": "easy",
     "event": "John Brown seized the federal arsenal here on October 16, 1859.",
-    "source": "wikipedia:Harpers Ferry National Historical Park"
+    "source": "wikipedia:Harpers Ferry National Historical Park",
+    "clue": "An abolitionist seized a federal arsenal. He was captured two days later."
   },
   {
     "id": "lockport",
@@ -257,7 +276,8 @@
     "year": "1825",
     "difficulty": "hard",
     "event": "The Erie Canal's double flight of five locks opened at Lockport in 1825 and lifted boats up the Niagara Escarpment.",
-    "source": "nominatim:Erie Canal Locks, Lockport, New York"
+    "source": "nominatim:Erie Canal Locks, Lockport, New York",
+    "clue": "A staircase of canal locks opened and lifted boats up a cliff."
   },
   {
     "id": "seneca",
@@ -270,7 +290,8 @@
     "year": "1848",
     "difficulty": "medium",
     "event": "The first women's rights convention in the United States met at the Wesleyan Chapel here on July 19 and 20, 1848.",
-    "source": "nominatim:Wesleyan Chapel, 124 Fall Street, Seneca Falls, New York"
+    "source": "nominatim:Wesleyan Chapel, 124 Fall Street, Seneca Falls, New York",
+    "clue": "The first women's-rights convention in the country met in a chapel for two days."
   },
   {
     "id": "suffrage",
@@ -283,7 +304,8 @@
     "year": "1920",
     "difficulty": "medium",
     "event": "Tennessee's vote on August 18, 1920, ratified the Nineteenth Amendment.",
-    "source": "wikipedia:Tennessee State Capitol"
+    "source": "wikipedia:Tennessee State Capitol",
+    "clue": "One state's vote ratified the amendment that gave women the vote."
   },
   {
     "id": "alamo",
@@ -296,7 +318,8 @@
     "year": "1836",
     "difficulty": "easy",
     "event": "The Mexican army took the mission fort on March 6, 1836, after a 13-day siege.",
-    "source": "wikipedia:Alamo Mission"
+    "source": "wikipedia:Alamo Mission",
+    "clue": "A mission fort fell after a thirteen-day siege."
   },
   {
     "id": "sumter",
@@ -309,7 +332,8 @@
     "year": "1861",
     "difficulty": "easy",
     "event": "Confederate batteries fired on this federal fort on April 12, 1861, opening the Civil War.",
-    "source": "wikipedia:Fort Sumter"
+    "source": "wikipedia:Fort Sumter",
+    "clue": "Batteries fired on a federal fort in a harbor. The Civil War began."
   },
   {
     "id": "gettysburg",
@@ -322,7 +346,8 @@
     "year": "1863",
     "difficulty": "easy",
     "event": "Union and Confederate armies fought here from July 1 to 3, 1863.",
-    "source": "wikipedia:Gettysburg National Military Park"
+    "source": "wikipedia:Gettysburg National Military Park",
+    "clue": "Two armies fought for three days. It was the bloodiest battle of the Civil War."
   },
   {
     "id": "appomattox",
@@ -335,7 +360,8 @@
     "year": "1865",
     "difficulty": "easy",
     "event": "Lee surrendered the Army of Northern Virginia to Grant here on April 9, 1865.",
-    "source": "wikipedia:Appomattox Court House National Historical Park"
+    "source": "wikipedia:Appomattox Court House National Historical Park",
+    "clue": "One army surrendered to another in a village parlor, ending major fighting in the East."
   },
   {
     "id": "antietam",
@@ -348,7 +374,8 @@
     "year": "1862",
     "difficulty": "medium",
     "event": "About 23,000 soldiers were killed, wounded, or missing here on September 17, 1862.",
-    "source": "wikipedia:Antietam National Battlefield"
+    "source": "wikipedia:Antietam National Battlefield",
+    "clue": "About 23,000 soldiers were killed, wounded, or missing in a single day."
   },
   {
     "id": "fords",
@@ -361,7 +388,8 @@
     "year": "1865",
     "difficulty": "easy",
     "event": "John Wilkes Booth shot Abraham Lincoln here on the night of April 14, 1865.",
-    "source": "wikipedia:Ford's Theatre"
+    "source": "wikipedia:Ford's Theatre",
+    "clue": "A president was shot in a theater box during a play."
   },
   {
     "id": "andersonville",
@@ -374,7 +402,8 @@
     "year": "1864",
     "difficulty": "medium",
     "event": "Nearly 13,000 Union prisoners died at this Confederate camp in 1864 and 1865.",
-    "source": "wikipedia:Andersonville Prison"
+    "source": "wikipedia:Andersonville Prison",
+    "clue": "Nearly 13,000 prisoners died at a stockade camp."
   },
   {
     "id": "vicksburg",
@@ -387,7 +416,8 @@
     "year": "1863",
     "difficulty": "medium",
     "event": "The Confederate garrison surrendered here on July 4, 1863.",
-    "source": "wikipedia:Vicksburg National Military Park"
+    "source": "wikipedia:Vicksburg National Military Park",
+    "clue": "A river city surrendered after a siege, on the same day as another famous battle far to the east."
   },
   {
     "id": "shiloh",
@@ -400,7 +430,8 @@
     "year": "1862",
     "difficulty": "medium",
     "event": "Union and Confederate armies fought here on April 6 and 7, 1862.",
-    "source": "wikipedia:Shiloh National Military Park"
+    "source": "wikipedia:Shiloh National Military Park",
+    "clue": "Two armies fought for two days around a country church."
   },
   {
     "id": "bighorn",
@@ -413,7 +444,8 @@
     "year": "1876",
     "difficulty": "easy",
     "event": "Lakota, Northern Cheyenne, and Arapaho fighters defeated Custer's battalion here on June 25, 1876.",
-    "source": "wikipedia:Little Bighorn Battlefield National Monument"
+    "source": "wikipedia:Little Bighorn Battlefield National Monument",
+    "clue": "Lakota, Northern Cheyenne, and Arapaho fighters defeated a cavalry battalion."
   },
   {
     "id": "wounded",
@@ -426,7 +458,8 @@
     "year": "1890",
     "difficulty": "medium",
     "event": "Soldiers of the 7th Cavalry killed more than 250 Lakota here on December 29, 1890.",
-    "source": "wikipedia:Wounded Knee Massacre"
+    "source": "wikipedia:Wounded Knee Massacre",
+    "clue": "Soldiers killed more than 250 Lakota, including women and children, at a camp."
   },
   {
     "id": "sand",
@@ -439,7 +472,8 @@
     "year": "1864",
     "difficulty": "hard",
     "event": "Colorado volunteers attacked a Cheyenne and Arapaho camp here on November 29, 1864.",
-    "source": "wikipedia:Sand Creek Massacre National Historic Site"
+    "source": "wikipedia:Sand Creek Massacre National Historic Site",
+    "clue": "Territorial volunteers attacked a Cheyenne and Arapaho camp and killed many who were trying to surrender."
   },
   {
     "id": "spike",
@@ -452,7 +486,8 @@
     "year": "1869",
     "difficulty": "easy",
     "event": "The Central Pacific and Union Pacific rails were joined here on May 10, 1869.",
-    "source": "wikipedia:Golden Spike National Historical Park"
+    "source": "wikipedia:Golden Spike National Historical Park",
+    "clue": "Two railroad lines building from opposite directions were joined with a ceremonial spike."
   },
   {
     "id": "rushmore",
@@ -465,7 +500,8 @@
     "year": "1927",
     "difficulty": "easy",
     "event": "Gutzon Borglum began carving the presidents here in 1927. Work stopped in 1941.",
-    "source": "wikipedia:Mount Rushmore"
+    "source": "wikipedia:Mount Rushmore",
+    "clue": "Carving of four presidents' faces began on a mountain and stopped fourteen years later."
   },
   {
     "id": "stone-mtn",
@@ -478,7 +514,8 @@
     "year": "1972",
     "difficulty": "medium",
     "event": "The Confederate carving was dedicated in 1970. A Ku Klux Klan revival rally was held on the mountain in 1915.",
-    "source": "wikipedia:Stone Mountain"
+    "source": "wikipedia:Stone Mountain",
+    "clue": "A Confederate carving on a mountainside was dedicated. A Ku Klux Klan revival rally had been held on the same mountain in 1915."
   },
   {
     "id": "alcatraz",
@@ -491,7 +528,8 @@
     "year": "1969",
     "difficulty": "easy",
     "event": "Native American activists occupied the island from November 1969 to June 1971. It had been a federal prison from 1934 to 1963.",
-    "source": "wikipedia:Alcatraz Island"
+    "source": "wikipedia:Alcatraz Island",
+    "clue": "Native activists occupied an island prison. The prison itself had closed six years earlier."
   },
   {
     "id": "sutters",
@@ -504,7 +542,8 @@
     "year": "1848",
     "difficulty": "medium",
     "event": "James Marshall found gold in the mill race here on January 24, 1848.",
-    "source": "wikipedia:Sutter's Mill"
+    "source": "wikipedia:Sutter's Mill",
+    "clue": "A carpenter found gold in a mill race, and a rush followed."
   },
   {
     "id": "echota",
@@ -517,7 +556,8 @@
     "year": "1835",
     "difficulty": "hard",
     "event": "A Cherokee faction signed a removal treaty here on December 29, 1835. The United States used it to force the Trail of Tears.",
-    "source": "wikipedia:New Echota"
+    "source": "wikipedia:New Echota",
+    "clue": "A faction signed a removal treaty. The United States used it to force a westward march."
   },
   {
     "id": "ross",
@@ -530,7 +570,8 @@
     "year": "1838",
     "difficulty": "hard",
     "event": "Cherokee detachments were forced to leave from this landing in 1838, at the start of the Trail of Tears.",
-    "source": "wikipedia:Ross's Landing"
+    "source": "wikipedia:Ross's Landing",
+    "clue": "Cherokee detachments were forced from their homes and began a westward march that killed thousands."
   },
   {
     "id": "dubois",
@@ -543,7 +584,8 @@
     "year": "1804",
     "difficulty": "hard",
     "event": "The Corps of Discovery wintered here in 1803 and 1804 and left up the Missouri on May 14, 1804.",
-    "source": "wikipedia:Camp Dubois"
+    "source": "wikipedia:Camp Dubois",
+    "clue": "An exploring party wintered at a river camp, then set off upstream in the spring."
   },
   {
     "id": "clatsop",
@@ -556,7 +598,8 @@
     "year": "1805",
     "difficulty": "medium",
     "event": "The Corps of Discovery wintered here from December 1805 to March 1806.",
-    "source": "wikipedia:Fort Clatsop"
+    "source": "wikipedia:Fort Clatsop",
+    "clue": "That exploring party wintered in a fort near the mouth of a great western river."
   },
   {
     "id": "pompeys",
@@ -569,7 +612,8 @@
     "year": "1806",
     "difficulty": "hard",
     "event": "Clark signed this rock on July 25, 1806. Sacagawea and her son Jean Baptiste were with the party.",
-    "source": "wikipedia:Pompeys Pillar National Monument"
+    "source": "wikipedia:Pompeys Pillar National Monument",
+    "clue": "A captain signed his name on a rock. A Shoshone woman and her baby son were with the party."
   },
   {
     "id": "pearl",
@@ -582,7 +626,8 @@
     "year": "1941",
     "difficulty": "easy",
     "event": "The USS Arizona sank here on December 7, 1941. 1,177 of her crew were killed.",
-    "source": "wikipedia:USS Arizona Memorial"
+    "source": "wikipedia:USS Arizona Memorial",
+    "clue": "A battleship sank at its mooring during a surprise air attack. More than a thousand of her crew were killed."
   },
   {
     "id": "wright",
@@ -595,7 +640,8 @@
     "year": "1903",
     "difficulty": "easy",
     "event": "The Wright brothers flew four times here on December 17, 1903, about four miles south of the town of Kitty Hawk.",
-    "source": "wikipedia:Wright Brothers National Memorial"
+    "source": "wikipedia:Wright Brothers National Memorial",
+    "clue": "Four short hops were the first time an airplane left the ground under its own power."
   },
   {
     "id": "lindbergh",
@@ -608,7 +654,8 @@
     "year": "1927",
     "difficulty": "medium",
     "event": "St. Louis backers paid for Lindbergh's 1927 New York-to-Paris flight and named the airplane. This museum holds his flight suit. The flight left New York.",
-    "source": "wikipedia:Missouri History Museum"
+    "source": "wikipedia:Missouri History Museum",
+    "clue": "Backers in a river city paid for a New York-to-Paris flight and named the airplane. A museum here holds the pilot's suit. The flight left from the East."
   },
   {
     "id": "earhart",
@@ -621,7 +668,8 @@
     "year": "1935",
     "difficulty": "hard",
     "event": "Purdue hired Earhart as a visiting faculty member in 1935 and later bought the Lockheed Electra she flew on the last attempt.",
-    "source": "wikipedia:Purdue University Airport"
+    "source": "wikipedia:Purdue University Airport",
+    "clue": "A university hired a pilot as a visiting teacher and later bought the airplane she used on the last attempt."
   },
   {
     "id": "trinity",
@@ -634,7 +682,8 @@
     "year": "1945",
     "difficulty": "medium",
     "event": "The first nuclear device was detonated here on July 16, 1945.",
-    "source": "wikipedia:Trinity (nuclear test)"
+    "source": "wikipedia:Trinity (nuclear test)",
+    "clue": "The first nuclear device was detonated in a desert basin before dawn."
   },
   {
     "id": "oak",
@@ -647,7 +696,8 @@
     "year": "1943",
     "difficulty": "hard",
     "event": "This Oak Ridge reactor went critical on November 4, 1943, and made plutonium for the Manhattan Project.",
-    "source": "wikipedia:X-10 Graphite Reactor"
+    "source": "wikipedia:X-10 Graphite Reactor",
+    "clue": "A graphite reactor built for the bomb project went critical and produced plutonium."
   },
   {
     "id": "alamos",
@@ -660,7 +710,8 @@
     "year": "1943",
     "difficulty": "medium",
     "event": "The Manhattan Project designed the atomic bombs at this laboratory, established in 1943.",
-    "source": "wikipedia:Los Alamos National Laboratory"
+    "source": "wikipedia:Los Alamos National Laboratory",
+    "clue": "A secret laboratory on a mesa designed the atomic bombs."
   },
   {
     "id": "manzanar",
@@ -673,7 +724,8 @@
     "year": "1942",
     "difficulty": "medium",
     "event": "The government imprisoned more than 10,000 Japanese Americans at this camp from 1942 to 1945.",
-    "source": "wikipedia:Manzanar"
+    "source": "wikipedia:Manzanar",
+    "clue": "The government imprisoned more than 10,000 Japanese Americans at a desert camp."
   },
   {
     "id": "heart",
@@ -686,7 +738,8 @@
     "year": "1942",
     "difficulty": "hard",
     "event": "More than 10,000 Japanese Americans were imprisoned at this camp from 1942 to 1945.",
-    "source": "wikipedia:Heart Mountain Relocation Center"
+    "source": "wikipedia:Heart Mountain Relocation Center",
+    "clue": "More than 10,000 Japanese Americans were imprisoned at a camp in the shadow of a mountain."
   },
   {
     "id": "minidoka",
@@ -699,7 +752,8 @@
     "year": "1942",
     "difficulty": "hard",
     "event": "The government imprisoned more than 13,000 Japanese Americans here from 1942 to 1945.",
-    "source": "wikipedia:Minidoka National Historic Site"
+    "source": "wikipedia:Minidoka National Historic Site",
+    "clue": "The government imprisoned more than 13,000 Japanese Americans at a camp on a high desert plain."
   },
   {
     "id": "moton",
@@ -712,7 +766,8 @@
     "year": "1941",
     "difficulty": "hard",
     "event": "Black military pilots began training at Moton Field in 1941.",
-    "source": "nominatim:Moton Field Municipal Airport, Tuskegee, Alabama"
+    "source": "nominatim:Moton Field Municipal Airport, Tuskegee, Alabama",
+    "clue": "Black military pilots began flight training at a small airfield."
   },
   {
     "id": "ellis",
@@ -725,7 +780,8 @@
     "year": "1892",
     "difficulty": "easy",
     "event": "The immigration station opened here on January 1, 1892. About 12 million people passed through before it closed in 1954.",
-    "source": "wikipedia:Ellis Island"
+    "source": "wikipedia:Ellis Island",
+    "clue": "An immigration station opened in a harbor. About 12 million people passed through before it closed."
   },
   {
     "id": "angel",
@@ -738,7 +794,8 @@
     "year": "1910",
     "difficulty": "medium",
     "event": "This Pacific immigration station operated from 1910 to 1940. Chinese immigrants were detained here under the exclusion laws.",
-    "source": "wikipedia:Angel Island Immigration Station"
+    "source": "wikipedia:Angel Island Immigration Station",
+    "clue": "A Pacific immigration station detained Chinese immigrants under the exclusion laws."
   },
   {
     "id": "iwo",
@@ -751,7 +808,8 @@
     "year": "1954",
     "difficulty": "easy",
     "event": "The memorial, modeled on the flag-raising photograph from Iwo Jima, was dedicated on November 10, 1954.",
-    "source": "wikipedia:Marine Corps War Memorial"
+    "source": "wikipedia:Marine Corps War Memorial",
+    "clue": "A statue of six men raising a flag was dedicated. It was modeled on a wartime photograph."
   },
   {
     "id": "vietnam",
@@ -764,7 +822,8 @@
     "year": "1982",
     "difficulty": "easy",
     "event": "The wall of names was dedicated on November 13, 1982.",
-    "source": "wikipedia:Vietnam Veterans Memorial"
+    "source": "wikipedia:Vietnam Veterans Memorial",
+    "clue": "A black wall inscribed with the names of the dead was dedicated."
   },
   {
     "id": "pentagon",
@@ -777,7 +836,8 @@
     "year": "2001",
     "difficulty": "easy",
     "event": "Hijackers flew American Airlines Flight 77 into the Pentagon on September 11, 2001, killing 184 people.",
-    "source": "wikipedia:The Pentagon"
+    "source": "wikipedia:The Pentagon",
+    "clue": "A hijacked airliner was flown into the headquarters of the armed forces. 184 people were killed."
   },
   {
     "id": "wtc",
@@ -790,7 +850,8 @@
     "year": "2001",
     "difficulty": "easy",
     "event": "Hijackers flew two airliners into the World Trade Center here on September 11, 2001. The pools sit in the towers' footprints.",
-    "source": "wikipedia:National September 11 Memorial & Museum"
+    "source": "wikipedia:National September 11 Memorial & Museum",
+    "clue": "Two hijacked airliners were flown into a pair of towers. Memorial pools now sit in the footprints."
   },
   {
     "id": "flight93",
@@ -803,7 +864,8 @@
     "year": "2001",
     "difficulty": "easy",
     "event": "Passengers and crew forced United Airlines Flight 93 down in this field on September 11, 2001.",
-    "source": "wikipedia:Flight 93 National Memorial"
+    "source": "wikipedia:Flight 93 National Memorial",
+    "clue": "Passengers and crew forced a hijacked airliner down in a field."
   },
   {
     "id": "okc",
@@ -816,7 +878,8 @@
     "year": "1995",
     "difficulty": "easy",
     "event": "A truck bomb destroyed the Alfred P. Murrah Federal Building here on April 19, 1995, killing 168 people.",
-    "source": "wikipedia:Oklahoma City National Memorial"
+    "source": "wikipedia:Oklahoma City National Memorial",
+    "clue": "A truck bomb destroyed a federal office building and killed 168 people."
   },
   {
     "id": "kent",
@@ -829,7 +892,8 @@
     "year": "1970",
     "difficulty": "medium",
     "event": "Ohio National Guard troops shot and killed four students here on May 4, 1970.",
-    "source": "wikipedia:Kent State shootings"
+    "source": "wikipedia:Kent State shootings",
+    "clue": "National Guard troops shot and killed four students on a campus."
   },
   {
     "id": "stonewall",
@@ -842,7 +906,8 @@
     "year": "1969",
     "difficulty": "easy",
     "event": "Police raided the Stonewall Inn on June 28, 1969. The protests that followed are marked as the start of the modern gay-rights movement.",
-    "source": "wikipedia:Stonewall Inn"
+    "source": "wikipedia:Stonewall Inn",
+    "clue": "Police raided a bar. The protests that followed are marked as the start of the modern gay-rights movement."
   },
   {
     "id": "pettus",
@@ -855,7 +920,8 @@
     "year": "1965",
     "difficulty": "easy",
     "event": "State troopers attacked voting-rights marchers on this bridge on March 7, 1965.",
-    "source": "wikipedia:Edmund Pettus Bridge"
+    "source": "wikipedia:Edmund Pettus Bridge",
+    "clue": "State troopers attacked voting-rights marchers on a bridge."
   },
   {
     "id": "baptist",
@@ -868,7 +934,8 @@
     "year": "1963",
     "difficulty": "easy",
     "event": "A Ku Klux Klan bomb killed four girls here on September 15, 1963.",
-    "source": "wikipedia:16th Street Baptist Church"
+    "source": "wikipedia:16th Street Baptist Church",
+    "clue": "A Ku Klux Klan bomb killed four girls at a church on a Sunday morning."
   },
   {
     "id": "rosa",
@@ -881,7 +948,8 @@
     "year": "1955",
     "difficulty": "medium",
     "event": "Rosa Parks was arrested on December 1, 1955, after refusing to give up her seat. The museum stands at the stop where she boarded.",
-    "source": "nominatim:Rosa Parks Library and Museum, Montgomery, Alabama"
+    "source": "nominatim:Rosa Parks Library and Museum, Montgomery, Alabama",
+    "clue": "A woman was arrested after she refused to give up her seat on a bus. A museum stands at the stop where she boarded."
   },
   {
     "id": "dexter",
@@ -894,7 +962,8 @@
     "year": "1955",
     "difficulty": "medium",
     "event": "Martin Luther King Jr. was pastor here during the Montgomery bus boycott.",
-    "source": "wikipedia:Dexter Avenue Baptist Church"
+    "source": "wikipedia:Dexter Avenue Baptist Church",
+    "clue": "A young pastor led a bus boycott from this church."
   },
   {
     "id": "lorraine",
@@ -907,7 +976,8 @@
     "year": "1968",
     "difficulty": "easy",
     "event": "James Earl Ray shot Martin Luther King Jr. on the balcony here on April 4, 1968.",
-    "source": "wikipedia:National Civil Rights Museum"
+    "source": "wikipedia:National Civil Rights Museum",
+    "clue": "A civil-rights leader was shot on a motel balcony."
   },
   {
     "id": "dealey",
@@ -920,7 +990,8 @@
     "year": "1963",
     "difficulty": "easy",
     "event": "President Kennedy was shot as his motorcade passed through this plaza on November 22, 1963.",
-    "source": "wikipedia:Dealey Plaza"
+    "source": "wikipedia:Dealey Plaza",
+    "clue": "A president was shot as his motorcade passed through a downtown plaza."
   },
   {
     "id": "central",
@@ -933,7 +1004,8 @@
     "year": "1957",
     "difficulty": "medium",
     "event": "Federal troops escorted nine Black students into this school in September 1957.",
-    "source": "wikipedia:Little Rock Central High School"
+    "source": "wikipedia:Little Rock Central High School",
+    "clue": "Federal troops escorted nine Black students into a high school."
   },
   {
     "id": "greensboro",
@@ -946,7 +1018,8 @@
     "year": "1960",
     "difficulty": "medium",
     "event": "Four students from North Carolina A&T sat at the segregated Woolworth counter at 134 South Elm Street on February 1, 1960.",
-    "source": "nominatim:134 South Elm Street, Greensboro, North Carolina"
+    "source": "nominatim:134 South Elm Street, Greensboro, North Carolina",
+    "clue": "Four college students sat at a segregated lunch counter and refused to leave."
   },
   {
     "id": "brown",
@@ -959,7 +1032,8 @@
     "year": "1954",
     "difficulty": "medium",
     "event": "Linda Brown was turned away from a white school. The Supreme Court decided her family's case on May 17, 1954. This was her segregated elementary school.",
-    "source": "wikipedia:Brown v. Board of Education National Historical Park"
+    "source": "wikipedia:Brown v. Board of Education National Historical Park",
+    "clue": "A girl was turned away from a white school. The Supreme Court later decided her family's case. This was her segregated elementary school."
   },
   {
     "id": "scopes",
@@ -972,7 +1046,8 @@
     "year": "1925",
     "difficulty": "medium",
     "event": "John T. Scopes was tried here in July 1925 for teaching evolution.",
-    "source": "wikipedia:Rhea County Courthouse"
+    "source": "wikipedia:Rhea County Courthouse",
+    "clue": "A teacher was tried for teaching evolution."
   },
   {
     "id": "foster",
@@ -985,7 +1060,8 @@
     "year": "1963",
     "difficulty": "hard",
     "event": "Governor George Wallace stood in this doorway on June 11, 1963, trying to stop two Black students from registering.",
-    "source": "wikipedia:Foster Auditorium"
+    "source": "wikipedia:Foster Auditorium",
+    "clue": "A governor stood in a school doorway to stop two Black students from registering."
   },
   {
     "id": "loving",
@@ -998,7 +1074,8 @@
     "year": "1959",
     "difficulty": "hard",
     "event": "Richard and Mildred Loving were convicted in Caroline County in 1959 for marrying. The Supreme Court reversed that conviction in 1967.",
-    "source": "nominatim:Caroline County Courthouse, Bowling Green, Virginia"
+    "source": "nominatim:Caroline County Courthouse, Bowling Green, Virginia",
+    "clue": "A couple was convicted in a county court for marrying across a color line. The Supreme Court reversed that conviction eight years later."
   },
   {
     "id": "obergefell",
@@ -1011,7 +1088,8 @@
     "year": "2015",
     "difficulty": "medium",
     "event": "The Court required states to license same-sex marriage on June 26, 2015. Roe v. Wade was decided in this building in 1973.",
-    "source": "wikipedia:Supreme Court of the United States"
+    "source": "wikipedia:Supreme Court of the United States",
+    "clue": "The Supreme Court required every state to license same-sex marriage. Roe v. Wade had been decided in this building in 1973."
   },
   {
     "id": "watergate",
@@ -1024,7 +1102,8 @@
     "year": "1972",
     "difficulty": "medium",
     "event": "Burglars were arrested in the Democratic National Committee offices here on June 17, 1972.",
-    "source": "wikipedia:Watergate complex"
+    "source": "wikipedia:Watergate complex",
+    "clue": "Burglars were arrested inside an office of a national political party."
   },
   {
     "id": "mission",
@@ -1037,7 +1116,8 @@
     "year": "1969",
     "difficulty": "easy",
     "event": "Flight controllers in this room directed the Apollo 11 landing on July 20, 1969.",
-    "source": "nominatim:Christopher C. Kraft Jr. Mission Control Center, Houston, Texas"
+    "source": "nominatim:Christopher C. Kraft Jr. Mission Control Center, Houston, Texas",
+    "clue": "Flight controllers in a windowless room directed the first landing on the Moon."
   },
   {
     "id": "pad",
@@ -1050,7 +1130,8 @@
     "year": "1969",
     "difficulty": "medium",
     "event": "Apollo 11 lifted off from Pad 39A on July 16, 1969.",
-    "source": "wikipedia:Kennedy Space Center Launch Complex 39"
+    "source": "wikipedia:Kennedy Space Center Launch Complex 39",
+    "clue": "The rocket that carried the first Moon landing crew lifted off from a coastal pad."
   },
   {
     "id": "indy",
@@ -1063,7 +1144,8 @@
     "year": "1945",
     "difficulty": "medium",
     "event": "The cruiser was sunk on July 30, 1945, after delivering parts of the Hiroshima bomb. This memorial is on the canal in Indianapolis, not at the wreck.",
-    "source": "nominatim:USS Indianapolis Memorial, Indianapolis, Indiana"
+    "source": "nominatim:USS Indianapolis Memorial, Indianapolis, Indiana",
+    "clue": "A cruiser was sunk after delivering parts of an atomic bomb. This memorial stands on a canal in the ship's namesake city, not at the wreck."
   },
   {
     "id": "titanic",
@@ -1076,7 +1158,8 @@
     "year": "1912",
     "difficulty": "hard",
     "event": "This memorial to the men who died when the Titanic sank in 1912 was dedicated in 1931.",
-    "source": "wikipedia:Titanic Memorial (Washington, D.C.)"
+    "source": "wikipedia:Titanic Memorial (Washington, D.C.)",
+    "clue": "A waterfront statue remembers the men who died when a liner sank. It was dedicated nineteen years later."
   },
   {
     "id": "lincoln",
@@ -1089,7 +1172,8 @@
     "year": "1963",
     "difficulty": "easy",
     "event": "Martin Luther King Jr. gave the \"I Have a Dream\" speech from these steps on August 28, 1963.",
-    "source": "wikipedia:Lincoln Memorial"
+    "source": "wikipedia:Lincoln Memorial",
+    "clue": "A civil-rights leader gave a speech about a dream from the steps of a memorial."
   },
   {
     "id": "laramie",
@@ -1102,7 +1186,8 @@
     "year": "1834",
     "difficulty": "medium",
     "event": "This post on the Oregon and California trails was a military fort from 1849 to 1890 and the site of 1851 and 1868 treaties with the Plains tribes.",
-    "source": "wikipedia:Fort Laramie National Historic Site"
+    "source": "wikipedia:Fort Laramie National Historic Site",
+    "clue": "A post on the overland trails was a military fort for forty years and the site of two treaties with Plains tribes."
   },
   {
     "id": "liberty",
@@ -1115,7 +1200,8 @@
     "year": "1886",
     "difficulty": "easy",
     "event": "The statue was dedicated on October 28, 1886.",
-    "source": "wikipedia:Statue of Liberty"
+    "source": "wikipedia:Statue of Liberty",
+    "clue": "A giant statue in a harbor was dedicated as a gift from France."
   },
   {
     "id": "bridge",
@@ -1128,7 +1214,8 @@
     "year": "1883",
     "difficulty": "easy",
     "event": "The bridge opened to traffic on May 24, 1883.",
-    "source": "wikipedia:Brooklyn Bridge"
+    "source": "wikipedia:Brooklyn Bridge",
+    "clue": "A stone-and-steel bridge between two cities opened to traffic. People walked across on the first day."
   },
   {
     "id": "gate",
@@ -1141,7 +1228,8 @@
     "year": "1937",
     "difficulty": "easy",
     "event": "The bridge opened to traffic on May 28, 1937.",
-    "source": "wikipedia:Golden Gate Bridge"
+    "source": "wikipedia:Golden Gate Bridge",
+    "clue": "A red suspension bridge opened across the mouth of a bay."
   },
   {
     "id": "swift-wedding",
@@ -1155,7 +1243,8 @@
     "difficulty": "hard",
     "event": "Taylor Swift and Travis Kelce were married here on July 3, 2026.",
     "source": "wikipedia:Madison Square Garden",
-    "egg": true
+    "egg": true,
+    "clue": "A pop star and a football player were married in a famous indoor arena."
   },
   {
     "id": "eras-open",
@@ -1169,7 +1258,8 @@
     "difficulty": "hard",
     "event": "Taylor Swift opened the Eras Tour here on March 17, 2023.",
     "source": "wikipedia:State Farm Stadium",
-    "egg": true
+    "egg": true,
+    "clue": "A stadium tour through a singer's whole catalog opened with a three-hour show."
   },
   {
     "id": "we-cant-stop",
@@ -1183,7 +1273,8 @@
     "difficulty": "hard",
     "event": "Miley Cyrus performed the song at the MTV Video Music Awards here on August 25, 2013. The music video was filmed in Los Angeles that May; no street address was published.",
     "source": "wikipedia:Barclays Center",
-    "egg": true
+    "egg": true,
+    "clue": "A former child star performed a party song at a televised music-awards show. The song's video was filmed on a closed set whose address was never published."
   },
   {
     "id": "beyonce-born",
@@ -1197,7 +1288,8 @@
     "difficulty": "hard",
     "event": "Beyonc\u00e9 Giselle Knowles was born at Park Plaza Hospital, 1313 Hermann Drive, on September 4, 1981.",
     "source": "nominatim:1313 Hermann Drive, Houston, Texas",
-    "egg": true
+    "egg": true,
+    "clue": "A singer who later fronted a girl group was born in a hospital."
   },
   {
     "id": "hspva",
@@ -1211,7 +1303,8 @@
     "difficulty": "hard",
     "event": "Beyonc\u00e9 attended HSPVA at 4001 Stanford Street while Destiny's Child was forming. The school moved downtown to 790 Austin Street in 2019.",
     "source": "nominatim:4001 Stanford Street, Houston, Texas",
-    "egg": true
+    "egg": true,
+    "clue": "A future pop star studied vocals at a public performing-arts high school while a girl group was forming. The school has since moved."
   },
   {
     "id": "formation-bowl",
@@ -1225,7 +1318,8 @@
     "difficulty": "hard",
     "event": "Beyonc\u00e9 performed \"Formation\" at the Super Bowl 50 halftime show here on February 7, 2016.",
     "source": "wikipedia:Levi's Stadium",
-    "egg": true
+    "egg": true,
+    "clue": "A Super Bowl halftime show was built around one new song."
   },
   {
     "id": "sb47",
@@ -1239,7 +1333,8 @@
     "difficulty": "hard",
     "event": "Beyonc\u00e9 headlined the Super Bowl XLVII halftime show here on February 3, 2013.",
     "source": "wikipedia:Caesars Superdome",
-    "egg": true
+    "egg": true,
+    "clue": "A singer headlined the Super Bowl halftime show."
   },
   {
     "id": "fenyes",
@@ -1253,7 +1348,8 @@
     "difficulty": "hard",
     "event": "Interior and porch scenes for the \"Formation\" video were filmed at the Fenyes Estate in February 2016. The production designer said nothing was shot in New Orleans.",
     "source": "wikipedia:Fenyes Estate",
-    "egg": true
+    "egg": true,
+    "clue": "Interior scenes for a music video were filmed in a historic house dressed as a Southern mansion. None of it was filmed in the city the video seems to show."
   },
   {
     "id": "lemonade-fort",
@@ -1267,7 +1363,8 @@
     "difficulty": "hard",
     "event": "Beyonc\u00e9 filmed portions of the visual album Lemonade at this fort in 2016, including scenes for \"Daddy Lessons.\"",
     "source": "wikipedia:Fort Macomb",
-    "egg": true
+    "egg": true,
+    "clue": "Scenes for a visual album, including one with a guitar, were filmed in an abandoned brick fort."
   },
   {
     "id": "lemonade-house",
@@ -1281,7 +1378,8 @@
     "difficulty": "hard",
     "event": "Dining room, parlor, and gallery scenes for Lemonade were filmed at Madewood Plantation House, 4250 Highway 308.",
     "source": "wikipedia:Madewood Plantation House",
-    "egg": true
+    "egg": true,
+    "clue": "Parlor and gallery scenes for a visual album were filmed in a plantation house."
   },
   {
     "id": "dash-first",
@@ -1295,7 +1393,8 @@
     "difficulty": "hard",
     "event": "Kim, Kourtney, and Khlo\u00e9 Kardashian opened the first DASH store at 4774 Park Granada in 2006. Early episodes of Keeping Up with the Kardashians were filmed around it.",
     "source": "nominatim:4774 Park Granada, Calabasas, California",
-    "egg": true
+    "egg": true,
+    "clue": "Three sisters opened their first clothing boutique. A reality show soon filmed around the store."
   },
   {
     "id": "dash-melrose",
@@ -1309,7 +1408,8 @@
     "difficulty": "hard",
     "event": "The California DASH store moved to 8420 Melrose Avenue in 2012 and closed with the chain in 2018.",
     "source": "nominatim:8420 Melrose Avenue, West Hollywood, California",
-    "egg": true
+    "egg": true,
+    "clue": "A celebrity clothing boutique moved to a new storefront. The chain closed six years later."
   },
   {
     "id": "kylie-popup",
@@ -1323,7 +1423,8 @@
     "difficulty": "hard",
     "event": "Kylie Cosmetics launched lip kits online in 2015. The 10th-anniversary King Kylie pop-up ran at 8626 Melrose Avenue from October 18 to 26, 2025.",
     "source": "nominatim:8626 Melrose Avenue, West Hollywood, California",
-    "egg": true
+    "egg": true,
+    "clue": "A cosmetics line that began with mail-order lip kits opened a ten-year anniversary shop for nine days."
   },
   {
     "id": "arrowhead",
@@ -1337,7 +1438,8 @@
     "difficulty": "hard",
     "event": "Arrowhead Stadium opened in 1972. Kelce's Kansas City Chiefs play their home games here.",
     "source": "wikipedia:Arrowhead Stadium",
-    "egg": true
+    "egg": true,
+    "clue": "A football stadium opened and later became a star tight end's home field."
   },
   {
     "id": "like-a-virgin",
@@ -1351,7 +1453,8 @@
     "difficulty": "hard",
     "event": "Madonna performed the song at the first MTV Video Music Awards here on September 14, 1984.",
     "source": "wikipedia:Radio City Music Hall",
-    "egg": true
+    "egg": true,
+    "clue": "A new song was performed for the first time at the first televised music-video awards."
   },
   {
     "id": "slave-4-u",
@@ -1365,7 +1468,8 @@
     "difficulty": "hard",
     "event": "Britney Spears performed the song at the MTV Video Music Awards here on September 6, 2001.",
     "source": "wikipedia:Metropolitan Opera House (Lincoln Center)",
-    "egg": true
+    "egg": true,
+    "clue": "A pop star performed at a music-video awards show with a live snake over her shoulders."
   },
   {
     "id": "sb56",
@@ -1379,7 +1483,8 @@
     "difficulty": "hard",
     "event": "Dr. Dre, Snoop Dogg, Eminem, Mary J. Blige, and Kendrick Lamar performed the halftime show here on February 13, 2022.",
     "source": "wikipedia:SoFi Stadium",
-    "egg": true
+    "egg": true,
+    "clue": "Several rappers shared one Super Bowl halftime stage."
   },
   {
     "id": "sb58",
@@ -1393,7 +1498,8 @@
     "difficulty": "hard",
     "event": "Usher headlined the Super Bowl LVIII halftime show here on February 11, 2024.",
     "source": "wikipedia:Allegiant Stadium",
-    "egg": true
+    "egg": true,
+    "clue": "A singer headlined the Super Bowl halftime show."
   },
   {
     "id": "sb54",
@@ -1407,7 +1513,8 @@
     "difficulty": "hard",
     "event": "Shakira and Jennifer Lopez headlined the Super Bowl LIV halftime show here on February 2, 2020.",
     "source": "wikipedia:Hard Rock Stadium",
-    "egg": true
+    "egg": true,
+    "clue": "Two singers shared the Super Bowl halftime show."
   },
   {
     "id": "chinese",
@@ -1421,7 +1528,8 @@
     "difficulty": "medium",
     "event": "Mary Pickford and Douglas Fairbanks pressed the first footprints in the forecourt in 1927.",
     "source": "wikipedia:Grauman's Chinese Theatre",
-    "egg": true
+    "egg": true,
+    "clue": "Two film stars pressed the first footprints into a movie palace's forecourt."
   },
   {
     "id": "dolby",
@@ -1435,7 +1543,8 @@
     "difficulty": "hard",
     "event": "The Academy Awards have been held at this theater, opened as the Kodak Theatre, since the 2002 ceremony.",
     "source": "wikipedia:Dolby Theatre",
-    "egg": true
+    "egg": true,
+    "clue": "A theater began hosting the film academy's awards and has kept the job."
   },
   {
     "id": "snl",
@@ -1449,7 +1558,8 @@
     "difficulty": "hard",
     "event": "Saturday Night Live premiered from Studio 8H on October 11, 1975.",
     "source": "wikipedia:30 Rockefeller Plaza",
-    "egg": true
+    "egg": true,
+    "clue": "A late-night sketch show premiered from a studio inside an office tower."
   },
   {
     "id": "met-gala",
@@ -1463,7 +1573,8 @@
     "difficulty": "hard",
     "event": "The Costume Institute Benefit is held here. Anna Wintour has chaired it since 1995.",
     "source": "wikipedia:Metropolitan Museum of Art",
-    "egg": true
+    "egg": true,
+    "clue": "A museum costume benefit gained a chair who is still in the job."
   },
   {
     "id": "motown25",
@@ -1477,6 +1588,7 @@
     "difficulty": "hard",
     "event": "Michael Jackson performed \"Billie Jean\" and the moonwalk on Motown 25 here on March 25, 1983.",
     "source": "nominatim:Pasadena Civic Auditorium, 300 East Green Street, Pasadena, California",
-    "egg": true
+    "egg": true,
+    "clue": "On a televised anniversary special, a singer slid backward in a dance step the broadcast made famous."
   }
 ]
