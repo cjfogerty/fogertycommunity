@@ -103,8 +103,8 @@
   <button class="btn ghost" id="btnReset">Reset to 2–10 ac</button>
 </div>
 <div class="chips">
-  <div class="chip on" data-chip="home">Has home</div>
-  <div class="chip on" data-chip="timber">Timber</div>
+  <div class="chip" data-chip="home">Has home</div>
+  <div class="chip" data-chip="timber">Timber</div>
   <div class="chip" data-chip="hills">Hills</div>
   <div class="chip" data-chip="views">Views</div>
   <div class="chip" data-chip="creek">Creek</div>
@@ -149,10 +149,18 @@
 <script>
 let DATA = null;
 let map, markersLayer, polyLayer;
-const state = {county:"", minAcres:2, maxAcres:10, minPrice:null, maxPrice:null, status:"", chips:new Set(["home","timber"])};
+const state = {county:"", minAcres:2, maxAcres:10, minPrice:null, maxPrice:null, status:"", chips:new Set()};
 
 function fmtPrice(p){ if(p==null) return "—"; if(p>=1e6) return "$"+(p/1e6).toFixed(2)+"M"; return "$"+p.toLocaleString(); }
-function esc(s){ return String(s??"").replace(/&/g,"&").replace(/</g,"<").replace(/>/g,">").replace(/"/g,"""); }
+function esc(s){ return String(s??"").replace(/&/g,"\u0026amp;").replace(/</g,"\u0026lt;").replace(/>/g,"\u0026gt;").replace(/"/g,"\u0026quot;"); }
+function homeLine(l){
+  if(!l.home) return "Land only";
+  const bits=[];
+  if(l.beds!=null) bits.push(l.beds+" bd");
+  if(l.baths!=null) bits.push(l.baths+" ba");
+  if(l.sqft!=null) bits.push(Number(l.sqft).toLocaleString()+" sqft");
+  return bits.join(" / ") || "Home";
+}
 
 async function load(){
   const res = await fetch("listings.json");
@@ -160,8 +168,10 @@ async function load(){
   document.getElementById("metaLine").textContent =
     `Last updated: ${DATA.meta.generated.replace("T"," ").slice(0,16)} UTC · ${DATA.meta.count} listings · source: ${DATA.meta.source}`;
   const counties = [...new Set(DATA.listings.map(l=>l.county))].sort();
+  const stateBy = {};
+  DATA.listings.forEach(l=>{ if(!stateBy[l.county]) stateBy[l.county]=l.state; });
   const sel = document.getElementById("fCounty");
-  counties.forEach(c=>{ const o=document.createElement("option"); o.value=c; o.textContent=c+" County"+(c==="Scott"?" (IA)":" (IL)"); sel.appendChild(o); });
+  counties.forEach(c=>{ const o=document.createElement("option"); o.value=c; o.textContent=c+" County ("+(stateBy[c]||"")+")"; sel.appendChild(o); });
   initMap();
   render();
 }
@@ -199,7 +209,7 @@ function render(){
     <div class="card" onclick="openModal('${l.id}')">
       <div class="top"><span class="price">${fmtPrice(l.price)}</span><span class="acres">${l.acres??"?"} ac</span></div>
       <div class="title">${esc(l.city)}, ${esc(l.county)} County${l.state==="IA"?" (IA)":""}</div>
-      <div class="sub">${l.home? (l.beds+" bd / "+l.baths+" ba / "+l.sqft.toLocaleString()+" sqft"):"Land only"} · ${esc(l.status)}</div>
+      <div class="sub">${homeLine(l)} · ${esc(l.status)}</div>
       <div class="tags">
         ${l.home?'<span class="tag home">HOME</span>':''}
         ${l.timber?'<span class="tag">timber</span>':''}
@@ -226,6 +236,7 @@ function render(){
   markersLayer.clearLayers(); polyLayer.clearLayers();
   const bounds = [];
   list.forEach(l=>{
+    if(l.lat==null || l.lng==null) return;
     const m = L.circleMarker([l.lat,l.lng], {radius: l.home?7:5, color: l.home?"#2ecc71":"#3d9cf0", fillColor: l.home?"#2ecc71":"#3d9cf0", fillOpacity:.85, weight:1.5});
     m.on("click", ()=>openModal(l.id));
     m.bindPopup(`<div class="popup"><h3>${esc(l.city)} · ${fmtPrice(l.price)}</h3><div class="p">${l.acres??"?"} acres · ${l.home?"home":"land only"}<br>${esc(l.status)}<br><a href="javascript:openModal('${l.id}')">view details</a></div></div>`);
@@ -246,6 +257,8 @@ document.getElementById("btnApply").addEventListener("click", ()=>{
 });
 document.getElementById("btnReset").addEventListener("click", ()=>{
   state.county=""; state.minAcres=2; state.maxAcres=10; state.minPrice=null; state.maxPrice=null; state.status="";
+  state.chips=new Set();
+  document.querySelectorAll(".chip").forEach(ch=>ch.classList.remove("on"));
   document.getElementById("fCounty").value=""; document.getElementById("fMinAcres").value=2; document.getElementById("fMaxAcres").value=10;
   document.getElementById("fMinPrice").value=""; document.getElementById("fMaxPrice").value=""; document.getElementById("fStatus").value="";
   render();
@@ -269,17 +282,20 @@ document.querySelectorAll(".tab").forEach(t=>{
 });
 function openModal(id){
   const l = DATA.listings.find(x=>x.id===id); if(!l) return;
-  document.getElementById("modalHero").src = l.photos[0];
+  const hero = (l.photos && l.photos[0]) || "";
+  const heroEl = document.getElementById("modalHero");
+  heroEl.src = hero;
+  heroEl.style.display = hero ? "" : "none";
   document.getElementById("modalTitle").textContent = `${l.city}, ${l.county} County${l.state==="IA"?" (IA)":""} — ${fmtPrice(l.price)}`;
   document.getElementById("modalRow").innerHTML = `
     <div><b>Acres</b><br>${l.acres??"—"}</div>
-    <div><b>Home</b><br>${l.home? (l.beds+" bd / "+l.baths+" ba<br>"+l.sqft.toLocaleString()+" sqft"):"Land only"}</div>
+    <div><b>Home</b><br>${homeLine(l)}</div>
     <div><b>Status</b><br>${esc(l.status)}</div>
     <div><b>Elevation</b><br>${l.elevation_ft? l.elevation_ft+" ft":"—"}</div>
     <div><b>Agent</b><br>${esc(l.agent||"—")}${l.agent_phone?"<br>"+esc(l.agent_phone):""}</div>
     <div><b>MLS</b><br>${esc(l.mls||"—")}</div>`;
   document.getElementById("modalDesc").textContent = l.desc;
-  document.getElementById("modalPhotos").innerHTML = l.photos.map(p=>`<img src="${p}" alt="property photo">`).join("");
+  document.getElementById("modalPhotos").innerHTML = (l.photos||[]).map(p=>`<img src="${esc(p)}" alt="property photo">`).join("");
   const link = document.getElementById("modalLink");
   link.href = l.url; link.textContent = "Open listing ↗";
   document.getElementById("modalBg").classList.add("open");
