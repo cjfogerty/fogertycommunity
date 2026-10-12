@@ -63,6 +63,32 @@ assert.strictEqual(cadeCatch.priorSteps, 2270);
 assert.strictEqual(cadeCatch.priorDate, '2026-10-08');
 assert.ok(!model.watches.some(function (item) { return item.name === 'Casey Fogerty'; }));
 
+assert.strictEqual(model.slumpFloor, 5000);
+assert.ok(casey.estimate);
+assert.deepStrictEqual(casey.estimate.days.map(function (day) { return day.date; }), [
+  '2026-10-05',
+  '2026-10-06',
+  '2026-10-07',
+  '2026-10-08'
+]);
+assert.deepStrictEqual(casey.estimate.days.map(function (day) { return day.steps; }), [3151, 1091, 28, 1295]);
+assert.strictEqual(casey.estimate.floor, 5000);
+assert.strictEqual(casey.estimate.keptCount, 7);
+assert.strictEqual(casey.estimate.average, 18023);
+assert.strictEqual(casey.estimate.actual, 131729);
+assert.strictEqual(casey.estimate.actualRank, 9);
+assert.strictEqual(casey.estimate.reconstructed, 198256);
+assert.strictEqual(casey.estimate.gap, 66527);
+assert.strictEqual(casey.estimate.reconstructedRank, 4);
+assert.strictEqual(
+  casey.estimate.method,
+  "Slump days are Casey Fogerty's logged days under 5,000 steps. Each one is replaced with 18,023, the mean of the other 7 days in this export."
+);
+assert.deepStrictEqual(casey.slump, [false, false, false, false, true, true, true, true, false, false, false]);
+assert.ok(model.members.every(function (member) { return member === casey || member.estimate == null; }));
+assert.ok(model.members[2].totalSteps > casey.estimate.reconstructed);
+assert.ok(model.members[3].totalSteps < casey.estimate.reconstructed);
+
 const synthetic = w.analyze({
   days: ['2026-10-01', '2026-10-02'],
   watch: { bigDay: 25000, catchUpPriorMax: 5000, catchUpMin: 20000 },
