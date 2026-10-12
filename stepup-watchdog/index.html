@@ -215,10 +215,41 @@
     .slot { display: flex; align-items: flex-end; min-width: 0; height: 100%; background: rgba(255,255,255,0.04); border-radius: 4px; }
     .bar { display: block; width: 100%; border-radius: 3px 3px 0 0; background: #f6efe6; }
     .bar.hot { background: #f0b429; }
+    .bar.slump { background: #7eb6ff; }
     .bar.na { background: transparent; }
     .day-labels { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; margin-top: 4px; }
     .day-labels span { text-align: center; font-size: 10px; color: var(--muted); }
     .day-labels span.hot { color: #f0b429; font-weight: 800; }
+    .day-labels span.slump { color: #7eb6ff; font-weight: 800; }
+    .person-block .person-row { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+    .slump {
+      margin: 0;
+      padding: 12px 14px 14px;
+      border-radius: 0 0 16px 16px;
+      border: 1px solid rgba(61, 190, 138, 0.5);
+      border-top: 1px dashed rgba(126, 182, 255, 0.45);
+      background: rgba(61, 190, 138, 0.08);
+    }
+    .slump-kicker {
+      margin: 0;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: #8ee0b5;
+    }
+    .slump-days { margin: 6px 0 0; font-size: 14px; line-height: 1.45; }
+    .slump-method, .slump-honest { margin: 6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .slump-figs { display: grid; gap: 8px; margin-top: 10px; }
+    @media (min-width: 640px) { .slump-figs { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .slump-fig { background: rgba(0, 0, 0, 0.22); border-radius: 12px; padding: 8px 10px; }
+    .slump-fig .label {
+      margin: 0; color: var(--muted); font-size: 10px; letter-spacing: 0.06em;
+      text-transform: uppercase; font-weight: 800;
+    }
+    .slump-fig .value { margin: 4px 0 0; font-size: 20px; font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+    .slump-fig .sub { margin: 2px 0 0; color: var(--muted); font-size: 12px; line-height: 1.35; }
+    .peak.slump-note { color: #9ec8ff; }
     .series-grid { display: grid; gap: 10px; }
     @media (min-width: 800px) { .series-grid { grid-template-columns: 1fr 1fr; } }
     .series-card { background: rgba(255,255,255,0.03); border: 1px solid var(--line); border-radius: 16px; padding: 12px; }
@@ -289,6 +320,7 @@
         <li>One object per person inside <code>members</code>. <code>days</code> on that person lines up with those dates. Use <code>null</code> where the export says N.A.</li>
         <li><code>totalSteps</code>, <code>avgDailySteps</code>, <code>dailyGoal</code>, and <code>totalDistanceMi</code> are the export totals, not something the page invents.</li>
         <li>Watch lines live under <code>watch</code>. The page marks a day at or above <code>bigDay</code>, and a day at or above <code>catchUpMin</code> that follows a day under <code>catchUpPriorMax</code>.</li>
+        <li>The note under the highlighted person is computed in the browser. Logged days under <code>slump.floor</code> are replaced with the mean of that person’s other logged days. It is an estimate, and it is not written into <code>totalSteps</code>.</li>
       </ol>
       <div class="how-bar">
         <h3>One member</h3>

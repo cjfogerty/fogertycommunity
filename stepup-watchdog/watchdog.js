@@ -89,6 +89,8 @@
       totalDistanceMi: row.totalDistanceMi == null || row.totalDistanceMi === '' ? null : Number(row.totalDistanceMi),
       days: series,
       hot: series.map(function () { return ''; }),
+      slump: series.map(function () { return false; }),
+      estimate: null,
       peak: peak,
       lastDay: series.length ? series[series.length - 1] : null,
       slug: slug(name),
@@ -154,6 +156,9 @@
 
     var highlight = null;
     members.forEach(function (member) { if (member.highlight && !highlight) highlight = member; });
+    var slumpFloor = Number(data.slump && data.slump.floor);
+    if (!isFinite(slumpFloor) || slumpFloor < 0) slumpFloor = 5000;
+    if (highlight) highlight.estimate = slumpEstimate(highlight, members, days, slumpFloor);
     var groupSteps = 0;
     members.forEach(function (member) { groupSteps += member.totalSteps || 0; });
     var loggedDays = 0;
@@ -168,6 +173,7 @@
       dateRange: data.dateRange || { label: days.length ? formatDay(days[0]) + '–' + formatDay(days[days.length - 1]) : '' },
       days: days,
       rules: { bigDay: bigDay, catchUpPriorMax: catchPrior, catchUpMin: catchMin, label: rules.label || '' },
+      slumpFloor: slumpFloor,
       members: members,
       watches: watches,
       maxDay: maxDay,
@@ -181,6 +187,44 @@
         loggedDays: loggedDays,
         lastDate: days.length ? days[days.length - 1] : ''
       }
+    };
+  }
+
+  function slumpEstimate(member, members, days, floor) {
+    var slumpDays = [];
+    var keptSum = 0;
+    var keptCount = 0;
+    member.days.forEach(function (steps, i) {
+      if (steps == null) return;
+      if (steps < floor) {
+        member.slump[i] = true;
+        slumpDays.push({ date: days[i] || '', steps: steps });
+      } else {
+        keptSum += steps;
+        keptCount += 1;
+      }
+    });
+    if (!slumpDays.length || !keptCount) return null;
+    var average = Math.round(keptSum / keptCount);
+    var slumpSum = 0;
+    slumpDays.forEach(function (day) { slumpSum += day.steps; });
+    var reconstructed = member.totalSteps - slumpSum + average * slumpDays.length;
+    var ahead = 0;
+    members.forEach(function (other) {
+      if (other === member) return;
+      if (other.totalSteps > reconstructed) ahead += 1;
+    });
+    return {
+      floor: floor,
+      days: slumpDays,
+      keptCount: keptCount,
+      average: average,
+      actual: member.totalSteps,
+      actualRank: member.rank,
+      reconstructed: reconstructed,
+      reconstructedRank: ahead + 1,
+      gap: reconstructed - member.totalSteps,
+      method: 'Slump days are ' + member.name + "'s logged days under " + formatNumber(floor) + ' steps. Each one is replaced with ' + formatNumber(average) + ', the mean of the other ' + keptCount + ' days in this export.'
     };
   }
 
@@ -225,7 +269,8 @@
       var steps = member.days[i];
       var title = formatDay(day) + (steps == null ? ' · not logged' : ' · ' + formatNumber(steps));
       var px = steps == null ? 0 : Math.max(3, Math.round((steps / model.maxDay) * chartH));
-      var cls = 'bar' + (member.hot[i] ? ' hot ' + member.hot[i] : '') + (steps == null ? ' na' : '');
+      var mark = member.hot[i] ? ' hot ' + member.hot[i] : (member.slump && member.slump[i] ? ' slump' : '');
+      var cls = 'bar' + mark + (steps == null ? ' na' : '');
       return h('span', { class: 'slot', title: title },
         h('span', { class: cls, style: 'height:' + px + 'px' })
       );
@@ -233,7 +278,8 @@
     var track = h('div', { class: tall ? 'bars tall' : 'bars', style: 'height:' + chartH + 'px', 'aria-hidden': 'true' }, labels);
     if (!tall) return track;
     var nums = h('div', { class: 'day-labels' }, model.days.map(function (day, i) {
-      return h('span', { class: member.hot[i] ? 'hot' : '' }, dayNum(day));
+      var labelClass = member.hot[i] ? 'hot' : (member.slump && member.slump[i] ? 'slump' : '');
+      return h('span', { class: labelClass }, dayNum(day));
     }));
     return h('div', {}, track, nums);
   }
@@ -261,6 +307,38 @@
       ),
       kpi('Group total', formatNumber(model.summary.groupSteps), model.summary.people + ' people · ' + range),
       kpi('Watch items', String(model.summary.watches), model.summary.watches ? 'Large days to look at' : 'Nothing above the line')
+    );
+  }
+
+  function slumpDayList(days) {
+    return days.map(function (day, i) {
+      var text = formatDay(day.date) + ' (' + formatNumber(day.steps) + ')';
+      if (days.length > 1 && i === days.length - 1) return 'and ' + text;
+      return text;
+    }).join(days.length > 2 ? ', ' : ' ');
+  }
+
+  function slumpFig(label, value, sub) {
+    return h('div', { class: 'slump-fig' },
+      h('p', { class: 'label' }, label),
+      h('p', { class: 'value' }, value),
+      h('p', { class: 'sub' }, sub)
+    );
+  }
+
+  function slumpPanel(member) {
+    var estimate = member.estimate;
+    var gap = (estimate.gap > 0 ? '+' : '') + formatNumber(estimate.gap);
+    return h('aside', { class: 'slump', 'data-testid': 'casey-slump' },
+      h('p', { class: 'slump-kicker' }, 'Estimate · counterfactual'),
+      h('p', { class: 'slump-days' }, 'Treated as slump: ' + slumpDayList(estimate.days) + '.'),
+      h('p', { class: 'slump-method' }, estimate.method),
+      h('div', { class: 'slump-figs' },
+        slumpFig('Actual total', formatNumber(estimate.actual), 'Rank ' + estimate.actualRank + ' on the export'),
+        slumpFig('Reconstructed', formatNumber(estimate.reconstructed), 'Would be rank ' + estimate.reconstructedRank),
+        slumpFig('Gap', gap, 'Steps those slump days sit below the mean')
+      ),
+      h('p', { class: 'slump-honest' }, 'This is an estimate. StepUp did not report the reconstructed total, and these days were not synced back. The rank uses everyone else’s actual totals.')
     );
   }
 
@@ -296,7 +374,9 @@
     var range = (model.dateRange && model.dateRange.label) || 'the export';
     var body = model.members.length
       ? h('div', { class: 'standings', 'data-testid': 'standings' }, model.members.map(function (member) {
-          return standingRow(member, model);
+          var row = standingRow(member, model);
+          if (!member.estimate) return row;
+          return h('div', { class: 'person-block' }, row, slumpPanel(member));
         }))
       : h('div', { class: 'empty', 'data-testid': 'standings-empty' },
           h('p', { class: 'empty-title' }, 'No leaderboard yet'),
@@ -382,7 +462,10 @@
         h('p', { class: 'meta' }, formatNumber(member.totalSteps) + ' total')
       ),
       bars(member, model, true),
-      h('p', { class: 'peak' }, peak)
+      h('p', { class: 'peak' }, peak),
+      member.estimate
+        ? h('p', { class: 'peak slump-note' }, 'Blue bars are the slump days in the estimate under his standings row.')
+        : null
     );
   }
 

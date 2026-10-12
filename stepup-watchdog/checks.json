@@ -26,6 +26,9 @@
     "catchUpMin": 20000,
     "label": "A watch item is a large single day, or a large day right after a very quiet one. It is not a cheating verdict. A quiet day then a spike can be a sync catch-up."
   },
+  "slump": {
+    "floor": 5000
+  },
   "members": [
     {
       "rank": 1,
