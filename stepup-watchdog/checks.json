@@ -1,0 +1,103 @@
+{
+  "group": "Fogerty",
+  "view": "Today",
+  "timezone": "America/Chicago",
+  "watch": {
+    "label": "6pm–midnight CT",
+    "start_hour": 18,
+    "end_hour": 24
+  },
+  "source": "Baseline seeded from the Fogerty group Today screenshot (phone status bar 9:19). The date is 2026-10-12, the day that screenshot was added. steps is the in-app Today total.",
+  "rules": [
+    {
+      "id": "amber",
+      "severity": "amber",
+      "min_delta": 6000,
+      "max_hours": 1,
+      "label": "More than 6,000 steps in under 1 hour"
+    },
+    {
+      "id": "red",
+      "severity": "red",
+      "min_delta": 10000,
+      "max_hours": 1.5,
+      "label": "More than 10,000 steps in under 1.5 hours"
+    }
+  ],
+  "people": [
+    {"name": "Alyssa Fogerty", "role": "Admin", "initials": "AF", "color": "#e06a78"},
+    {"name": "Paige Fogerty", "initials": "PF", "color": "#d5dde6"},
+    {"name": "Casey Fogerty", "initials": "CF", "color": "#3dbe8a"},
+    {"name": "Cade Fogerty", "initials": "CD", "color": "#f0b429"},
+    {"name": "Stephanie Fogerty", "initials": "SF", "color": "#d7a4e8"},
+    {"name": "Kevin Fogerty", "initials": "KF", "color": "#7fd3d0"}
+  ],
+  "checks": [
+    {
+      "check_time_ct": "2026-10-12 09:19",
+      "person": "Alyssa Fogerty",
+      "steps": 31158,
+      "last_update": "2026-10-12 09:18",
+      "delta_steps": null,
+      "hours_since_prev": null,
+      "steps_per_hour": null,
+      "flag": "",
+      "notes": "App showed 17s ago."
+    },
+    {
+      "check_time_ct": "2026-10-12 09:19",
+      "person": "Paige Fogerty",
+      "steps": 23019,
+      "last_update": "2026-10-12 09:18",
+      "delta_steps": null,
+      "hours_since_prev": null,
+      "steps_per_hour": null,
+      "flag": "",
+      "notes": "App showed 57s ago."
+    },
+    {
+      "check_time_ct": "2026-10-12 09:19",
+      "person": "Casey Fogerty",
+      "steps": 21808,
+      "last_update": "2026-10-12 09:19",
+      "delta_steps": null,
+      "hours_since_prev": null,
+      "steps_per_hour": null,
+      "flag": "",
+      "notes": "App showed 1s ago. That phone's Today header also showed a 1-day streak and 10.9 mi."
+    },
+    {
+      "check_time_ct": "2026-10-12 09:19",
+      "person": "Cade Fogerty",
+      "steps": 17255,
+      "last_update": "2026-10-12 09:18",
+      "delta_steps": null,
+      "hours_since_prev": null,
+      "steps_per_hour": null,
+      "flag": "",
+      "notes": "App showed 1m ago."
+    },
+    {
+      "check_time_ct": "2026-10-12 09:19",
+      "person": "Stephanie Fogerty",
+      "steps": 12144,
+      "last_update": "2026-10-12 09:18",
+      "delta_steps": null,
+      "hours_since_prev": null,
+      "steps_per_hour": null,
+      "flag": "",
+      "notes": "App showed 57s ago."
+    },
+    {
+      "check_time_ct": "2026-10-12 09:19",
+      "person": "Kevin Fogerty",
+      "steps": 10407,
+      "last_update": "2026-10-12 09:18",
+      "delta_steps": null,
+      "hours_since_prev": null,
+      "steps_per_hour": null,
+      "flag": "",
+      "notes": "App showed 17s ago."
+    }
+  ]
+}
