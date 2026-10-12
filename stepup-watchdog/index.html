@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StepUp Watchdog · Fogerty</title>
   <meta name="theme-color" content="#1a0508" />
-  <meta name="description" content="Fogerty family StepUp watchdog. Today standings, hourly step logs, and flags for impossible jumps between 6pm and midnight CT." />
+  <meta name="description" content="Fogerty StepUp watchdog for the Oct 1–11 group export. Period ranks, daily step series, and large-day watch items." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='4' fill='%231a0508'/%3E%3Cpath d='M3 12h2.2V8.2H3V12zm3.4 0H8.6V5.2H6.4V12zm3.4 0H13V3.2h-3.2V12z' fill='%23f0b429'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -206,6 +206,28 @@
     .fields span { color: var(--muted); font-size: 12px; line-height: 1.4; }
     #copy-status { min-height: 1.2em; margin: 8px 0 0; font-size: 13px; }
     .foot { margin-top: 18px; color: var(--muted); font-size: 12px; }
+    a.flag { color: inherit; text-decoration: none; display: block; }
+    a.flag:hover { filter: brightness(1.08); }
+    .person-row.focus { border-color: rgba(61, 190, 138, 0.75); box-shadow: inset 3px 0 0 #3dbe8a; }
+    .kpi.focus-kpi .value { color: #8ee0b5; }
+    .bars { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; align-items: stretch; height: 26px; margin-top: 8px; }
+    .bars.tall { height: 112px; margin-top: 0; gap: 6px; }
+    .slot { display: flex; align-items: flex-end; min-width: 0; height: 100%; background: rgba(255,255,255,0.04); border-radius: 4px; }
+    .bar { display: block; width: 100%; border-radius: 3px 3px 0 0; background: #f6efe6; }
+    .bar.hot { background: #f0b429; }
+    .bar.na { background: transparent; }
+    .day-labels { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; margin-top: 4px; }
+    .day-labels span { text-align: center; font-size: 10px; color: var(--muted); }
+    .day-labels span.hot { color: #f0b429; font-weight: 800; }
+    .series-grid { display: grid; gap: 10px; }
+    @media (min-width: 800px) { .series-grid { grid-template-columns: 1fr 1fr; } }
+    .series-card { background: rgba(255,255,255,0.03); border: 1px solid var(--line); border-radius: 16px; padding: 12px; }
+    .series-card.focus { border-color: rgba(61, 190, 138, 0.75); box-shadow: inset 3px 0 0 #3dbe8a; }
+    .series-top { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; margin-bottom: 10px; }
+    .series-top .meta, .peak { margin: 0; color: var(--muted); font-size: 12px; }
+    .peak { margin-top: 8px; }
+    .rank.mini { width: 22px; height: 22px; font-size: 11px; }
+    .who .bars { width: 100%; }
     @media (max-width: 800px) {
       .log { min-width: 0; }
       .log-head { display: none; }
@@ -238,20 +260,20 @@
           <span class="brand-mark" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></span>
           Fogerty family · StepUp
         </div>
-        <h1>Overnight watchdog</h1>
-        <p class="sub">Today’s Fogerty board, logged from 6pm to midnight CT. Hourly totals live in <code>checks.json</code>. A jump no one could have walked shows up under Flags.</p>
+        <h1>StepUp watchdog</h1>
+        <p class="sub">The Fogerty group export for Oct 1–11, 2026. Ranks are total steps. Gold bars are large single days worth a look, not a cheating call.</p>
         <div class="chips">
           <span class="chip on">Fogerty</span>
-          <span class="chip on">Today</span>
-          <span class="chip">6pm–midnight CT</span>
+          <span class="chip on">Oct 1–11</span>
+          <span class="chip">14 people</span>
         </div>
       </div>
       <nav class="nav" aria-label="Page">
         <a href="../">Team home</a>
         <a href="#standings">Standings</a>
-        <a href="#flags">Flags</a>
-        <a href="#log">Hourly log</a>
-        <a href="#how">Add a check</a>
+        <a href="#flags">Watch items</a>
+        <a href="#log">Daily series</a>
+        <a href="#how">Update the file</a>
       </nav>
     </header>
     <p class="asof" id="asof">Loading the Fogerty board…</p>
@@ -260,44 +282,30 @@
     </main>
 
     <section class="card how" id="how">
-      <h2>Add an hourly check</h2>
-      <p>The page reads <a href="checks.json"><code>stepup-watchdog/checks.json</code></a> in the browser. No build, no keys, no private APIs. Append one object per person inside <code>checks</code>, commit, and refresh after GitHub Pages updates.</p>
+      <h2>Update the export</h2>
+      <p>The page reads <a href="checks.json"><code>stepup-watchdog/checks.json</code></a> in the browser. No build, no keys, no private APIs. Replace <code>days</code> and <code>members</code> when a new StepUp group export comes in, then commit and refresh after GitHub Pages updates.</p>
       <ol>
-        <li>Use one <code>check_time_ct</code> for the pass, in Central Time: <code>YYYY-MM-DD HH:MM</code>.</li>
-        <li><code>steps</code> is the Today total in the app, not the change since last hour.</li>
-        <li><code>last_update</code> is when StepUp says that person last synced, in the same clock format when you have it.</li>
-        <li>Leave <code>delta_steps</code>, <code>hours_since_prev</code>, <code>steps_per_hour</code>, and <code>flag</code> blank. This page calculates them.</li>
+        <li><code>days</code> is the date columns, oldest first: <code>2026-10-01</code> through the last day.</li>
+        <li>One object per person inside <code>members</code>. <code>days</code> on that person lines up with those dates. Use <code>null</code> where the export says N.A.</li>
+        <li><code>totalSteps</code>, <code>avgDailySteps</code>, <code>dailyGoal</code>, and <code>totalDistanceMi</code> are the export totals, not something the page invents.</li>
+        <li>Watch lines live under <code>watch</code>. The page marks a day at or above <code>bigDay</code>, and a day at or above <code>catchUpMin</code> that follows a day under <code>catchUpPriorMax</code>.</li>
       </ol>
-      <p>Check about once an hour between 6pm and midnight. A long gap can hide a jump, because the rules use the time between our rows. A new name still shows up if it is not in <code>people</code> yet.</p>
       <div class="how-bar">
-        <h3>Example row</h3>
+        <h3>One member</h3>
         <button type="button" class="ghost" id="copy-example">Copy example</button>
       </div>
       <pre id="example-row">{
-  "check_time_ct": "2026-10-12 19:00",
-  "person": "Alyssa Fogerty",
-  "steps": 32800,
-  "last_update": "2026-10-12 18:57",
-  "delta_steps": null,
-  "hours_since_prev": null,
-  "steps_per_hour": null,
-  "flag": "",
-  "notes": ""
+  "rank": 9,
+  "name": "Casey Fogerty",
+  "totalSteps": 131729,
+  "avgDailySteps": 11975,
+  "dailyGoal": 18000,
+  "totalDistanceMi": 59.88,
+  "days": [20740, 21805, 15884, 21599, 3151, 1091, 28, 1295, 12791, 11346, 21999]
 }</pre>
       <p id="copy-status" role="status"></p>
-      <div class="fields">
-        <div><strong>check_time_ct</strong><span>When you looked. America/Chicago.</span></div>
-        <div><strong>person</strong><span>Full name, matching the board when you can.</span></div>
-        <div><strong>steps</strong><span>Today total from StepUp.</span></div>
-        <div><strong>last_update</strong><span>The app’s last sync time.</span></div>
-        <div><strong>delta_steps</strong><span>Optional. Steps minus the previous check.</span></div>
-        <div><strong>hours_since_prev</strong><span>Optional. Hours between those checks.</span></div>
-        <div><strong>steps_per_hour</strong><span>Optional. Delta divided by hours.</span></div>
-        <div><strong>flag</strong><span>Optional. Leave blank. The page sets amber or red.</span></div>
-        <div><strong>notes</strong><span>Anything you want to remember about that look.</span></div>
-      </div>
     </section>
-    <p class="foot">The Red Buffalo Maroonicorns · Fogerty family StepUp · overnight watch is 6pm–midnight CT.</p>
+    <p class="foot">The Red Buffalo Maroonicorns · Fogerty StepUp · Oct 1–11, 2026 group export.</p>
   </div>
   <script src="watchdog.js"></script>
   <script>
@@ -317,7 +325,7 @@
     document.getElementById('copy-example').addEventListener('click', function () {
       var text = document.getElementById('example-row').textContent.trim();
       var status = document.getElementById('copy-status');
-      function ok() { status.textContent = 'Copied. Paste it inside checks, then duplicate it for each person you logged.'; }
+      function ok() { status.textContent = 'Copied. Line days up with the dates list, one object per person.'; }
       function fail() { status.textContent = 'Select the example and copy it manually.'; }
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fail);
       else fail();
