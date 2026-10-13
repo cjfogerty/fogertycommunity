@@ -13,20 +13,15 @@ Get it in Google Sheets: **File → Share → Publish to web →** pick the shee
 
 If `SHEET_CSV_URL` is empty or can't be loaded, the page falls back to `data.json` (example data) and shows an **Example data** banner.
 
-## Sheet columns (row 1 header, one row per person per day)
-| column | example | meaning |
-|---|---|---|
-| date | 2026-10-12 | day, `YYYY-MM-DD` |
-| name | Casey | person (exact same spelling every day) |
-| device | iPhone / Android | shown as a badge |
-| minutes | 246 | total screen time that day, in minutes |
-| pickups | 62 | phone pickups (bonus stat, optional) |
-| notifications | 48 | notifications (bonus stat, optional) |
-| source | auto / manual | shows the ⟳ Auto-synced or ✎ Manual tag |
-
-If a person has two rows for the same date, the later row wins.
+## Sheet columns (row 1 header, one row per person per day per app)
+`date,name,device,app,minutes,pickups,notifications,source` — `app` may be an app name, Android package, `Name [package]`, `category:<id>`, or empty (plain total → general). Same date+name+app twice: later row wins. Pickups/notifications: any non-empty value that day.
 
 ## Scoring
-- **Baseline** = each person's first 7 days of data.
-- **Score** = % drop of the average of their most recent 7 days (after the baseline) vs. the baseline average. Highest % wins the weekly-winner banner.
-- The sparkline shows the last 7 logged days; pickups/notifications are from the latest day.
+- Weights in [`weights.json`](weights.json): social/short video 1.5×, general 1× (default for unknown apps), messaging/calls 0.5×, healthy 0×.
+- **Baseline** = each person's first 7 days. **Score** = % drop of weighted minutes (avg of most recent 7 days after baseline) vs. baseline weighted avg.
+- Each row shows raw vs weighted minutes, minutes per category and top 3 apps (last 7 days).
+
+## Logging
+- Android: Life Dashboard Companion → Apps Script (per app, automatic).
+- iPhone: [sync page](sync/) (no app download) or an optional Shortcut that opens it prefilled.
+- Full setup: [setup/SETUP.md](setup/SETUP.md), script: [setup/apps-script.gs](setup/apps-script.gs).

@@ -1,0 +1,18 @@
+{
+ "note": "Category weights for the Unplugged score. Match is case-insensitive on the app name (iOS / Android label) OR the Android package name. Unknown apps fall into 'default'. 'category:<id>' rows (from the /sync/ page) map straight to that category.",
+ "default": "general",
+ "categories": [
+  {"id":"social","label":"Social & short video","weight":1.5,"emoji":"🔥",
+   "apps":["TikTok","Instagram","Snapchat","Facebook","YouTube Shorts","X","Twitter","Reddit","Threads"],
+   "packages":["com.zhiliaoapp.musically","com.ss.android.ugc.trill","com.instagram.android","com.snapchat.android","com.facebook.katana","com.facebook.lite","com.twitter.android","com.reddit.frontpage","com.instagram.barcelona"]},
+  {"id":"general","label":"General (browser, games, streaming, anything else)","weight":1,"emoji":"📱",
+   "apps":["Safari","Chrome","YouTube","Netflix","Disney+","Roblox","Minecraft"],
+   "packages":["com.android.chrome","com.google.android.youtube","com.netflix.mediaclient","com.roblox.client"]},
+  {"id":"messaging","label":"Messaging & calls","weight":0.5,"emoji":"💬",
+   "apps":["Messages","WhatsApp","Phone","FaceTime","Messenger","Google Messages","Samsung Messages"],
+   "packages":["com.google.android.apps.messaging","com.samsung.android.messaging","com.whatsapp","com.google.android.dialer","com.samsung.android.dialer","com.android.dialer","com.facebook.orca","com.apple.MobileSMS","com.apple.facetime","com.apple.mobilephone"]},
+  {"id":"healthy","label":"Healthy (fitness, maps, music, podcasts)","weight":0,"emoji":"🌱",
+   "apps":["StepUp","Strava","Apple Fitness","Fitness","Health","Google Fit","Fit","Maps","Google Maps","Waze","Spotify","Apple Music","Music","Podcasts","Apple Podcasts","Google Podcasts"],
+   "packages":["com.strava","com.google.android.apps.fitness","com.google.android.apps.maps","com.waze","com.spotify.music","com.apple.android.music","com.google.android.apps.podcasts","com.apple.Fitness","com.apple.Health","com.apple.Maps","com.apple.Music","com.apple.podcasts"]}
+ ]
+}

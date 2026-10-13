@@ -1,0 +1,5 @@
+date,name,device,app,minutes,pickups,notifications,source
+2026-10-12,Example Casey,iPhone,category:social,90,62,48,manual
+2026-10-12,Example Casey,iPhone,category:general,156,,,manual
+2026-10-12,Example Dad,Android,Instagram [com.instagram.android],45,,,auto
+2026-10-12,Example Dad,Android,,135,,,auto

@@ -1,951 +1,8826 @@
 {
- "example": true,
- "note": "EXAMPLE DATA - replace by setting SHEET_CSV_URL in unplugged/index.html",
- "rows": [
-  {
-   "date": "2026-09-21",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 419,
-   "pickups": 93,
-   "notifications": 76,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-22",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 407,
-   "pickups": 90,
-   "notifications": 74,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-23",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 442,
-   "pickups": 98,
-   "notifications": 80,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-24",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 402,
-   "pickups": 89,
-   "notifications": 73,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-25",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 434,
-   "pickups": 96,
-   "notifications": 78,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-26",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 422,
-   "pickups": 93,
-   "notifications": 76,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-27",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 401,
-   "pickups": 89,
-   "notifications": 72,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-28",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 413,
-   "pickups": 91,
-   "notifications": 75,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-29",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 365,
-   "pickups": 81,
-   "notifications": 66,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-30",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 372,
-   "pickups": 82,
-   "notifications": 67,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-01",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 333,
-   "pickups": 74,
-   "notifications": 60,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-02",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 316,
-   "pickups": 70,
-   "notifications": 57,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-03",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 316,
-   "pickups": 70,
-   "notifications": 57,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-04",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 317,
-   "pickups": 70,
-   "notifications": 57,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-05",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 266,
-   "pickups": 59,
-   "notifications": 48,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-06",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 253,
-   "pickups": 56,
-   "notifications": 46,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-07",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 251,
-   "pickups": 55,
-   "notifications": 45,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-08",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 263,
-   "pickups": 58,
-   "notifications": 47,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-09",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 249,
-   "pickups": 55,
-   "notifications": 45,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-10",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 242,
-   "pickups": 53,
-   "notifications": 44,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-11",
-   "name": "Casey",
-   "device": "iPhone",
-   "minutes": 265,
-   "pickups": 58,
-   "notifications": 48,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-21",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 306,
-   "pickups": 68,
-   "notifications": 55,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-22",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 348,
-   "pickups": 77,
-   "notifications": 63,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-23",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 318,
-   "pickups": 70,
-   "notifications": 57,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-24",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 311,
-   "pickups": 69,
-   "notifications": 56,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-25",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 309,
-   "pickups": 68,
-   "notifications": 56,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-26",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 319,
-   "pickups": 70,
-   "notifications": 58,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-27",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 346,
-   "pickups": 76,
-   "notifications": 62,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-28",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 301,
-   "pickups": 66,
-   "notifications": 54,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-29",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 310,
-   "pickups": 68,
-   "notifications": 56,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-30",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 300,
-   "pickups": 66,
-   "notifications": 54,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-01",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 276,
-   "pickups": 61,
-   "notifications": 50,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-02",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 272,
-   "pickups": 60,
-   "notifications": 49,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-03",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 240,
-   "pickups": 53,
-   "notifications": 43,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-04",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 229,
-   "pickups": 50,
-   "notifications": 41,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-05",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 223,
-   "pickups": 49,
-   "notifications": 40,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-06",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 229,
-   "pickups": 50,
-   "notifications": 41,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-07",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 208,
-   "pickups": 46,
-   "notifications": 37,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-08",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 204,
-   "pickups": 45,
-   "notifications": 37,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-09",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 214,
-   "pickups": 47,
-   "notifications": 38,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-10",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 209,
-   "pickups": 46,
-   "notifications": 38,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-11",
-   "name": "Mom",
-   "device": "iPhone",
-   "minutes": 204,
-   "pickups": 45,
-   "notifications": 37,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-21",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 303,
-   "pickups": 67,
-   "notifications": 55,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-22",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 299,
-   "pickups": 66,
-   "notifications": 54,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-23",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 278,
-   "pickups": 61,
-   "notifications": 50,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-24",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 293,
-   "pickups": 65,
-   "notifications": 53,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-25",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 291,
-   "pickups": 64,
-   "notifications": 52,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-26",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 307,
-   "pickups": 68,
-   "notifications": 55,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-27",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 300,
-   "pickups": 66,
-   "notifications": 54,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-28",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 273,
-   "pickups": 60,
-   "notifications": 49,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-29",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 296,
-   "pickups": 65,
-   "notifications": 53,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-30",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 251,
-   "pickups": 55,
-   "notifications": 45,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-01",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 257,
-   "pickups": 57,
-   "notifications": 46,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-02",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 264,
-   "pickups": 58,
-   "notifications": 48,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-03",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 232,
-   "pickups": 51,
-   "notifications": 42,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-04",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 238,
-   "pickups": 52,
-   "notifications": 43,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-05",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 214,
-   "pickups": 47,
-   "notifications": 38,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-06",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 230,
-   "pickups": 51,
-   "notifications": 41,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-07",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 226,
-   "pickups": 50,
-   "notifications": 41,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-08",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 220,
-   "pickups": 48,
-   "notifications": 40,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-09",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 230,
-   "pickups": 51,
-   "notifications": 41,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-10",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 211,
-   "pickups": 46,
-   "notifications": 38,
-   "source": "auto"
-  },
-  {
-   "date": "2026-10-11",
-   "name": "Dad",
-   "device": "Android",
-   "minutes": 224,
-   "pickups": 49,
-   "notifications": 40,
-   "source": "auto"
-  },
-  {
-   "date": "2026-09-21",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 385,
-   "pickups": 85,
-   "notifications": 70,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-22",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 384,
-   "pickups": 85,
-   "notifications": 69,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-23",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 377,
-   "pickups": 83,
-   "notifications": 68,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-24",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 400,
-   "pickups": 88,
-   "notifications": 72,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-25",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 407,
-   "pickups": 90,
-   "notifications": 74,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-26",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 378,
-   "pickups": 84,
-   "notifications": 68,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-27",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 389,
-   "pickups": 86,
-   "notifications": 70,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-28",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 346,
-   "pickups": 76,
-   "notifications": 62,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-29",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 376,
-   "pickups": 83,
-   "notifications": 68,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-30",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 365,
-   "pickups": 81,
-   "notifications": 66,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-01",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 377,
-   "pickups": 83,
-   "notifications": 68,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-02",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 359,
-   "pickups": 79,
-   "notifications": 65,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-03",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 322,
-   "pickups": 71,
-   "notifications": 58,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-04",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 320,
-   "pickups": 71,
-   "notifications": 58,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-05",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 327,
-   "pickups": 72,
-   "notifications": 59,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-06",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 287,
-   "pickups": 63,
-   "notifications": 52,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-07",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 302,
-   "pickups": 67,
-   "notifications": 54,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-08",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 287,
-   "pickups": 63,
-   "notifications": 52,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-09",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 285,
-   "pickups": 63,
-   "notifications": 51,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-10",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 282,
-   "pickups": 62,
-   "notifications": 51,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-11",
-   "name": "Ava",
-   "device": "Android",
-   "minutes": 317,
-   "pickups": 70,
-   "notifications": 57,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-21",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 282,
-   "pickups": 62,
-   "notifications": 51,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-22",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 287,
-   "pickups": 63,
-   "notifications": 52,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-23",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 294,
-   "pickups": 65,
-   "notifications": 53,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-24",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 317,
-   "pickups": 70,
-   "notifications": 57,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-25",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 279,
-   "pickups": 62,
-   "notifications": 50,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-26",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 297,
-   "pickups": 66,
-   "notifications": 54,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-27",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 302,
-   "pickups": 67,
-   "notifications": 54,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-28",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 314,
-   "pickups": 69,
-   "notifications": 57,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-29",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 307,
-   "pickups": 68,
-   "notifications": 55,
-   "source": "manual"
-  },
-  {
-   "date": "2026-09-30",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 306,
-   "pickups": 68,
-   "notifications": 55,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-01",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 275,
-   "pickups": 61,
-   "notifications": 50,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-02",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 278,
-   "pickups": 61,
-   "notifications": 50,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-03",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 272,
-   "pickups": 60,
-   "notifications": 49,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-04",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 291,
-   "pickups": 64,
-   "notifications": 52,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-05",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 291,
-   "pickups": 64,
-   "notifications": 52,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-06",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 252,
-   "pickups": 56,
-   "notifications": 45,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-07",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 250,
-   "pickups": 55,
-   "notifications": 45,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-08",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 252,
-   "pickups": 56,
-   "notifications": 45,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-09",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 252,
-   "pickups": 56,
-   "notifications": 45,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-10",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 263,
-   "pickups": 58,
-   "notifications": 47,
-   "source": "manual"
-  },
-  {
-   "date": "2026-10-11",
-   "name": "Liam",
-   "device": "iPhone",
-   "minutes": 267,
-   "pickups": 59,
-   "notifications": 48,
-   "source": "manual"
-  }
- ]
+"example": true,
+"note": "EXAMPLE DATA (per-app rows) - replace by setting SHEET_CSV_URL in unplugged/index.html",
+"rows": [
+{
+"date": "2026-09-21",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 88,
+"pickups": 58,
+"notifications": 55,
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 67,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 66,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 29,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 37,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 37,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 33,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 16,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 41,
+"pickups": 48,
+"notifications": 48,
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 56,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 94,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 40,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 58,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 37,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 109,
+"pickups": 67,
+"notifications": 50,
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 46,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 73,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 26,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 56,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 45,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 14,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 26,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 46,
+"pickups": 54,
+"notifications": 36,
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 83,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 81,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 30,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 45,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 16,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 105,
+"pickups": 65,
+"notifications": 49,
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 37,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 55,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 37,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 29,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 16,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 34,
+"pickups": 49,
+"notifications": 32,
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 76,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 98,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 56,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 41,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 31,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 69,
+"pickups": 57,
+"notifications": 35,
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 31,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 92,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 36,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 46,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 34,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 83,
+"pickups": 58,
+"notifications": 42,
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 50,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 68,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 46,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 30,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 28,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 40,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 44,
+"pickups": 54,
+"notifications": 32,
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 49,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 75,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 49,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 43,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 28,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 30,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 59,
+"pickups": 50,
+"notifications": 47,
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 59,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 36,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 29,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 42,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 16,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 46,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 34,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 57,
+"pickups": 54,
+"notifications": 41,
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 58,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 31,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 30,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 33,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 39,
+"pickups": 52,
+"notifications": 33,
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 46,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 47,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 37,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 36,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 24,
+"pickups": 42,
+"notifications": 43,
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 48,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 46,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 43,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 35,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 29,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 50,
+"pickups": 54,
+"notifications": 40,
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 57,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 31,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 15,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 43,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 36,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 38,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 20,
+"pickups": 40,
+"notifications": 32,
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 16,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 52,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 53,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 35,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 15,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 42,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 47,
+"pickups": 47,
+"notifications": 46,
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 13,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 29,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 49,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 47,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 26,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 40,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 27,
+"pickups": 51,
+"notifications": 50,
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 42,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 42,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 15,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 39,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 33,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 41,
+"pickups": 54,
+"notifications": 43,
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 29,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 35,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 39,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 38,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 34,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 39,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 31,
+"pickups": 51,
+"notifications": 32,
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 53,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 41,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 45,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 36,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 45,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 45,
+"pickups": 46,
+"notifications": 33,
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 47,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 46,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 36,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 36,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 35,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Casey",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 19,
+"pickups": 44,
+"notifications": 53,
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Casey",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 30,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Casey",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 41,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Casey",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Casey",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 52,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Casey",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Casey",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Casey",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 40,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Casey",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 47,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Casey",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 16,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 25,
+"pickups": 50,
+"notifications": 53,
+"source": "manual"
+},
+{
+"date": "2026-09-21",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-21",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-21",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 45,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-21",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 51,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-21",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 40,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-21",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 49,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-21",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 51,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-21",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-21",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 8,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-22",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 17,
+"pickups": 44,
+"notifications": 39,
+"source": "manual"
+},
+{
+"date": "2026-09-22",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 38,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-22",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 29,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-22",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 40,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-22",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 57,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-22",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-22",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 53,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-22",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 65,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-22",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 9,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-22",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-23",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 31,
+"pickups": 45,
+"notifications": 54,
+"source": "manual"
+},
+{
+"date": "2026-09-23",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 37,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-23",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 35,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-23",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 30,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-23",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 50,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-23",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 39,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-23",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 70,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-23",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 55,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-23",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 13,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-23",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 13,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-24",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 40,
+"pickups": 52,
+"notifications": 54,
+"source": "manual"
+},
+{
+"date": "2026-09-24",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-24",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 30,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-24",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 28,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-24",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 56,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-24",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 48,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-24",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 46,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-24",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 58,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-24",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 13,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-24",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-25",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 17,
+"pickups": 45,
+"notifications": 54,
+"source": "manual"
+},
+{
+"date": "2026-09-25",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 38,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-25",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 39,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-25",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-25",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 52,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-25",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 38,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-25",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 51,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-25",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 43,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-25",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-25",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 8,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-26",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 47,
+"pickups": 46,
+"notifications": 39,
+"source": "manual"
+},
+{
+"date": "2026-09-26",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-26",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 30,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-26",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 49,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-26",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 28,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-26",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 46,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-26",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 51,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-26",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 61,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-26",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-26",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 13,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-27",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 36,
+"pickups": 48,
+"notifications": 31,
+"source": "manual"
+},
+{
+"date": "2026-09-27",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 37,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-27",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-27",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 36,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-27",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 35,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-27",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 62,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-27",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 46,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-27",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 70,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-27",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-27",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 10,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-28",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 39,
+"pickups": 53,
+"notifications": 45,
+"source": "manual"
+},
+{
+"date": "2026-09-28",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-28",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 33,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-28",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 26,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-28",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-28",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 72,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-28",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 35,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-28",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 84,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-28",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 13,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-28",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 14,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-29",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 18,
+"pickups": 41,
+"notifications": 42,
+"source": "manual"
+},
+{
+"date": "2026-09-29",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-29",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 35,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-29",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 51,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-29",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 15,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-29",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 53,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-29",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 83,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-29",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-29",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 13,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-29",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-30",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 30,
+"pickups": 51,
+"notifications": 32,
+"source": "manual"
+},
+{
+"date": "2026-09-30",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-30",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 30,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-30",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-30",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 34,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-30",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 41,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-30",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 65,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-30",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 48,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-30",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-30",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 9,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-01",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 25,
+"pickups": 45,
+"notifications": 32,
+"source": "manual"
+},
+{
+"date": "2026-10-01",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 14,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-01",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 33,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-01",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-01",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 39,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-01",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-01",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 69,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-01",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 55,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-01",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-01",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 13,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-02",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 26,
+"pickups": 43,
+"notifications": 45,
+"source": "manual"
+},
+{
+"date": "2026-10-02",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 26,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-02",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 29,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-02",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 43,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-02",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 37,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-02",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-02",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-02",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 92,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-02",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-02",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 14,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-03",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 20,
+"pickups": 41,
+"notifications": 42,
+"source": "manual"
+},
+{
+"date": "2026-10-03",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-03",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 26,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-03",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 54,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-03",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-03",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-03",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 47,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-03",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 49,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-03",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 8,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-03",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 26,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-04",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 27,
+"pickups": 45,
+"notifications": 43,
+"source": "manual"
+},
+{
+"date": "2026-10-04",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 14,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-04",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-04",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-04",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-04",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-04",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 59,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-04",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 35,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-04",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-04",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 15,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-05",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 16,
+"pickups": 46,
+"notifications": 44,
+"source": "manual"
+},
+{
+"date": "2026-10-05",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 30,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-05",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-05",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-05",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 31,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-05",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-05",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 48,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-05",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 48,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-05",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-05",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 14,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-06",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 28,
+"pickups": 49,
+"notifications": 51,
+"source": "manual"
+},
+{
+"date": "2026-10-06",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-06",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-06",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-06",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-06",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 58,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-06",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 43,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-06",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 58,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-06",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-06",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 16,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-07",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 20,
+"pickups": 43,
+"notifications": 54,
+"source": "manual"
+},
+{
+"date": "2026-10-07",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 15,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-07",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 38,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-07",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-07",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 29,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-07",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 40,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-07",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 81,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-07",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 45,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-07",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 15,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-07",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-08",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 23,
+"pickups": 45,
+"notifications": 50,
+"source": "manual"
+},
+{
+"date": "2026-10-08",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 16,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-08",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-08",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-08",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-08",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 38,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-08",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 77,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-08",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 46,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-08",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-08",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-09",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 22,
+"pickups": 48,
+"notifications": 48,
+"source": "manual"
+},
+{
+"date": "2026-10-09",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 14,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-09",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 31,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-09",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 29,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-09",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 28,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-09",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 43,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-09",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 68,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-09",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 38,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-09",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-09",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-10",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 22,
+"pickups": 48,
+"notifications": 32,
+"source": "manual"
+},
+{
+"date": "2026-10-10",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-10",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-10",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-10",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 35,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-10",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 43,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-10",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 39,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-10",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 69,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-10",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 16,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-10",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-11",
+"name": "Mom",
+"device": "iPhone",
+"app": "TikTok",
+"minutes": 23,
+"pickups": 43,
+"notifications": 35,
+"source": "manual"
+},
+{
+"date": "2026-10-11",
+"name": "Mom",
+"device": "iPhone",
+"app": "Instagram",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-11",
+"name": "Mom",
+"device": "iPhone",
+"app": "Snapchat",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-11",
+"name": "Mom",
+"device": "iPhone",
+"app": "Safari",
+"minutes": 41,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-11",
+"name": "Mom",
+"device": "iPhone",
+"app": "YouTube",
+"minutes": 38,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-11",
+"name": "Mom",
+"device": "iPhone",
+"app": "Roblox",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-11",
+"name": "Mom",
+"device": "iPhone",
+"app": "Messages",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-11",
+"name": "Mom",
+"device": "iPhone",
+"app": "FaceTime",
+"minutes": 81,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-11",
+"name": "Mom",
+"device": "iPhone",
+"app": "Spotify",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-11",
+"name": "Mom",
+"device": "iPhone",
+"app": "Maps",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-21",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 225,
+"pickups": 89,
+"notifications": 53,
+"source": "manual"
+},
+{
+"date": "2026-09-21",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 158,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-21",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 36,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-21",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-22",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 234,
+"pickups": 87,
+"notifications": 43,
+"source": "manual"
+},
+{
+"date": "2026-09-22",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 165,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-22",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 41,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-22",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-23",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 245,
+"pickups": 90,
+"notifications": 32,
+"source": "manual"
+},
+{
+"date": "2026-09-23",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 130,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-23",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 40,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-23",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-24",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 233,
+"pickups": 93,
+"notifications": 35,
+"source": "manual"
+},
+{
+"date": "2026-09-24",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 172,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-24",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 36,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-24",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-25",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 249,
+"pickups": 91,
+"notifications": 55,
+"source": "manual"
+},
+{
+"date": "2026-09-25",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 131,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-25",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 43,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-25",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-26",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 239,
+"pickups": 97,
+"notifications": 46,
+"source": "manual"
+},
+{
+"date": "2026-09-26",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 137,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-26",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 45,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-26",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-27",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 217,
+"pickups": 88,
+"notifications": 46,
+"source": "manual"
+},
+{
+"date": "2026-09-27",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 145,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-27",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 40,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-27",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-28",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 211,
+"pickups": 86,
+"notifications": 35,
+"source": "manual"
+},
+{
+"date": "2026-09-28",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 165,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-28",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 42,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-28",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-29",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 219,
+"pickups": 86,
+"notifications": 47,
+"source": "manual"
+},
+{
+"date": "2026-09-29",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 165,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-29",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 38,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-29",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-30",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 201,
+"pickups": 84,
+"notifications": 43,
+"source": "manual"
+},
+{
+"date": "2026-09-30",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 140,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-30",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 42,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-30",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-01",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 209,
+"pickups": 90,
+"notifications": 52,
+"source": "manual"
+},
+{
+"date": "2026-10-01",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 126,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-01",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 43,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-01",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 28,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-02",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 223,
+"pickups": 89,
+"notifications": 36,
+"source": "manual"
+},
+{
+"date": "2026-10-02",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 142,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-02",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 48,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-02",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-03",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 177,
+"pickups": 81,
+"notifications": 33,
+"source": "manual"
+},
+{
+"date": "2026-10-03",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 122,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-03",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 42,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-03",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-04",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 182,
+"pickups": 80,
+"notifications": 34,
+"source": "manual"
+},
+{
+"date": "2026-10-04",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 136,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-04",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-04",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-05",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 158,
+"pickups": 79,
+"notifications": 41,
+"source": "manual"
+},
+{
+"date": "2026-10-05",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 135,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-05",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 45,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-05",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 34,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-06",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 205,
+"pickups": 86,
+"notifications": 40,
+"source": "manual"
+},
+{
+"date": "2026-10-06",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 109,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-06",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 39,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-06",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-07",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 195,
+"pickups": 81,
+"notifications": 33,
+"source": "manual"
+},
+{
+"date": "2026-10-07",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 134,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-07",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 39,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-07",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-08",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 175,
+"pickups": 83,
+"notifications": 38,
+"source": "manual"
+},
+{
+"date": "2026-10-08",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 129,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-08",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 45,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-08",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 26,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-09",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 168,
+"pickups": 74,
+"notifications": 36,
+"source": "manual"
+},
+{
+"date": "2026-10-09",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 120,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-09",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 43,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-09",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 30,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-10",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 178,
+"pickups": 76,
+"notifications": 34,
+"source": "manual"
+},
+{
+"date": "2026-10-10",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 109,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-10",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 48,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-10",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 30,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-11",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:social",
+"minutes": 165,
+"pickups": 76,
+"notifications": 30,
+"source": "manual"
+},
+{
+"date": "2026-10-11",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:general",
+"minutes": 141,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-11",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:messaging",
+"minutes": 49,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-10-11",
+"name": "Liam",
+"device": "iPhone",
+"app": "category:healthy",
+"minutes": 30,
+"pickups": "",
+"notifications": "",
+"source": "manual"
+},
+{
+"date": "2026-09-21",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 11,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 33,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 14,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 69,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 69,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 16,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 72,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 77,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 34,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 35,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 14,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 91,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 51,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 38,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 28,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 38,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 13,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 89,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 31,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 43,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 15,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 54,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 71,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 29,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 43,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 33,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 13,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 83,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 58,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 34,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 16,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 36,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 14,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 116,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 35,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 14,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 37,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 42,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 26,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 9,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 72,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 26,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 53,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 11,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 66,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 51,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 28,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 40,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 33,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 29,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 14,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 36,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 76,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 45,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 37,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 10,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 39,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 78,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 28,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 43,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 30,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 34,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 9,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 77,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 49,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 12,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 58,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 8,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 47,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 59,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 42,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 28,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 47,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 45,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 62,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 26,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 30,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 54,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 58,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 31,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 47,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 33,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 28,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 9,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 47,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 40,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 55,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 34,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 57,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 50,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 26,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 28,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 39,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 39,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 13,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 47,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 39,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 37,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 13,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 41,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 43,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 19,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 57,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 31,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 48,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 26,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 20,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 54,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 48,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 17,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 26,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 41,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 37,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Dad",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 10,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Dad",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 34,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Dad",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Dad",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 47,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Dad",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 60,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Dad",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 40,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Dad",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 18,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Dad",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Dad",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 46,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 65,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 75,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 57,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 23,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 74,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 43,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 14,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-21",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 9,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 59,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 109,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 51,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 55,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 41,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 58,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 11,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-22",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 10,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 47,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 90,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 58,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 45,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 54,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 40,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 8,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-23",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 10,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 78,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 50,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 70,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 54,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 41,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 39,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 52,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 11,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-24",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 10,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 74,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 94,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 47,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 26,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 52,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 45,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 45,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 11,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-25",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 8,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 29,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 93,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 55,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 59,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 34,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 25,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 8,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-26",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 11,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 89,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 62,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 70,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 41,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 36,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 10,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-27",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 11,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 74,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 70,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 49,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 49,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 46,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 31,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 14,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-28",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 7,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 71,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 86,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 47,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 35,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 63,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 59,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 15,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-29",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 7,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 77,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 60,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 61,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 47,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 46,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 21,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 56,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 12,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-09-30",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 8,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 53,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 86,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 57,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 42,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 55,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 52,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 42,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 9,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-01",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 9,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 39,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 85,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 78,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 29,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 54,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 48,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 56,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 16,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-02",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 4,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 83,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 56,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 27,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 57,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 38,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 68,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 22,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 10,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-03",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 13,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 84,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 28,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 70,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 72,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 14,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-04",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 6,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 45,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 89,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 46,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 42,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 71,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 24,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 6,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-05",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 11,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 60,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 66,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 35,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 77,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 26,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 39,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 56,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 12,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-06",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 8,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 58,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 78,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 62,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 67,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 33,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 31,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 53,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 12,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-07",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 11,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 45,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 48,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 63,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 32,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 62,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 46,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 38,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 13,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-08",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 10,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 44,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 33,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 81,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 74,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 30,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 31,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 71,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 13,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-09",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 9,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 69,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 61,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 73,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 42,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 47,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 38,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 68,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 15,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-10",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 6,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Ava",
+"device": "Android",
+"app": "TikTok [com.zhiliaoapp.musically]",
+"minutes": 72,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Ava",
+"device": "Android",
+"app": "Instagram [com.instagram.android]",
+"minutes": 29,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Ava",
+"device": "Android",
+"app": "Reddit [com.reddit.frontpage]",
+"minutes": 100,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Ava",
+"device": "Android",
+"app": "Chrome [com.android.chrome]",
+"minutes": 54,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Ava",
+"device": "Android",
+"app": "YouTube [com.google.android.youtube]",
+"minutes": 42,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Ava",
+"device": "Android",
+"app": "WhatsApp [com.whatsapp]",
+"minutes": 57,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Ava",
+"device": "Android",
+"app": "Messages [com.google.android.apps.messaging]",
+"minutes": 29,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Ava",
+"device": "Android",
+"app": "Strava [com.strava]",
+"minutes": 11,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+},
+{
+"date": "2026-10-11",
+"name": "Ava",
+"device": "Android",
+"app": "Spotify [com.spotify.music]",
+"minutes": 9,
+"pickups": "",
+"notifications": "",
+"source": "auto"
+}
+]
 }
