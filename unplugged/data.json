@@ -1,0 +1,951 @@
+{
+ "example": true,
+ "note": "EXAMPLE DATA - replace by setting SHEET_CSV_URL in unplugged/index.html",
+ "rows": [
+  {
+   "date": "2026-09-21",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 419,
+   "pickups": 93,
+   "notifications": 76,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-22",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 407,
+   "pickups": 90,
+   "notifications": 74,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-23",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 442,
+   "pickups": 98,
+   "notifications": 80,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-24",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 402,
+   "pickups": 89,
+   "notifications": 73,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-25",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 434,
+   "pickups": 96,
+   "notifications": 78,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-26",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 422,
+   "pickups": 93,
+   "notifications": 76,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-27",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 401,
+   "pickups": 89,
+   "notifications": 72,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-28",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 413,
+   "pickups": 91,
+   "notifications": 75,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-29",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 365,
+   "pickups": 81,
+   "notifications": 66,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-30",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 372,
+   "pickups": 82,
+   "notifications": 67,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-01",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 333,
+   "pickups": 74,
+   "notifications": 60,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-02",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 316,
+   "pickups": 70,
+   "notifications": 57,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-03",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 316,
+   "pickups": 70,
+   "notifications": 57,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-04",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 317,
+   "pickups": 70,
+   "notifications": 57,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-05",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 266,
+   "pickups": 59,
+   "notifications": 48,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-06",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 253,
+   "pickups": 56,
+   "notifications": 46,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-07",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 251,
+   "pickups": 55,
+   "notifications": 45,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-08",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 263,
+   "pickups": 58,
+   "notifications": 47,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-09",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 249,
+   "pickups": 55,
+   "notifications": 45,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-10",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 242,
+   "pickups": 53,
+   "notifications": 44,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-11",
+   "name": "Casey",
+   "device": "iPhone",
+   "minutes": 265,
+   "pickups": 58,
+   "notifications": 48,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-21",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 306,
+   "pickups": 68,
+   "notifications": 55,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-22",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 348,
+   "pickups": 77,
+   "notifications": 63,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-23",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 318,
+   "pickups": 70,
+   "notifications": 57,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-24",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 311,
+   "pickups": 69,
+   "notifications": 56,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-25",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 309,
+   "pickups": 68,
+   "notifications": 56,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-26",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 319,
+   "pickups": 70,
+   "notifications": 58,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-27",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 346,
+   "pickups": 76,
+   "notifications": 62,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-28",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 301,
+   "pickups": 66,
+   "notifications": 54,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-29",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 310,
+   "pickups": 68,
+   "notifications": 56,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-30",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 300,
+   "pickups": 66,
+   "notifications": 54,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-01",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 276,
+   "pickups": 61,
+   "notifications": 50,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-02",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 272,
+   "pickups": 60,
+   "notifications": 49,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-03",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 240,
+   "pickups": 53,
+   "notifications": 43,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-04",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 229,
+   "pickups": 50,
+   "notifications": 41,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-05",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 223,
+   "pickups": 49,
+   "notifications": 40,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-06",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 229,
+   "pickups": 50,
+   "notifications": 41,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-07",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 208,
+   "pickups": 46,
+   "notifications": 37,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-08",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 204,
+   "pickups": 45,
+   "notifications": 37,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-09",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 214,
+   "pickups": 47,
+   "notifications": 38,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-10",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 209,
+   "pickups": 46,
+   "notifications": 38,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-11",
+   "name": "Mom",
+   "device": "iPhone",
+   "minutes": 204,
+   "pickups": 45,
+   "notifications": 37,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-21",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 303,
+   "pickups": 67,
+   "notifications": 55,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-22",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 299,
+   "pickups": 66,
+   "notifications": 54,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-23",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 278,
+   "pickups": 61,
+   "notifications": 50,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-24",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 293,
+   "pickups": 65,
+   "notifications": 53,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-25",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 291,
+   "pickups": 64,
+   "notifications": 52,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-26",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 307,
+   "pickups": 68,
+   "notifications": 55,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-27",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 300,
+   "pickups": 66,
+   "notifications": 54,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-28",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 273,
+   "pickups": 60,
+   "notifications": 49,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-29",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 296,
+   "pickups": 65,
+   "notifications": 53,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-30",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 251,
+   "pickups": 55,
+   "notifications": 45,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-01",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 257,
+   "pickups": 57,
+   "notifications": 46,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-02",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 264,
+   "pickups": 58,
+   "notifications": 48,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-03",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 232,
+   "pickups": 51,
+   "notifications": 42,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-04",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 238,
+   "pickups": 52,
+   "notifications": 43,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-05",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 214,
+   "pickups": 47,
+   "notifications": 38,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-06",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 230,
+   "pickups": 51,
+   "notifications": 41,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-07",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 226,
+   "pickups": 50,
+   "notifications": 41,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-08",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 220,
+   "pickups": 48,
+   "notifications": 40,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-09",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 230,
+   "pickups": 51,
+   "notifications": 41,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-10",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 211,
+   "pickups": 46,
+   "notifications": 38,
+   "source": "auto"
+  },
+  {
+   "date": "2026-10-11",
+   "name": "Dad",
+   "device": "Android",
+   "minutes": 224,
+   "pickups": 49,
+   "notifications": 40,
+   "source": "auto"
+  },
+  {
+   "date": "2026-09-21",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 385,
+   "pickups": 85,
+   "notifications": 70,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-22",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 384,
+   "pickups": 85,
+   "notifications": 69,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-23",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 377,
+   "pickups": 83,
+   "notifications": 68,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-24",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 400,
+   "pickups": 88,
+   "notifications": 72,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-25",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 407,
+   "pickups": 90,
+   "notifications": 74,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-26",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 378,
+   "pickups": 84,
+   "notifications": 68,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-27",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 389,
+   "pickups": 86,
+   "notifications": 70,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-28",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 346,
+   "pickups": 76,
+   "notifications": 62,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-29",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 376,
+   "pickups": 83,
+   "notifications": 68,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-30",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 365,
+   "pickups": 81,
+   "notifications": 66,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-01",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 377,
+   "pickups": 83,
+   "notifications": 68,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-02",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 359,
+   "pickups": 79,
+   "notifications": 65,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-03",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 322,
+   "pickups": 71,
+   "notifications": 58,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-04",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 320,
+   "pickups": 71,
+   "notifications": 58,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-05",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 327,
+   "pickups": 72,
+   "notifications": 59,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-06",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 287,
+   "pickups": 63,
+   "notifications": 52,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-07",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 302,
+   "pickups": 67,
+   "notifications": 54,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-08",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 287,
+   "pickups": 63,
+   "notifications": 52,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-09",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 285,
+   "pickups": 63,
+   "notifications": 51,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-10",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 282,
+   "pickups": 62,
+   "notifications": 51,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-11",
+   "name": "Ava",
+   "device": "Android",
+   "minutes": 317,
+   "pickups": 70,
+   "notifications": 57,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-21",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 282,
+   "pickups": 62,
+   "notifications": 51,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-22",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 287,
+   "pickups": 63,
+   "notifications": 52,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-23",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 294,
+   "pickups": 65,
+   "notifications": 53,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-24",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 317,
+   "pickups": 70,
+   "notifications": 57,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-25",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 279,
+   "pickups": 62,
+   "notifications": 50,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-26",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 297,
+   "pickups": 66,
+   "notifications": 54,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-27",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 302,
+   "pickups": 67,
+   "notifications": 54,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-28",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 314,
+   "pickups": 69,
+   "notifications": 57,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-29",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 307,
+   "pickups": 68,
+   "notifications": 55,
+   "source": "manual"
+  },
+  {
+   "date": "2026-09-30",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 306,
+   "pickups": 68,
+   "notifications": 55,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-01",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 275,
+   "pickups": 61,
+   "notifications": 50,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-02",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 278,
+   "pickups": 61,
+   "notifications": 50,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-03",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 272,
+   "pickups": 60,
+   "notifications": 49,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-04",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 291,
+   "pickups": 64,
+   "notifications": 52,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-05",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 291,
+   "pickups": 64,
+   "notifications": 52,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-06",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 252,
+   "pickups": 56,
+   "notifications": 45,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-07",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 250,
+   "pickups": 55,
+   "notifications": 45,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-08",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 252,
+   "pickups": 56,
+   "notifications": 45,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-09",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 252,
+   "pickups": 56,
+   "notifications": 45,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-10",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 263,
+   "pickups": 58,
+   "notifications": 47,
+   "source": "manual"
+  },
+  {
+   "date": "2026-10-11",
+   "name": "Liam",
+   "device": "iPhone",
+   "minutes": 267,
+   "pickups": 59,
+   "notifications": 48,
+   "source": "manual"
+  }
+ ]
+}
