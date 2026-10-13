@@ -19,12 +19,18 @@ h1{font-size:26px;font-weight:800;letter-spacing:-.5px;background:linear-gradien
 .red{text-align:right;white-space:nowrap}.pct{font-size:22px;font-weight:800;color:#4ade80}.pct.up{color:#f87171}.bar{height:5px;background:#1f2230;border-radius:9px;margin:4px 0}.bar i{display:block;height:100%;margin-left:auto;border-radius:9px;background:linear-gradient(90deg,#22c55e,#a3e635)}
 .foot{text-align:center;color:#565b6e;font-size:11px;margin-top:14px}
 @media(max-width:600px){body{padding:18px 12px}h1{font-size:21px}.row{grid-template-columns:24px 36px 1fr 76px;grid-template-areas:"r a w p" ". . s t" ". . b b";row-gap:8px}.rank{grid-area:r;font-size:17px}.av{grid-area:a;width:36px;height:36px}.who{grid-area:w}.red{grid-area:p}.spark{grid-area:s}.today{grid-area:t;text-align:right}.bonus{grid-area:b;display:flex;gap:12px}.stats .st b{font-size:17px}}
+.legend{margin-top:16px;background:#11131c;border:1px solid #1f2230;border-radius:16px;padding:12px 14px}.legend h3{font-size:13px;color:#8b90a3;margin-bottom:8px}
+.lg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.lg div{font-size:12px;color:#b4b8c8;line-height:1.4}.lg b{font-size:16px;color:#e8eaf2;display:block}
+.bd{grid-column:1/-1;font-size:12px;color:#b4b8c8;border-top:1px solid #1f2230;padding-top:8px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+.chip{padding:2px 8px;border-radius:99px;background:#ffffff0d;white-space:nowrap}.c-social{color:#f9a8d4}.c-messaging{color:#7dd3fc}.c-healthy{color:#86efac}.c-general{color:#e5e7eb}
+@media(max-width:600px){.lg{grid-template-columns:1fr 1fr}.row .bd{grid-area:d}.row{grid-template-areas:"r a w p" ". . s t" ". . b b" "d d d d"}}
 </style></head><body><div class="wrap">
 <div class="top"><div><h1>Fogerty Family Unplugged Challenge</h1><div class="sub" id="sub">Loading…</div></div><span class="ex" id="ex" hidden>EXAMPLE DATA</span></div>
 <div class="exbar" id="exbar" hidden>⚠️ Example data — the real family Sheet isn't connected yet. These numbers are made up.</div>
 <div id="app"></div>
-<div class="foot">Baseline = each person's first 7 days · score = % drop of last 7-day average vs. baseline · <a href="README.md" style="color:#7dd3fc">setup</a></div>
-</div><script>
+<div id="legend"></div>
+<div class="foot">Baseline = each person's first 7 days · score = % drop in <b>weighted</b> minutes (last 7-day avg vs. own baseline) · <a href="sync/" style="color:#7dd3fc">log a day (iPhone)</a> · <a href="README.md" style="color:#7dd3fc">setup</a></div>
+</div><script src="score.js"></script><script>
 // Paste the published Google Sheet CSV URL here (File → Share → Publish to web → CSV). Empty = use data.json.
 const SHEET_CSV_URL = "";
 const COLORS=["#f472b6","#a78bfa","#38bdf8","#4ade80","#fbbf24","#fb923c","#f87171","#2dd4bf"];
@@ -33,24 +39,35 @@ const hm=m=>{m=Math.round(m);return Math.floor(m/60)+"h "+String(m%60).padStart(
 const fmtD=s=>new Date(s+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric"});
 function parseCSV(t){const out=[];let row=[],f="",q=false;for(let i=0;i<t.length;i++){const c=t[i];if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}else if(c=='"')q=true;else if(c==","){row.push(f);f=""}else if(c=="\n"||c=="\r"){if(c=="\r"&&t[i+1]=="\n")i++;row.push(f);out.push(row);row=[];f=""}else f+=c}if(f||row.length){row.push(f);out.push(row)}
  const h=out.shift().map(x=>x.trim().toLowerCase());return out.filter(r=>r.some(x=>x.trim())).map(r=>Object.fromEntries(h.map((k,i)=>[k,(r[i]||"").trim()])))}
-async function load(){if(SHEET_CSV_URL){try{const r=await fetch(SHEET_CSV_URL,{cache:"no-store"});if(r.ok){const rows=parseCSV(await r.text());if(rows.length)return{rows,example:false}}}catch(e){console.warn(e)}}
+async function load(){await loadWeights("weights.json");if(SHEET_CSV_URL){try{const r=await fetch(SHEET_CSV_URL,{cache:"no-store"});if(r.ok){const rows=parseCSV(await r.text());if(rows.length)return{rows,example:false}}}catch(e){console.warn(e)}}
  const j=await (await fetch("data.json",{cache:"no-store"})).json();return{rows:j.rows,example:true}}
 function normDate(s){s=String(s).trim();if(/^\d{4}-\d{2}-\d{2}/.test(s))return s.slice(0,10);const d=new Date(s);return isNaN(d)?null:d.toISOString().slice(0,10)}
 const avg=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:0;
 function spark(v,col){if(v.length<2)return"";const mx=Math.max(...v),mn=Math.min(...v),W=90,H=30,p=4;const pts=v.map((x,i)=>[(i/(v.length-1)*W).toFixed(1),(mx==mn?H/2:p+(1-(x-mn)/(mx-mn))*(H-2*p)).toFixed(1)]);const l=pts[pts.length-1];
  return `<svg width="90" height="30" viewBox="-3 0 96 30"><polyline points="${pts.map(p=>p.join(",")).join(" ")}" fill="none" stroke="${col}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${l[0]}" cy="${l[1]}" r="2.8" fill="${col}"/></svg>`}
-function compute(rows){const by={};for(const r of rows){const d=normDate(r.date),n=(r.name||"").trim(),m=parseFloat(r.minutes);if(!d||!n||isNaN(m))continue;(by[n]??={name:n,days:{}}).days[d]={m,p:parseFloat(r.pickups),nt:parseFloat(r.notifications),dev:r.device||"",src:r.source||""}}
- const people=Object.values(by).map((P,i)=>{const ds=Object.keys(P.days).sort(),last=P.days[ds[ds.length-1]];const base=ds.slice(0,7).map(d=>P.days[d].m);const rest=ds.slice(7),recent=rest.slice(-7);const ra=avg(recent.map(d=>P.days[d].m)),ba=avg(base);
-  const pct=recent.length&&ba?(ba-ra)/ba*100:null;const dev=/android/i.test(last.dev)?"Android":"iPhone";
-  return{name:P.name,color:COLORS[i%COLORS.length],dev,auto:/auto/i.test(last.src),today:last.m,lastDate:ds[ds.length-1],pickups:last.p,notif:last.nt,spark:ds.slice(-7).map(d=>P.days[d].m),ba,ra,pct,saved:recent.length?(ba-ra)*recent.length:0,inBase:!rest.length}});
+function compute(rows){const by={};for(const r of rows){const d=normDate(r.date),n=(r.name||"").trim(),m=parseFloat(r.minutes);if(!d||!n||isNaN(m))continue;
+  const P=(by[n]??={name:n,days:{}}),D=(P.days[d]??={apps:{},p:NaN,nt:NaN,dev:"",src:""});D.apps[(r.app||"").trim()]=m;// same date+name+app: later row wins
+  const pk=parseFloat(r.pickups),nt=parseFloat(r.notifications);if(!isNaN(pk))D.p=pk;if(!isNaN(nt))D.nt=nt;if(r.device)D.dev=r.device;if(r.source)D.src=r.source}
+ for(const P of Object.values(by))for(const D of Object.values(P.days)){const e=Object.entries(D.apps);
+  // app-less rows (old total-only rows, or the Android "not covered by listed apps" remainder) count as general
+  D.m=Object.values(D.apps).reduce((s,v)=>s+v,0);D.w=Object.entries(D.apps).reduce((s,[k,v])=>s+v*wOf(k),0)}
+ const people=Object.values(by).map((P,i)=>{const ds=Object.keys(P.days).sort(),last=P.days[ds[ds.length-1]];const bd=ds.slice(0,7),rest=ds.slice(7),recent=rest.slice(-7);
+  const A=(l,k)=>avg(l.map(d=>P.days[d][k]));const ba=A(bd,"w"),ra=A(recent,"w"),bRaw=A(bd,"m"),rRaw=A(recent,"m");
+  const pct=recent.length&&ba?(ba-ra)/ba*100:null,rawPct=recent.length&&bRaw?(bRaw-rRaw)/bRaw*100:null;const dev=/android/i.test(last.dev)?"Android":"iPhone";
+  const win=recent.length?recent:bd,tops={},catT={};for(const d of win)for(const[k,v]of Object.entries(P.days[d].apps)){const L=appLabel(k);(tops[L]??={m:0,c:catOf(k)}).m+=v/win.length;catT[catOf(k)]=(catT[catOf(k)]||0)+v/win.length}
+  const top=Object.entries(tops).sort((a,b)=>b[1].m-a[1].m).slice(0,3);
+  return{name:P.name,color:COLORS[i%COLORS.length],dev,auto:/auto/i.test(last.src),today:last.m,todayW:last.w,lastDate:ds[ds.length-1],pickups:last.p,notif:last.nt,spark:ds.slice(-7).map(d=>P.days[d].w),ba,ra,bRaw,rRaw,pct,rawPct,top,catT,saved:recent.length?(ba-ra)*recent.length:0,inBase:!rest.length}});
  people.sort((a,b)=>(b.pct??-1e9)-(a.pct??-1e9));return people}
+function legend(){return `<div class="legend"><h3>How minutes are weighted</h3><div class="lg">${UW.list.map(c=>`<div><b class="c-${c.id}">${c.emoji} ${c.weight}×</b>${esc(c.label)}${c.id==UW.def?" · default for unknown apps":""}</div>`).join("")}</div></div>`}
+function breakdown(p){const cats=UW.list.filter(c=>p.catT[c.id]).map(c=>`<span class="chip c-${c.id}">${c.emoji} ${hm(p.catT[c.id])}</span>`).join("");
+ return `<div class="bd"><span><b>${hm(p.rRaw||p.bRaw)}</b> raw → <b>${hm(p.ra||p.ba)}</b> weighted per day (7-day avg)${p.rawPct!=null?` · raw ${p.rawPct>=0?"−":"+"}${Math.abs(Math.round(p.rawPct))}%`:""}</span>${cats}<span>Top: ${p.top.map(([L,o])=>`<span class="c-${o.c}">${esc(L)} ${Math.round(o.m)}m</span>`).join(" · ")}</span></div>`}
 function render({rows,example}){document.getElementById("ex").hidden=document.getElementById("exbar").hidden=!example;
  const ppl=compute(rows),app=document.getElementById("app");if(!ppl.length){app.innerHTML='<p class="sub" style="margin-top:20px">No data yet.</p>';return}
  const all=[...new Set(rows.map(r=>normDate(r.date)).filter(Boolean))].sort(),first=all[0],lastD=all[all.length-1],week=Math.floor((new Date(lastD)-new Date(first))/864e5/7)+1;
  const wkStart=new Date(new Date(lastD+"T12:00:00")-6*864e5).toISOString().slice(0,10);
- document.getElementById("sub").textContent=week<=1?`Baseline week · ${fmtD(first)} – ${fmtD(lastD)} · just use your phone normally`:`Week ${week} · ${fmtD(wkStart)} – ${fmtD(lastD)} · ranked by % less screen time vs. baseline week`;
+ document.getElementById("sub").textContent=week<=1?`Baseline week · ${fmtD(first)} – ${fmtD(lastD)} · just use your phone normally`:`Week ${week} · ${fmtD(wkStart)} – ${fmtD(lastD)} · ranked by % less weighted screen time vs. own baseline week`;
  const sc=ppl.filter(p=>p.pct!=null),w=sc[0];let h="";
- h+=w?`<div class="win"><div style="font-size:38px">🏆</div><div><div class="t">${week<=1?"":"Weekly winner"}${week<=1?"Leader":""}</div><div class="n">${esc(w.name)} cut screen time ${Math.round(w.pct)}%</div><div class="s">Down from ${hm(w.ba)} to ${hm(w.ra)} a day (7-day avg)</div></div></div>`
+ h+=w?`<div class="win"><div style="font-size:38px">🏆</div><div><div class="t">${week<=1?"":"Weekly winner"}${week<=1?"Leader":""}</div><div class="n">${esc(w.name)} cut weighted screen time ${Math.round(w.pct)}%</div><div class="s">Weighted minutes down from ${hm(w.ba)} to ${hm(w.ra)} a day (7-day avg)</div></div></div>`
   :`<div class="win"><div style="font-size:38px">⏳</div><div><div class="t">Baseline week</div><div class="n">Rankings start after 7 days of data</div><div class="s">Log every day so your baseline is accurate</div></div></div>`;
  const fam=sc.length?avg(sc.map(p=>p.pct)):null,saved=sc.reduce((s,p)=>s+Math.max(0,p.saved),0)/60;
  h+=`<div class="stats"><div class="st"><b>${fam==null?"—":(fam>=0?"−":"+")+Math.abs(Math.round(fam))+"%"}</b><span>family avg reduction</span></div><div class="st"><b>${saved.toFixed(1)} h</b><span>saved together (last 7 days)</span></div><div class="st"><b>${ppl.filter(p=>p.auto).length} / ${ppl.length}</b><span>auto-synced devices</span></div></div>`;
@@ -58,9 +75,9 @@ function render({rows,example}){document.getElementById("ex").hidden=document.ge
  ppl.forEach((p,i)=>{const medal=["🥇","🥈","🥉"][i]||i+1,c=p.color,pc=p.pct;
   h+=`<div class="row${i==0&&pc!=null?" first":""}"><div class="rank">${pc==null?"–":medal}</div><div class="av" style="background:${c}22;color:${c};border-color:${c}66">${esc(p.name[0].toUpperCase())}</div>
 <div class="who"><div class="nm">${esc(p.name)}</div><div class="tags"><span class="badge ${p.dev=="Android"?"and":"ios"}">${p.dev=="Android"?"🤖 Android":"📱 iPhone"}</span><span class="sync ${p.auto?"ok":"man"}">${p.auto?"⟳ Auto-synced":"✎ Manual"}</span></div></div>
-<div class="spark">${spark(p.spark,c)}<div class="lbl">7-day</div></div><div class="today"><div class="big">${hm(p.today)}</div><div class="lbl">${p.lastDate==lastD?"today":fmtD(p.lastDate)}</div></div>
+<div class="spark">${spark(p.spark,c)}<div class="lbl">7-day wtd</div></div><div class="today"><div class="big">${hm(p.today)}</div><div class="lbl">${p.lastDate==lastD?"today":fmtD(p.lastDate)}</div></div>
 <div class="bonus"><div>📱 ${isNaN(p.pickups)?"—":Math.round(p.pickups)}</div><div>🔔 ${isNaN(p.notif)?"—":Math.round(p.notif)}</div></div>
-<div class="red">${pc==null?`<div class="pct" style="color:#8b90a3;font-size:15px">baseline</div><div class="lbl">base so far ${hm(p.ba)}</div>`:`<div class="pct${pc<0?" up":""}">${pc>=0?"−":"+"}${Math.abs(Math.round(pc))}%</div><div class="bar"><i style="width:${Math.max(0,Math.min(100,pc*2))}%"></i></div><div class="lbl">base ${hm(p.ba)}</div>`}</div></div>`});
- app.innerHTML=h}
+<div class="red">${pc==null?`<div class="pct" style="color:#8b90a3;font-size:15px">baseline</div><div class="lbl">base so far ${hm(p.ba)} wtd</div>`:`<div class="pct${pc<0?" up":""}">${pc>=0?"−":"+"}${Math.abs(Math.round(pc))}%</div><div class="bar"><i style="width:${Math.max(0,Math.min(100,pc*2))}%"></i></div><div class="lbl">base ${hm(p.ba)} wtd</div>`}</div>${breakdown(p)}</div>`});
+ app.innerHTML=h;document.getElementById("legend").innerHTML=legend()}
 load().then(render).catch(e=>{document.getElementById("sub").textContent="Couldn't load data: "+e.message});
 </script></body></html>

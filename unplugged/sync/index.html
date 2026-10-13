@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Log a day · Unplugged Challenge</title><style>
+[hidden]{display:none!important}*{box-sizing:border-box;margin:0}body{background:#07080d;font-family:-apple-system,Inter,"Segoe UI",Roboto,sans-serif;color:#e8eaf2;padding:18px 14px 40px}
+.wrap{max-width:520px;margin:auto}h1{font-size:22px;font-weight:800;background:linear-gradient(90deg,#c4b5fd,#7dd3fc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:#8b90a3;font-size:13px;margin:4px 0 14px}.card{background:#11131c;border:1px solid #1f2230;border-radius:16px;padding:14px;margin-bottom:12px}
+label{display:block;font-size:13px;color:#b4b8c8;margin:10px 0 5px;font-weight:600}label small{color:#6b7085;font-weight:400}
+input,select{width:100%;font-size:17px;padding:12px;border-radius:12px;border:1px solid #2a2e40;background:#0b0d14;color:#e8eaf2;-webkit-appearance:none}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}.names{display:flex;flex-wrap:wrap;gap:8px}.names button{flex:1 1 30%;padding:12px 6px;font-size:16px;border-radius:12px;border:1px solid #2a2e40;background:#0b0d14;color:#e8eaf2;font-weight:700}
+.names button.on{background:#7c3aed44;border-color:#a78bfa}.go{width:100%;margin-top:14px;padding:15px;font-size:18px;font-weight:800;border:0;border-radius:14px;background:linear-gradient(90deg,#7c3aed,#db2777);color:#fff}
+.test{padding:10px 12px;border-radius:12px;border:1px solid #fbbf2466;background:#fbbf2414;color:#fbbf24;font-size:13px;margin-bottom:12px}.err{color:#f87171;font-size:13px;margin-top:8px}
+pre{white-space:pre-wrap;word-break:break-all;font-size:11.5px;background:#0b0d14;border-radius:10px;padding:10px;color:#a5b4fc;margin-top:8px}
+.score{display:flex;justify-content:space-between;font-size:14px;padding:4px 0;border-bottom:1px solid #1f2230}.score:last-child{border:0}.big{font-size:30px;font-weight:800;color:#4ade80}
+.done{text-align:center;padding:26px 14px}.done .ic{font-size:56px}.done h2{font-size:22px;margin:8px 0}a{color:#7dd3fc}
+details{font-size:13.5px;color:#b4b8c8;line-height:1.55}details summary{font-weight:700;color:#e8eaf2;cursor:pointer}details ol{padding-left:20px;margin:8px 0}details code{color:#a5b4fc;word-break:break-all}
+</style></head><body><div class="wrap">
+<h1>Log today's screen time</h1><div class="sub">Fogerty Family Unplugged Challenge · <a href="../">scoreboard</a></div>
+<div class="test" id="testbar" hidden>🧪 <b>Test mode</b> — the family endpoint isn't set up yet. Nothing is sent; you'll see a preview of what would be sent and the score it produces.</div>
+<form id="f" class="card" autocomplete="off">
+<label>Who are you?</label><div class="names" id="names"></div><input id="nameOther" placeholder="…or type your name" style="margin-top:8px">
+<div class="grid"><div><label>Date</label><input type="date" id="date" required></div><div><label>Total today <small>(min)</small></label><input id="total" type="number" inputmode="numeric" min="0" placeholder="e.g. 245" required></div></div>
+<label>Minutes by category <small>— Settings → Screen Time → See All App &amp; Website Activity. Anything left over counts as “Other” (1×).</small></label>
+<div class="grid" id="cats"></div>
+<div class="grid"><div><label>Pickups <small>(optional)</small></label><input id="pickups" type="number" inputmode="numeric" min="0"></div><div><label>Notifications <small>(optional)</small></label><input id="notifications" type="number" inputmode="numeric" min="0"></div></div>
+<label id="pinl">Family code <small>(saved on this phone)</small></label><input id="pin" type="password" autocomplete="off">
+<div class="err" id="err"></div><button class="go" id="go">Submit</button></form>
+<div id="out"></div>
+<div class="card"><details><summary>⚡ Optional: one-tap iOS 26 Shortcut (untested)</summary>
+<p style="margin-top:8px">This page accepts prefilled values in the link, e.g.<br><code id="ex"></code><br>Parameters: <code>name, date (YYYY-MM-DD), total, social, general (or other), messaging, healthy, pickups, notifications</code>, all minutes. Add <code>&amp;auto=1</code> to submit straight away.</p>
+<ol><li>Shortcuts → <b>+</b> → name it “Unplugged log”.</li>
+<li>Add <b>Get App &amp; Website Data</b> (Screen Time action, new in iOS 26) for <b>Today</b>. If your phone doesn't show this action, skip to step 5 — the page works fine typed by hand.</li>
+<li>From its result, take the total screen time and convert to minutes (<b>Calculate</b> ÷ 60 if it returns seconds). Optionally <b>Filter</b>/<b>Repeat with Each</b> over apps and add up TikTok/Instagram/Snapchat… into a “social” variable, Messages/WhatsApp/FaceTime into “messaging”, and Maps/Spotify/Fitness into “healthy”.</li>
+<li>Add <b>Text</b>: <code id="tpl"></code> with the variables inserted (whole numbers only).</li>
+<li>Add <b>Open URLs</b> with that text. Review the form, tap Submit.</li>
+<li>Optional: Automation → Time of Day 9:30 PM → run “Unplugged log”.</li></ol>
+<p><b>Honest status:</b> the Shortcut flow hasn't been tried on a real iPhone. Apple's exact output fields for “Get App &amp; Website Data” (seconds vs. a duration, whether per-app items are available, whether it works in an automation without unlocking) are unverified, so expect to tweak steps 3–4. The manual form above is the dependable path.</p></details></div>
+</div><script src="../score.js"></script><script>
+// After Casey deploys apps-script.gs as a web app, paste its /exec URL here. Empty = test mode.
+const SYNC_ENDPOINT = "";
+const NAMES=["Casey","Mom","Dad","Ava","Liam"];
+const CATS=[["social","🔥 Social / short video"],["messaging","💬 Messages & calls"],["healthy","🌱 Healthy (maps, music)"],["general","📱 Other (optional)"]];
+const $=id=>document.getElementById(id),Q=new URLSearchParams(location.search),esc=s=>String(s).replace(/[&<>"']/g,c=>"&#"+c.charCodeAt(0)+";");
+const hm=m=>{m=Math.round(m);return Math.floor(m/60)+"h "+String(m%60).padStart(2,"0")+"m"};
+let who=Q.get("name")||localStorage.getItem("unplugged_name")||"";
+$("names").innerHTML=NAMES.map(n=>`<button type="button" data-n="${n}">${n}</button>`).join("");
+function pick(n){who=n;document.querySelectorAll("#names button").forEach(b=>b.classList.toggle("on",b.dataset.n==n));$("nameOther").value=NAMES.includes(n)?"":n}
+$("names").onclick=e=>{if(e.target.dataset.n)pick(e.target.dataset.n)};$("nameOther").oninput=e=>{who=e.target.value.trim();document.querySelectorAll("#names button").forEach(b=>b.classList.remove("on"))};pick(who);
+$("cats").innerHTML=CATS.map(([id,l])=>`<div><label>${l}</label><input id="c_${id}" type="number" inputmode="numeric" min="0" placeholder="0"></div>`).join("");
+const today=new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);$("date").value=Q.get("date")||today;
+for(const k of["total","pickups","notifications"])if(Q.get(k))$(k).value=Q.get(k);
+for(const[id]of CATS){const v=Q.get(id)??(id=="general"?Q.get("other"):null);if(v)$("c_"+id).value=v}
+$("pin").value=Q.get("code")||localStorage.getItem("unplugged_code")||"";
+const testMode=!SYNC_ENDPOINT;$("testbar").hidden=!testMode;if(testMode){$("pin").hidden=$("pinl").hidden=true;$("go").textContent="Preview (test mode)"}
+$("ex").textContent=location.origin+location.pathname+"?name=Casey&total=245&social=90&messaging=40&healthy=20";
+$("tpl").textContent=location.origin+location.pathname+"?name=Casey&total=[Total]&social=[Social]&messaging=[Messaging]&healthy=[Healthy]";
+const num=id=>{const v=$(id).value.trim();return v===""?null:Math.round(Number(v))};
+function build(){const total=num("total");if(!who)throw"Pick your name.";if(total==null||total<0||total>1440)throw"Enter today's total in minutes (0–1440).";
+ const cats={};let sum=0;for(const[id]of CATS){const v=num("c_"+id);if(v){if(v<0)throw"Minutes can't be negative.";cats[id]=v;sum+=v}}
+ if(sum>total)throw`Categories add up to ${sum} min, more than the total (${total}). Raise the total or lower a category.`;
+ cats.general=(cats.general||0)+(total-sum); // leftover = other (1×)
+ return{kind:"iphone",date:$("date").value||today,name:who,device:"iPhone",total,categories:cats,pickups:num("pickups"),notifications:num("notifications"),source:Q.get("auto")?"auto":"manual"}}
+function scoreHtml(p){const rows=Object.entries(p.categories).filter(([,v])=>v).map(([id,v])=>{const c=UW.cats[id];return`<div class="score"><span>${c.emoji} ${esc(c.label.split(" (")[0])} · ${v} min × ${c.weight}</span><b>${Math.round(v*c.weight)}</b></div>`}).join("");
+ const w=Object.entries(p.categories).reduce((s,[id,v])=>s+v*UW.cats[id].weight,0);
+ return`<div style="display:flex;justify-content:space-between;align-items:end;margin:6px 0 10px"><div><div class="sub" style="margin:0">Weighted minutes</div><div class="big">${hm(w)}</div></div><div class="sub" style="margin:0;text-align:right">raw ${hm(p.total)}</div></div>${rows}`}
+function jsonp(url){return new Promise((res,rej)=>{const cb="cb"+Date.now(),s=document.createElement("script");const t=setTimeout(()=>{rej("No answer from the family sheet (timeout).")},20000);
+ window[cb]=d=>{clearTimeout(t);delete window[cb];s.remove();res(d)};s.onerror=()=>{clearTimeout(t);rej("Couldn't reach the family sheet.")};s.src=url+(url.includes("?")?"&":"?")+"callback="+cb;document.head.appendChild(s)})}
+async function submit(e){e&&e.preventDefault();$("err").textContent="";let p;try{p=build()}catch(m){$("err").textContent=m;return}
+ localStorage.setItem("unplugged_name",who);
+ if(testMode){$("out").innerHTML=`<div class="card"><h2 style="font-size:17px">🧪 Preview — not sent</h2><p class="sub">This is what would be sent to the family sheet (Apps Script <code>?action=iphone</code>):</p><pre>${esc(JSON.stringify(p,null,1))}</pre><h2 style="font-size:17px;margin-top:12px">Score for this day</h2>${scoreHtml(p)}</div>`;$("out").scrollIntoView({behavior:"smooth"});return}
+ const code=$("pin").value.trim();if(!code){$("err").textContent="Enter the family code (ask Casey).";return}localStorage.setItem("unplugged_code",code);
+ $("go").disabled=true;$("go").textContent="Sending…";
+ try{const d=await jsonp(SYNC_ENDPOINT+"?action=iphone&code="+encodeURIComponent(code)+"&payload="+encodeURIComponent(JSON.stringify(p)));if(!d||!d.ok)throw(d&&d.error)||"Unknown error";
+  $("f").hidden=true;$("out").innerHTML=`<div class="card done"><div class="ic">✅</div><h2>Saved, ${esc(p.name)}!</h2><p class="sub">${esc(p.date)} · ${d.rows} row(s) written. The scoreboard updates within ~5 minutes.</p>${scoreHtml(p)}<p style="margin-top:14px"><a href="../">See the scoreboard →</a></p></div>`}
+ catch(m){$("err").textContent="Not saved: "+m;$("go").disabled=false;$("go").textContent="Try again"}}
+$("f").onsubmit=submit;
+loadWeights("../weights.json").then(()=>{if(Q.get("auto")&&Q.get("total"))submit()});
+</script></body></html>
