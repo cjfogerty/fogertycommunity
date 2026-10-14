@@ -44,7 +44,9 @@
       } catch (e) {}
 
       var style = '\n    .park-map{width:100%;height:auto;display:block}\n    .park-map-open{position:relative;display:block;width:100%;padding:0;border:0;background:#e8eef2;cursor:zoom-in}\n    .park-map-open:focus-visible{outline:3px solid #721f2c;outline-offset:2px}\n    .park-map-hint{position:absolute;right:10px;bottom:10px;z-index:2;border-radius:999px;background:rgba(114,31,44,.92);color:#f6efe6;font-size:11px;font-weight:700;letter-spacing:.02em;padding:6px 10px;box-shadow:0 6px 16px rgba(45,12,19,.25)}\n    .park-map-dialog{padding:0;border:0;width:100vw;max-width:100vw;height:100vh;max-height:100vh;background:#14080b}\n    dialog.park-map-dialog:not([open]){display:none!important;pointer-events:none}\n    .park-map-overlay{display:none;position:fixed;inset:0;z-index:80;flex-direction:column;background:#14080b;pointer-events:none}\n    .park-map-overlay.is-open{display:flex;pointer-events:auto}\n    .park-map-dialog::backdrop{background:rgba(20,8,11,.72)}\n    .park-map-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;background:#721f2c;color:#f6efe6}\n    .park-map-bar p{margin:0;font-size:13px;font-weight:700}\n    .park-map-bar .sub{display:block;font-size:10px;font-weight:600;opacity:.8}\n    .park-map-tools{display:flex;gap:6px}\n    .park-map-tools button{min-width:36px;height:36px;border:0;border-radius:10px;background:#f6efe6;color:#721f2c;font-size:18px;font-weight:800;cursor:pointer}\n    .park-map-tools [data-map-close]{background:#2d0c13;color:#f6efe6;font-size:13px;padding:0 10px}\n    .park-map-stage{height:calc(100vh - 56px);overflow:auto;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom;background:#0f1c24}\n    .park-map-stage img{display:block;width:160%;max-width:none;height:auto;margin:0 auto;transform-origin:center top}\n    #schedule tr.past-game{display:none}\n    #schedule tr.past-game.is-open{display:table-row}\n    #schedule .past-toggle-btn{display:flex;align-items:center;justify-content:space-between;width:100%;border:0;background:transparent;padding:0;cursor:pointer;font:inherit;color:#721f2c}\n    #schedule .past-toggle-btn .chev{display:inline-block;transition:transform .15s ease}\n    #schedule .past-toggle-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}\n';
-      html = html.replace('  </style>', style + '  </style>');
+      if (html.indexOf('  </style>') !== -1) html = html.replace('  </style>', style + '  </style>');
+      else if (html.indexOf('</style>') !== -1) html = html.replace('</style>', style + '</style>');
+      else html = html.replace('</head>', '<style>' + style + '</style></head>');
 
       html = html.replace('Jerseys handed out', 'Wednesday');
       html = html.replace('Wear your jersey Saturday', 'See you at practice on Wednesday!');
@@ -85,6 +87,62 @@
 
       var extras = '\n<div id="park-map-overlay" class="park-map-overlay" role="dialog" aria-modal="true" aria-hidden="true">\n  <div class="park-map-bar">\n    <p>' + nextUp.mapLabel + '<span class="sub">' + nextUp.mapSub + '</span></p>\n    <div class="park-map-tools">\n      <button type="button" data-map-zoom="-1" aria-label="Zoom out">−</button>\n      <button type="button" data-map-zoom="1" aria-label="Zoom in">+</button>\n      <button type="button" data-map-close>Close</button>\n    </div>\n  </div>\n  <div class="park-map-stage" id="park-map-stage">\n    <img id="park-map-large" src="park-map.svg?v=' + (nextUp.updated || '8') + '" alt="Expanded Sports Park map">\n  </div>\n</div>\n';
       html = html.replace('</body>', extras + '</body>');
+      function collapsePastGames() {
+        var table = document.querySelector('#schedule table');
+        if (!table) return;
+        var tbody = table.querySelector('tbody');
+        if (!tbody) return;
+        if (tbody.querySelector('.past-toggle-btn')) return;
+        var now = new Date();
+        var today = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+        var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+        var past = [];
+        rows.forEach(function (tr) {
+          var cell = tr.querySelector('[data-iso]');
+          if (!cell) return;
+          var iso = cell.getAttribute('data-iso');
+          if (iso && iso < today) {
+            tr.classList.add('past-game');
+            past.push(tr);
+          }
+        });
+        if (!past.length) return;
+        var toggleRow = document.createElement('tr');
+        toggleRow.className = 'bg-pitch-50';
+        var td = document.createElement('td');
+        td.colSpan = 5;
+        td.className = 'px-2 sm:px-3 py-3';
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'past-toggle-btn';
+        btn.setAttribute('aria-expanded', 'false');
+        var text = document.createElement('span');
+        text.className = 'font-semibold';
+        var chev = document.createElement('span');
+        chev.className = 'chev text-pitch-400';
+        chev.setAttribute('aria-hidden', 'true');
+        chev.textContent = '\u25be';
+        btn.appendChild(text);
+        btn.appendChild(chev);
+        function label(open) {
+          text.textContent = (open ? 'Hide past games' : 'Past games') + ' \u00b7 ' + past.length;
+        }
+        label(false);
+        btn.addEventListener('click', function () {
+          var open = btn.getAttribute('aria-expanded') !== 'true';
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          past.forEach(function (tr) {
+            if (open) tr.classList.add('is-open');
+            else tr.classList.remove('is-open');
+          });
+          label(open);
+        });
+        td.appendChild(btn);
+        toggleRow.appendChild(td);
+        tbody.insertBefore(toggleRow, tbody.firstChild);
+      }
+      var collapseScript = '<script>(' + collapsePastGames.toString() + ')();<\/script>';
+      html = html.indexOf('</body>') !== -1 ? html.replace('</body>', collapseScript + '</body>') : html + collapseScript;
       document.open();
       document.write(html);
       document.close();
@@ -134,59 +192,8 @@
           if (e.key === 'Escape') closeMap();
         });
       })();
-      (function collapsePastGames() {
-        var table = document.querySelector('#schedule table');
-        if (!table) return;
-        var tbody = table.querySelector('tbody');
-        if (!tbody) return;
-        var now = new Date();
-        var today = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
-        var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
-        var past = [];
-        rows.forEach(function (tr) {
-          var cell = tr.querySelector('[data-iso]');
-          if (!cell) return;
-          var iso = cell.getAttribute('data-iso');
-          if (iso && iso < today) {
-            tr.classList.add('past-game');
-            past.push(tr);
-          }
-        });
-        if (!past.length) return;
-        var toggleRow = document.createElement('tr');
-        toggleRow.className = 'bg-pitch-50';
-        var td = document.createElement('td');
-        td.colSpan = 5;
-        td.className = 'px-2 sm:px-3 py-3';
-        var btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'past-toggle-btn';
-        btn.setAttribute('aria-expanded', 'false');
-        var text = document.createElement('span');
-        text.className = 'font-semibold';
-        var chev = document.createElement('span');
-        chev.className = 'chev text-pitch-400';
-        chev.setAttribute('aria-hidden', 'true');
-        chev.textContent = '\u25be';
-        btn.appendChild(text);
-        btn.appendChild(chev);
-        function label(open) {
-          text.textContent = (open ? 'Hide past games' : 'Past games') + ' \u00b7 ' + past.length;
-        }
-        label(false);
-        btn.addEventListener('click', function () {
-          var open = btn.getAttribute('aria-expanded') !== 'true';
-          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-          past.forEach(function (tr) {
-            if (open) tr.classList.add('is-open');
-            else tr.classList.remove('is-open');
-          });
-          label(open);
-        });
-        td.appendChild(btn);
-        toggleRow.appendChild(td);
-        tbody.insertBefore(toggleRow, tbody.firstChild);
-      })();
+      setTimeout(collapsePastGames, 50);
+      document.addEventListener('DOMContentLoaded', collapsePastGames);
     })();
   </script>
 </body>
