@@ -847,6 +847,92 @@
           ]
         }
       ]
+    },
+    {
+      "date": "2026-10-14",
+      "puzzle": 845,
+      "sourceUrl": "https://maptap.gg/data/this_day_in_history/October14.js",
+      "locations": [
+        {
+          "order": 1,
+          "city": "Vienna",
+          "region": null,
+          "country": "Austria",
+          "continent": "Europe",
+          "lat": 48.2082,
+          "lng": 16.3738,
+          "title": "Off to Constantinople",
+          "funFact": "About one in five Austrians lives here.",
+          "sources": [
+            "https://archive.org/details/lasttravelsofida00pfeiuoft",
+            "https://en.wikipedia.org/wiki/Ida_Pfeiffer",
+            "https://de.wikipedia.org/wiki/Ida_Pfeiffer"
+          ]
+        },
+        {
+          "order": 2,
+          "city": "Reykjavík",
+          "region": null,
+          "country": "Iceland",
+          "continent": "Europe",
+          "lat": 64.1466,
+          "lng": -21.9426,
+          "title": "Climbing Hekla",
+          "funFact": "Northernmost capital of a sovereign state.",
+          "sources": [
+            "https://archive.org/details/visittoicelandsc00pfeirich",
+            "https://archive.org/details/lasttravelsofida00pfeiuoft",
+            "https://en.wikipedia.org/wiki/Hekla"
+          ]
+        },
+        {
+          "order": 3,
+          "city": "Guangzhou",
+          "region": "Guangdong",
+          "country": "China",
+          "continent": "Asia",
+          "lat": 23.1291,
+          "lng": 113.2644,
+          "title": "Walking Canton Alone",
+          "funFact": "Europeans called it Canton.",
+          "sources": [
+            "https://www.gutenberg.org/ebooks/11039",
+            "https://en.wikipedia.org/wiki/Ida_Pfeiffer"
+          ]
+        },
+        {
+          "order": 4,
+          "city": "Agra",
+          "region": null,
+          "country": "India",
+          "continent": "Asia",
+          "lat": 27.1751,
+          "lng": 78.0421,
+          "title": "Saved for Last",
+          "funFact": "Famous for petha, a candy made from ash gourd.",
+          "sources": [
+            "https://www.gutenberg.org/ebooks/11039",
+            "https://archive.org/details/lasttravelsofida00pfeiuoft",
+            "https://en.wikipedia.org/wiki/Ida_Pfeiffer"
+          ]
+        },
+        {
+          "order": 5,
+          "city": "Petrópolis",
+          "region": "Rio de Janeiro",
+          "country": "Brazil",
+          "continent": "South America",
+          "lat": -22.505,
+          "lng": -43.1789,
+          "title": "Two Parasols",
+          "funFact": "Named after Emperor Pedro II, who summered here.",
+          "sources": [
+            "https://www.gutenberg.org/ebooks/11039",
+            "https://archive.org/details/lasttravelsofida00pfeiuoft",
+            "https://en.wikipedia.org/wiki/Ida_Pfeiffer"
+          ]
+        }
+      ]
     }
   ]
 }
