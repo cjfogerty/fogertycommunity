@@ -1,12 +1,12 @@
 {
-  "mode": "practice",
-  "badge": "Practice",
-  "badge2": "Field 8C",
-  "title": "Wednesday, October 14",
-  "when": "5:30–6:00 PM · Field 8C",
-  "note": "Sports Park · 3589 Hwy K, O’Fallon. Next game is Saturday, Oct 17, 2026, 9:00 AM Field 8B vs Need Coach 1 (Away). Snack: still open.",
-  "mapHighlight": "8C",
-  "mapLabel": "Practice · Field 8C",
-  "mapSub": "Wed 5:30–6:00 PM · pinch or use + / −",
-  "updated": "2026-10-10"
+  "mode": "cancelled",
+  "badge": "Cancelled",
+  "badge2": "",
+  "title": "Practice Cancelled",
+  "when": "Wednesday, October 14",
+  "note": "Practice cancelled for wet field conditions. We'll see you Saturday!",
+  "mapHighlight": "",
+  "mapLabel": "No practice today",
+  "mapSub": "See you Saturday · Field 8B",
+  "updated": "2026-10-14"
 }
