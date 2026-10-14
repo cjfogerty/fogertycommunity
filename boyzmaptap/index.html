@@ -744,6 +744,7 @@
         if (!day || !day.locations || !scoresPosted(day.date)) return;
         const count = Math.min(log.rounds.length, day.locations.length);
         for (let i = 0; i < count; i++) {
+          if (log.rounds[i] == null) continue;
           const score = Number(log.rounds[i]);
           if (!Number.isFinite(score)) continue;
           const loc = day.locations[i];
@@ -1008,7 +1009,8 @@
           if (Array.isArray(log.rounds) && log.rounds.length) {
             pips = '<div class="round-pips">' + log.rounds.map(function (score, i) {
               const city = day && day.locations && day.locations[i] ? day.locations[i].city : ("R" + (i + 1));
-              return '<span class="mini">' + score + " " + esc(city) + "</span>";
+              const shown = score == null ? "—" : score;
+              return '<span class="mini">' + shown + " " + esc(city) + "</span>";
             }).join("") + "</div>";
           }
           return '<div class="log"><div><div class="score">' + log.score + '</div></div><div><strong>' + esc(person.name) + '</strong><div class="hint" style="margin:2px 0 0">' + esc(log.date) + (log.puzzle ? " · #" + log.puzzle : "") + '</div>' + pips + (ach ? '<div class="chips" style="margin-top:6px">' + ach + '</div>' : "") + '</div><i class="dot" style="background:' + person.color + '"></i></div>';

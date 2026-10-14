@@ -2,6 +2,69 @@
   "comment": "Hand-written roasts for a day's lowest scores. Add one object to days when the group writes them. A day with no entry shows nothing on the board. Do not generate roast text in the page.",
   "days": [
     {
+      "date": "2026-10-14",
+      "puzzle": 845,
+      "roasts": [
+        {
+          "playerId": "micah",
+          "score": 829,
+          "text": "Micah closed last at 829. Vienna was an 89, Reykjavík a 97, Guangzhou an 80, Agra an 87, and Petrópolis a 74. Sixteen points behind Ben, 36 behind Sam, 83 behind Andy. Nothing on the card is a disaster. That is the problem. Five polite misses still finish at the bottom of a full field."
+        },
+        {
+          "playerId": "ben",
+          "score": 845,
+          "text": "Casey said he did not want to give anyone a hint. Ben still closed Petrópolis at 69, the round that counts three times, after Vienna 92, Reykjavík 94, Guangzhou 88, and Agra 92. 845 leaves him 20 behind Sam and second from the bottom. The hint stayed in Casey's pocket. The last town did not need one."
+        },
+        {
+          "playerId": "sam",
+          "score": 865,
+          "text": "Sam said he got lost in one of those towns 16 years ago. The card nominated Petrópolis: a 72, after Vienna 95, Reykjavík 97, Guangzhou 89, and Agra 93. 865 is only six behind Peter and 47 behind Andy, which is a dignified way to be third-worst. Sixteen years later he is still six points off the man above him."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-13",
+      "puzzle": 844,
+      "roasts": [
+        {
+          "playerId": "peter",
+          "score": 599,
+          "text": "Peter said whoopsies, which is a gentle word for a 6 in Douala on the round that counts three times. Tainan was a 98. Lahore was an 81. Wakayama was a 93. St. George's was a 72. Then Cameroon arrived and the score fell through the floor. 599 is last of the three who posted, 180 behind Sam and 220 behind Ben. Whoopsies covers a spilled coffee. It does not cover a 6."
+        },
+        {
+          "playerId": "sam",
+          "score": 779,
+          "text": "Sam told the chat, \"Booooo. I am dumb,\" and Douala agreed with a 57. Tainan was a 97, Lahore a 93, Wakayama a 98, and St. George's a 74, so the self-review showed up late. 779 is 40 behind Ben and 180 ahead of Peter, which is the only reason the boo was not louder. A 57 on a triple is a loud note. He supplied the caption."
+        },
+        {
+          "playerId": "ben",
+          "score": 819,
+          "text": "Ben won a three-person field at 819 and still landed in the roast corner, because Andy, Micah, and Casey never posted and the bottom three is a quota. Lahore was a 68. St. George's was a 70. Tainan was a 96, Wakayama a 98, Douala an 83. The day was his. The rule does not care. He got the best score and the write-up."
+        }
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "puzzle": 843,
+      "roasts": [
+        {
+          "playerId": "ben",
+          "score": 580,
+          "text": "Ben opened San Francisco with a 100 and then asked the chat if a negative score was possible. Turin was an 83. Babylon was a 74. Celje, the round that counts triple, was a 49. Ciudad de la Paz, also triple, was a 34. The floor is zero, and 580 still finished last, 85 behind Micah and 231 behind Sam. He did not need a minus sign. The empty capital did the subtracting."
+        },
+        {
+          "playerId": "micah",
+          "score": 665,
+          "text": "Micah told the group that missing the last one can kill you, and Ciudad de la Paz took him at his word: a 10 on a triple-weighted pin. San Francisco was a 99, Turin a 93, Babylon a 94, Celje an 85, and then Equatorial Guinea ended the conversation. 665 is 27 behind Peter and 146 behind Sam. The first four rounds were a respectable day. The fifth one brought a shovel."
+        },
+        {
+          "playerId": "peter",
+          "score": 692,
+          "text": "Peter was fine until the capital that is mostly a plan. San Francisco 99, Turin 94, Babylon 95, Celje 84, and then a 19 in Ciudad de la Paz. 692 puts him 18 behind Andy, who put a 13 on the same pin and still cleared him, and 119 behind Sam. A 19 on a round that counts three times is not a small miss. It is the whole afternoon."
+        }
+      ]
+    },
+    {
       "date": "2026-10-10",
       "puzzle": 841,
       "roasts": [
@@ -139,7 +202,7 @@
         {
           "playerId": "micah",
           "score": 487,
-          "text": "Missed Nuku\u02bbalofa by 18,000 km and then looked up that half the Earth's circumference is 20,000 km, as if that helped his case. That's not a miss, that's a round trip. Scored a perfect 0 on the final round."
+          "text": "Missed Nukuʻalofa by 18,000 km and then looked up that half the Earth's circumference is 20,000 km, as if that helped his case. That's not a miss, that's a round trip. Scored a perfect 0 on the final round."
         },
         {
           "playerId": "peter",

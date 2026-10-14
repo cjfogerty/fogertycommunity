@@ -2,7 +2,7 @@
   "game": "MapTap",
   "site": "https://www.maptap.gg",
   "asOf": "2026-10-02",
-  "puzzleToday": 841,
+  "puzzleToday": 845,
   "note": "Season totals in this file are the Oct 2, 2026 group photo. Daily logs store MapTap share-text finals exactly as posted, plus the five round scores in location order. Casey's #833 total is 941 and has no round breakdown. Sam's #832 final of 891 matches his October average (one game) and is not added again. Sam's #833 (919), Andy's #833 (987), and Ben's #833 (866) are logged for places and callouts only; they are not folded into the season columns. Logs dated after the photo, starting with #834 on Oct 3, are added on top of those columns when the board loads.",
   "bands": [
     {
@@ -807,6 +807,216 @@
         47,
         86,
         72
+      ]
+    },
+    {
+      "id": "sam-843",
+      "playerId": "sam",
+      "date": "2026-10-12",
+      "puzzle": 843,
+      "score": 811,
+      "rounds": [
+        92,
+        83,
+        96,
+        94,
+        54
+      ]
+    },
+    {
+      "id": "casey-843",
+      "playerId": "casey",
+      "date": "2026-10-12",
+      "puzzle": 843,
+      "score": 769,
+      "rounds": [
+        98,
+        null,
+        93,
+        89,
+        41
+      ]
+    },
+    {
+      "id": "andy-843",
+      "playerId": "andy",
+      "date": "2026-10-12",
+      "puzzle": 843,
+      "score": 710,
+      "rounds": [
+        99,
+        100,
+        92,
+        96,
+        13
+      ]
+    },
+    {
+      "id": "peter-843",
+      "playerId": "peter",
+      "date": "2026-10-12",
+      "puzzle": 843,
+      "score": 692,
+      "rounds": [
+        99,
+        94,
+        95,
+        84,
+        19
+      ]
+    },
+    {
+      "id": "micah-843",
+      "playerId": "micah",
+      "date": "2026-10-12",
+      "puzzle": 843,
+      "score": 665,
+      "rounds": [
+        99,
+        93,
+        94,
+        85,
+        10
+      ]
+    },
+    {
+      "id": "ben-843",
+      "playerId": "ben",
+      "date": "2026-10-12",
+      "puzzle": 843,
+      "score": 580,
+      "rounds": [
+        100,
+        83,
+        74,
+        49,
+        34
+      ]
+    },
+    {
+      "id": "ben-844",
+      "playerId": "ben",
+      "date": "2026-10-13",
+      "puzzle": 844,
+      "score": 819,
+      "rounds": [
+        96,
+        68,
+        98,
+        70,
+        83
+      ]
+    },
+    {
+      "id": "sam-844",
+      "playerId": "sam",
+      "date": "2026-10-13",
+      "puzzle": 844,
+      "score": 779,
+      "rounds": [
+        97,
+        93,
+        98,
+        74,
+        57
+      ]
+    },
+    {
+      "id": "peter-844",
+      "playerId": "peter",
+      "date": "2026-10-13",
+      "puzzle": 844,
+      "score": 599,
+      "rounds": [
+        98,
+        81,
+        93,
+        72,
+        6
+      ]
+    },
+    {
+      "id": "andy-845",
+      "playerId": "andy",
+      "date": "2026-10-14",
+      "puzzle": 845,
+      "score": 912,
+      "rounds": [
+        89,
+        100,
+        87,
+        94,
+        89
+      ]
+    },
+    {
+      "id": "casey-845",
+      "playerId": "casey",
+      "date": "2026-10-14",
+      "puzzle": 845,
+      "score": 899,
+      "rounds": [
+        98,
+        97,
+        91,
+        89,
+        85
+      ]
+    },
+    {
+      "id": "peter-845",
+      "playerId": "peter",
+      "date": "2026-10-14",
+      "puzzle": 845,
+      "score": 871,
+      "rounds": [
+        88,
+        95,
+        80,
+        84,
+        92
+      ]
+    },
+    {
+      "id": "sam-845",
+      "playerId": "sam",
+      "date": "2026-10-14",
+      "puzzle": 845,
+      "score": 865,
+      "rounds": [
+        95,
+        97,
+        89,
+        93,
+        72
+      ]
+    },
+    {
+      "id": "ben-845",
+      "playerId": "ben",
+      "date": "2026-10-14",
+      "puzzle": 845,
+      "score": 845,
+      "rounds": [
+        92,
+        94,
+        88,
+        92,
+        69
+      ]
+    },
+    {
+      "id": "micah-845",
+      "playerId": "micah",
+      "date": "2026-10-14",
+      "puzzle": 845,
+      "score": 829,
+      "rounds": [
+        89,
+        97,
+        80,
+        87,
+        74
       ]
     }
   ]
