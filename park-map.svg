@@ -63,9 +63,9 @@
 <g data-field="7B"><rect class="field-pitch" x="100" y="78" width="72" height="72" rx="3"/><line class="field-lines" x1="136" y1="78" x2="136" y2="150"/><text class="field-sub" x="136" y="118" text-anchor="middle">B</text></g>
 <text class="field-num" x="100" y="120" text-anchor="middle">7</text>
 <g data-field="8A"><rect class="field-pitch" x="196" y="78" width="78" height="86" rx="3"/><line class="field-lines" x1="235" y1="78" x2="235" y2="164"/><text class="field-sub" x="216" y="126" text-anchor="middle">A</text></g>
-<g data-field="8B"><rect class="field-pitch" x="274" y="78" width="78" height="86" rx="3"/><line class="field-lines" x1="313" y1="78" x2="313" y2="164"/><text class="field-sub" x="313" y="126" text-anchor="middle">B</text></g>
+<g class="week" data-field="8B"><rect class="field-pitch" x="274" y="78" width="78" height="86" rx="3"/><line class="field-lines" x1="313" y1="78" x2="313" y2="164"/><text class="field-sub" x="313" y="126" text-anchor="middle">B</text></g>
 <text class="field-num" x="274" y="128" text-anchor="middle">8</text>
-<g class="week" data-field="8C"><rect class="field-pitch" x="196" y="166" width="156" height="18" rx="2"/><text class="field-sub" x="274" y="179" text-anchor="middle">8C practice strip</text></g>
+<g class="practice" data-field="8C"><rect class="field-pitch" x="196" y="166" width="156" height="18" rx="2"/><text class="field-sub" x="274" y="179" text-anchor="middle">8C practice strip</text></g>
 <g id="tree-row-8-9" aria-hidden="true">
   <title>Evergreen row between Fields 8 and 9</title>
   <g transform="translate(363.8 86)">
@@ -116,6 +116,6 @@
 <g data-field="12"><rect class="field-pitch" x="722" y="48" width="70" height="64" rx="3"/><line class="field-lines" x1="757" y1="48" x2="757" y2="112"/><text class="field-num" x="757" y="86" text-anchor="middle">12</text></g>
 <text x="40" y="64" class="label-sm">← To the Renaud Center</text>
 <text x="780" y="148" class="label-sm">Maintenance</text>
-<g id="week-pin"><path d="M274 160 l6 12 h-12 z" fill="#721f2c"/><circle cx="274" cy="154" r="11" fill="#721f2c" stroke="#e8e2d4" stroke-width="2"/><text x="274" y="158" text-anchor="middle" fill="#e8e2d4" font-size="8" font-weight="800" font-family="Outfit, sans-serif">8C</text></g>
+<g id="week-pin"><path d="M313 160 l6 12 h-12 z" fill="#721f2c"/><circle cx="313" cy="154" r="11" fill="#721f2c" stroke="#e8e2d4" stroke-width="2"/><text x="313" y="158" text-anchor="middle" fill="#e8e2d4" font-size="8" font-weight="800" font-family="Outfit, sans-serif">8B</text></g>
 
 </svg>
