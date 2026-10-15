@@ -1,12 +1,12 @@
 {
-  "mode": "cancelled",
-  "badge": "Cancelled",
-  "badge2": "",
-  "title": "Practice Cancelled",
-  "when": "Wednesday, October 14",
-  "note": "Practice cancelled for wet field conditions. We'll see you Saturday!",
-  "mapHighlight": "",
-  "mapLabel": "No practice today",
-  "mapSub": "See you Saturday · Field 8B",
-  "updated": "2026-10-14"
+  "mode": "game",
+  "badge": "Game",
+  "badge2": "Away",
+  "title": "Saturday, October 17",
+  "when": "9:00 AM \u00b7 Field 8B \u00b7 vs Need Coach 1",
+  "note": "Sports Park \u00b7 3589 Hwy K, O'Fallon. Away game on Field 8B. Snack: Anna Lambert (Madelyn).",
+  "mapHighlight": "8B",
+  "mapLabel": "Game \u00b7 Field 8B",
+  "mapSub": "Sat 9:00 AM \u00b7 Away \u00b7 pinch or use + / \u2212",
+  "updated": "2026-10-15"
 }
