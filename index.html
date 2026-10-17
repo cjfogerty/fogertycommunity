@@ -72,13 +72,8 @@
       if (html.indexOf(marker) !== -1) html = html.replace(marker, block);
 
       html = html.replace('Campos <span class="text-xs text-amber-600">(Picture Day)</span>', 'Campos');
-      var stepLink = '\n        <a href="stepup-watchdog/" class="flex items-center justify-between p-4 rounded-2xl bg-pitch-50 hover:bg-pitch-100 border border-pitch-100">\n          <div><p class="font-semibold text-pitch-950">StepUp Watchdog</p><p class="text-sm text-pitch-600">Fogerty step export · Oct 1–11</p></div><span class="text-pitch-400">→</span>\n        </a>';
       var pictureDay = '\n        <a href="https://drive.google.com/file/d/1V0PlHwwObGR5qA7vs1iw8YxXoEmUx1Br/view" target="_blank" rel="noopener" class="flex items-center justify-between p-4 rounded-2xl bg-pitch-50 hover:bg-pitch-100 border border-pitch-100">\n          <div><p class="font-semibold text-pitch-950">Picture Day Order Form</p><p class="text-sm text-pitch-600">September 26</p></div><span class="text-pitch-400">→</span>\n        </a>';
-      if (html.indexOf(pictureDay) !== -1) html = html.replace(pictureDay, stepLink);
-      else if (html.indexOf('stepup-watchdog/') === -1) {
-        var scores = 'Official standings & full league schedule</p></div><span class="text-pitch-400">→</span>\n        </a>';
-        if (html.indexOf(scores) !== -1) html = html.replace(scores, scores + stepLink);
-      }
+      if (html.indexOf(pictureDay) !== -1) html = html.replace(pictureDay, '');
 
       html = html.replace(
         '<button type="button" class="claim-btn inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold bg-pitch-800 text-cream hover:bg-pitch-700" data-game="Sat, Oct 10 · 10:00 AM vs Cooksey" data-date="Sat, Oct 10, 2026" data-opponent="Cooksey">Claim snack</button>',
