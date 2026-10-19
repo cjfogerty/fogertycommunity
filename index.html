@@ -48,11 +48,12 @@
       else if (html.indexOf('</style>') !== -1) html = html.replace('</style>', style + '</style>');
       else html = html.replace('</head>', '<style>' + style + '</style></head>');
 
-      html = html.replace('Jerseys handed out', 'Cancelled');
-      html = html.replace('Wear your jersey Saturday', 'Practice cancelled Wednesday');
+      html = html.replace('Jerseys handed out', 'Bye week');
+      html = html.replace('Wear your jersey Saturday', 'Enjoy the bye week!');
+      html = html.replace('Team name is official: The Red Buffalo Maroonicorns.', 'Why did the soccer ball quit the team? It was tired of being kicked around.');
       html = html.replace(
         'Jerseys and socks were handed out at Wednesday practice. Wear the jersey for Saturday’s first game.',
-        'Wet field conditions. See you Saturday!'
+        'Next practice is Wednesday, Oct. 28 at 5:30 PM. (No practice on the 21st and no game this Saturday.)'
       );
 
       var isPractice = nextUp.mode === 'practice';
