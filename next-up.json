@@ -1,12 +1,12 @@
 {
-  "mode": "practice",
-  "badge": "Practice",
-  "badge2": "Field 8C",
-  "title": "Wednesday, October 21",
-  "when": "5:30\u20136:00 PM \u00b7 Field 8C",
-  "note": "Sports Park \u00b7 3589 Hwy K, O\u2019Fallon. Next game is Saturday, Oct 31, 10:00 AM Field 8B vs Campos (Away). Snack: still open.",
-  "mapHighlight": "8C",
-  "mapLabel": "Practice \u00b7 Field 8C",
-  "mapSub": "Wed 5:30\u20136:00 PM \u00b7 pinch or use + / \u2212",
-  "updated": "2026-10-17"
+  "mode": "bye",
+  "badge": "Bye Week",
+  "badge2": "",
+  "title": "Bye Week",
+  "when": "Next practice: Wednesday, October 28 \u00b7 5:30 PM \u00b7 Field 8C",
+  "note": "Enjoy the bye week! Next practice is Wednesday, Oct. 28 at 5:30 PM. (No practice on the 21st and no game this Saturday.)",
+  "mapHighlight": "",
+  "mapLabel": "No practice or game this week",
+  "mapSub": "Next practice Wed Oct 28 \u00b7 Field 8C",
+  "updated": "2026-10-19"
 }
