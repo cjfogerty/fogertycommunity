@@ -48,13 +48,53 @@
       else if (html.indexOf('</style>') !== -1) html = html.replace('</style>', style + '</style>');
       else html = html.replace('</head>', '<style>' + style + '</style></head>');
 
-      html = html.replace('Jerseys handed out', 'Bye week');
-      html = html.replace('Wear your jersey Saturday', 'Enjoy the bye week!');
-      html = html.replace('Team name is official: The Red Buffalo Maroonicorns.', 'Why did the soccer ball quit the team? It was tired of being kicked around.');
-      html = html.replace(
-        'Jerseys and socks were handed out at Wednesday practice. Wear the jersey for Saturday’s first game.',
-        'Next practice is Wednesday, Oct. 28 at 5:30 PM. (No practice on the 21st and no game this Saturday.)'
-      );
+      (function dynamicBanner() {
+        function esc(v) {
+          return String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+        function swap(from, to) {
+          html = html.split(from).join(to);
+        }
+        var mode = nextUp.mode || 'game';
+        var snackMatch = /Snack:\s*([^.]+)\./.exec(nextUp.note || '');
+        var snack = snackMatch ? snackMatch[1].trim() : '';
+        var d = {};
+        if (mode === 'game') {
+          d.badge = 'Game day';
+          d.title = 'Game ' + (nextUp.title || 'Saturday');
+          d.body = (nextUp.when || '') + '. Wear your jersey and bring water.';
+          d.extra = snack && !/still open/i.test(snack) ? 'Snack: ' + snack + '.' : 'Snack is still open. Claim it on the schedule below.';
+        } else if (mode === 'practice') {
+          d.badge = 'Practice';
+          d.title = 'Practice ' + (nextUp.title || '');
+          d.body = (nextUp.when || '') + '. Bring water and a ball if you have one.';
+          d.extra = 'Go Red Buffalo Maroonicorns!';
+        } else if (mode === 'bye') {
+          d.badge = 'Bye week';
+          d.title = 'Enjoy the bye week!';
+          d.body = nextUp.note || 'No game this Saturday.';
+          d.extra = 'Go Red Buffalo Maroonicorns!';
+        } else if (mode === 'cancelled') {
+          d.badge = 'Cancelled';
+          d.title = nextUp.title || 'Cancelled';
+          d.body = nextUp.note || '';
+          d.extra = 'Go Red Buffalo Maroonicorns!';
+        } else {
+          d.badge = nextUp.badge || 'Next up';
+          d.title = nextUp.title || '';
+          d.body = nextUp.note || '';
+          d.extra = 'Go Red Buffalo Maroonicorns!';
+        }
+        // Optional overrides in next-up.json: bannerBadge, bannerTitle, bannerBody, bannerExtra
+        if (nextUp.bannerBadge) d.badge = nextUp.bannerBadge;
+        if (nextUp.bannerTitle) d.title = nextUp.bannerTitle;
+        if (nextUp.bannerBody) d.body = nextUp.bannerBody;
+        if (nextUp.bannerExtra != null) d.extra = nextUp.bannerExtra;
+        swap('>Jerseys handed out</span>', '>' + esc(d.badge) + '</span>');
+        swap('>Wear your jersey Saturday</h2>', '>' + esc(d.title) + '</h2>');
+        swap('>Jerseys and socks were handed out at Wednesday practice. Wear the jersey for Saturday’s first game.</p>', '>' + esc(d.body) + '</p>');
+        swap('>Team name is official: The Red Buffalo Maroonicorns.</p>', '>' + esc(d.extra) + '</p>');
+      })();
 
       var isPractice = nextUp.mode === 'practice';
       var badges = '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wide bg-pitch-100 text-pitch-800">' + nextUp.badge + '</span>';
