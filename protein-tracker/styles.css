@@ -1,0 +1,89 @@
+* { box-sizing: border-box; }
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f8fafc;
+  color: #1e293b;
+  line-height: 1.5;
+}
+header {
+  background: #1e40af;
+  color: white;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+header h1 { margin: 0 0 0.25rem; font-size: 1.75rem; }
+header p { margin: 0; opacity: 0.9; }
+.back-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: #bfdbfe;
+  text-decoration: none;
+  font-weight: 600;
+}
+main { max-width: 800px; margin: 0 auto; padding: 1rem; }
+section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+h2 { margin-top: 0; font-size: 1.25rem; color: #1e40af; }
+.explanation p { font-size: 1.05rem; }
+form .form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  flex: 1;
+  min-width: 140px;
+}
+input, select {
+  margin-top: 0.25rem;
+  padding: 0.6rem;
+  font-size: 1.1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+}
+button {
+  background: #1e40af;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+button:hover { background: #1d4ed8; }
+#clearData { background: #64748b; margin-top: 0.5rem; }
+.person-stat { margin: 0.5rem 0; padding: 0.5rem; background: #f1f5f9; border-radius: 6px; }
+#historyList { list-style: none; padding: 0; margin: 0; }
+#historyList li {
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 1rem;
+}
+#historyList li.ok { border-left: 4px solid #22c55e; }
+#historyList li.low { border-left: 4px solid #ef4444; }
+canvas { max-height: 320px; }
+.config ol { padding-left: 1.25rem; }
+.note { font-size: 0.9rem; color: #64748b; }
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+footer a { color: #1e40af; }
+@media (max-width: 600px) {
+  .form-row { flex-direction: column; }
+  header h1 { font-size: 1.4rem; }
+}

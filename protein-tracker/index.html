@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Protein Tracker · Fogerty Family</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Protein Intake Tracker</h1>
+    <p>For Mom & Dad · Fogerty Family</p>
+    <a href="../" class="back-link">← Back to Fogerty Community</a>
+  </header>
+
+  <main>
+    <section class="explanation">
+      <h2>Why this matters</h2>
+      <p>At ages 68–71, muscles respond less efficiently to protein (anabolic resistance). Experts recommend <strong>1.0–1.5 g protein per kg of body weight</strong> daily (default target 1.2 g/kg) to help preserve muscle, strength, and support brain health. One meal a day makes it harder to hit the total and to stimulate muscle-building multiple times. Pairing higher protein with even light resistance training (bodyweight, bands, or weights 2–3×/week) is the strongest way to maintain independence and function.</p>
+    </section>
+
+    <section class="form-section">
+      <h2>Log today's intake</h2>
+      <form id="entryForm">
+        <div class="form-row">
+          <label>Person
+            <select id="person" required>
+              <option value="Mom">Mom</option>
+              <option value="Dad">Dad</option>
+              <option value="custom">Custom…</option>
+            </select>
+          </label>
+          <input type="text" id="customName" placeholder="Custom name" style="display:none" />
+        </div>
+        <div class="form-row">
+          <label>Date <input type="date" id="date" required /></label>
+          <label>Weight
+            <input type="number" id="weight" step="0.1" min="30" required placeholder="e.g. 75" />
+            <select id="weightUnit">
+              <option value="kg">kg</option>
+              <option value="lbs">lbs</option>
+            </select>
+          </label>
+        </div>
+        <div class="form-row">
+          <label>Protein (grams) <input type="number" id="protein" step="1" min="0" required placeholder="e.g. 90" /></label>
+          <label>Notes <input type="text" id="notes" placeholder="optional" /></label>
+        </div>
+        <button type="submit">Add Entry</button>
+      </form>
+    </section>
+
+    <section class="stats" id="stats">
+      <h2>Summary</h2>
+      <div id="statsContent">No data yet. Add an entry above.</div>
+    </section>
+
+    <section class="chart-section">
+      <h2>Intake vs Target</h2>
+      <canvas id="chart"></canvas>
+    </section>
+
+    <section class="history">
+      <h2>Recent entries</h2>
+      <ul id="historyList"></ul>
+      <button id="clearData" type="button">Clear all local data</button>
+    </section>
+
+    <section class="config">
+      <h2>Google Sheet backend (optional)</h2>
+      <p>By default data is stored only in this browser (localStorage). To share between devices or people:</p>
+      <ol>
+        <li>Create a Google Sheet with columns: Date, Person, WeightKg, ProteinG, Notes, Timestamp</li>
+        <li>Publish it to the web as CSV, or create a Google Apps Script web app that accepts POST for append and GET for read.</li>
+        <li>Paste the CSV URL or Apps Script endpoint below and reload.</li>
+      </ol>
+      <label>Sheet / endpoint URL
+        <input type="url" id="sheetUrl" placeholder="https://docs.google.com/spreadsheets/d/.../export?format=csv" />
+      </label>
+      <button type="button" id="saveConfig">Save config</button>
+      <p class="note">Config is also stored locally. For full write support use an Apps Script web app that returns JSON.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Built for the Fogerty family · <a href="https://github.com/cjfogerty/fogertycommunity">Source on GitHub</a></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
