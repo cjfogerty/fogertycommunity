@@ -1,14 +1,17 @@
 // Protein Tracker – Fogerty Family
-// Default: localStorage. Optional Google Sheet CSV or Apps Script endpoint.
+// Default: localStorage. Optional Google Sheet CSV.
 
 const STORAGE_KEY = 'fogerty_protein_entries';
 const CONFIG_KEY = 'fogerty_protein_config';
+const HIDE_WEIGHT_KEY = 'fogerty_hide_weight';
 const DEFAULT_TARGET_G_PER_KG = 1.2;
 const TARGET_RANGE = [1.0, 1.5];
+const SHEET_ID = '1o8RNQzmCRWRzknJ3k2igtUit4pziaWpLiRz8wRr9KM0';
 
 let entries = [];
 let chart = null;
 let config = { sheetUrl: '' };
+let hideWeight = false;
 
 function loadConfig() {
   try {
@@ -16,6 +19,9 @@ function loadConfig() {
     if (raw) config = { ...config, ...JSON.parse(raw) };
   } catch (e) {}
   document.getElementById('sheetUrl').value = config.sheetUrl || '';
+  hideWeight = localStorage.getItem(HIDE_WEIGHT_KEY) === '1';
+  document.getElementById('hideWeight').checked = hideWeight;
+  applyHideWeight();
 }
 
 function saveConfig() {
@@ -39,26 +45,31 @@ function saveEntries() {
 }
 
 function kgFromInput(weight, unit) {
+  if (!weight) return null;
   return unit === 'lbs' ? weight * 0.453592 : weight;
 }
 
 function recommendedG(weightKg) {
+  if (!weightKg) return null;
   return Math.round(weightKg * DEFAULT_TARGET_G_PER_KG);
 }
 
-function rangeText(weightKg) {
-  const lo = Math.round(weightKg * TARGET_RANGE[0]);
-  const hi = Math.round(weightKg * TARGET_RANGE[1]);
-  return `${lo}–${hi} g`;
+function applyHideWeight() {
+  const label = document.getElementById('weightLabel');
+  if (hideWeight) {
+    label.style.display = 'none';
+  } else {
+    label.style.display = 'flex';
+  }
 }
 
 function addEntry(person, date, weight, unit, protein, notes) {
-  const weightKg = kgFromInput(Number(weight), unit);
+  const weightKg = weight ? kgFromInput(Number(weight), unit) : null;
   const entry = {
     id: Date.now(),
     person,
     date,
-    weightKg: Math.round(weightKg * 10) / 10,
+    weightKg: weightKg ? Math.round(weightKg * 10) / 10 : null,
     protein: Number(protein),
     notes: notes || '',
     recommended: recommendedG(weightKg),
@@ -94,14 +105,13 @@ function renderStats() {
   Object.keys(byPerson).forEach(person => {
     const list = byPerson[person];
     const avg = Math.round(list.reduce((s, e) => s + e.protein, 0) / list.length);
-    const met = list.filter(e => e.protein >= e.recommended).length;
-    const pct = Math.round((met / list.length) * 100);
+    const withTarget = list.filter(e => e.recommended);
+    const met = withTarget.filter(e => e.protein >= e.recommended).length;
+    const pct = withTarget.length ? Math.round((met / withTarget.length) * 100) : '—';
     const last = list[list.length - 1];
-    const trend = list.length > 1
-      ? (list[list.length - 1].protein >= list[0].protein ? '↑ or steady' : '↓')
-      : '—';
+    const targetText = last.recommended ? `target ${last.recommended} g` : 'no weight set';
     html += `<div class="person-stat">
-      <strong>${person}</strong>: avg ${avg} g/day · ${pct}% of days at/above target · latest ${last.protein} g (target ${last.recommended} g) · trend ${trend}
+      <strong>${person}</strong>: avg ${avg} g/day · ${pct}% of days at/above target · latest ${last.protein} g (${targetText})
     </div>`;
   });
   el.innerHTML = html;
@@ -113,9 +123,11 @@ function renderHistory() {
   const recent = entries.slice().reverse().slice(0, 20);
   recent.forEach(e => {
     const li = document.createElement('li');
-    const ok = e.protein >= e.recommended;
+    const ok = e.recommended ? e.protein >= e.recommended : true;
     li.className = ok ? 'ok' : 'low';
-    li.innerHTML = `<strong>${e.date}</strong> · ${e.person} · ${e.protein} g (target ${e.recommended} g) · ${e.weightKg} kg${e.notes ? ' · ' + e.notes : ''}`;
+    const weightPart = (!hideWeight && e.weightKg) ? ` · ${e.weightKg} kg` : '';
+    const targetPart = e.recommended ? ` (target ${e.recommended} g)` : '';
+    li.innerHTML = `<strong>${e.date}</strong> · ${e.person} · ${e.protein} g${targetPart}${weightPart}${e.notes ? ' · ' + e.notes : ''}`;
     ul.appendChild(li);
   });
 }
@@ -124,8 +136,11 @@ function renderChart() {
   const ctx = document.getElementById('chart').getContext('2d');
   const labels = entries.map(e => e.date + ' ' + e.person);
   const data = entries.map(e => e.protein);
-  const targets = entries.map(e => e.recommended);
-  const colors = entries.map(e => e.protein >= e.recommended ? 'rgba(34,197,94,0.7)' : 'rgba(239,68,68,0.7)');
+  const targets = entries.map(e => e.recommended || null);
+  const colors = entries.map(e => {
+    if (!e.recommended) return 'rgba(148,163,184,0.7)';
+    return e.protein >= e.recommended ? 'rgba(34,197,94,0.7)' : 'rgba(239,68,68,0.7)';
+  });
 
   if (chart) chart.destroy();
   chart = new Chart(ctx, {
@@ -147,7 +162,8 @@ function renderChart() {
           borderWidth: 2,
           fill: false,
           pointRadius: 3,
-          tension: 0.1
+          tension: 0.1,
+          spanGaps: true
         }
       ]
     },
@@ -176,20 +192,21 @@ async function tryLoadFromSheet() {
     const res = await fetch(config.sheetUrl);
     if (!res.ok) return;
     const text = await res.text();
-    // Simple CSV parse (Date,Person,WeightKg,ProteinG,Notes)
     const lines = text.trim().split('\n').slice(1);
     const loaded = [];
     lines.forEach(line => {
-      const [date, person, weightKg, protein, notes] = line.split(',').map(s => s.trim().replace(/^"|"$/g, ''));
+      const parts = line.split(',').map(s => s.trim().replace(/^"|"$/g, ''));
+      const [date, person, weightKg, protein, notes] = parts;
       if (date && person && protein) {
+        const w = Number(weightKg) || null;
         loaded.push({
           id: Date.now() + Math.random(),
           person,
           date,
-          weightKg: Number(weightKg) || 70,
+          weightKg: w,
           protein: Number(protein),
           notes: notes || '',
-          recommended: recommendedG(Number(weightKg) || 70),
+          recommended: recommendedG(w),
           timestamp: new Date().toISOString()
         });
       }
@@ -214,6 +231,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('customName').style.display = e.target.value === 'custom' ? 'inline-block' : 'none';
   });
 
+  document.getElementById('hideWeight').addEventListener('change', e => {
+    hideWeight = e.target.checked;
+    localStorage.setItem(HIDE_WEIGHT_KEY, hideWeight ? '1' : '0');
+    applyHideWeight();
+    render();
+  });
+
   document.getElementById('entryForm').addEventListener('submit', e => {
     e.preventDefault();
     const personSel = document.getElementById('person').value;
@@ -229,6 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
     e.target.reset();
     document.getElementById('date').value = today;
     document.getElementById('person').value = personSel;
+    document.getElementById('hideWeight').checked = hideWeight;
   });
 
   document.getElementById('clearData').addEventListener('click', clearAll);

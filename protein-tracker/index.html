@@ -9,6 +9,7 @@
 </head>
 <body>
   <header>
+    <img src="hero.jpg" alt="Mom and Dad, Fogerty Family" class="hero" />
     <h1>Protein Intake Tracker</h1>
     <p>For Mom & Dad · Fogerty Family</p>
     <a href="../" class="back-link">← Back to Fogerty Community</a>
@@ -35,8 +36,8 @@
         </div>
         <div class="form-row">
           <label>Date <input type="date" id="date" required /></label>
-          <label>Weight
-            <input type="number" id="weight" step="0.1" min="30" required placeholder="e.g. 75" />
+          <label id="weightLabel">Weight (optional)
+            <input type="number" id="weight" step="0.1" min="30" placeholder="leave blank if you prefer" />
             <select id="weightUnit">
               <option value="kg">kg</option>
               <option value="lbs">lbs</option>
@@ -46,6 +47,11 @@
         <div class="form-row">
           <label>Protein (grams) <input type="number" id="protein" step="1" min="0" required placeholder="e.g. 90" /></label>
           <label>Notes <input type="text" id="notes" placeholder="optional" /></label>
+        </div>
+        <div class="form-row">
+          <label style="flex-direction:row;align-items:center;gap:0.5rem;font-weight:500">
+            <input type="checkbox" id="hideWeight" /> Hide weight on this page
+          </label>
         </div>
         <button type="submit">Add Entry</button>
       </form>
@@ -68,18 +74,19 @@
     </section>
 
     <section class="config">
-      <h2>Google Sheet backend (optional)</h2>
-      <p>By default data is stored only in this browser (localStorage). To share between devices or people:</p>
+      <h2>Google Sheet backend</h2>
+      <p>Sheet ID is pre-filled: <code>1o8RNQzmCRWRzknJ3k2igtUit4pziaWpLiRz8wRr9KM0</code></p>
+      <p>To enable shared data:</p>
       <ol>
-        <li>Create a Google Sheet with columns: Date, Person, WeightKg, ProteinG, Notes, Timestamp</li>
-        <li>Publish it to the web as CSV, or create a Google Apps Script web app that accepts POST for append and GET for read.</li>
-        <li>Paste the CSV URL or Apps Script endpoint below and reload.</li>
+        <li>In the Sheet: File → Share → Publish to web → choose the tab → CSV → Publish.</li>
+        <li>Copy the published CSV URL and paste it below, or leave blank to use local storage only.</li>
+        <li>For full two-way sync, deploy a simple Apps Script web app (see README).</li>
       </ol>
-      <label>Sheet / endpoint URL
+      <label>Published CSV URL (optional)
         <input type="url" id="sheetUrl" placeholder="https://docs.google.com/spreadsheets/d/.../export?format=csv" />
       </label>
       <button type="button" id="saveConfig">Save config</button>
-      <p class="note">Config is also stored locally. For full write support use an Apps Script web app that returns JSON.</p>
+      <p class="note">Weight is optional. If hidden, entries still save but weight is not displayed.</p>
     </section>
   </main>
 
