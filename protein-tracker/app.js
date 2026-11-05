@@ -84,14 +84,6 @@ function addEntry(person, date, weight, unit, protein, notes) {
   render();
 }
 
-function clearAll() {
-  if (confirm('Clear all local entries? This cannot be undone.')) {
-    entries = [];
-    saveEntries();
-    render();
-  }
-}
-
 function renderStats() {
   const el = document.getElementById('statsContent');
   if (!entries.length) {
@@ -259,7 +251,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('hideWeight').checked = hideWeight;
   });
 
-  document.getElementById('clearData').addEventListener('click', clearAll);
   document.getElementById('saveConfig').addEventListener('click', saveConfig);
 
   render();
