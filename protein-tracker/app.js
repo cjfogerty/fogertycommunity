@@ -10,7 +10,9 @@ const SHEET_ID = '1o8RNQzmCRWRzknJ3k2igtUit4pziaWpLiRz8wRr9KM0';
 
 let entries = [];
 let chart = null;
-let config = { sheetUrl: '' };
+let config = { 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1o8RNQzmCRWRzknJ3k2igtUit4pziaWpLiRz8wRr9KM0/export?format=csv&gid=0' 
+};
 let hideWeight = false;
 
 function loadConfig() {
@@ -18,6 +20,7 @@ function loadConfig() {
     const raw = localStorage.getItem(CONFIG_KEY);
     if (raw) config = { ...config, ...JSON.parse(raw) };
   } catch (e) {}
+  // Pre-set sheet URL for automatic load; user can still override
   document.getElementById('sheetUrl').value = config.sheetUrl || '';
   hideWeight = localStorage.getItem(HIDE_WEIGHT_KEY) === '1';
   document.getElementById('hideWeight').checked = hideWeight;
