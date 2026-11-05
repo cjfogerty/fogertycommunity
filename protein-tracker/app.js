@@ -85,6 +85,12 @@ function addEntry(person, date, weight, unit, protein, notes) {
 
 function deleteEntry(id) {
   if (!confirm('Delete this entry?')) return;
+  const gone = entries.find(e => e.id === id);
+  if (gone && gone.source === 'sheet' && gone.sheetKey) {
+    const o = loadOverrides();
+    o[gone.sheetKey] = { deleted: true };
+    saveOverrides(o);
+  }
   entries = entries.filter(e => e.id !== id);
   saveEntries();
   render();
@@ -118,35 +124,120 @@ function renderStats() {
   el.innerHTML = html;
 }
 
+const OVERRIDES_KEY = 'fogerty_protein_sheet_overrides';
+let editingId = null;
+
+function sheetKey(e) { return e.date + '|' + e.person; }
+function loadOverrides() {
+  try { return JSON.parse(localStorage.getItem(OVERRIDES_KEY)) || {}; } catch (e) { return {}; }
+}
+function saveOverrides(o) { localStorage.setItem(OVERRIDES_KEY, JSON.stringify(o)); }
+
+function escapeHtml(str) {
+  return String(str == null ? '' : str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function updateEntry(id, fields) {
+  const e = entries.find(x => x.id === id);
+  if (!e) return;
+  const origKey = e.sheetKey;
+  e.date = fields.date;
+  e.person = fields.person;
+  e.protein = fields.protein;
+  e.notes = fields.notes;
+  if (fields.weightKg !== undefined) {
+    e.weightKg = fields.weightKg;
+    e.recommended = recommendedG(e.weightKg);
+  }
+  if (e.source === 'sheet' && origKey) {
+    const o = loadOverrides();
+    o[origKey] = { date: e.date, person: e.person, protein: e.protein, notes: e.notes, weightKg: e.weightKg };
+    saveOverrides(o);
+  }
+  entries.sort((a, b) => a.date.localeCompare(b.date));
+  saveEntries();
+  editingId = null;
+  render();
+}
+
+function bigBtn(label, bg) {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.textContent = label;
+  b.className = 'entry-btn';
+  b.style.background = bg;
+  return b;
+}
+
+function renderEditForm(li, e) {
+  li.className = 'editing';
+  const form = document.createElement('form');
+  form.className = 'edit-form';
+  const weightField = hideWeight ? '' :
+    `<label>Weight (kg)<input type="number" step="0.1" min="0" name="weight" inputmode="decimal" value="${e.weightKg || ''}"></label>`;
+  form.innerHTML = `
+    <label>Date<input type="date" name="date" required value="${escapeHtml(e.date)}"></label>
+    <label>Person<input type="text" name="person" required value="${escapeHtml(e.person)}"></label>
+    <label>Protein (g)<input type="number" min="0" step="1" inputmode="numeric" name="protein" required value="${e.protein}"></label>
+    ${weightField}
+    <label>Notes<input type="text" name="notes" value="${escapeHtml(e.notes)}"></label>
+    ${e.source === 'sheet' ? '<p class="note">This entry comes from the Google Sheet. Your changes are saved on this device only.</p>' : ''}`;
+  const actions = document.createElement('div');
+  actions.className = 'entry-actions';
+  const save = bigBtn('Save', '#16a34a'); save.type = 'submit';
+  const cancel = bigBtn('Cancel', '#64748b');
+  cancel.addEventListener('click', () => { editingId = null; renderHistory(); });
+  actions.append(save, cancel);
+  form.appendChild(actions);
+  form.addEventListener('submit', ev => {
+    ev.preventDefault();
+    const fd = new FormData(form);
+    const protein = Number(fd.get('protein'));
+    if (!fd.get('date') || !String(fd.get('person')).trim() || isNaN(protein)) {
+      alert('Please fill in date, person and protein.');
+      return;
+    }
+    const fields = {
+      date: fd.get('date'),
+      person: String(fd.get('person')).trim(),
+      protein,
+      notes: String(fd.get('notes') || '')
+    };
+    if (!hideWeight) {
+      const w = Number(fd.get('weight'));
+      fields.weightKg = w ? Math.round(w * 10) / 10 : null;
+    }
+    updateEntry(e.id, fields);
+  });
+  li.appendChild(form);
+}
+
 function renderHistory() {
   const ul = document.getElementById('historyList');
   ul.innerHTML = '';
   const recent = entries.slice().reverse().slice(0, 30);
   recent.forEach(e => {
     const li = document.createElement('li');
+    if (e.id === editingId) {
+      renderEditForm(li, e);
+      ul.appendChild(li);
+      return;
+    }
     const ok = e.recommended ? e.protein >= e.recommended : true;
     li.className = ok ? 'ok' : 'low';
-    li.style.display = 'flex';
-    li.style.justifyContent = 'space-between';
-    li.style.alignItems = 'center';
-    li.style.gap = '0.5rem';
     const weightPart = (!hideWeight && e.weightKg) ? ` · ${e.weightKg} kg` : '';
     const targetPart = e.recommended ? ` (target ${e.recommended} g)` : '';
     const text = document.createElement('span');
-    text.innerHTML = `<strong>${e.date}</strong> · ${e.person} · ${e.protein} g${targetPart}${weightPart}${e.notes ? ' · ' + e.notes : ''}`;
-    const del = document.createElement('button');
-    del.type = 'button';
-    del.textContent = 'Delete';
-    del.style.background = '#ef4444';
-    del.style.color = 'white';
-    del.style.border = 'none';
-    del.style.padding = '0.25rem 0.6rem';
-    del.style.borderRadius = '6px';
-    del.style.fontSize = '0.85rem';
-    del.style.cursor = 'pointer';
+    text.className = 'entry-text';
+    text.innerHTML = `<strong>${escapeHtml(e.date)}</strong> · ${escapeHtml(e.person)} · ${e.protein} g${targetPart}${weightPart}${e.notes ? ' · ' + escapeHtml(e.notes) : ''}`;
+    const actions = document.createElement('div');
+    actions.className = 'entry-actions';
+    const edit = bigBtn('Edit', '#2563eb');
+    edit.addEventListener('click', () => { editingId = e.id; renderHistory(); });
+    const del = bigBtn('Delete', '#ef4444');
     del.addEventListener('click', () => deleteEntry(e.id));
-    li.appendChild(text);
-    li.appendChild(del);
+    actions.append(edit, del);
+    li.append(text, actions);
     ul.appendChild(li);
   });
 }
@@ -226,12 +317,23 @@ async function tryLoadFromSheet() {
           protein: Number(protein),
           notes: notes || '',
           recommended: recommendedG(w),
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
+          source: 'sheet',
+          sheetKey: date + '|' + person
         });
       }
     });
     if (loaded.length) {
-      entries = loaded;
+      const o = loadOverrides();
+      entries = loaded.filter(e => !(o[e.sheetKey] && o[e.sheetKey].deleted)).map(e => {
+        const ov = o[e.sheetKey];
+        if (!ov) return e;
+        const m = { ...e, ...ov };
+        m.recommended = recommendedG(m.weightKg);
+        return m;
+      });
+      entries.sort((a, b) => a.date.localeCompare(b.date));
+      editingId = null;
       saveEntries();
       render();
     }
