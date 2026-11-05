@@ -11,7 +11,7 @@ const SHEET_ID = '1o8RNQzmCRWRzknJ3k2igtUit4pziaWpLiRz8wRr9KM0';
 let entries = [];
 let chart = null;
 let config = { 
-  sheetUrl: 'https://docs.google.com/spreadsheets/d/1o8RNQzmCRWRzknJ3k2igtUit4pziaWpLiRz8wRr9KM0/export?format=csv&gid=0' 
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRgHhuUoorXm_6P2JxJ4m9cHZFeLj5pydb-mNA2xtnD4OLXqVKrynmXnX002MV5lPqcesQEjuGCRnjA/pub?output=csv' 
 };
 let hideWeight = false;
 
