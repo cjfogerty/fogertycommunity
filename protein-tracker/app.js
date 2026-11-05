@@ -20,7 +20,6 @@ function loadConfig() {
     const raw = localStorage.getItem(CONFIG_KEY);
     if (raw) config = { ...config, ...JSON.parse(raw) };
   } catch (e) {}
-  // Pre-set sheet URL for automatic load; user can still override
   document.getElementById('sheetUrl').value = config.sheetUrl || '';
   hideWeight = localStorage.getItem(HIDE_WEIGHT_KEY) === '1';
   document.getElementById('hideWeight').checked = hideWeight;
@@ -69,7 +68,7 @@ function applyHideWeight() {
 function addEntry(person, date, weight, unit, protein, notes) {
   const weightKg = weight ? kgFromInput(Number(weight), unit) : null;
   const entry = {
-    id: Date.now(),
+    id: Date.now() + Math.random(),
     person,
     date,
     weightKg: weightKg ? Math.round(weightKg * 10) / 10 : null,
@@ -80,6 +79,13 @@ function addEntry(person, date, weight, unit, protein, notes) {
   };
   entries.push(entry);
   entries.sort((a, b) => a.date.localeCompare(b.date));
+  saveEntries();
+  render();
+}
+
+function deleteEntry(id) {
+  if (!confirm('Delete this entry?')) return;
+  entries = entries.filter(e => e.id !== id);
   saveEntries();
   render();
 }
@@ -115,14 +121,32 @@ function renderStats() {
 function renderHistory() {
   const ul = document.getElementById('historyList');
   ul.innerHTML = '';
-  const recent = entries.slice().reverse().slice(0, 20);
+  const recent = entries.slice().reverse().slice(0, 30);
   recent.forEach(e => {
     const li = document.createElement('li');
     const ok = e.recommended ? e.protein >= e.recommended : true;
     li.className = ok ? 'ok' : 'low';
+    li.style.display = 'flex';
+    li.style.justifyContent = 'space-between';
+    li.style.alignItems = 'center';
+    li.style.gap = '0.5rem';
     const weightPart = (!hideWeight && e.weightKg) ? ` · ${e.weightKg} kg` : '';
     const targetPart = e.recommended ? ` (target ${e.recommended} g)` : '';
-    li.innerHTML = `<strong>${e.date}</strong> · ${e.person} · ${e.protein} g${targetPart}${weightPart}${e.notes ? ' · ' + e.notes : ''}`;
+    const text = document.createElement('span');
+    text.innerHTML = `<strong>${e.date}</strong> · ${e.person} · ${e.protein} g${targetPart}${weightPart}${e.notes ? ' · ' + e.notes : ''}`;
+    const del = document.createElement('button');
+    del.type = 'button';
+    del.textContent = 'Delete';
+    del.style.background = '#ef4444';
+    del.style.color = 'white';
+    del.style.border = 'none';
+    del.style.padding = '0.25rem 0.6rem';
+    del.style.borderRadius = '6px';
+    del.style.fontSize = '0.85rem';
+    del.style.cursor = 'pointer';
+    del.addEventListener('click', () => deleteEntry(e.id));
+    li.appendChild(text);
+    li.appendChild(del);
     ul.appendChild(li);
   });
 }
