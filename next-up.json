@@ -1,12 +1,12 @@
 {
   "mode": "game",
-  "badge": "Game day",
+  "badge": "Game",
   "badge2": "Home",
   "title": "Saturday, November 7",
   "when": "9:00 AM · Field 8B · vs Need Coach 2",
-  "note": "Sports Park · 3589 Hwy K, O’Fallon. This Saturday’s game is next: 9:00 AM Field 8B vs Need Coach 2 (Home). Snack: Alyssa Fogerty.",
+  "note": "Home game at Sports Park Field 8B, 3589 Hwy K, O’Fallon. Snack: Alyssa Fogerty. Next practice is Wednesday, November 11, 5:30–6:00 PM on Field 8C.",
   "mapHighlight": "8B",
-  "mapLabel": "Game · Field 8B",
-  "mapSub": "Sat 9:00 AM · pinch or use + / −",
+  "mapLabel": "Saturday game · Field 8B",
+  "mapSub": "9:00 AM vs Need Coach 2 · pinch or use + / −",
   "updated": "2026-11-05"
 }
