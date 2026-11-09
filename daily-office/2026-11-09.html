@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morning Prayer — Monday, November 9, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf8f5;
+      --text: #2c2416;
+      --muted: #6b5e4e;
+      --accent: #8b4513;
+      --accent-light: #d4a574;
+      --sidebar: #f0ebe3;
+      --card: #ffffff;
+      --border: #e5ddd0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 1.05rem;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: 100vh;
+    }
+    @media (max-width: 800px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: sticky; top: 0; z-index: 10; max-height: 60px; overflow: hidden; }
+      .sidebar.open { max-height: none; }
+    }
+    .sidebar {
+      background: var(--sidebar);
+      border-right: 1px solid var(--border);
+      padding: 1.5rem 1rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .sidebar h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1rem;
+      margin: 0 0 1rem;
+      color: var(--accent);
+    }
+    .timeline {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline li {
+      position: relative;
+      padding: 0.4rem 0 0.4rem 2rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .timeline li::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 0.65rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid var(--border);
+      z-index: 1;
+    }
+    .timeline li.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .timeline li.active::before {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .main {
+      padding: 2.5rem 3rem 4rem;
+      max-width: 780px;
+    }
+    @media (max-width: 800px) {
+      .main { padding: 1.5rem 1.25rem 3rem; }
+    }
+    header.page-header {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
+    header.page-header h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.9rem;
+      margin: 0 0 0.4rem;
+      line-height: 1.3;
+    }
+    header.page-header p {
+      margin: 0.25rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    section {
+      margin: 2.5rem 0;
+      scroll-margin-top: 1rem;
+    }
+    section h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin: 0 0 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    section h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.15rem;
+      margin: 1.5rem 0 0.75rem;
+    }
+    .role {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 1rem;
+    }
+    p { margin: 0.6rem 0; }
+    .psalm-verse, .canticle-line {
+      margin: 0.25rem 0;
+      padding-left: 1.5rem;
+      text-indent: -1.5rem;
+    }
+    .glory {
+      font-style: italic;
+      margin-top: 1rem;
+      color: var(--muted);
+    }
+    .audio-note {
+      background: #fff8ee;
+      border: 1px solid var(--accent-light);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <h2>Progress</h2>
+      <ul class="timeline" id="timeline">
+        <li data-target="opening">Opening</li>
+        <li data-target="confession">Confession</li>
+        <li data-target="invitatory">Invitatory & Venite</li>
+        <li data-target="psalm">Psalm 80</li>
+        <li data-target="lesson1">Joel 1:1–13</li>
+        <li data-target="canticle9">Canticle 9</li>
+        <li data-target="lesson2">Luke 14:12–24</li>
+        <li data-target="canticle19">Canticle 19</li>
+        <li data-target="creed">Apostles’ Creed</li>
+        <li data-target="prayers">Prayers & Suffrages</li>
+        <li data-target="collects">Collects</li>
+        <li data-target="closing">Closing</li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <header class="page-header">
+        <h1>Morning Prayer</h1>
+        <p><strong>Monday, November 9, 2026</strong> · 1979 Book of Common Prayer, Rite II</p>
+        <p>Follow-along for <em>The Daily Office Chanted</em> (Scott Dettra)</p>
+        <p>Psalm 80 · Joel 1:1–13 · Canticle 9 · Luke 14:12–24 · Canticle 19</p>
+      </header>
+
+      <div class="audio-note">
+        <strong>Audio sync:</strong> Play the episode from your podcast app (or add a direct audio URL below later). The side timeline highlights as you scroll or jump to sections. Approximate section timing can be refined once word-level alignment is available.
+      </div>
+
+      <section id="opening">
+        <h2>Opening Sentence</h2>
+        <div class="role">Officiant</div>
+        <p>Grace to you and peace from God our Father and the Lord Jesus Christ.</p>
+        <p style="font-size:0.9rem;color:var(--muted);"><em>Philippians 1:2</em></p>
+      </section>
+
+      <section id="confession">
+        <h2>Confession of Sin</h2>
+        <div class="role">Officiant</div>
+        <p>Let us confess our sins against God and our neighbor.</p>
+        <p style="font-style:italic;color:var(--muted);">Silence may be kept.</p>
+        <div class="role">Officiant and People</div>
+        <p>Most merciful God,<br>
+        we confess that we have sinned against you<br>
+        in thought, word, and deed,<br>
+        by what we have done,<br>
+        and by what we have left undone.<br>
+        We have not loved you with our whole heart;<br>
+        we have not loved our neighbors as ourselves.<br>
+        We are truly sorry and we humbly repent.<br>
+        For the sake of your Son Jesus Christ,<br>
+        have mercy on us and forgive us;<br>
+        that we may delight in your will,<br>
+        and walk in your ways,<br>
+        to the glory of your Name. Amen.</p>
+        <div class="role">Officiant</div>
+        <p>Almighty God have mercy on us, forgive us all our sins through our Lord Jesus Christ, strengthen us in all goodness, and by the power of the Holy Spirit keep us in eternal life. Amen.</p>
+      </section>
+
+      <section id="invitatory">
+        <h2>The Invitatory and Psalter</h2>
+        <div class="role">Officiant</div>
+        <p>Lord, open our lips.</p>
+        <div class="role">People</div>
+        <p>And our mouth shall proclaim your praise.</p>
+        <div class="role">Officiant and People</div>
+        <p class="glory">Glory to the Father, and to the Son, and to the Holy Spirit:<br>
+        as it was in the beginning, is now, and will be for ever. Amen.<br>
+        <em>Except in Lent, add</em> Alleluia.</p>
+
+        <h3>Antiphon</h3>
+        <div class="role">Officiant</div>
+        <p>Worship the Lord in the beauty of holiness: Come let us adore him.</p>
+
+        <h3>Venite <em>Psalm 95:1–7</em></h3>
+        <p class="psalm-verse">Come, let us sing to the Lord; *<br>let us shout for joy to the Rock of our salvation.</p>
+        <p class="psalm-verse">Let us come before his presence with thanksgiving *<br>and raise a loud shout to him with psalms.</p>
+        <p class="psalm-verse">For the Lord is a great God, *<br>and a great King above all gods.</p>
+        <p class="psalm-verse">In his hand are the caverns of the earth, *<br>and the heights of the hills are his also.</p>
+        <p class="psalm-verse">The sea is his, for he made it, *<br>and his hands have molded the dry land.</p>
+        <p class="psalm-verse">Come, let us bow down, and bend the knee, *<br>and kneel before the Lord our Maker.</p>
+        <p class="psalm-verse">For he is our God,<br>and we are the people of his pasture and the sheep of his hand. *<br>Oh, that today you would hearken to his voice!</p>
+        <p class="glory">Glory to the Father, and to the Son, and to the Holy Spirit:<br>as it was in the beginning, is now, and will be for ever. Amen.</p>
+      </section>
+
+      <section id="psalm">
+        <h2>The Psalm Appointed</h2>
+        <h3>Psalm 80 <em>Qui regis Israel</em> <span style="font-weight:400;font-size:0.9rem;color:var(--muted);">(1979 BCP Psalter)</span></h3>
+        <p class="psalm-verse">1 Hear, O Shepherd of Israel, leading Joseph like a flock; *<br>shine forth, you that are enthroned upon the cherubim.</p>
+        <p class="psalm-verse">2 In the presence of Ephraim, Benjamin, and Manasseh, *<br>stir up your strength and come to help us.</p>
+        <p class="psalm-verse">3 Restore us, O God of hosts; *<br>show the light of your countenance, and we shall be saved.</p>
+        <p class="psalm-verse">4 O LORD God of hosts, *<br>how long will you be angered<br>despite the prayers of your people?</p>
+        <p class="psalm-verse">5 You have fed them with the bread of tears; *<br>you have given them bowls of tears to drink.</p>
+        <p class="psalm-verse">6 You have made us the derision of our neighbors, *<br>and our enemies laugh us to scorn.</p>
+        <p class="psalm-verse">7 Restore us, O God of hosts; *<br>show the light of your countenance, and we shall be saved.</p>
+        <p class="psalm-verse">8 You have brought a vine out of Egypt; *<br>you cast out the nations and planted it.</p>
+        <p class="psalm-verse">9 You prepared the ground for it; *<br>it took root and filled the land.</p>
+        <p class="psalm-verse">10 The mountains were covered by its shadow *<br>and the towering cedar trees by its boughs.</p>
+        <p class="psalm-verse">11 You stretched out its tendrils to the Sea *<br>and its branches to the River.</p>
+        <p class="psalm-verse">12 Why have you broken down its wall, *<br>so that all who pass by pluck off its grapes?</p>
+        <p class="psalm-verse">13 The wild boar of the forest has ravaged it, *<br>and the beasts of the field have grazed upon it.</p>
+        <p class="psalm-verse">14 Turn now, O God of hosts, look down from heaven;<br>behold and tend this vine; *<br>preserve what your right hand has planted.</p>
+        <p class="psalm-verse">15 They burn it with fire like rubbish; *<br>at the rebuke of your countenance let them perish.</p>
+        <p class="psalm-verse">16 Let your hand be upon the man of your right hand, *<br>the son of man you have made so strong for yourself.</p>
+        <p class="psalm-verse">17 And so will we never turn away from you; *<br>give us life, that we may call upon your Name.</p>
+        <p class="psalm-verse">18 Restore us, O LORD God of hosts; *<br>show the light of your countenance, and we shall be saved.</p>
+        <p class="glory">Glory to the Father, and to the Son, and to the Holy Spirit: *<br>as it was in the beginning, is now, and will be for ever. Amen.</p>
+      </section>
+
+      <section id="lesson1">
+        <h2>The Lessons</h2>
+        <h3>The First Lesson: Joel 1:1–13 <span style="font-weight:400;font-size:0.9rem;color:var(--muted);">(NRSV)</span></h3>
+        <p>The word of the Lord that came to Joel son of Pethuel:</p>
+        <p>Hear this, O elders,<br>give ear, all inhabitants of the land!<br>Has such a thing happened in your days<br>or in the days of your ancestors?<br>Tell your children of it,<br>and let your children tell their children,<br>and their children another generation.</p>
+        <p>What the cutting locust left,<br>the swarming locust has eaten;<br>what the swarming locust left,<br>the hopping locust has eaten,<br>and what the hopping locust left,<br>the destroying locust has eaten.</p>
+        <p>Wake up, you drunkards, and weep,<br>and wail, all you wine drinkers,<br>over the sweet wine,<br>for it is cut off from your mouth.<br>For a nation has invaded my land,<br>powerful and innumerable;<br>its teeth are lions’ teeth,<br>and it has the fangs of a lioness.<br>It has laid waste my vines<br>and splintered my fig trees;<br>it has stripped off their bark and thrown it down;<br>their branches have turned white.</p>
+        <p>Lament like a virgin dressed in sackcloth<br>for the husband of her youth.<br>The grain offering and the drink offering are cut off<br>from the house of the Lord.<br>The priests mourn,<br>the ministers of the Lord.<br>The fields are devastated,<br>the ground mourns,<br>for the grain is destroyed,<br>the wine dries up,<br>the oil fails.</p>
+        <p>Be dismayed, you farmers,<br>wail, you vinedressers,<br>over the wheat and the barley;<br>for the crops of the field are ruined.<br>The vine withers,<br>the fig tree droops.<br>Pomegranate, palm, and apple—<br>all the trees of the field are dried up;<br>surely, joy withers away among the people.</p>
+        <p>Put on sackcloth and lament, you priests;<br>wail, you ministers of the altar.<br>Come, pass the night in sackcloth,<br>you ministers of my God!<br>Grain offering and drink offering<br>are withheld from the house of your God.</p>
+        <div class="role">Reader</div>
+        <p>The Word of the Lord.</p>
+        <div class="role">People</div>
+        <p>Thanks be to God.</p>
+      </section>
+
+      <section id="canticle9">
+        <h3>Canticle 9: The First Song of Isaiah <em>Ecce, Deus</em></h3>
+        <p style="font-size:0.9rem;color:var(--muted);"><em>Isaiah 12:2–6</em></p>
+        <p class="canticle-line">Surely, it is God who saves me; *<br>I will trust in him and not be afraid.</p>
+        <p class="canticle-line">For the Lord is my stronghold and my sure defense, *<br>and he will be my Savior.</p>
+        <p class="canticle-line">Therefore you shall draw water with rejoicing *<br>from the springs of salvation.</p>
+        <p class="canticle-line">And on that day you shall say, *<br>Give thanks to the Lord and call upon his Name;</p>
+        <p class="canticle-line">Make his deeds known among the peoples; *<br>see that they remember that his Name is exalted.</p>
+        <p class="canticle-line">Sing the praises of the Lord, for he has done great things, *<br>and this is known in all the world.</p>
+        <p class="canticle-line">Cry aloud, inhabitants of Zion, ring out your joy, *<br>for the great one in the midst of you is the Holy One of Israel.</p>
+        <p class="glory">Glory to the Father, and to the Son, and to the Holy Spirit: *<br>as it was in the beginning, is now, and will be for ever. Amen.</p>
+      </section>
+
+      <section id="lesson2">
+        <h3>The Second Lesson: Luke 14:12–24 <span style="font-weight:400;font-size:0.9rem;color:var(--muted);">(NRSV)</span></h3>
+        <p>He said also to the one who had invited him, “When you give a luncheon or a dinner, do not invite your friends or your brothers or your relatives or rich neighbors, in case they may invite you in return, and you would be repaid. But when you give a banquet, invite the poor, the crippled, the lame, and the blind. And you will be blessed, because they cannot repay you, for you will be repaid at the resurrection of the righteous.”</p>
+        <p>One of the dinner guests, on hearing this, said to him, “Blessed is anyone who will eat bread in the kingdom of God!” Then Jesus said to him, “Someone gave a great dinner and invited many. At the time for the dinner he sent his slave to say to those who had been invited, ‘Come; for everything is ready now.’ But they all alike began to make excuses. The first said to him, ‘I have bought a piece of land, and I must go out and see it; please accept my regrets.’ Another said, ‘I have bought five yoke of oxen, and I am going to try them out; please accept my regrets.’ Another said, ‘I have just been married, and therefore I cannot come.’ So the slave returned and reported this to his master. Then the owner of the house became angry and said to his slave, ‘Go out at once into the streets and lanes of the town and bring in the poor, the crippled, the blind, and the lame.’ And the slave said, ‘Sir, what you ordered has been done, and there is still room.’ Then the master said to the slave, ‘Go out into the roads and lanes, and compel people to come in, so that my house may be filled. For I tell you, none of those who were invited will taste my dinner.’”</p>
+        <div class="role">Reader</div>
+        <p>The Word of the Lord.</p>
+        <div class="role">People</div>
+        <p>Thanks be to God.</p>
+      </section>
+
+      <section id="canticle19">
+        <h3>Canticle 19: The Song of the Redeemed <em>Magna et mirabilia</em></h3>
+        <p style="font-size:0.9rem;color:var(--muted);"><em>Revelation 15:3–4</em></p>
+        <p class="canticle-line">O ruler of the universe, Lord God,<br>great deeds are they that you have done, *<br>surpassing human understanding.</p>
+        <p class="canticle-line">Your ways are ways of righteousness and truth, *<br>O King of all the ages.</p>
+        <p class="canticle-line">Who can fail to do you homage, Lord,<br>and sing the praises of your Name? *<br>for you only are the Holy One.</p>
+        <p class="canticle-line">All nations will draw near and fall down before you, *<br>because your just and holy works have been revealed.</p>
+        <p class="glory">Glory to the Father, and to the Son, and to the Holy Spirit: *<br>as it was in the beginning, is now, and will be for ever. Amen.</p>
+      </section>
+
+      <section id="creed">
+        <h2>The Apostles’ Creed</h2>
+        <div class="role">Officiant and People together, all standing</div>
+        <p>I believe in God, the Father almighty,<br>
+        creator of heaven and earth.<br>
+        I believe in Jesus Christ, his only Son, our Lord.<br>
+        He was conceived by the power of the Holy Spirit<br>
+        and born of the Virgin Mary.<br>
+        He suffered under Pontius Pilate,<br>
+        was crucified, died, and was buried.<br>
+        He descended to the dead.<br>
+        On the third day he rose again.<br>
+        He ascended into heaven,<br>
+        and is seated at the right hand of the Father.<br>
+        He will come again to judge the living and the dead.<br>
+        I believe in the Holy Spirit,<br>
+        the holy catholic Church,<br>
+        the communion of saints,<br>
+        the forgiveness of sins,<br>
+        the resurrection of the body,<br>
+        and the life everlasting. Amen.</p>
+      </section>
+
+      <section id="prayers">
+        <h2>The Prayers</h2>
+        <div class="role">Officiant</div>
+        <p>The Lord be with you.</p>
+        <div class="role">People</div>
+        <p>And also with you.</p>
+        <div class="role">Officiant</div>
+        <p>Let us pray.</p>
+
+        <h3>The Lord’s Prayer</h3>
+        <div class="role">Officiant and People</div>
+        <p>Our Father, who art in heaven,<br>
+        hallowed be thy Name,<br>
+        thy kingdom come,<br>
+        thy will be done,<br>
+        on earth as it is in heaven.<br>
+        Give us this day our daily bread.<br>
+        And forgive us our trespasses,<br>
+        as we forgive those who trespass against us.<br>
+        And lead us not into temptation,<br>
+        but deliver us from evil.<br>
+        For thine is the kingdom,<br>
+        and the power, and the glory,<br>
+        for ever and ever. Amen.</p>
+
+        <h3>Suffrages B</h3>
+        <div class="role">Officiant</div>
+        <p>Save your people, Lord, and bless your inheritance;</p>
+        <div class="role">People</div>
+        <p>Govern and uphold them, now and always.</p>
+        <div class="role">Officiant</div>
+        <p>Day by day we bless you;</p>
+        <div class="role">People</div>
+        <p>We praise your Name for ever.</p>
+        <div class="role">Officiant</div>
+        <p>Lord, keep us from all sin today;</p>
+        <div class="role">People</div>
+        <p>Have mercy on us, Lord, have mercy.</p>
+        <div class="role">Officiant</div>
+        <p>Lord, show us your love and mercy;</p>
+        <div class="role">People</div>
+        <p>For we put our trust in you.</p>
+        <div class="role">Officiant</div>
+        <p>In you, Lord, is our hope;</p>
+        <div class="role">People</div>
+        <p>And we shall never hope in vain.</p>
+      </section>
+
+      <section id="collects">
+        <h2>The Collects</h2>
+        <h3>Collect of the Day <span style="font-weight:400;font-size:0.9rem;color:var(--muted);">(Proper 27)</span></h3>
+        <p>O God, whose blessed Son came into the world that he might destroy the works of the devil and make us children of God and heirs of eternal life: Grant that, having this hope, we may purify ourselves as he is pure; that, when he comes again with power and great glory, we may be made like him in his eternal and glorious kingdom; where he lives and reigns with you and the Holy Spirit, one God, for ever and ever. Amen.</p>
+
+        <h3>A Collect for Peace</h3>
+        <p>O God, the author of peace and lover of concord, to know you is eternal life and to serve you is perfect freedom: Defend us, your humble servants, in all assaults of our enemies; that we, surely trusting in your defense, may not fear the power of any adversaries; through the might of Jesus Christ our Lord. Amen.</p>
+
+        <h3>A Collect for Grace</h3>
+        <p>Lord God, almighty and everlasting Father, you have brought us in safety to this new day: Preserve us with your mighty power, that we may not fall into sin, nor be overcome by adversity; and in all we do, direct us to the fulfilling of your purpose; through Jesus Christ our Lord. Amen.</p>
+      </section>
+
+      <section id="closing">
+        <h2>Closing</h2>
+        <div class="role">Officiant</div>
+        <p>Let us bless the Lord.</p>
+        <div class="role">People</div>
+        <p>Thanks be to God.</p>
+        <div class="role">Officiant</div>
+        <p>The grace of our Lord Jesus Christ, and the love of God, and the fellowship of the Holy Spirit, be with us all evermore. Amen.</p>
+        <p style="font-size:0.9rem;color:var(--muted);"><em>2 Corinthians 13:14</em></p>
+      </section>
+
+      <footer>
+        Prepared for personal use following along with The Daily Office Chanted. Scripture readings from the New Revised Standard Version Bible, copyright © 1989 National Council of the Churches of Christ in the United States of America. Used by permission. Liturgical texts from The Book of Common Prayer (1979).
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Side timeline: click to scroll, highlight active section on scroll
+    const links = document.querySelectorAll('#timeline li');
+    const sections = Array.from(links).map(li => document.getElementById(li.dataset.target)).filter(Boolean);
+
+    links.forEach(li => {
+      li.addEventListener('click', () => {
+        const target = document.getElementById(li.dataset.target);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    function updateActive() {
+      const scrollY = window.scrollY + 120;
+      let current = sections[0];
+      for (const sec of sections) {
+        if (sec.offsetTop <= scrollY) current = sec;
+        else break;
+      }
+      links.forEach(li => {
+        li.classList.toggle('active', li.dataset.target === current.id);
+      });
+    }
+
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+
+    // Optional: if an audio element with id="office-audio" is added later,
+    // you can map currentTime to section highlights here.
+  </script>
+</body>
+</html>
