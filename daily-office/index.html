@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><title>Daily Office follow-alongs</title><style>:root{--bg:#fbf7ef;--ink:#2a211a;--muted:#6d5d4f;--red:#a3201a;--gold:#b08a3e;--card:#fffdf8;--line:#e6dccb;--green:#2f6b3a}
+@media (prefers-color-scheme:dark){:root{--bg:#17130f;--ink:#efe6d8;--muted:#b8a994;--red:#ff8a7a;--gold:#d9b874;--card:#211b15;--line:#3a3027}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:1.2rem/1.65 "Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif}
+a{color:var(--red)}
+.hero{background:#1c140d;color:#f6ecd8}
+.show{position:relative;width:100%;max-width:56rem;margin:0 auto;aspect-ratio:400/310;overflow:hidden}
+.slide{position:absolute;inset:0;margin:0;opacity:0;animation:fade 48s infinite ease-in-out}
+.slide svg{display:block;width:100%;height:auto}
+.slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:.6rem 4.2rem .8rem 1rem;font-size:.95rem;line-height:1.4;background:linear-gradient(transparent,rgba(20,13,8,.92) 35%);color:#f6ecd8}
+.s1{animation-delay:-4s}.s2{animation-delay:8s}.s3{animation-delay:20s}.s4{animation-delay:32s}
+@keyframes fade{0%{opacity:0}8%{opacity:1}25%{opacity:1}33%{opacity:0}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.slide{animation:none}.s1{opacity:1}}
+.titles{max-width:40rem;margin:0 auto;padding:1rem 1.1rem 1.3rem}
+.kicker{margin:0;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;color:#d9b874}
+h1{margin:.2rem 0 0;font-size:1.9rem;line-height:1.2;font-weight:600}
+.day{margin:.2rem 0 0;color:#e9dcc3}.comm{margin:.2rem 0 0;font-style:italic;color:#cbb994;font-size:1rem}
+.links{margin-top:.9rem}
+.btn{display:block;text-align:center;background:var(--green);color:#fff;text-decoration:none;padding:.8rem 1rem;border-radius:.7rem;font-weight:600;font-size:1.05rem}
+.btn.off{background:#5b5048}
+.url{font-size:.85rem;word-break:break-all;margin:.6rem 0 0;color:#cbb994}.url a{color:#f0d79a}
+main{max-width:40rem;margin:0 auto;padding:0 1.1rem 4rem}
+.sec{scroll-margin-top:.5rem;padding-top:.4rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:.9rem;padding:.4rem 1rem 1rem;margin:1rem 0}
+h2{font-size:1.45rem;line-height:1.25;margin:2.2rem 0 .6rem;padding-bottom:.3rem;border-bottom:2px solid var(--gold);display:flex;flex-wrap:wrap;gap:.5rem;align-items:baseline;justify-content:space-between}
+.card h2{margin-top:.8rem}
+h3{font-size:1.2rem;margin:1.6rem 0 .4rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:baseline;justify-content:space-between}
+.pg{font:600 .8rem/1 system-ui,sans-serif;color:#fff;background:var(--red);padding:.3rem .5rem;border-radius:1rem;white-space:nowrap}
+.rubric{color:var(--red);font-style:italic;font-size:1rem;margin:.5rem 0}
+.say{margin:.6rem 0}
+.who{display:block;font:700 .72rem/1.2 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.1rem}
+.say.p,.blk.p .lines{font-weight:600}
+.lines .ln{display:block}.lines .ind{padding-left:1.4rem}
+.vr{margin:.6rem 0}.vr .v{margin-top:.5rem}.vr .r b{font-weight:700}
+.psalm{margin:.4rem 0}
+.verse{margin:0 0 .75rem;padding-left:1.4rem;position:relative}
+.verse .a,.verse .b{display:block}.verse .b{padding-left:1.4rem}
+.vn{position:absolute;left:0;top:.45rem;font:600 .7rem system-ui,sans-serif;color:var(--muted)}
+.vhead{font-style:italic;color:var(--red);margin:1rem 0 .4rem}
+.sc{font-variant:small-caps}
+.summary{background:var(--card);border-left:4px solid var(--gold);padding:.4rem .9rem;border-radius:.4rem;margin:.7rem 0}
+.sumh{margin:.2rem 0;font:700 .72rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.small{font-size:.92rem;color:var(--muted)}
+.note{background:var(--card);border:1px dashed var(--line);padding:.6rem .9rem;border-radius:.5rem}
+.appointed{list-style:none;padding:0;margin:.5rem 0}.appointed li{padding:.35rem 0;border-bottom:1px solid var(--line)}
+.appointed .k{display:block;font:700 .72rem system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+details{margin:.6rem 0}summary{cursor:pointer;color:var(--red);font-style:italic;font-size:1rem;padding:.3rem 0}
+.toc ol{padding-left:1.3rem;margin:.3rem 0}.toc li{padding:.3rem 0;display:flex;justify-content:space-between;gap:.5rem;align-items:center}
+.toc li a{text-decoration:none;color:var(--ink);border-bottom:1px dotted var(--muted)}
+.toc summary{font-style:normal;font-weight:700;color:var(--ink)}
+.foot{margin-top:3rem;font-size:.9rem;color:var(--muted);border-top:1px solid var(--line);padding-top:1rem}
+.totop{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom));width:3rem;height:3rem;border-radius:50%;background:var(--green);color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 14px rgba(0,0,0,.3);opacity:.9}
+@media (min-width:48rem){body{font-size:1.25rem}h1{font-size:2.3rem}}
+
+.idx li{display:flex;justify-content:space-between;gap:.5rem;padding:.7rem 0;border-bottom:1px solid var(--line)}.idx{list-style:none;padding:0}</style></head>
+<body><main><h1 style="margin-top:1.5rem">Daily Office</h1><p class="small">Morning Prayer follow-alongs (1979 BCP, Rite Two), for The Daily Office Chanted by Scott Dettra.</p>
+<ul class="idx"><li><a href="2026-11-16.html">Monday, November 16, 2026</a><span class="small"> · <a href="2026-11-16.md">Markdown</a></span></li><li><a href="2026-11-14.html">Saturday, November 14, 2026</a><span class="small"> · <a href="2026-11-14.md">Markdown</a></span></li><li><a href="2026-11-13.html">Friday, November 13, 2026</a><span class="small"> · <a href="2026-11-13.md">Markdown</a></span></li><li><a href="2026-11-12.html">Thursday, November 12, 2026</a><span class="small"> · <a href="2026-11-12.md">Markdown</a></span></li><li><a href="2026-11-11.html">Wednesday, November 11, 2026</a><span class="small"> · <a href="2026-11-11.md">Markdown</a></span></li><li><a href="2026-11-10.html">Tuesday, November 10, 2026</a><span class="small"> · <a href="2026-11-10.md">Markdown</a></span></li><li><a href="2026-11-09.html">Monday, November 9, 2026</a><span class="small"></span></li></ul></main></body></html>
