@@ -1,11 +1,13 @@
 name: Snack reminder
 
+# Scheduled runs turned off at Casey's request (Nov 19, 2026).
+# To turn back on, restore the schedule block:
+#   schedule:
+#     - cron: "0 16 * * 3"
+#       timezone: America/Chicago
+#     - cron: "25 10 * * 4"
+#       timezone: America/Chicago
 on:
-  schedule:
-    - cron: "0 16 * * 3"
-      timezone: America/Chicago
-    - cron: "25 10 * * 4"
-      timezone: America/Chicago
   workflow_dispatch:
     inputs:
       force:
